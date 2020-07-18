@@ -58,7 +58,7 @@ body {
       background-color: #3bb6d6;
       top: -6px;
       z-index: 2;
-      width: 70%; }
+      width: 20%; }
     .battle-screen .player .player-stats, .battle-screen .player .enemy-stats, .battle-screen .enemy .player-stats, .battle-screen .enemy .enemy-stats {
       padding: 8px;
       border-radius: 10px;
