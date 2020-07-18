@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function AttackSpeed(props) {
     const attSpd = props.attSpd
