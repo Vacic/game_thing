@@ -1,0 +1,74 @@
+@include mediaXl {
+    .battle-screen {
+        width: 60%;
+    }
+}
+
+@include mediaLg {
+    .battle-screen {
+        width: 70%;
+    }
+}
+
+@include mediaMd {
+    .battle-screen {
+        width: 80%;
+        
+        .player, .enemy {
+            
+            .name {
+                font-size: 1.5rem
+            }
+        }
+    }
+
+}
+
+@include mediaSm {
+    .battle-screen {
+        width: 85%;
+    }
+}
+
+@include mediaXsm {
+    .battle-screen {
+        width: 95%;
+        padding: 8px;
+
+        .player, .enemy {
+            .player-card, .enemy-card {
+                .name {
+                    font-size: 1.2rem;
+                    line-height: 1.6rem;
+                }
+
+                .hp-bar {
+                    .current, .max {
+                        height: $bar-height-smaller;
+                        background-color: rgb(71, 212, 94);
+                        position: relative;
+                        top: 3px;
+                        z-index: 2;
+                    }
+        
+                    .max {
+                        background-color: rgb(236, 103, 103);
+                        z-index: 1;
+                        top: -7px;
+                    }
+                    
+                    .hp {
+                        position: relative;
+                        top: -4px;
+                        font-size: 0.9rem;
+                        line-height: 1.2rem;
+                    }
+                }
+            }
+        }
+
+        .player-stats, .enemy-stats {
+            font-size: 0.9rem
+        }    
+    }
+}

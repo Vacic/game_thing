@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+body {
+  background-color: #175827; }
+
+.battle-screen {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin: auto;
+  margin-top: 50px;
+  border: 1px solid #2ca94b;
+  border-radius: 10px;
+  padding: 20px;
+  color: white; }
+  .battle-screen .player, .battle-screen .enemy {
+    padding: 10px;
+    padding-top: 4px;
+    border: 2px solid #269ab8;
+    background-color: #155363;
+    border-radius: 10px;
+    text-align: center;
+    width: 30%; }
+    .battle-screen .player .player-card .name, .battle-screen .player .enemy-card .name, .battle-screen .enemy .player-card .name, .battle-screen .enemy .enemy-card .name {
+      font-size: 2rem; }
+    .battle-screen .player .player-card .hp-bar .current, .battle-screen .player .player-card .hp-bar .max, .battle-screen .player .enemy-card .hp-bar .current, .battle-screen .player .enemy-card .hp-bar .max, .battle-screen .enemy .player-card .hp-bar .current, .battle-screen .enemy .player-card .hp-bar .max, .battle-screen .enemy .enemy-card .hp-bar .current, .battle-screen .enemy .enemy-card .hp-bar .max {
+      height: 14px;
+      width: 100%;
+      position: relative; }
+    .battle-screen .player .player-card .hp-bar .current, .battle-screen .player .enemy-card .hp-bar .current, .battle-screen .enemy .player-card .hp-bar .current, .battle-screen .enemy .enemy-card .hp-bar .current {
+      background-color: #47d45e;
+      top: 5px;
+      z-index: 2;
+      width: 60%; }
+    .battle-screen .player .player-card .hp-bar .max, .battle-screen .player .enemy-card .hp-bar .max, .battle-screen .enemy .player-card .hp-bar .max, .battle-screen .enemy .enemy-card .hp-bar .max {
+      background-color: #ec6767;
+      top: -9px;
+      z-index: 1; }
+    .battle-screen .player .player-card .hp-bar .hp, .battle-screen .player .enemy-card .hp-bar .hp, .battle-screen .enemy .player-card .hp-bar .hp, .battle-screen .enemy .enemy-card .hp-bar .hp {
+      position: relative;
+      top: -4px;
+      font-size: 0.9rem;
+      line-height: 1.2rem; }
+    .battle-screen .player .player-card img, .battle-screen .player .enemy-card img, .battle-screen .enemy .player-card img, .battle-screen .enemy .enemy-card img {
+      width: 100%; }
+    .battle-screen .player .attack-bar .att-empty, .battle-screen .player .attack-bar .att-progress, .battle-screen .enemy .attack-bar .att-empty, .battle-screen .enemy .attack-bar .att-progress {
+      height: 14px;
+      width: 100%;
+      position: relative; }
+    .battle-screen .player .attack-bar .att-empty, .battle-screen .enemy .attack-bar .att-empty {
+      background-color: #103c1a;
+      top: 8px;
+      z-index: 1; }
+    .battle-screen .player .attack-bar .att-progress, .battle-screen .enemy .attack-bar .att-progress {
+      background-color: #3bb6d6;
+      top: -6px;
+      z-index: 2;
+      width: 70%; }
+    .battle-screen .player .player-stats, .battle-screen .player .enemy-stats, .battle-screen .enemy .player-stats, .battle-screen .enemy .enemy-stats {
+      padding: 8px;
+      border-radius: 10px;
+      text-align: left;
+      line-height: 1.5rem;
+      margin-top: 10px;
+      border-top: 2px solid #175827;
+      border-left: 2px solid #175827; }
+      .battle-screen .player .player-stats h3, .battle-screen .player .enemy-stats h3, .battle-screen .enemy .player-stats h3, .battle-screen .enemy .enemy-stats h3 {
+        text-align: center; }
+      .battle-screen .player .player-stats p span, .battle-screen .player .enemy-stats p span, .battle-screen .enemy .player-stats p span, .battle-screen .enemy .enemy-stats p span {
+        float: right;
+        font-size: 1.2rem; }
+
+@media screen and (min-width: 1601) {
+  .battle-screen {
+    width: 60%; } }
+
+@media screen and (min-width: 769px) and (max-width: 1600px) {
+  .battle-screen {
+    width: 70%; } }
+
+@media screen and (max-width: 1200px) {
+  .battle-screen {
+    width: 80%; }
+    .battle-screen .player .name, .battle-screen .enemy .name {
+      font-size: 1.5rem; } }
+
+@media screen and (max-width: 768px) {
+  .battle-screen {
+    width: 85%; } }
+
+@media screen and (max-width: 500px) {
+  .battle-screen {
+    width: 95%;
+    padding: 8px; }
+    .battle-screen .player .player-card .name, .battle-screen .player .enemy-card .name, .battle-screen .enemy .player-card .name, .battle-screen .enemy .enemy-card .name {
+      font-size: 1.2rem;
+      line-height: 1.6rem; }
+    .battle-screen .player .player-card .hp-bar .current, .battle-screen .player .player-card .hp-bar .max, .battle-screen .player .enemy-card .hp-bar .current, .battle-screen .player .enemy-card .hp-bar .max, .battle-screen .enemy .player-card .hp-bar .current, .battle-screen .enemy .player-card .hp-bar .max, .battle-screen .enemy .enemy-card .hp-bar .current, .battle-screen .enemy .enemy-card .hp-bar .max {
+      height: 10px;
+      background-color: #47d45e;
+      position: relative;
+      top: 3px;
+      z-index: 2; }
+    .battle-screen .player .player-card .hp-bar .max, .battle-screen .player .enemy-card .hp-bar .max, .battle-screen .enemy .player-card .hp-bar .max, .battle-screen .enemy .enemy-card .hp-bar .max {
+      background-color: #ec6767;
+      z-index: 1;
+      top: -7px; }
+    .battle-screen .player .player-card .hp-bar .hp, .battle-screen .player .enemy-card .hp-bar .hp, .battle-screen .enemy .player-card .hp-bar .hp, .battle-screen .enemy .enemy-card .hp-bar .hp {
+      position: relative;
+      top: -4px;
+      font-size: 0.9rem;
+      line-height: 1.2rem; }
+    .battle-screen .player-stats, .battle-screen .enemy-stats {
+      font-size: 0.9rem; } }
