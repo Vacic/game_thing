@@ -1,5 +1,9 @@
-$primary-color: rgb(23, 88, 39);
-$secondary-color: rgb(38, 154, 184);
+$primary-color: rgb(23, 88, 39); // should be darker rgb(88, 62, 23);
+$primary-color-lighter: lighten($primary-color, 20);
+$primary-color-darker: darken($primary-color, 20);
+$secondary-color: rgb(38, 154, 184); // should be lighter rgb(153, 49, 201);
+$secondary-color-lighter: lighten($secondary-color, 20);
+$secondary-color-darker: darken($secondary-color, 20);
 $border-radius: 10px;
 $bar-height: 14px;
 $bar-height-smaller: 10px;

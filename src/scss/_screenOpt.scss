@@ -1,74 +1,121 @@
 @include mediaXl {
-    .battle-screen {
+    .container {
         width: 60%;
     }
 }
 
 @include mediaLg {
-    .battle-screen {
+    .container {
         width: 70%;
     }
 }
 
 @include mediaMd {
-    .battle-screen {
+    .container {
         width: 80%;
+
+        .location-selection {
+            padding-bottom: 6px;
+            justify-content: space-around;  //comment it if there's an even amount of locations
+
+        .location-card:nth-child(3) {  //change this in case there's a different amount of locations
+                width: 100%;
+            }
+
+            .location-card {
+                width: 42%;
+            }
+        }
         
-        .player, .enemy {
-            
-            .name {
-                font-size: 1.5rem
+        .battle-screen {
+            .player, .enemy {
+                .name {
+                    font-size: 1.5rem
+                }
             }
         }
     }
-
 }
 
 @include mediaSm {
-    .battle-screen {
+    .container {
         width: 85%;
+        .battle-screen {
+            .player, .enemy {
+                .player-card, .enemy-card {
+                    .name {
+                        font-size: 1.2rem;
+                        line-height: 1.6rem;
+                    }
+                }
+            }
+        }
+        .location-selection {
+            .location-card {
+                .location-name {
+                    font-size: 1.2rem;
+                }
+            }
+        }
     }
 }
 
 @include mediaXsm {
-    .battle-screen {
+    .container {
         width: 95%;
-        padding: 8px;
 
-        .player, .enemy {
-            .player-card, .enemy-card {
-                .name {
+        .location-selection {
+            padding-bottom: 6px;
+
+            .location-card {
+                width: 100%;
+                justify-content: center;
+                .location-name {
                     font-size: 1.2rem;
-                    line-height: 1.6rem;
-                }
-
-                .hp-bar {
-                    .current, .max {
-                        height: $bar-height-smaller;
-                        background-color: rgb(71, 212, 94);
-                        position: relative;
-                        top: 3px;
-                        z-index: 2;
-                    }
-        
-                    .max {
-                        background-color: rgb(236, 103, 103);
-                        z-index: 1;
-                        top: -7px;
-                    }
-                    
-                    .hp {
-                        position: relative;
-                        top: -4px;
-                        font-size: 0.9rem;
-                        line-height: 1.2rem;
-                    }
                 }
             }
         }
 
-        .player-stats, .enemy-stats {
-            font-size: 0.9rem
-        }    
+        .battle-screen {
+            padding: 8px;
+
+            .player, .enemy {
+                .player-card, .enemy-card {
+                    .hp-bar {
+                        .current, .max {
+                            height: $bar-height-smaller;
+                            top: 3px;
+                        }
+            
+                        .max {
+                            top: -7px;
+                        }
+                        
+                        .hp {
+                            top: -4px;
+                            font-size: 0.8rem;
+                        }
+                    }
+                }
+
+                .attack-bar {
+                    .att-empty, .att-progress {
+                        height: $bar-height-smaller;
+                    }
+        
+                    .att-empty {
+                        top: 7px;
+                    }
+        
+                    .att-progress {
+                        top: -3px;
+                    }
+                }
+            }
+    
+            .player-stats, .enemy-stats, span {
+                font-size: 0.9rem
+            }    
+        }
     }
 }

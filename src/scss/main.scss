@@ -10,101 +10,150 @@ body {
     background-color: $primary-color;
 }
 
-.battle-screen {
-    display: flex;
-    justify-content: space-between;
+.container {
     width: 60%;
     margin: auto;
     margin-top: 50px;
-    border: 1px solid lighten($primary-color, 20);
+    border: 1px solid $primary-color-lighter;
     border-radius: $border-radius;
-    padding: 20px;
-    color: white;
-    
-    .player, .enemy {
-        padding: 10px;
-        padding-top: 4px;
-        border: 2px solid $secondary-color;
-        background-color: darken($secondary-color, 20);
-        border-radius: $border-radius;
-        text-align: center;
-        width: 30%;
+    color: rgb(247, 247, 247);
 
-        .player-card, .enemy-card {
-            .name {
-                font-size: 2rem;    
+    .location-selection {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+        
+        .location-card:hover {
+            transform: translate( 3px, -3px);
+            cursor: pointer;
+        }
+
+        
+        .location-card {
+            position: relative;
+            display: flex;
+            width: 29%;
+            height: 86px;
+            padding: 12px;
+            border-top: 2px solid $primary-color-lighter;
+            border-right: 2px solid $primary-color-lighter;
+            border-radius: $border-radius;
+            margin: 15px 15px 0px 15px;
+            background-color: $secondary-color-darker;
+            transition: transform 0.04s ;
+            
+            
+            .location-name {
+                text-transform: capitalize;
+                font-size: 1.6rem;
+                width: 100%;
+                text-align: center;
+                font-weight: 500;
+                line-height: 55px;
+                overflow: hidden;
             }
-            // make "bar" classname that goes into every bar thing
-            .hp-bar {
-                .current, .max {
+        }
+        
+        .break {  // line breaks the flex if it overflows, .location-selection has to have "felx-wrap: wrap". It's also a nice seperator.
+            flex-basis: 100%;
+            height: 0;
+            margin-top: 18px;
+            border-bottom: 2px solid $primary-color-lighter;
+          }
+    }
+
+    .battle-screen {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 20px;
+        
+        .player, .enemy {
+            padding: 10px;
+            padding-top: 4px;
+            border: 2px solid $secondary-color;
+            background-color: darken($secondary-color, 20);
+            border-radius: $border-radius;
+            text-align: center;
+            width: 30%;
+    
+            .player-card, .enemy-card {
+                .name {
+                    font-size: 1.6rem;
+                    text-transform: capitalize;
+                }
+                .hp-bar {
+                    .current, .max {
+                        height: $bar-height;
+                        width: 100%;
+                        position: relative;
+                    }
+    
+                    .current {
+                        background-color: rgb(71, 212, 94);
+                        top: 5px;
+                        z-index: 2;
+                        width: 60%
+                    }
+        
+                    .max {
+                        background-color: rgb(236, 103, 103);
+                        top: -9px;
+                        z-index: 1;
+                    }
+                    
+                    .hp {
+                        position: relative;
+                        top: -4px;
+                        font-size: 0.9rem;
+                        line-height: 1.2rem;
+                    }
+                }
+    
+                img {
+                    width: 100%;
+                }
+            }
+    
+            .attack-bar {
+                .att-empty, .att-progress {
                     height: $bar-height;
                     width: 100%;
                     position: relative;
                 }
-
-                .current {
-                    background-color: rgb(71, 212, 94);
-                    top: 5px;
-                    z-index: 2;
-                    width: 60%
-                }
     
-                .max {
-                    background-color: rgb(236, 103, 103);
-                    top: -9px;
+                .att-empty {
+                    background-color: darken($primary-color, 7);
+                    top: 8px;
                     z-index: 1;
                 }
-                
-                .hp {
-                    position: relative;
-                    top: -4px;
-                    font-size: 0.9rem;
-                    line-height: 1.2rem;
+    
+                .att-progress {
+                    background-color: lighten($secondary-color, 10);
+                    top: -6px;
+                    z-index: 2;
+                    width: 20%;
                 }
             }
-
-            img {
-                width: 100%;
-            }
-        }
-
-        .attack-bar {
-            .att-empty, .att-progress {
-                height: $bar-height;
-                width: 100%;
-                position: relative;
-            }
-
-            .att-empty {
-                background-color: darken($primary-color, 7);
-                top: 8px;
-                z-index: 1;
-            }
-
-            .att-progress {
-                background-color: lighten($secondary-color, 10);
-                top: -6px;
-                z-index: 2;
-                width: 20%;
-            }
-        }
-
-        .player-stats, .enemy-stats {
-            padding: 8px;
-            border-radius: $border-radius;
-            text-align: left;
-            line-height: 1.5rem;
-            margin-top: 10px;
-            border-top: 2px solid $primary-color;
-            border-left: 2px solid $primary-color;
-
-            h3 {
-                text-align: center;
-            }
-
-            p span {
-                float: right;
-                font-size: 1.2rem;
+    
+            .player-stats, .enemy-stats {
+                padding: 8px;
+                border-radius: $border-radius;
+                text-align: left;
+                line-height: 1.5rem;
+                margin-top: 10px;
+                border-top: 2px solid $primary-color-lighter;
+                border-left: 2px solid $primary-color-lighter;
+    
+                h3 {
+                    text-align: center;
+                }
+    
+                p span {
+                    float: right;
+                    font-size: 1.2rem;
+                }
             }
         }
     }
