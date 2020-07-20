@@ -3,24 +3,13 @@ import PlayerCard from './PlayerCard';
 import Stats from './Stats';
 import AttackSpeed from './AttackSpeed';
 
-export default class Player extends Component {
-    constructor(props) {
-        super(props)
-    
-        this.state = {
-             hp: 100,
-             dmg: 10,
-             attSpd: 1,
-             def: 10,
-             eva: 10
-        }
-    }
-    
+export default class Player extends Component {    
     render() {
-        const {hp, dmg, attSpd, def, eva} = this.state;
+        const {hp, dmg, attSpd, def, eva} = this.props.player;
+        const currentPlayerHp = this.props.currentPlayerHp;
         return (
             <div className="player">
-                <PlayerCard hp={hp}/>
+                <PlayerCard currentHp={currentPlayerHp} maxHp={hp} />
                 <AttackSpeed attSpd={attSpd} />
                 <Stats dmg={dmg} def={def} eva={eva} />
             </div>

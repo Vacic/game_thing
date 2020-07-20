@@ -3,11 +3,11 @@ import Enemy from './Enemy';
 import Player from './Player';
 
 export default function BattleScreen(props) {
-    const enemy = props.enemy;
+    const { player, enemy, currentEnemyHp, currentPlayerHp } = props;
     return (
         <div className="battle-screen">
-            <Player />
-            <Enemy enemy={enemy} />
+            <Player player={player} currentPlayerHp={currentPlayerHp} />
+            <Enemy enemy={enemy} currentEnemyHp={currentEnemyHp} />
         </div>
     )
 }

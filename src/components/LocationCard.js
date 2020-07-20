@@ -6,7 +6,7 @@ export default function LocationCard(props) {
     }
 
     const onClick = () => {
-        props.getEnemy(location);
+        props.initCombat(location);
     }
 
     const location = props.location;

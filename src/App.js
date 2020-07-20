@@ -99,8 +99,20 @@ class App extends Component {
         }
       },
 
+      player: {
+        hp: 100,
+        dmg: 10,
+        attSpd: 1,
+        def: 10,
+        eva: 10
+      },
+
+      currentPlayerHp: 100,
+
+      currentEnemyHp: 0,
+
       currentEnemy: {
-        name: '',
+        name: 'Select Location',
         hp: 0,
         dmg: 0,
         attSpd: 0,
@@ -110,21 +122,47 @@ class App extends Component {
     }
   }
 
+  // Initiates Combat
+
+  initCombat = (location) => {
+    this.getEnemy(location);
+    setInterval(()=>this.startAttack(10, 1), 1000)
+  }
+
+  // Gets a random enemy from the selected location and sets 
+
   getEnemy = (location) => {
     const enemies = Object.keys(this.state.location_enemies[location]);
     const randEnemy = Math.floor(Math.random() * Math.floor(enemies.length));
     const enemyStats = this.state.location_enemies[location][enemies[randEnemy]];
-    console.log(randEnemy)
     
-    this.setState({ currentEnemy: enemyStats });
+    this.setState({ currentEnemy: enemyStats, currentEnemyHp: enemyStats.hp });
   }
-  
+
+  // Starts player attack, maybe can be used for enemy attack as well?
+
+  startAttack = (attack, attSpd) => {
+    const attbarthing = document.querySelector('.att-progress');
+
+      attbarthing.classList.add('att-start');
+      
+    
+    //attbarthing.style.transition = `width ${attSpd}s linear`
+
+    this.setState(prevState => {
+      return {
+        currentEnemyHp: prevState.currentEnemyHp - attack
+      }
+    });
+  }
+
   render() {
+    const { location_enemies, player, currentPlayerHp, currentEnemyHp, currentEnemy } = this.state;
   return (
       <div className="App">
         <div className="container">
-          <LocationSelection locations={this.state.location_enemies} getEnemy={this.getEnemy} />
-          <BattleScreen enemy={this.state.currentEnemy} />
+          <LocationSelection locations={location_enemies} initCombat={this.initCombat} />
+          <BattleScreen player={player} currentPlayerHp={currentPlayerHp} enemy={currentEnemy} currentEnemyHp={currentEnemyHp} />
           <Equipment />
           <Inventory />
         </div>
