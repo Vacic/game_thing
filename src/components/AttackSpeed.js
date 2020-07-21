@@ -5,14 +5,7 @@ export default function AttackSpeed(props) {
     return (
         <div className="attack-bar">
             <div className="att-empty"></div>
-            <div className="att-progress"></div>
-            <span>Attack Speed: {attSpd}sec</span>
-            <span>Attack Speed: {attSpd}sec</span>
-            <span>Attack Speed: {attSpd}sec</span>
-            <span>Attack Speed: {attSpd}sec</span>
-            <span>Attack Speed: {attSpd}sec</span>
-            <span>Attack Speed: {attSpd}sec</span>
-            <span>Attack Speed: {attSpd}sec</span>
+            <div className="att-progress" ref={props.attProgress}></div>
             <span>Attack Speed: {attSpd}sec</span>
         </div>
     )
