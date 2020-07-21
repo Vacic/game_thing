@@ -125,14 +125,12 @@ class App extends Component {
   }
 
   // Initiates Combat
-
   initCombat = (location) => {
     this.getEnemy(location);
     this.startAttack(this.state.player.dmg, this.state.player.attSpd, location)
   }
 
   // Gets a random enemy from the selected location and sets 
-
   getEnemy = (location) => {
     this.enemyHpBar.style.width = '100%'; // Whenever a new enemy is called the hp is reset to 100%
     clearInterval(this.attInterval);
@@ -145,7 +143,6 @@ class App extends Component {
   }
 
   // Starts player attack, maybe can be used for enemy attack as well?
-
   startAttack = (attack, attSpd, location) => {
       this.attProgress.style.animation = `attBar ${attSpd}s linear infinite`;
       this.attInterval = setInterval(() => {  // Assigning it to a variable so i can stop the interval in 'handleEnemyDeath'
@@ -155,7 +152,6 @@ class App extends Component {
   }
 
   // Handles everything that happenes after an enemy dies
-
   handleEnemyDeath = (attSpd, location) => {
     this.attProgress.style.animation = 'pause';
     if (!this.state.getEnemyTimeout) {
