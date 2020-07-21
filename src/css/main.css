@@ -83,6 +83,9 @@ body {
         line-height: 1.2rem; }
       .container .battle-screen .player .player-card img, .container .battle-screen .player .enemy-card img, .container .battle-screen .enemy .player-card img, .container .battle-screen .enemy .enemy-card img {
         width: 100%; }
+      .container .battle-screen .player .attack-bar .weapon-name, .container .battle-screen .enemy .attack-bar .weapon-name {
+        position: relative;
+        top: 4px; }
       .container .battle-screen .player .attack-bar .att-empty, .container .battle-screen .player .attack-bar .att-progress, .container .battle-screen .enemy .attack-bar .att-empty, .container .battle-screen .enemy .attack-bar .att-progress {
         height: 14px;
         width: 100%;

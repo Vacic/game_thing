@@ -10,7 +10,7 @@ export default class Enemy extends Component {
         return (
             <div className="enemy" ref={this.props.enemyDiv}>
                 <EnemyCard currentEnemyHp={currentEnemyHp} maxHp={hp} name={name} enemyHpBar={this.props.enemyHpBar} />
-                <AttackSpeed attSpd={attSpd} />
+                <AttackSpeed attSpd={attSpd} enemyAttProgressDiv={this.props.enemyAttProgressDiv} />
                 <Stats dmg={dmg} def={def} eva={eva} />
             </div>
         )

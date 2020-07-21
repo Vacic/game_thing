@@ -5,12 +5,12 @@ import AttackSpeed from './AttackSpeed';
 
 export default class Player extends Component {    
     render() {
-        const {hp, dmg, attSpd, def, eva} = this.props.player;
-        const currentPlayerHp = this.props.currentPlayerHp;
+        const { weapon, hp, dmg, attSpd, def, eva } = this.props.player;
+        const { currentPlayerHp, playerDiv, playerAttProgressDiv } = this.props;
         return (
-            <div className="player">
-                <PlayerCard currentHp={currentPlayerHp} maxHp={hp} />
-                <AttackSpeed attSpd={attSpd} attProgress={this.props.attProgress} />
+            <div className="player" ref={playerDiv}>
+                <PlayerCard currentHp={currentPlayerHp} maxHp={hp} playerHpBar={this.props.playerHpBar} />
+                <AttackSpeed attSpd={attSpd} playerAttProgressDiv={playerAttProgressDiv} weapon={weapon} />
                 <Stats dmg={dmg} def={def} eva={eva} />
             </div>
         )

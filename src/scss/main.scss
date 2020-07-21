@@ -118,6 +118,11 @@ body {
             }
     
             .attack-bar {
+                .weapon-name {
+                    position: relative;
+                    top: 4px;
+                }
+
                 .att-empty, .att-progress {
                     height: $bar-height;
                     width: 100%;

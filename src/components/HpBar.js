@@ -6,7 +6,7 @@ export default class HpBar extends Component {
         return (
             // should take hp from props
             <div className="bar hp-bar">
-                <div className="current" ref={this.props.enemyHpBar}></div>
+                <div className="current" ref={this.props.enemyHpBar ? this.props.enemyHpBar : this.props.playerHpBar}></div>
                 <div className="max"></div>
                 <p className="hp">{currentHp}/{maxHp}</p>
             </div>
