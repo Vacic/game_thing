@@ -108,9 +108,11 @@ class App extends Component {
 				eva: 10
 			},
 
-			currentPlayerHp: 100,  // current hp required for the ui
+			globalTimeout: 1000,  // Needs to be the same so things don't get desynced and weird
 
-			currentEnemyHp: 0,  // current hp required for the ui
+			currentPlayerHp: 100,  // Current hp required for the ui and HP bar calculation
+
+			currentEnemyHp: 0,  // Current hp required for the ui and HP bar calculation
 
 			currentEnemy: {  // Stores the stats of the enemy that the player is currently fighting
 				name: 'Select Location',
@@ -138,13 +140,13 @@ class App extends Component {
 				this.getEnemy(location);
 				this.startPlayerAttack(this.state.player.dmg, this.state.player.attSpd, location)
 				this.startEnemyAttack(this.state.currentEnemy.dmg, this.state.currentEnemy.attSpd, location)
-			}, 1000);
+			}, this.state.globalTimeout);
 		} else {
 			console.log('Please wait for an enemy to load');
 		}
 	}
 	
-	// Gets a random enemy from the selected location and sets 
+	// Gets a random enemy from the selected location
 	getEnemy = (location) => {
 		const enemies = Object.keys(this.state.location_enemies[location]); // Makes an array out of the keys
 		const randEnemy = Math.floor(Math.random() * Math.floor(enemies.length)); // Randomizes the enemy
@@ -167,7 +169,7 @@ class App extends Component {
 	// Starts player attack
 	startPlayerAttack = (attack, attSpd, location) => {
 			this.playerAttProgressDiv.style.animation = `attBar ${attSpd}s linear infinite`;
-			this.playerAttInterval = setInterval(() => {  // Assigning it to a variable so i can stop the interval in 'getEnemy'  //was in 'handleEnemyDeath'
+			this.playerAttInterval = setInterval(() => {  // Assigning it to a variable so i can stop the interval in 'resetActions'
 			this.enemyTakesDmg(attack);
 			if (this.state.currentEnemyHp <= 0) this.handleEnemyDeath(attSpd, location);
 		}, attSpd * 1000);
@@ -181,9 +183,6 @@ class App extends Component {
 			this.setState({ timeoutControl: true });
 			this.playerDiv.classList.add('dead');
 			
-			clearInterval(this.playerAttInterval);
-			clearInterval(this.enemyAttInterval);
-			
 			
 			this.initCombat(location);
 			
@@ -192,7 +191,7 @@ class App extends Component {
 				this.setState({ timeoutControl: false, currentPlayerHp: this.state.player.hp });
 				this.playerHpBar.style.width = '100%';
 				this.playerDiv.classList.remove('dead');
-			}, 1000);
+			}, this.state.globalTimeout);
 		}
 	}
 	
@@ -220,8 +219,6 @@ class App extends Component {
 	handleEnemyDeath = (attSpd, location) => {
 		this.playerAttProgressDiv.style.animation = 'none';
 		this.enemyAttProgressDiv.style.animation = 'none';
-		clearInterval(this.enemyAttInterval); // Clears the interval so that the player doesn't get hit post enemy death
-
 
 		this.initCombat(location);
 		this.enemyDiv.classList.add('dead');
@@ -234,7 +231,7 @@ class App extends Component {
 				this.playerAttProgressDiv.style.animation = `attBar ${attSpd}s linear infinite`;
 				this.setState({ timeoutControl: false });
 				this.enemyDiv.classList.remove('dead');
-			}, 1000);
+			}, this.state.globalTimeout);
 		}
 	}
 
