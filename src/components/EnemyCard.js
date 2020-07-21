@@ -7,7 +7,7 @@ export default function EnemyCard(props) {
     return (
         <div className="enemy-card">
             <p className="name">{name}</p>
-            <HpBar currentHp={currentEnemyHp} maxHp={maxHp} />
+            <HpBar currentHp={currentEnemyHp} maxHp={maxHp} enemyHpBar={props.enemyHpBar} />
             <img src="https://via.placeholder.com/150" alt=""/>
         </div>
     )

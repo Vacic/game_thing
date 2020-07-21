@@ -10,7 +10,7 @@ export default class Player extends Component {
         return (
             <div className="player">
                 <PlayerCard currentHp={currentPlayerHp} maxHp={hp} />
-                <AttackSpeed attSpd={attSpd} />
+                <AttackSpeed attSpd={attSpd} attProgress={this.props.attProgress} />
                 <Stats dmg={dmg} def={def} eva={eva} />
             </div>
         )

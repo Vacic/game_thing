@@ -95,7 +95,7 @@ body {
                         background-color: rgb(71, 212, 94);
                         top: 5px;
                         z-index: 2;
-                        width: 60%
+                        width: 100%
                     }
         
                     .max {
@@ -136,11 +136,6 @@ body {
                     z-index: 2;
                     width: 0%;
                 }
-
-                .att-start {
-                    animation: attBar 1s linear;
-                    animation-iteration-count: infinite;
-                }
             }
     
             .player-stats, .enemy-stats {
@@ -161,6 +156,10 @@ body {
                     font-size: 1.2rem;
                 }
             }
+        }
+
+        .dead {
+            color: rgb(230, 68, 68);
         }
     }
 }
