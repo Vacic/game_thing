@@ -121,18 +121,29 @@ class App extends Component {
 				eva: 0
 			},
 
-			timeoutControl: false // required because getEnemy triggers twice since it's running in the render method
+			timeoutControl: false, // required because getEnemy triggers twice since it's running in the render method
+			loadingEnemy: false
 		}
-  	}
+	}
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~GAME LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~  
 
 	// Initiates Combat
 	initCombat = (location) => {
-		this.resetActions();
-		this.getEnemy(location);
-		this.startPlayerAttack(this.state.player.dmg, this.state.player.attSpd, location)
-		this.startEnemyAttack(this.state.currentEnemy.dmg, this.state.currentEnemy.attSpd, location)
+		if(!this.state.loadingEnemy) {
+			this.resetActions();
+			setTimeout(() => {
+				this.enemyHpBar.style.width = '100%'; // Whenever a new enemy is called the hp is reset to 100%
+				this.setState({ loadingEnemy: false }); // Makes it so the code can't be run untill the timeout fires off
+				
+				this.getEnemy(location);
+				this.startPlayerAttack(this.state.player.dmg, this.state.player.attSpd, location)
+				this.startEnemyAttack(this.state.currentEnemy.dmg, this.state.currentEnemy.attSpd, location)
+			}, 1000);
+		} else {
+			console.log('Please wait for an enemy to load');
+		}
 	}
-
+	
 	// Gets a random enemy from the selected location and sets 
 	getEnemy = (location) => {
 		const enemies = Object.keys(this.state.location_enemies[location]); // Makes an array out of the keys
@@ -142,7 +153,16 @@ class App extends Component {
 		this.setState({ currentEnemy: enemyStats, currentEnemyHp: enemyStats.hp }); // Assing stats to the current enemy
 	}
 	
+	resetActions = () => {
+		this.setState({ loadingEnemy: true });
+		this.playerAttProgressDiv.style.animation = 'none';
+		this.enemyAttProgressDiv.style.animation = 'none';
+		this.resetFlow = this.enemyAttProgressDiv.offsetHeight;  // resets the flow of the animations
+		clearInterval(this.playerAttInterval);
+		clearInterval(this.enemyAttInterval);
+	}
 	
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~Player LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
 	// Starts player attack
 	startPlayerAttack = (attack, attSpd, location) => {
@@ -165,14 +185,14 @@ class App extends Component {
 			clearInterval(this.enemyAttInterval);
 			
 			
+			this.initCombat(location);
 			
 			// Clears the attack interval - prevents the attack animation and damage animation from going out of sync
 			setTimeout(() => {
-				this.initCombat(location);
 				this.setState({ timeoutControl: false, currentPlayerHp: this.state.player.hp });
 				this.playerHpBar.style.width = '100%';
 				this.playerDiv.classList.remove('dead');
-			}, 2000);
+			}, 1000);
 		}
 	}
 	
@@ -185,7 +205,7 @@ class App extends Component {
 	}
 	
 
-
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ENEMY LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
 	// Starts enemy attack
 	startEnemyAttack = (attack, attSpd, location) => {
@@ -202,13 +222,15 @@ class App extends Component {
 		this.enemyAttProgressDiv.style.animation = 'none';
 		clearInterval(this.enemyAttInterval); // Clears the interval so that the player doesn't get hit post enemy death
 
+
+		this.initCombat(location);
+		this.enemyDiv.classList.add('dead');
+
 		if (!this.state.timeoutControl) {
 			this.setState({ timeoutControl: true });
-			this.enemyDiv.classList.add('dead');
 			
 			// Clears the attack interval - prevents the attack animation and damage animation from going out of sync
 			setTimeout(() => {
-				this.initCombat(location);
 				this.playerAttProgressDiv.style.animation = `attBar ${attSpd}s linear infinite`;
 				this.setState({ timeoutControl: false });
 				this.enemyDiv.classList.remove('dead');
@@ -227,18 +249,10 @@ class App extends Component {
 
 
 
-	resetActions = () => {
-		this.enemyHpBar.style.width = '100%'; // Whenever a new enemy is called the hp is reset to 100%
-		this.playerAttProgressDiv.style.animation = 'none';
-		this.enemyAttProgressDiv.style.animation = 'none';
-		this.resetFlow = this.enemyAttProgressDiv.offsetHeight;  // resets the flow of the animations
-		clearInterval(this.playerAttInterval);
-		clearInterval(this.enemyAttInterval);
-	}
 
 
 	render() {
-		const { location_enemies, player, currentPlayerHp, currentEnemyHp, currentEnemy } = this.state;
+		const { location_enemies, player, currentPlayerHp, currentEnemyHp, currentEnemy, loadingEnemy } = this.state;
 		return (
 			<div className="App">
 				<div className="container">
@@ -259,6 +273,7 @@ class App extends Component {
 						enemyHpBar={el => this.enemyHpBar = el}
 						enemyDiv={el => this.enemyDiv = el}
 						enemyAttProgressDiv={el => this.enemyAttProgressDiv = el}
+						loadingEnemy={loadingEnemy}
 					/>
 
 					<Equipment />

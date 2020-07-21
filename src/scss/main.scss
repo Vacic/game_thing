@@ -115,6 +115,14 @@ body {
                 img {
                     width: 100%;
                 }
+
+                .loading-enemy {
+                    width: 100%;
+                    font-size: 4rem;
+                    border: 5px solid $secondary-color;
+                    border-radius: 100%;
+                    line-height: 270px;
+                }
             }
     
             .attack-bar {
