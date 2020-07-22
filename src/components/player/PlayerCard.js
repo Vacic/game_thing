@@ -1,5 +1,5 @@
 import React from 'react';
-import HpBar from './HpBar';
+import HpBar from '../stats/HpBar';
 
 export default function PlayerCard(props) {
     const { currentHp, maxHp, playerHpBar } = props;
@@ -7,7 +7,7 @@ export default function PlayerCard(props) {
         <div className="player-card">
             <p className="name">Vacic</p>
             <HpBar currentHp={currentHp} maxHp={maxHp} playerHpBar={playerHpBar} />
-            <img src="https://via.placeholder.com/150" alt=""/>
+            <img className="player-img" src="https://via.placeholder.com/150" alt=""/>
         </div>
     )
 }

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './css/main.css';
 import BattleScreen from './components/BattleScreen';
-import Equipment from './components/Equipment';
-import Inventory from './components/Inventory';
-import LocationSelection from './components/LocationSelection';
+import Equipment from './components/equipment/Equipment';
+import Inventory from './components/inventory/Inventory';
+import LocationSelection from './components/location/LocationSelection';
 
 class App extends Component {
 	constructor(props) {
@@ -49,14 +49,14 @@ class App extends Component {
 					bandit_leader: {
 						name: 'Bandit Leader',
 						hp: 150,
-						dmg: 15,
+						dmg: 20,
 						attSpd: 1.8,
 						def: 8,
 						eva: 10
 					},
 					bandit_archer: {
 						name: 'Bandit Archer',
-						hp: 40,
+						hp: 50,
 						dmg: 25,
 						attSpd: 1.5,
 						def: 3,
@@ -65,7 +65,7 @@ class App extends Component {
 					bandit_swordsman: {
 						name: 'Bandit Swordsman',
 						hp: 100,
-						dmg: 12,
+						dmg: 18,
 						attSpd: 2.5,
 						def: 7,
 						eva: 7
@@ -123,8 +123,7 @@ class App extends Component {
 				eva: 0
 			},
 
-			timeoutControl: false, // required because getEnemy triggers twice since it's running in the render method
-			loadingEnemy: false
+			loadingEnemy: false  // Controls whether the loading screen instead of enemy picture shows up & makes the user unable to spam click locations which otherwise breaks the game
 		}
 	}
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~GAME LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~  
@@ -133,11 +132,12 @@ class App extends Component {
 	initCombat = (location) => {
 		if(!this.state.loadingEnemy) {
 			this.resetActions();
+			this.setState({ loadingEnemy: true });
 			setTimeout(() => {
-				this.enemyHpBar.style.width = '100%'; // Whenever a new enemy is called the hp is reset to 100%
 				this.setState({ loadingEnemy: false }); // Makes it so the code can't be run untill the timeout fires off
-				
+				this.enemyHpBar.style.width = '100%'; // Whenever a new enemy is called the hp is reset to 100%
 				this.getEnemy(location);
+				
 				this.startPlayerAttack(this.state.player.dmg, this.state.player.attSpd, location)
 				this.startEnemyAttack(this.state.currentEnemy.dmg, this.state.currentEnemy.attSpd, location)
 			}, this.state.globalTimeout);
@@ -156,7 +156,6 @@ class App extends Component {
 	}
 	
 	resetActions = () => {
-		this.setState({ loadingEnemy: true });
 		this.playerAttProgressDiv.style.animation = 'none';
 		this.enemyAttProgressDiv.style.animation = 'none';
 		this.resetFlow = this.enemyAttProgressDiv.offsetHeight;  // resets the flow of the animations
@@ -164,35 +163,28 @@ class App extends Component {
 		clearInterval(this.enemyAttInterval);
 	}
 	
-	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~Player LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~PLAYER LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
 	// Starts player attack
 	startPlayerAttack = (attack, attSpd, location) => {
 			this.playerAttProgressDiv.style.animation = `attBar ${attSpd}s linear infinite`;
 			this.playerAttInterval = setInterval(() => {  // Assigning it to a variable so i can stop the interval in 'resetActions'
 			this.enemyTakesDmg(attack);
-			if (this.state.currentEnemyHp <= 0) this.handleEnemyDeath(attSpd, location);
+			if (this.state.currentEnemyHp <= 0) this.handleEnemyDeath(location);
 		}, attSpd * 1000);
 	}
 
 	// Handles everything that happenes after the player dies
-	handlePlayerDeath = (attSpd, location) => {
-		this.playerAttProgressDiv.style.animation = 'none';
-		this.enemyAttProgressDiv.style.animation = 'none';
-		if (!this.state.timeoutControl) {
-			this.setState({ timeoutControl: true });
-			this.playerDiv.classList.add('dead');
-			
-			
-			this.initCombat(location);
-			
-			// Clears the attack interval - prevents the attack animation and damage animation from going out of sync
-			setTimeout(() => {
-				this.setState({ timeoutControl: false, currentPlayerHp: this.state.player.hp });
-				this.playerHpBar.style.width = '100%';
-				this.playerDiv.classList.remove('dead');
-			}, this.state.globalTimeout);
-		}
+	handlePlayerDeath = () => {
+		this.playerDiv.classList.add('dead');
+		this.resetActions();
+		
+		setTimeout(() => {
+			this.setState({ currentPlayerHp: this.state.player.hp, currentEnemyHp: 0, currentEnemy: {name: 'Select Location', hp:0, dmg:0, attSpd:0, def:0, eva:0} });
+			this.playerHpBar.style.width = '100%';
+			this.enemyHpBar.style.width = '100%';
+			this.playerDiv.classList.remove('dead');
+		}, this.state.globalTimeout);
 	}
 	
 	// Handles enemy taking damage, here to make the code look cleaner
@@ -209,30 +201,20 @@ class App extends Component {
 	// Starts enemy attack
 	startEnemyAttack = (attack, attSpd, location) => {
 		this.enemyAttProgressDiv.style.animation = `attBar ${attSpd}s linear infinite`;
-		this.enemyAttInterval = setInterval(() => {  // Assigning it to a variable so i can stop the interval in 'getEnemy' //was in 'handlePlayerDeath'
+		this.enemyAttInterval = setInterval(() => {  // Assigning it to a variable so i can stop the interval in resetActions
 			this.playerTakesDmg(attack);
-			if (this.state.currentPlayerHp <= 0) this.handlePlayerDeath(attSpd, location);
+			if (this.state.currentPlayerHp <= 0) this.handlePlayerDeath();
 		}, attSpd * 1000);
 	}
 
-// Handles everything that happenes after an enemy dies
-	handleEnemyDeath = (attSpd, location) => {
-		this.playerAttProgressDiv.style.animation = 'none';
-		this.enemyAttProgressDiv.style.animation = 'none';
-
-		this.initCombat(location);
+	// Handles everything that happenes after an enemy dies
+	handleEnemyDeath = (location) => {
 		this.enemyDiv.classList.add('dead');
+		this.initCombat(location);
 
-		if (!this.state.timeoutControl) {
-			this.setState({ timeoutControl: true });
-			
-			// Clears the attack interval - prevents the attack animation and damage animation from going out of sync
-			setTimeout(() => {
-				this.playerAttProgressDiv.style.animation = `attBar ${attSpd}s linear infinite`;
-				this.setState({ timeoutControl: false });
-				this.enemyDiv.classList.remove('dead');
-			}, this.state.globalTimeout);
-		}
+		setTimeout(() => {
+			this.enemyDiv.classList.remove('dead');
+		}, this.state.globalTimeout);
 	}
 
 	// Handles enemy taking damage, here to make the code look cleaner
@@ -242,10 +224,6 @@ class App extends Component {
 		});
 		this.enemyHpBar.style.width = `${Math.floor((this.state.currentEnemyHp/this.state.currentEnemy.hp)*100)}%`
 	}
-
-
-
-
 
 
 	render() {

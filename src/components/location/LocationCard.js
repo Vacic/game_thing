@@ -6,10 +6,10 @@ export default function LocationCard(props) {
     }
 
     const onClick = () => {
-        props.initCombat(location);
+        initCombat(location);
     }
 
-    const location = props.location;
+    const { location, initCombat } = props;
     return (
         <div className="location-card" onClick={onClick}>
             <img className="location-img" src="https://via.placeholder.com/60" alt=""/>

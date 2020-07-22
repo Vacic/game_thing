@@ -43,8 +43,12 @@ body {
             margin: 15px 15px 0px 15px;
             background-color: $secondary-color-darker;
             transition: transform 0.04s ;
-            
-            
+
+            .location-img {
+                height: 60px;
+                width: 60px;
+            }
+                        
             .location-name {
                 text-transform: capitalize;
                 font-size: 1.6rem;
@@ -56,12 +60,12 @@ body {
             }
         }
         
-        .break {  // line breaks the flex if it overflows, .location-selection has to have "felx-wrap: wrap". It's also a nice seperator.
+        .flex-break {  // line breaks the flex if it overflows, .location-selection has to have "felx-wrap: wrap". It's also a nice seperator.
             flex-basis: 100%;
             height: 0;
             margin-top: 18px;
             border-bottom: 2px solid $primary-color-lighter;
-          }
+        }
     }
 
     .battle-screen {
@@ -84,6 +88,7 @@ body {
                     font-size: 1.6rem;
                     text-transform: capitalize;
                 }
+
                 .hp-bar {
                     .current, .max {
                         height: $bar-height;
@@ -112,8 +117,12 @@ body {
                     }
                 }
     
-                img {
+                .player-img, .enemy-img, .loading-img {
                     width: 100%;
+                }
+
+                .loading-img {
+                    animation: loading 0.8s linear infinite
                 }
 
                 .loading-enemy {
@@ -180,6 +189,11 @@ body {
 @keyframes attBar {
     0% {width: 0%}
     100% {width: 100%}
+}
+
+@keyframes loading {
+    0% {transform: rotate(0)}
+    100% {transform: rotate(360deg)}
 }
 
 @import 'screenOpt';

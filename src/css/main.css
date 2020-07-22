@@ -34,6 +34,9 @@ body {
       margin: 15px 15px 0px 15px;
       background-color: #155363;
       transition: transform 0.04s; }
+      .container .location-selection .location-card .location-img {
+        height: 60px;
+        width: 60px; }
       .container .location-selection .location-card .location-name {
         text-transform: capitalize;
         font-size: 1.6rem;
@@ -42,7 +45,7 @@ body {
         font-weight: 500;
         line-height: 55px;
         overflow: hidden; }
-    .container .location-selection .break {
+    .container .location-selection .flex-break {
       flex-basis: 100%;
       height: 0;
       margin-top: 18px;
@@ -81,8 +84,10 @@ body {
         top: -4px;
         font-size: 0.9rem;
         line-height: 1.2rem; }
-      .container .battle-screen .player .player-card img, .container .battle-screen .player .enemy-card img, .container .battle-screen .enemy .player-card img, .container .battle-screen .enemy .enemy-card img {
+      .container .battle-screen .player .player-card .player-img, .container .battle-screen .player .player-card .enemy-img, .container .battle-screen .player .player-card .loading-img, .container .battle-screen .player .enemy-card .player-img, .container .battle-screen .player .enemy-card .enemy-img, .container .battle-screen .player .enemy-card .loading-img, .container .battle-screen .enemy .player-card .player-img, .container .battle-screen .enemy .player-card .enemy-img, .container .battle-screen .enemy .player-card .loading-img, .container .battle-screen .enemy .enemy-card .player-img, .container .battle-screen .enemy .enemy-card .enemy-img, .container .battle-screen .enemy .enemy-card .loading-img {
         width: 100%; }
+      .container .battle-screen .player .player-card .loading-img, .container .battle-screen .player .enemy-card .loading-img, .container .battle-screen .enemy .player-card .loading-img, .container .battle-screen .enemy .enemy-card .loading-img {
+        animation: loading 0.8s linear infinite; }
       .container .battle-screen .player .player-card .loading-enemy, .container .battle-screen .player .enemy-card .loading-enemy, .container .battle-screen .enemy .player-card .loading-enemy, .container .battle-screen .enemy .enemy-card .loading-enemy {
         width: 100%;
         font-size: 4rem;
@@ -126,6 +131,12 @@ body {
     width: 0%; }
   100% {
     width: 100%; } }
+
+@keyframes loading {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
 
 @media screen and (min-width: 1601) {
   .container {
