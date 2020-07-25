@@ -236,7 +236,7 @@ class App extends Component {
 						initCombat={this.initCombat} 
 					/>
 					
-					<BattleScreen 
+					<BattleScreen
 						player={player} 
 						currentPlayerHp={currentPlayerHp} 
 						playerHpBar={el => this.playerHpBar = el}
