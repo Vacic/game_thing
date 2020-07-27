@@ -2,9 +2,9 @@ const locationEnemiesState = {
     farm: {
         cow: {
             name: 'Cow',
-            hp: 30,
+            hp: 50,
             dmg: 5,
-            attSpd: 2.2,
+            attSpd: 2,
             def: 10,
             eva: 2
         },
@@ -12,15 +12,15 @@ const locationEnemiesState = {
             name: 'Chicken',
             hp: 20,
             dmg: 3,
-            attSpd: 3,
+            attSpd: 0.8,
             def: 1,
             eva: 1
         },
         farmer: {
             name: 'Farmer',
-            hp: 50,
+            hp: 60,
             dmg: 8,
-            attSpd: 2,
+            attSpd: 1.5,
             def: 3,
             eva: 3
         }
