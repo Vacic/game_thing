@@ -1,8 +1,7 @@
 import React from 'react';
 import HpBar from '../stats/HpBar';
 
-export default function PlayerCard(props) {
-    const { currentHp, maxHp, playerHpBar } = props;
+export default function PlayerCard({ currentHp, maxHp, playerHpBar }) {
     return (
         <div className="player-card">
             <p className="name">Vacic</p>

@@ -86,3 +86,9 @@ const locationEnemiesState = {
         }
     }
 }
+
+const locationEnemiesReducer = (state = locationEnemiesState) => {
+    return state;
+}
+
+export default locationEnemiesReducer;

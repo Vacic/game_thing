@@ -6,3 +6,9 @@ const playerState = {
     def: 10,
     eva: 10
 }
+
+const playerReducer = (state = playerState) => {
+    return state;
+}
+
+export default playerReducer;
