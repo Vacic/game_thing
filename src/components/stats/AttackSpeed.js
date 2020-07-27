@@ -1,7 +1,6 @@
 import React from 'react';
 
-export default function AttackSpeed(props) {
-    const { attSpd, weapon, playerAttProgressDiv, enemyAttProgressDiv } = props
+export default function AttackSpeed({ attSpd, weapon, playerAttProgressDiv, enemyAttProgressDiv }) {
     return (
         <div className="attack-bar">
             {weapon && <p className="weapon-name">{weapon}</p>}

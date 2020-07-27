@@ -1,7 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import LocationCard from './LocationCard';
 
-export default function LocationSelection(props) {
+const LocationSelection = (props) => {
     const locations = Object.keys(props.locations);
     const initCombat = props.initCombat;
     return (
@@ -11,3 +12,11 @@ export default function LocationSelection(props) {
         </div>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+        locations: state.locationEnemies
+    }
+}
+
+export default connect(mapStateToProps)(LocationSelection);

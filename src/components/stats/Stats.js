@@ -1,7 +1,6 @@
 import React from 'react'
 
-export default function Stats(props) {
-    const { dmg, def, eva } = props;
+export default function Stats({ dmg, def, eva }) {
     return (
         <div className="player-stats">
             <h3>Stats:</h3>

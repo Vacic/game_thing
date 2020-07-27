@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PlayerCard from './PlayerCard';
 import Stats from '../stats/Stats';
 import AttackSpeed from '../stats/AttackSpeed';
 
-export default function Player(props) {
+const Player = (props) => {    
     const { weapon, hp, dmg, attSpd, def, eva } = props.player;
-    const { currentPlayerHp, playerDiv, playerAttProgressDiv, playerHpBar } = props;
+    const { playerDiv, playerAttProgressDiv, playerHpBar } = props;  // DOM element refs
+    const currentPlayerHp = props.currentPlayerHp;
     return (
         <div className="player" ref={playerDiv}>
             <PlayerCard currentHp={currentPlayerHp} maxHp={hp} playerHpBar={playerHpBar} />
@@ -14,3 +16,12 @@ export default function Player(props) {
         </div>
     )
 }
+
+const mapStateToProps = state => {
+	return {
+        currentPlayerHp: state.gameData.currentPlayerHp,
+        player: state.player
+	}
+}
+
+export default connect(mapStateToProps)(Player);
