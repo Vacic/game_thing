@@ -4,28 +4,31 @@
   padding: 0; }
 
 body {
-  background-color: #175827; }
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://pbs.twimg.com/media/C4TkyIrWYAADSyy?format=png&name=large); }
 
 .container {
   width: 60%;
+  min-width: 278px;
   margin: auto;
   margin-top: 50px;
-  border: 1px solid #2ca94b;
-  border-radius: 10px;
   color: #f7f7f7;
   user-select: none; }
   .container .location-selection {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    width: 100%; }
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #2ca94b; }
     .container .location-selection .location-card:hover {
-      transform: translate(3px, -3px);
-      cursor: pointer; }
+      transform: translate(2px, -2px);
+      cursor: pointer;
+      box-shadow: -2px 2px 5px rgba(38, 154, 184, 0.7), -1px 1px 5px rgba(38, 154, 184, 0.7); }
     .container .location-selection .location-card {
       position: relative;
       display: flex;
-      width: 29%;
+      flex: 1 1 29%;
+      margin: 5px;
       height: 86px;
       padding: 12px;
       border-top: 2px solid #2ca94b;
@@ -33,7 +36,7 @@ body {
       border-radius: 10px;
       margin: 15px 15px 0px 15px;
       background-color: #155363;
-      transition: transform 0.04s; }
+      transition: all 0.1s ease-in-out; }
       .container .location-selection .location-card .location-img {
         height: 60px;
         width: 60px; }
@@ -45,11 +48,6 @@ body {
         font-weight: 500;
         line-height: 55px;
         overflow: hidden; }
-    .container .location-selection .flex-break {
-      flex-basis: 100%;
-      height: 0;
-      margin-top: 18px;
-      border-bottom: 2px solid #2ca94b; }
   .container .battle-screen {
     display: flex;
     justify-content: space-between;
@@ -125,6 +123,78 @@ body {
           font-size: 1.2rem; }
     .container .battle-screen .dead {
       color: #e64444; }
+  .container .inv-equip {
+    display: flex;
+    padding: 0 15px 15px 15px;
+    justify-content: space-between; }
+    .container .inv-equip .equipment {
+      width: 48%;
+      border: 2px solid #2ca94b;
+      border-top: none;
+      border-radius: 10px; }
+      .container .inv-equip .equipment h3 {
+        width: 100%;
+        height: 70px;
+        text-align: center;
+        padding: 20px;
+        border: 2px solid #65c6df;
+        border-left: none;
+        border-right: none;
+        background: #155363;
+        border-radius: 8px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0; }
+      .container .inv-equip .equipment .equipment-slots {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 20px;
+        justify-items: center; }
+        .container .inv-equip .equipment .equipment-slots div {
+          width: 70px;
+          height: 70px;
+          margin-bottom: 20px;
+          border: 2px solid #269ab8;
+          border-radius: 10px; }
+        .container .inv-equip .equipment .equipment-slots .helmet, .container .inv-equip .equipment .equipment-slots .pants, .container .inv-equip .equipment .equipment-slots .boots {
+          grid-column: 1/4; }
+        .container .inv-equip .equipment .equipment-slots .weapon {
+          justify-self: end; }
+        .container .inv-equip .equipment .equipment-slots .shield {
+          justify-self: start; }
+        .container .inv-equip .equipment .equipment-slots .boots {
+          margin-bottom: 0px; }
+    .container .inv-equip .inventory {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      width: 48%;
+      border: 2px solid #2ca94b;
+      border-top: none;
+      border-radius: 10px; }
+      .container .inv-equip .inventory h3 {
+        width: 100%;
+        height: 70px;
+        text-align: center;
+        padding: 20px;
+        border: 2px solid #65c6df;
+        border-left: none;
+        border-right: none;
+        background: #155363;
+        border-radius: 8px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0; }
+      .container .inv-equip .inventory .inv-list {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        padding: 10px 8px 10px 8px; }
+        .container .inv-equip .inventory .inv-list .inv-item {
+          width: 70px;
+          height: 70px;
+          padding: 10px;
+          margin: 5px;
+          border: 2px solid #269ab8;
+          border-radius: 10px; }
 
 @keyframes attBar {
   0% {
@@ -149,50 +219,65 @@ body {
 @media screen and (max-width: 1200px) {
   .container {
     width: 80%; }
-    .container .location-selection {
-      padding-bottom: 6px;
-      justify-content: space-around; }
-      .container .location-selection .location-card:nth-child(3) {
-        width: 100%; }
-      .container .location-selection .location-card {
-        width: 42%; }
-    .container .battle-screen .player .name, .container .battle-screen .enemy .name {
-      font-size: 1.5rem; } }
+    .container .battle-screen .player, .container .battle-screen .enemy {
+      width: 39%; }
+      .container .battle-screen .player .name, .container .battle-screen .enemy .name {
+        font-size: 1.5rem; } }
 
 @media screen and (max-width: 768px) {
   .container {
     width: 85%; }
-    .container .battle-screen .player .player-card .name, .container .battle-screen .player .enemy-card .name, .container .battle-screen .enemy .player-card .name, .container .battle-screen .enemy .enemy-card .name {
-      font-size: 1.2rem;
-      line-height: 1.6rem; }
-    .container .location-selection .location-card .location-name {
-      font-size: 1.2rem; } }
+    .container .location-selection .location-card {
+      flex: 1 1 40%; }
+      .container .location-selection .location-card .location-name {
+        font-size: 1.2rem; }
+    .container .battle-screen .player, .container .battle-screen .enemy {
+      width: 45%; }
+      .container .battle-screen .player .player-card .name, .container .battle-screen .player .enemy-card .name, .container .battle-screen .enemy .player-card .name, .container .battle-screen .enemy .enemy-card .name {
+        font-size: 1.2rem;
+        line-height: 1.6rem; }
+    .container .inv-equip {
+      padding-top: 0px;
+      flex-wrap: wrap;
+      justify-content: center; }
+      .container .inv-equip .equipment, .container .inv-equip .inventory {
+        width: 70%; }
+      .container .inv-equip .equipment {
+        margin-bottom: 15px; } }
 
 @media screen and (max-width: 500px) {
   .container {
     width: 95%; }
     .container .location-selection {
-      padding-bottom: 6px; }
+      padding-bottom: 9px; }
       .container .location-selection .location-card {
-        width: 100%;
-        justify-content: center; }
+        margin: 9px 8px 0px 8px;
+        flex: 1 1 100%; }
         .container .location-selection .location-card .location-name {
           font-size: 1.2rem; }
     .container .battle-screen {
       padding: 8px; }
-      .container .battle-screen .player .player-card .hp-bar .current, .container .battle-screen .player .player-card .hp-bar .max, .container .battle-screen .player .enemy-card .hp-bar .current, .container .battle-screen .player .enemy-card .hp-bar .max, .container .battle-screen .enemy .player-card .hp-bar .current, .container .battle-screen .enemy .player-card .hp-bar .max, .container .battle-screen .enemy .enemy-card .hp-bar .current, .container .battle-screen .enemy .enemy-card .hp-bar .max {
-        height: 10px;
-        top: 3px; }
-      .container .battle-screen .player .player-card .hp-bar .max, .container .battle-screen .player .enemy-card .hp-bar .max, .container .battle-screen .enemy .player-card .hp-bar .max, .container .battle-screen .enemy .enemy-card .hp-bar .max {
-        top: -7px; }
-      .container .battle-screen .player .player-card .hp-bar .hp, .container .battle-screen .player .enemy-card .hp-bar .hp, .container .battle-screen .enemy .player-card .hp-bar .hp, .container .battle-screen .enemy .enemy-card .hp-bar .hp {
-        top: -4px;
-        font-size: 0.8rem; }
-      .container .battle-screen .player .attack-bar .att-empty, .container .battle-screen .player .attack-bar .att-progress, .container .battle-screen .enemy .attack-bar .att-empty, .container .battle-screen .enemy .attack-bar .att-progress {
-        height: 10px; }
-      .container .battle-screen .player .attack-bar .att-empty, .container .battle-screen .enemy .attack-bar .att-empty {
-        top: 7px; }
-      .container .battle-screen .player .attack-bar .att-progress, .container .battle-screen .enemy .attack-bar .att-progress {
-        top: -3px; }
-      .container .battle-screen .player-stats, .container .battle-screen .enemy-stats, .container .battle-screen span {
-        font-size: 0.9rem; } }
+      .container .battle-screen .player, .container .battle-screen .enemy {
+        width: 48%; }
+        .container .battle-screen .player .player-card .hp-bar .current, .container .battle-screen .player .player-card .hp-bar .max, .container .battle-screen .player .enemy-card .hp-bar .current, .container .battle-screen .player .enemy-card .hp-bar .max, .container .battle-screen .enemy .player-card .hp-bar .current, .container .battle-screen .enemy .player-card .hp-bar .max, .container .battle-screen .enemy .enemy-card .hp-bar .current, .container .battle-screen .enemy .enemy-card .hp-bar .max {
+          height: 10px;
+          top: 3px; }
+        .container .battle-screen .player .player-card .hp-bar .max, .container .battle-screen .player .enemy-card .hp-bar .max, .container .battle-screen .enemy .player-card .hp-bar .max, .container .battle-screen .enemy .enemy-card .hp-bar .max {
+          top: -7px; }
+        .container .battle-screen .player .player-card .hp-bar .hp, .container .battle-screen .player .enemy-card .hp-bar .hp, .container .battle-screen .enemy .player-card .hp-bar .hp, .container .battle-screen .enemy .enemy-card .hp-bar .hp {
+          top: -4px;
+          font-size: 0.8rem; }
+        .container .battle-screen .player .attack-bar .att-empty, .container .battle-screen .player .attack-bar .att-progress, .container .battle-screen .enemy .attack-bar .att-empty, .container .battle-screen .enemy .attack-bar .att-progress {
+          height: 10px; }
+        .container .battle-screen .player .attack-bar .att-empty, .container .battle-screen .enemy .attack-bar .att-empty {
+          top: 7px; }
+        .container .battle-screen .player .attack-bar .att-progress, .container .battle-screen .enemy .attack-bar .att-progress {
+          top: -3px; }
+        .container .battle-screen .player .player-stats p span, .container .battle-screen .player .enemy-stats p span, .container .battle-screen .enemy .player-stats p span, .container .battle-screen .enemy .enemy-stats p span {
+          font-size: 0.86rem; }
+    .container .inv-equip {
+      padding: 8px; }
+      .container .inv-equip .equipment, .container .inv-equip .inventory {
+        width: 100%; }
+      .container .inv-equip .equipment {
+        margin-bottom: 8px; } }

@@ -7,34 +7,37 @@
 }
 
 body {
-    background-color: $primary-color;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://pbs.twimg.com/media/C4TkyIrWYAADSyy?format=png&name=large);
 }
 
 .container {
     width: 60%;
+    min-width: 278px;
     margin: auto;
     margin-top: 50px;
-    border: 1px solid $primary-color-lighter;
-    border-radius: $border-radius;
     color: rgb(247, 247, 247);
     user-select: none;
 
     .location-selection {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: center;
         width: 100%;
+        padding-bottom: 15px;
+        border-bottom: 2px solid $primary-color-lighter;
         
         .location-card:hover {
-            transform: translate( 3px, -3px);
+            transform: translate( 2px, -2px);
             cursor: pointer;
+            box-shadow: -2px 2px 5px rgba($color: $secondary-color, $alpha: 0.7), -1px 1px 5px rgba($color: $secondary-color, $alpha: 0.7);
         }
 
         
         .location-card {
             position: relative;
             display: flex;
-            width: 29%;
+            flex: 1 1 29%;
+            margin: 5px;
             height: 86px;
             padding: 12px;
             border-top: 2px solid $primary-color-lighter;
@@ -42,7 +45,7 @@ body {
             border-radius: $border-radius;
             margin: 15px 15px 0px 15px;
             background-color: $secondary-color-darker;
-            transition: transform 0.04s ;
+            transition: all 0.1s ease-in-out;
 
             .location-img {
                 height: 60px;
@@ -58,13 +61,6 @@ body {
                 line-height: 55px;
                 overflow: hidden;
             }
-        }
-        
-        .flex-break {  // line breaks the flex if it overflows, .location-selection has to have "felx-wrap: wrap". It's also a nice seperator.
-            flex-basis: 100%;
-            height: 0;
-            margin-top: 18px;
-            border-bottom: 2px solid $primary-color-lighter;
         }
     }
 
@@ -122,7 +118,7 @@ body {
                 }
 
                 .loading-img {
-                    animation: loading 0.8s linear infinite
+                    animation: loading $loading-animation-time linear infinite
                 }
 
                 .loading-enemy {
@@ -182,6 +178,105 @@ body {
 
         .dead {
             color: rgb(230, 68, 68);
+        }
+    }
+
+    .inv-equip {
+        display: flex;
+        padding: 0 15px 15px 15px;
+        justify-content: space-between;
+
+        .equipment {
+            width: 48%;
+            border: 2px solid $primary-color-lighter;
+            border-top: none;
+            border-radius: $border-radius;
+
+            h3 {
+                width: 100%;
+                height: 70px;
+                text-align: center;
+                padding: 20px;
+                border: 2px solid $secondary-color-lighter;
+                border-left: none;
+                border-right: none;
+                background: $secondary-color-darker;
+                border-radius: 8px;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+            
+            .equipment-slots {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                padding: 20px;
+                justify-items: center;
+
+                div {
+                    width: 70px;
+                    height: 70px;
+                    margin-bottom: 20px;
+                    border: 2px solid $secondary-color;
+                    border-radius: $border-radius;
+
+                }
+
+                .helmet, .pants, .boots {
+                    grid-column: 1/4;
+                }
+
+                .weapon {
+                    justify-self: end;
+                }
+
+                .shield {
+                    justify-self: start;
+                }
+                
+                .boots {
+                    margin-bottom: 0px;
+                }
+            }
+        }
+
+        .inventory {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            width: 48%;
+            border: 2px solid $primary-color-lighter;
+            border-top: none;
+            border-radius: $border-radius;
+
+            h3 {
+                width: 100%;
+                height: 70px;
+                text-align: center;
+                padding: 20px;
+                border: 2px solid $secondary-color-lighter;
+                border-left: none;
+                border-right: none;
+                background: $secondary-color-darker;
+                border-radius: 8px;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            .inv-list {
+                display: flex;
+                flex-wrap: wrap;
+                align-content: flex-start;
+                padding: 10px 8px 10px 8px;
+                
+                .inv-item {
+                    width: 70px;
+                    height: 70px;
+                    padding: 10px;
+                    margin: 5px;
+                    border: 2px solid $secondary-color;
+                    border-radius: $border-radius;
+                }
+            }
         }
     }
 }

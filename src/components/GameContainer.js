@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BattleScreen from './BattleScreen';
-import Equipment from './equipment/Equipment';
-import Inventory from './inventory/Inventory';
 import LocationSelection from './location/LocationSelection';
 import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading, enemyTakesDamage, playerTakesDamage } from '../redux';
+import InvAndEquip from './InvAndEquip';
 
 
 class GameContainer extends Component {
@@ -115,9 +114,7 @@ class GameContainer extends Component {
                     enemyAttProgressDiv={el => this.enemyAttProgressDiv = el}
                 />
 
-                <Equipment />
-
-                <Inventory />
+                <InvAndEquip />
             </div>
         )
     }

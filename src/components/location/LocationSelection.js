@@ -8,7 +8,6 @@ const LocationSelection = (props) => {
     return (
         <div className="location-selection">
             {locations.map(location => <LocationCard key={location} location={location} initCombat={initCombat} />)}
-            <div className="flex-break"></div>
         </div>
     )
 }
