@@ -48,20 +48,26 @@
                         font-size: 1.2rem;
                         line-height: 1.6rem;
                     }
+
+                    .hp-bar {
+                        .hp {
+                            font-size: 1rem;
+                        }
+                    }
                 }
             }
         }
 
         .inv-equip {
-            padding-top: 0px;
             flex-wrap: wrap;
             justify-content: center;
+            flex-direction: column-reverse;
             .equipment, .inventory {
-                width: 70%;
+                width: 100%;
             }
 
             .equipment {
-                margin-bottom: 15px
+                margin-top: 15px;
             }
         }
     }
@@ -101,7 +107,6 @@
                         }
                         
                         .hp {
-                            top: -4px;
                             font-size: 0.8rem;
                         }
                     }

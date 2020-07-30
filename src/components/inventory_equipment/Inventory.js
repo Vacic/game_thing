@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import InventoryItem from './InventoryItem';
+import { updateItemCount } from '../../redux';
 
-function Inventory({ inventory }) {
+function Inventory({ currentItems }) {
+    const uniqueInvItems = currentItems.filter((value, i, self) => self.indexOf(value) === i);
     return (
         <div className="inventory">
             <h3>Inventory</h3>
             <div className="inv-list">
-                {inventory.map(invItem => <InventoryItem key={invItem} invItem={invItem}/>)}
+                {uniqueInvItems.map((invItem, i) => <InventoryItem key={i} invItem={invItem}/>)}
             </div>
         </div>
     )
@@ -15,8 +17,14 @@ function Inventory({ inventory }) {
 
 const mapStateToProps = state => {
     return {
-        inventory: state.inventory.currentItems
+        currentItems: state.inventory.currentItems
     }
 }
 
-export default connect(mapStateToProps)(Inventory);
+const mapDispatchToProps = dispatch => {
+    return {
+        updateItemCount: itemCount => dispatch(updateItemCount(itemCount))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Inventory);

@@ -8,9 +8,8 @@ body {
 
 .container {
   width: 60%;
-  min-width: 278px;
+  min-width: 288px;
   margin: auto;
-  margin-top: 50px;
   color: #f7f7f7;
   user-select: none; }
   .container .location-selection {
@@ -79,22 +78,38 @@ body {
         z-index: 1; }
       .container .battle-screen .player .player-card .hp-bar .hp, .container .battle-screen .player .enemy-card .hp-bar .hp, .container .battle-screen .enemy .player-card .hp-bar .hp, .container .battle-screen .enemy .enemy-card .hp-bar .hp {
         position: relative;
-        top: -4px;
-        font-size: 0.9rem;
+        top: -13px;
+        font-size: 1.1rem;
         line-height: 1.2rem; }
+      .container .battle-screen .player .player-card .hp-bar .player-att-status, .container .battle-screen .player .enemy-card .hp-bar .player-att-status, .container .battle-screen .enemy .player-card .hp-bar .player-att-status, .container .battle-screen .enemy .enemy-card .hp-bar .player-att-status {
+        position: relative;
+        text-align: right;
+        top: 4px;
+        visibility: hidden;
+        font-size: 0.8rem; }
+      .container .battle-screen .player .player-card .hp-bar .enemy-att-status, .container .battle-screen .player .enemy-card .hp-bar .enemy-att-status, .container .battle-screen .enemy .player-card .hp-bar .enemy-att-status, .container .battle-screen .enemy .enemy-card .hp-bar .enemy-att-status {
+        position: relative;
+        text-align: left;
+        top: 4px;
+        visibility: hidden;
+        font-size: 0.8rem; }
+      .container .battle-screen .player .player-card .hp-bar .dmg, .container .battle-screen .player .enemy-card .hp-bar .dmg, .container .battle-screen .enemy .player-card .hp-bar .dmg, .container .battle-screen .enemy .enemy-card .hp-bar .dmg {
+        color: #e64444;
+        visibility: visible; }
+      .container .battle-screen .player .player-card .hp-bar .miss, .container .battle-screen .player .enemy-card .hp-bar .miss, .container .battle-screen .enemy .player-card .hp-bar .miss, .container .battle-screen .enemy .enemy-card .hp-bar .miss {
+        color: inherit;
+        visibility: visible; }
       .container .battle-screen .player .player-card .player-img, .container .battle-screen .player .player-card .enemy-img, .container .battle-screen .player .player-card .loading-img, .container .battle-screen .player .enemy-card .player-img, .container .battle-screen .player .enemy-card .enemy-img, .container .battle-screen .player .enemy-card .loading-img, .container .battle-screen .enemy .player-card .player-img, .container .battle-screen .enemy .player-card .enemy-img, .container .battle-screen .enemy .player-card .loading-img, .container .battle-screen .enemy .enemy-card .player-img, .container .battle-screen .enemy .enemy-card .enemy-img, .container .battle-screen .enemy .enemy-card .loading-img {
         width: 100%; }
       .container .battle-screen .player .player-card .loading-img, .container .battle-screen .player .enemy-card .loading-img, .container .battle-screen .enemy .player-card .loading-img, .container .battle-screen .enemy .enemy-card .loading-img {
-        animation: loading 0.8s linear infinite; }
-      .container .battle-screen .player .player-card .loading-enemy, .container .battle-screen .player .enemy-card .loading-enemy, .container .battle-screen .enemy .player-card .loading-enemy, .container .battle-screen .enemy .enemy-card .loading-enemy {
-        width: 100%;
-        font-size: 4rem;
-        border: 5px solid #269ab8;
-        border-radius: 100%;
-        line-height: 270px; }
+        animation: loading 0.8s linear;
+        animation-iteration-count: 1.25;
+        animation-delay: 0.01s; }
       .container .battle-screen .player .attack-bar .weapon-name, .container .battle-screen .enemy .attack-bar .weapon-name {
         position: relative;
         top: 4px; }
+      .container .battle-screen .player .attack-bar .no-weapon, .container .battle-screen .enemy .attack-bar .no-weapon {
+        visibility: hidden; }
       .container .battle-screen .player .attack-bar .att-empty, .container .battle-screen .player .attack-bar .att-progress, .container .battle-screen .enemy .attack-bar .att-empty, .container .battle-screen .enemy .attack-bar .att-progress {
         height: 14px;
         width: 100%;
@@ -187,14 +202,49 @@ body {
         display: flex;
         flex-wrap: wrap;
         align-content: flex-start;
+        min-height: 104px;
         padding: 10px 8px 10px 8px; }
         .container .inv-equip .inventory .inv-list .inv-item {
           width: 70px;
           height: 70px;
           padding: 10px;
-          margin: 5px;
+          margin: 7px;
           border: 2px solid #269ab8;
-          border-radius: 10px; }
+          text-align: center;
+          border-radius: 10px;
+          background-color: #155363; }
+          .container .inv-equip .inventory .inv-list .inv-item .item-count {
+            position: relative;
+            height: 20px;
+            border-radius: 10px;
+            padding: 2px;
+            background: rgba(44, 169, 75, 0.6);
+            bottom: 8px;
+            text-align: center;
+            line-height: 15px;
+            font-size: 0.9rem; }
+          .container .inv-equip .inventory .inv-list .inv-item .item-description {
+            visibility: hidden;
+            position: relative;
+            background-color: #155363;
+            width: 150px;
+            top: -6px;
+            left: -55px;
+            border-radius: 10px;
+            z-index: 1; }
+            .container .inv-equip .inventory .inv-list .inv-item .item-description .item-name {
+              background-color: #2ca94b;
+              padding: 5px;
+              border-bottom: solid 1px #175827; }
+            .container .inv-equip .inventory .inv-list .inv-item .item-description .item-stats {
+              display: flex;
+              flex-direction: column;
+              flex-wrap: wrap;
+              list-style-type: none;
+              padding: 10px 10px 10px 10px;
+              text-align: left; }
+              .container .inv-equip .inventory .inv-list .inv-item .item-description .item-stats span {
+                float: right; }
 
 @keyframes attBar {
   0% {
@@ -236,14 +286,16 @@ body {
       .container .battle-screen .player .player-card .name, .container .battle-screen .player .enemy-card .name, .container .battle-screen .enemy .player-card .name, .container .battle-screen .enemy .enemy-card .name {
         font-size: 1.2rem;
         line-height: 1.6rem; }
+      .container .battle-screen .player .player-card .hp-bar .hp, .container .battle-screen .player .enemy-card .hp-bar .hp, .container .battle-screen .enemy .player-card .hp-bar .hp, .container .battle-screen .enemy .enemy-card .hp-bar .hp {
+        font-size: 1rem; }
     .container .inv-equip {
-      padding-top: 0px;
       flex-wrap: wrap;
-      justify-content: center; }
+      justify-content: center;
+      flex-direction: column-reverse; }
       .container .inv-equip .equipment, .container .inv-equip .inventory {
-        width: 70%; }
+        width: 100%; }
       .container .inv-equip .equipment {
-        margin-bottom: 15px; } }
+        margin-top: 15px; } }
 
 @media screen and (max-width: 500px) {
   .container {
@@ -265,7 +317,6 @@ body {
         .container .battle-screen .player .player-card .hp-bar .max, .container .battle-screen .player .enemy-card .hp-bar .max, .container .battle-screen .enemy .player-card .hp-bar .max, .container .battle-screen .enemy .enemy-card .hp-bar .max {
           top: -7px; }
         .container .battle-screen .player .player-card .hp-bar .hp, .container .battle-screen .player .enemy-card .hp-bar .hp, .container .battle-screen .enemy .player-card .hp-bar .hp, .container .battle-screen .enemy .enemy-card .hp-bar .hp {
-          top: -4px;
           font-size: 0.8rem; }
         .container .battle-screen .player .attack-bar .att-empty, .container .battle-screen .player .attack-bar .att-progress, .container .battle-screen .enemy .attack-bar .att-empty, .container .battle-screen .enemy .attack-bar .att-progress {
           height: 10px; }

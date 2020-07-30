@@ -12,9 +12,8 @@ body {
 
 .container {
     width: 60%;
-    min-width: 278px;
+    min-width: 288px;
     margin: auto;
-    margin-top: 50px;
     color: rgb(247, 247, 247);
     user-select: none;
 
@@ -107,9 +106,35 @@ body {
                     
                     .hp {
                         position: relative;
-                        top: -4px;
-                        font-size: 0.9rem;
+                        top: -13px;
+                        font-size: 1.1rem;
                         line-height: 1.2rem;
+                    }
+
+                    .player-att-status {
+                        position: relative;
+                        text-align: right;
+                        top: 4px;
+                        visibility: hidden;
+                        font-size: 0.8rem;
+                    }
+
+                    .enemy-att-status {
+                        position: relative;
+                        text-align: left;
+                        top: 4px;
+                        visibility: hidden;
+                        font-size: 0.8rem;
+                    }
+
+                    .dmg {
+                        color: rgb(230, 68, 68);
+                        visibility: visible;
+                    }
+
+                    .miss {
+                        color: inherit;
+                        visibility: visible;
                     }
                 }
     
@@ -118,15 +143,9 @@ body {
                 }
 
                 .loading-img {
-                    animation: loading $loading-animation-time linear infinite
-                }
-
-                .loading-enemy {
-                    width: 100%;
-                    font-size: 4rem;
-                    border: 5px solid $secondary-color;
-                    border-radius: 100%;
-                    line-height: 270px;
+                    animation: loading $loading-animation-time linear;
+                    animation-iteration-count: 1.25;
+                    animation-delay: 0.01s;
                 }
             }
     
@@ -134,6 +153,10 @@ body {
                 .weapon-name {
                     position: relative;
                     top: 4px;
+                }
+
+                .no-weapon {
+                    visibility: hidden;
                 }
 
                 .att-empty, .att-progress {
@@ -266,15 +289,60 @@ body {
                 display: flex;
                 flex-wrap: wrap;
                 align-content: flex-start;
+                min-height: 104px;
                 padding: 10px 8px 10px 8px;
                 
                 .inv-item {
                     width: 70px;
                     height: 70px;
                     padding: 10px;
-                    margin: 5px;
+                    margin: 7px;
                     border: 2px solid $secondary-color;
+                    text-align: center;
                     border-radius: $border-radius;
+                    background-color: $secondary-color-darker;
+
+                    .item-count {
+                        position: relative;
+                        height: 20px;
+                        border-radius: 10px;
+                        padding: 2px;
+                        background: rgba($color: $primary-color-lighter, $alpha: 0.6) ;
+                        bottom: 8px;
+                        text-align: center;
+                        line-height: 15px;
+                        font-size: 0.9rem
+                    }
+
+                    .item-description {
+                        visibility: hidden;
+                        position: relative;
+                        background-color: $secondary-color-darker;
+                        width: 150px;
+                        top: -6px;
+                        left: -55px;
+                        border-radius: $border-radius;
+                        z-index: 1;
+
+                        .item-name {
+                            background-color: $primary-color-lighter;
+                            padding: 5px;
+                            border-bottom: solid 1px $primary-color;
+                        }
+
+                        .item-stats {
+                            display: flex;
+                            flex-direction: column;
+                            flex-wrap: wrap;
+                            list-style-type: none;
+                            padding: 10px 10px 10px 10px;
+                            text-align: left;
+                            
+                            span {
+                                float: right;
+                            }
+                        }
+                    }
                 }
             }
         }
