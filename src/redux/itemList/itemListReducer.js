@@ -1,6 +1,7 @@
 const itemListState = {
 // Weapons
     wooden_sword: {
+        img: '../../../item_imgs/wooden_sword.png',
         name: 'Wooden Sword',
         attSpd: 1.7,
         dmg: 10
@@ -173,11 +174,13 @@ const itemListState = {
 
 // healing_items
     chicken_meat: {
+        img: '../../../item_imgs/chicken_meat.png',
         name: 'Chicken Meat',
         heal: 20
     },
 
     cow_meat: {
+        img: '../../../item_imgs/cow_meat.png',
         name: 'Cow Meat',
         heal: 50
     },

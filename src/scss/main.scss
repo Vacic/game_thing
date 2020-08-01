@@ -292,10 +292,14 @@ body {
                 min-height: 104px;
                 padding: 10px 8px 10px 8px;
                 
+                .inv-item:hover {
+                    cursor: pointer;
+                }
+
                 .inv-item {
                     width: 70px;
                     height: 70px;
-                    padding: 10px;
+                    padding: 5px;
                     margin: 7px;
                     border: 2px solid $secondary-color;
                     text-align: center;
@@ -305,22 +309,23 @@ body {
                     .item-count {
                         position: relative;
                         height: 20px;
+                        margin: 0 5px 0 5px;
                         border-radius: 10px;
                         padding: 2px;
                         background: rgba($color: $primary-color-lighter, $alpha: 0.6) ;
-                        bottom: 8px;
+                        bottom: 2px;
                         text-align: center;
                         line-height: 15px;
                         font-size: 0.9rem
                     }
 
                     .item-description {
-                        visibility: hidden;
+                        visibility: visible;
                         position: relative;
                         background-color: $secondary-color-darker;
                         width: 150px;
-                        top: -6px;
-                        left: -55px;
+                        top: -80px;
+                        left: -47px;
                         border-radius: $border-radius;
                         z-index: 1;
 
@@ -328,6 +333,7 @@ body {
                             background-color: $primary-color-lighter;
                             padding: 5px;
                             border-bottom: solid 1px $primary-color;
+                            font-weight: 700;
                         }
 
                         .item-stats {
@@ -343,20 +349,56 @@ body {
                             }
                         }
                     }
+
+                    .item-menu {
+                        position: relative;
+                        visibility: visible;
+                        top: -82px;
+                        left: -12px;
+                        padding: 4px;
+                        background-color: $secondary-color-darker;
+                        border-radius: $border-radius;
+                        width: 81px;
+                        z-index: 1;
+
+                        :first-child {
+                            border-top-left-radius: $border-radius;
+                            border-top-right-radius: $border-radius;
+                        }
+
+                        div:hover {
+                            cursor: pointer;
+                            background-color: $primary-color-lighter;
+                        }
+
+                        div:active {
+                            background-color: $secondary-color;
+                        }
+
+                        div {
+                            padding: 7px;
+                            background-color: $secondary-color-darker;
+                            width: 100%;
+                            border-bottom: 2px solid $secondary-color-lighter;
+                            transition: background-color 0.3s ease-in-out;
+                        }
+
+                        :last-child {
+                            border-bottom: none;
+                            border-bottom-left-radius: $border-radius;
+                            border-bottom-right-radius: $border-radius;
+                        }
+                    }
+
+                    .hide {
+                        visibility: hidden;
+                    }
                 }
             }
         }
     }
 }
 
-@keyframes attBar {
-    0% {width: 0%}
-    100% {width: 100%}
-}
 
-@keyframes loading {
-    0% {transform: rotate(0)}
-    100% {transform: rotate(360deg)}
-}
 
 @import 'screenOpt';

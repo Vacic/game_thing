@@ -1,3 +1,15 @@
+@keyframes attBar {
+  0% {
+    width: 0%; }
+  100% {
+    width: 100%; } }
+
+@keyframes loading {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -204,10 +216,12 @@ body {
         align-content: flex-start;
         min-height: 104px;
         padding: 10px 8px 10px 8px; }
+        .container .inv-equip .inventory .inv-list .inv-item:hover {
+          cursor: pointer; }
         .container .inv-equip .inventory .inv-list .inv-item {
           width: 70px;
           height: 70px;
-          padding: 10px;
+          padding: 5px;
           margin: 7px;
           border: 2px solid #269ab8;
           text-align: center;
@@ -216,26 +230,28 @@ body {
           .container .inv-equip .inventory .inv-list .inv-item .item-count {
             position: relative;
             height: 20px;
+            margin: 0 5px 0 5px;
             border-radius: 10px;
             padding: 2px;
             background: rgba(44, 169, 75, 0.6);
-            bottom: 8px;
+            bottom: 2px;
             text-align: center;
             line-height: 15px;
             font-size: 0.9rem; }
           .container .inv-equip .inventory .inv-list .inv-item .item-description {
-            visibility: hidden;
+            visibility: visible;
             position: relative;
             background-color: #155363;
             width: 150px;
-            top: -6px;
-            left: -55px;
+            top: -80px;
+            left: -47px;
             border-radius: 10px;
             z-index: 1; }
             .container .inv-equip .inventory .inv-list .inv-item .item-description .item-name {
               background-color: #2ca94b;
               padding: 5px;
-              border-bottom: solid 1px #175827; }
+              border-bottom: solid 1px #175827;
+              font-weight: 700; }
             .container .inv-equip .inventory .inv-list .inv-item .item-description .item-stats {
               display: flex;
               flex-direction: column;
@@ -245,18 +261,36 @@ body {
               text-align: left; }
               .container .inv-equip .inventory .inv-list .inv-item .item-description .item-stats span {
                 float: right; }
-
-@keyframes attBar {
-  0% {
-    width: 0%; }
-  100% {
-    width: 100%; } }
-
-@keyframes loading {
-  0% {
-    transform: rotate(0); }
-  100% {
-    transform: rotate(360deg); } }
+          .container .inv-equip .inventory .inv-list .inv-item .item-menu {
+            position: relative;
+            visibility: visible;
+            top: -82px;
+            left: -12px;
+            padding: 4px;
+            background-color: #155363;
+            border-radius: 10px;
+            width: 81px;
+            z-index: 1; }
+            .container .inv-equip .inventory .inv-list .inv-item .item-menu :first-child {
+              border-top-left-radius: 10px;
+              border-top-right-radius: 10px; }
+            .container .inv-equip .inventory .inv-list .inv-item .item-menu div:hover {
+              cursor: pointer;
+              background-color: #2ca94b; }
+            .container .inv-equip .inventory .inv-list .inv-item .item-menu div:active {
+              background-color: #269ab8; }
+            .container .inv-equip .inventory .inv-list .inv-item .item-menu div {
+              padding: 7px;
+              background-color: #155363;
+              width: 100%;
+              border-bottom: 2px solid #65c6df;
+              transition: background-color 0.3s ease-in-out; }
+            .container .inv-equip .inventory .inv-list .inv-item .item-menu :last-child {
+              border-bottom: none;
+              border-bottom-left-radius: 10px;
+              border-bottom-right-radius: 10px; }
+          .container .inv-equip .inventory .inv-list .inv-item .hide {
+            visibility: hidden; }
 
 @media screen and (min-width: 1601) {
   .container {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BattleScreen from './BattleScreen';
 import LocationSelection from './location/LocationSelection';
-import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading, enemyTakesDamage, playerTakesDamage, addItem, updateItemCount } from '../redux';
+import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading, enemyTakesDamage, playerTakesDamage, updateItemCount } from '../redux';
 import InvAndEquip from './InvAndEquip';
 
 
@@ -82,6 +82,27 @@ class GameContainer extends Component {
                 this.playerDiv.classList.remove('dead');
             }, this.props.globalTimeout);
         }
+
+        handleUseItem = (item) => {
+            if(item.heal) {
+                const newHp = this.props.currentPlayerHp+item.heal >= this.props.player.hp ? this.props.player.hp : this.props.currentPlayerHp+item.heal;
+                this.props.setCurrentPlayerHp(newHp);
+                this.playerHpBar.style.width = `${Math.floor((newHp/this.props.player.hp)*100)}%`;
+
+                const itemKeyName = item.name.toLowerCase().replace(' ', '_');
+                if (this.props.invItemCount[itemKeyName] > 1) {
+                    let newItemCount = { ...this.props.invItemCount };
+                    newItemCount[itemKeyName] = newItemCount[itemKeyName] - 1;
+                    this.props.updateItemCount(newItemCount);
+                } else {
+                    let newItemCount = { ...this.props.invItemCount };
+                    delete newItemCount[itemKeyName];
+                    this.props.updateItemCount(newItemCount);
+                }
+            } else {
+                console.log('Congratulations, You Did The Impossible');
+            }
+        }
     
         playerTakesDamage = (dmg, def, eva) => {
             if (this.shouldAttHit(eva)) {
@@ -119,13 +140,11 @@ class GameContainer extends Component {
             const chance = Math.ceil(Math.random()*10000)/100;
             dropKeys.forEach(drop => {
                 if (chance >= drops[drop].min && chance <= drops[drop].max) {
-                    this.props.addItem(this.props.inventory, this.props.items[drop].name);
+                    let newItemCount = { ...this.props.invItemCount };
+                    newItemCount[drop] = (newItemCount[drop] || 0) + 1;
+                    this.props.updateItemCount(newItemCount);
                 }
             });
-
-            const counts = {};
-            this.props.inventory.forEach((item) => counts[item] = (counts[item] || 0) + 1);
-            this.props.updateItemCount(counts);
     
             setTimeout(() => {
                 this.enemyDiv.classList.remove('dead');
@@ -169,7 +188,7 @@ class GameContainer extends Component {
                     enemyAttStatus={el => this.enemyAttStatus = el}
                 />
 
-                <InvAndEquip />
+                <InvAndEquip handleUseItem={this.handleUseItem} />
             </div>
         )
     }
@@ -179,8 +198,7 @@ const mapStateToProps = state => {
 	return {
         locationEnemies: state.locationEnemies,
         player: state.player,
-        items: state.items,
-        inventory: state.inventory.currentItems,
+        invItemCount: state.inventory.itemCount,
         currentEnemyHp: state.gameData.currentEnemyHp,
         currentPlayerHp: state.gameData.currentPlayerHp,
         globalTimeout: state.gameData.globalTimeout,
@@ -197,7 +215,6 @@ const mapDispatchToProps = dispatch => {
         setCurrentPlayerHp: currentPlayerHp => dispatch(setCurrentPlayerHp(currentPlayerHp)),
         enemyTakesDmg: damage => dispatch(enemyTakesDamage(damage)),
         playerTakesDmg: damage => dispatch(playerTakesDamage(damage)),
-        addItem: (prevInv, item) => dispatch(addItem(prevInv, item)),
         updateItemCount: itemCount => dispatch(updateItemCount(itemCount))
     }
 }

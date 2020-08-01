@@ -1,26 +1,19 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
-function ItemDescription({ itemList, itemName, itemDescriptionDiv, hideDescription }) {
-    const itemObj = itemList[itemName.toLowerCase().replace(' ', '_')]
+function ItemDescription({ item, hideDescriptionState, hideDescription }) {
+    const {name, heal, def, eva, dmg, attSpd} = item;
     return (
-        <div className="item-description" ref={itemDescriptionDiv} onMouseEnter={hideDescription}>
-            <p className="item-name">{itemObj.name}</p>
+        <div className={hideDescriptionState ? "item-description hide" : "item-description"} onMouseEnter={hideDescription}>
+            <p className="item-name">{name}</p>
             <div className='item-stats'>
-                {itemObj.heal && <p>Heal Amount: <span>{itemObj.heal}</span></p>}
-                {itemObj.def && <p>Defense: <span>{itemObj.def}</span></p>}
-                {itemObj.eva && <p>Evasion: <span>{itemObj.eva}</span></p>}
-                {itemObj.dmg && <p>Damage: <span>{itemObj.dmg}</span></p>}
-                {itemObj.attSpd && <p>Attack Speed: <span>{itemObj.attSpd}</span></p>}
+                {heal && <p>Heal Amount: <span>{heal}</span></p>}
+                {def && <p>Defense: <span>{def}</span></p>}
+                {eva && <p>Evasion: <span>{eva}</span></p>}
+                {dmg && <p>Damage: <span>{dmg}</span></p>}
+                {attSpd && <p>Attack Speed: <span>{attSpd}</span></p>}
             </div>
         </div>
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        itemList: state.items
-    }
-}
-
-export default connect(mapStateToProps)(ItemDescription)
+export default ItemDescription;

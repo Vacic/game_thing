@@ -38,3 +38,13 @@ $loading-animation-time: 0.8s;
         @content;
     }
 }
+
+@keyframes attBar {
+    0% {width: 0%}
+    100% {width: 100%}
+}
+
+@keyframes loading {
+    0% {transform: rotate(0)}
+    100% {transform: rotate(360deg)}
+}

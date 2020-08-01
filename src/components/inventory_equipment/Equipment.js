@@ -1,12 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default class Equipment extends Component {
+    hello = () => {
+        const str = 'Helmet'
+        console.log(str.match("Wooden Helmet"))
+    }
     render() {
         return (
             <div className="equipment">
                 <h3>Equipment</h3>
                 
-                <div className="equipment-slots">
+                <div className="equipment-slots" onClick={() => this.hello()}>
                     <div className="helmet"></div>
                     <div className="weapon"></div>
                     <div className="armor"></div>

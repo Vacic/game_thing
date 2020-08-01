@@ -1,21 +1,20 @@
-import { ADD_ITEM, UPDATE_ITEM_COUNT } from "./inventoryTypes";
+import { UPDATE_ITEM_COUNT, REDUCE_SINGLE_ITEM_COUNT } from "./inventoryTypes";
 
 const inventoryState = {
-    currentItems: [],
     itemCount: {}
 }
 
 const inventoryReducer = (state = inventoryState, action) => {
     
     switch(action.type) {
-        case ADD_ITEM: return {
-            ...state,
-            currentItems: action.newInv
-        }
-
         case UPDATE_ITEM_COUNT: return {
             ...state,
             itemCount: action.itemCount
+        }
+
+        case REDUCE_SINGLE_ITEM_COUNT: return {
+            ...state,
+            itemCount: state.itemCount[action.itemName] - 1
         }
 
         default: return state;
