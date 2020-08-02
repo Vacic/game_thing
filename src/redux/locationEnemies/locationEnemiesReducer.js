@@ -1,6 +1,6 @@
 const locationEnemiesState = {
     farm: {
-        img: '../../../location_imgs/farm.png',
+        img: process.env.PUBLIC_URL + '/location_imgs/farm.png',
         cow: {
             name: 'Cow',
             hp: 50,
@@ -44,7 +44,7 @@ const locationEnemiesState = {
         }
     },
     bandit_camp: {
-        img: '../../../location_imgs/bandit_camp.png',
+        img: process.env.PUBLIC_URL + '/location_imgs/bandit_camp.png',
         bandit: {
             name: 'Bandit',
             hp: 70,
@@ -79,7 +79,7 @@ const locationEnemiesState = {
         }
     },
     dungeon: {
-        img: '../../../location_imgs/dungeon.png',
+        img: process.env.PUBLIC_URL + '/location_imgs/dungeon.png',
         basilisk: {
             name: 'Basilisk',
             hp: 200,

@@ -1,8 +1,8 @@
 const playerState = {
     weapon: 'Fists',
     hp: 70,
-    dmg: 20, //5
-    attSpd: 0.3, //1
+    dmg: 5, //5
+    attSpd: 1, //1
     def: 0,
     eva: 2,
     equipped: {}
