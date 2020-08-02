@@ -10,7 +10,7 @@ const locationEnemiesState = {
             eva: 2,
             drops: {
                 cow_meat: { min: 0, max: 60 },
-                wooden_boots: { min: 61, max: 81 },
+                leather_boots: { min: 61, max: 81 },
                 wooden_helmet: { min: 82, max: 97 }
             }
         },
@@ -23,7 +23,7 @@ const locationEnemiesState = {
             eva: 1,
             drops: {
                 chicken_meat: { min: 1, max: 85 },
-                wooden_boots: { min: 86, max: 91 }
+                leather_boots: { min: 86, max: 91 }
             }
         },
         farmer: {
@@ -38,7 +38,7 @@ const locationEnemiesState = {
                 wooden_armor: { min: 16, max: 31 },
                 wooden_pants: { min: 32, max: 47 },
                 wooden_shield: { min: 48, max: 63 },
-                wooden_boots: { min: 64, max: 79 },
+                leather_boots: { min: 64, max: 79 },
                 wooden_helmet: { min: 80, max: 95 }
             }
         }

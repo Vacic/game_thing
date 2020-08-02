@@ -63,7 +63,8 @@ class InventoryItem extends Component {
             let newPlayerStats = {...this.props.playerStats};
             const itemStatKeys = Object.keys(item.stats);
             itemStatKeys.forEach(key => {
-                newPlayerStats[key] = newPlayerStats[key] + item.stats[key];
+                key==='weapon' ? newPlayerStats[key] = newPlayerStats[key] + item.stats[key] - 5
+                : newPlayerStats[key] = newPlayerStats[key] + item.stats[key];
             });
             this.props.updatePlayerStats(newPlayerStats);
 
