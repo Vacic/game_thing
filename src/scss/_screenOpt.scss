@@ -13,22 +13,11 @@
 @include mediaMd {
     .container {
         width: 80%;
-
-        .location-selection {
-            padding-bottom: 6px;
-            justify-content: space-around;  //comment it if there's an even amount of locations
-
-        .location-card:nth-child(3) {  //change this in case there's a different amount of locations
-                width: 100%;
-            }
-
-            .location-card {
-                width: 42%;
-            }
-        }
         
         .battle-screen {
             .player, .enemy {
+                width: 39%;
+
                 .name {
                     font-size: 1.5rem
                 }
@@ -40,21 +29,45 @@
 @include mediaSm {
     .container {
         width: 85%;
+
+        .location-selection {
+            .location-card {
+                flex: 1 1 40%;
+                .location-name {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
         .battle-screen {
             .player, .enemy {
+                width: 45%;
+
                 .player-card, .enemy-card {
                     .name {
                         font-size: 1.2rem;
                         line-height: 1.6rem;
                     }
+
+                    .hp-bar {
+                        .hp {
+                            font-size: 1rem;
+                        }
+                    }
                 }
             }
         }
-        .location-selection {
-            .location-card {
-                .location-name {
-                    font-size: 1.2rem;
-                }
+
+        .inv-equip {
+            flex-wrap: wrap;
+            justify-content: center;
+            flex-direction: column-reverse;
+            .equipment, .inventory {
+                width: 100%;
+            }
+
+            .equipment {
+                margin-top: 15px;
             }
         }
     }
@@ -65,11 +78,12 @@
         width: 95%;
 
         .location-selection {
-            padding-bottom: 6px;
+            padding-bottom: 9px;
 
             .location-card {
-                width: 100%;
-                justify-content: center;
+                margin: 9px 8px 0px 8px;
+                flex: 1 1 100%;
+
                 .location-name {
                     font-size: 1.2rem;
                 }
@@ -80,6 +94,7 @@
             padding: 8px;
 
             .player, .enemy {
+                width: 48%;
                 .player-card, .enemy-card {
                     .hp-bar {
                         .current, .max {
@@ -92,7 +107,6 @@
                         }
                         
                         .hp {
-                            top: -4px;
                             font-size: 0.8rem;
                         }
                     }
@@ -111,11 +125,22 @@
                         top: -3px;
                     }
                 }
+                .player-stats, .enemy-stats {
+                    p span {
+                    font-size: 0.86rem
+                    }
+                }    
             }
-    
-            .player-stats, .enemy-stats, span {
-                font-size: 0.9rem
-            }    
+        }
+        .inv-equip {
+            padding: 8px;
+            .equipment, .inventory {
+                width: 100%;
+            }
+
+            .equipment {
+                margin-bottom: 8px;
+            }
         }
     }
 }

@@ -7,14 +7,15 @@ import AttackSpeed from '../stats/AttackSpeed';
 function Enemy(props) {
     const { name, hp, dmg, attSpd, def, eva } = props.gameData.currentEnemy;
     const { currentEnemyHp, loadingEnemy } = props.gameData;
-    const { enemyHpBar, enemyAttProgressDiv, enemyDiv } = props; // DOM element refs
+    const { enemyHpBar, enemyAttProgressDiv, enemyDiv, enemyAttStatus } = props; // DOM element refs
     return (
         <div className="enemy" ref={enemyDiv}>
             <EnemyCard 
                 currentEnemyHp={currentEnemyHp} 
                 maxHp={hp} name={name} 
                 enemyHpBar={enemyHpBar} 
-                loadingEnemy={loadingEnemy} 
+                loadingEnemy={loadingEnemy}
+                enemyAttStatus={enemyAttStatus}
             />
             <AttackSpeed attSpd={attSpd} enemyAttProgressDiv={enemyAttProgressDiv} />
             <Stats dmg={dmg} def={def} eva={eva} />

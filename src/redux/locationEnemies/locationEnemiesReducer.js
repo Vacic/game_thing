@@ -1,20 +1,30 @@
 const locationEnemiesState = {
     farm: {
+        img: '../../../location_imgs/farm.png',
         cow: {
             name: 'Cow',
             hp: 50,
             dmg: 5,
             attSpd: 2,
             def: 10,
-            eva: 2
+            eva: 2,
+            drops: {
+                cow_meat: { min: 0, max: 60 },
+                wooden_boots: { min: 61, max: 81 },
+                wooden_helmet: { min: 82, max: 97 }
+            }
         },
         chicken: {
             name: 'Chicken',
             hp: 20,
             dmg: 3,
             attSpd: 0.8,
-            def: 1,
-            eva: 1
+            def: 0,
+            eva: 1,
+            drops: {
+                chicken_meat: { min: 1, max: 85 },
+                wooden_boots: { min: 86, max: 91 }
+            }
         },
         farmer: {
             name: 'Farmer',
@@ -22,10 +32,19 @@ const locationEnemiesState = {
             dmg: 8,
             attSpd: 1.5,
             def: 3,
-            eva: 3
+            eva: 3,
+            drops: {
+                wooden_sword: { min: 0, max:15 },
+                wooden_armor: { min: 16, max: 31 },
+                wooden_pants: { min: 32, max: 47 },
+                wooden_shield: { min: 48, max: 63 },
+                wooden_boots: { min: 64, max: 79 },
+                wooden_helmet: { min: 80, max: 95 }
+            }
         }
     },
     bandit_camp: {
+        img: '../../../location_imgs/bandit_camp.png',
         bandit: {
             name: 'Bandit',
             hp: 70,
@@ -60,6 +79,7 @@ const locationEnemiesState = {
         }
     },
     dungeon: {
+        img: '../../../location_imgs/dungeon.png',
         basilisk: {
             name: 'Basilisk',
             hp: 200,

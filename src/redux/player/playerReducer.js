@@ -1,10 +1,11 @@
 const playerState = {
     weapon: 'Fists',
-    hp: 100,
-    dmg: 10,
-    attSpd: 1,
-    def: 10,
-    eva: 10
+    hp: 70,
+    dmg: 20, //5
+    attSpd: 0.3, //1
+    def: 0,
+    eva: 2,
+    equipped: {}
 }
 
 const playerReducer = (state = playerState) => {
