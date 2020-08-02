@@ -44,6 +44,7 @@ const itemListState = {
 
 // Shields
     wooden_shield: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_shield.png',
         name: 'Wooden Shield',
         type: 'shield',
         stats: {
@@ -86,6 +87,7 @@ const itemListState = {
 
 // Helmets
     wooden_helmet: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_helmet.png',
         name: 'Wooden Helmet',
         type: 'helmet',
         stats: {
@@ -128,6 +130,7 @@ const itemListState = {
 
 // Armor
     wooden_armor: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_armor.png',
         name: 'Wooden Armor',
         type: 'armor',
         stats: {
@@ -175,6 +178,7 @@ const itemListState = {
 
 // Pants
     wooden_pants: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_pants.png',
         name: 'Wooden Pants',
         type: 'pants',
         stats: {
@@ -219,8 +223,9 @@ const itemListState = {
     },
 
 // Boots: {
-    wooden_boots: {
-        name: 'Wooden Boots',
+    leather_boots: {
+        img: process.env.PUBLIC_URL + '/item_imgs/leather_boots.png',
+        name: 'Leather Boots',
         type: 'boots',
         stats: {
             eva: 1
