@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import chickenMeat from '../../img/chicken_meat.png';
 import ItemDescription from './ItemDescription';
 import ItemMenu from './ItemMenu';
+import { updatePlayerStats, updatePlayerEquipment } from '../../redux/player/playerAction';
+import { updateItemCount } from '../../redux';
 
 class InventoryItem extends Component {
     constructor(props) {
@@ -12,6 +14,16 @@ class InventoryItem extends Component {
             hideDescription: true,
             hideMenu: true
         }
+
+        this.invItemDiv = React.createRef();
+    }
+
+    componentDidMount() {
+        document.addEventListener('mousedown', this.hideMenuOnOutsideClick);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.hideMenuOnOutsideClick);
     }
     
     showDescription = () => {
@@ -26,12 +38,49 @@ class InventoryItem extends Component {
         this.setState({ hideMenu: true });
     }
 
-    toggleMenu =() => {
-        this.state.hideMenu === true ? this.setState({ hideMenu: false }) : this.setState({ hideMenu: true });
+    toggleMenu =(e) => {
+        this.state.hideMenu ? this.setState({ hideMenu: false }) : this.setState({ hideMenu: true });
     }
 
-    equipItem = () => {
+    hideMenuOnOutsideClick = (e) => {
+        if (this.invItemDiv && !this.invItemDiv.current.contains(e.target)) {
+            this.hideMenu();
+        }
+    }
 
+    equipItem = item => {
+        let newPlayerEquip = {...this.props.playerEquip};
+        newPlayerEquip[item.type] = newPlayerEquip[item.type] ? newPlayerEquip[item.type] : 'empty slot';
+        console.log(newPlayerEquip[item.type])
+
+        if (newPlayerEquip[item.type]==='empty slot' || item.name !== newPlayerEquip[item.type].name) {
+            const itemKeyName = item.name.toLowerCase().replace(' ', '_')
+
+            newPlayerEquip[item.type] = item;
+            console.log(newPlayerEquip)
+            this.props.updatePlayerEquipment(newPlayerEquip);
+
+            let newPlayerStats = {...this.props.playerStats};
+            const itemStatKeys = Object.keys(item.stats);
+            itemStatKeys.forEach(key => {
+                newPlayerStats[key] = newPlayerStats[key] + item.stats[key];
+            });
+            this.props.updatePlayerStats(newPlayerStats);
+
+
+            if (this.props.itemCount[itemKeyName] > 1) {
+                let newItemCount = { ...this.props.itemCount };
+                newItemCount[itemKeyName] = newItemCount[itemKeyName] - 1;
+                this.props.updateItemCount(newItemCount);
+            } else {
+                let newItemCount = { ...this.props.itemCount };
+                delete newItemCount[itemKeyName];
+                this.props.updateItemCount(newItemCount);
+            }
+
+        } else {
+            console.log(`You already have the ${item.name} equipped`)
+        }
     }
 
     removeItem = () => {
@@ -42,7 +91,7 @@ class InventoryItem extends Component {
         const { itemCount, itemList, handleUseItem, invItemName } = this.props;
         const item = itemList[invItemName];
         return (
-            <div className="inv-item" onMouseEnter={this.showDescription} onMouseLeave={this.hideDescription} onClick={this.toggleMenu} >
+            <div className="inv-item" onMouseEnter={this.showDescription} onMouseLeave={this.hideDescription} onClick={this.toggleMenu} ref={this.invItemDiv} >
                 <img src={item.img ? item.img : chickenMeat} alt=""/>
                 <div className="item-count">{itemCount[invItemName]}</div>
 
@@ -69,8 +118,18 @@ class InventoryItem extends Component {
 const mapStateToProps = state => {
     return {
         itemCount: state.inventory.itemCount,
-        itemList: state.items
+        itemList: state.items,
+        playerStats: state.player.stats,
+        playerEquip: state.player.equipped
     }
 }
 
-export default connect(mapStateToProps)(InventoryItem);
+const mapDispatchToProps = dispatch => {
+    return {
+        updatePlayerStats: newPlayerStats => dispatch(updatePlayerStats(newPlayerStats)),
+        updatePlayerEquipment: newPlayerEquip => dispatch(updatePlayerEquipment(newPlayerEquip)),
+        updateItemCount: newItemCount => dispatch(updateItemCount(newItemCount))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(InventoryItem);

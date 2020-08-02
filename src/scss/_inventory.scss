@@ -1,0 +1,138 @@
+.container {
+    .inv-equip {
+        .inventory {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            width: 48%;
+            border: 2px solid $primary-color-lighter;
+            border-top: none;
+            border-radius: $border-radius;
+
+            h3 {
+                width: 100%;
+                height: 70px;
+                text-align: center;
+                padding: 20px;
+                border: 2px solid $secondary-color-lighter;
+                border-left: none;
+                border-right: none;
+                background: $secondary-color-darker;
+                border-radius: 8px;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            .inv-list {
+                display: flex;
+                flex-wrap: wrap;
+                align-content: flex-start;
+                min-height: 104px;
+                padding: 10px 8px 10px 8px;
+                
+                .inv-item:hover {
+                    cursor: pointer;
+                }
+
+                .inv-item {
+                    width: 70px;
+                    height: 70px;
+                    padding: 5px;
+                    margin: 7px;
+                    border: 2px solid $secondary-color;
+                    text-align: center;
+                    border-radius: $border-radius;
+                    background-color: $secondary-color-darker;
+
+                    .item-count {
+                        position: relative;
+                        height: 20px;
+                        margin: 0 5px 0 5px;
+                        border-radius: 10px;
+                        padding: 2px;
+                        background: rgba($color: $primary-color-lighter, $alpha: 0.6) ;
+                        bottom: 2px;
+                        text-align: center;
+                        line-height: 15px;
+                        font-size: 0.9rem
+                    }
+
+                    .item-description {
+                        visibility: visible;
+                        position: relative;
+                        background-color: $secondary-color-darker;
+                        width: 150px;
+                        top: -80px;
+                        left: -47px;
+                        border-radius: $border-radius;
+                        z-index: 1;
+
+                        .item-name {
+                            background-color: $primary-color-lighter;
+                            padding: 5px;
+                            border-bottom: solid 1px $primary-color;
+                            font-weight: 700;
+                        }
+
+                        .item-stats {
+                            display: flex;
+                            flex-direction: column;
+                            flex-wrap: wrap;
+                            list-style-type: none;
+                            padding: 10px 10px 10px 10px;
+                            text-align: left;
+                            
+                            span {
+                                float: right;
+                            }
+                        }
+                    }
+
+                    .item-menu {
+                        position: relative;
+                        visibility: visible;
+                        top: -82px;
+                        left: -12px;
+                        padding: 4px;
+                        background-color: $secondary-color-darker;
+                        border-radius: $border-radius;
+                        width: 81px;
+                        z-index: 1;
+
+                        :first-child {
+                            border-top-left-radius: $border-radius;
+                            border-top-right-radius: $border-radius;
+                        }
+
+                        div:hover {
+                            cursor: pointer;
+                            background-color: $primary-color-lighter;
+                        }
+
+                        div:active {
+                            background-color: $secondary-color;
+                        }
+
+                        div {
+                            padding: 7px;
+                            background-color: $secondary-color-darker;
+                            width: 100%;
+                            border-bottom: 2px solid $secondary-color-lighter;
+                            transition: background-color 0.1s ease-in-out;
+                        }
+
+                        :last-child {
+                            border-bottom: none;
+                            border-bottom-left-radius: $border-radius;
+                            border-bottom-right-radius: $border-radius;
+                        }
+                    }
+
+                    .hide {
+                        visibility: hidden;
+                    }
+                }
+            }
+        }
+    }
+}

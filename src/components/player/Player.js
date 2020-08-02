@@ -5,7 +5,7 @@ import Stats from '../stats/Stats';
 import AttackSpeed from '../stats/AttackSpeed';
 
 const Player = (props) => {    
-    const { weapon, hp, dmg, attSpd, def, eva } = props.player;
+    const { weapon, hp, dmg, attSpd, def, eva } = props.playerStats;
     const { playerDiv, playerAttProgressDiv, playerHpBar, playerAttStatus } = props;  // DOM element refs
     const currentPlayerHp = props.currentPlayerHp;
     return (
@@ -20,7 +20,7 @@ const Player = (props) => {
 const mapStateToProps = state => {
 	return {
         currentPlayerHp: state.gameData.currentPlayerHp,
-        player: state.player
+        playerStats: state.player.stats
 	}
 }
 

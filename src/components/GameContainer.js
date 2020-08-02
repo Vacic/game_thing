@@ -17,8 +17,8 @@ class GameContainer extends Component {
                     this.enemyHpBar.style.width = '100%'; // Whenever a new enemy is called the hp is reset to 100%
                     this.getEnemy(location);
                     
-                    this.startPlayerAttack(this.props.player.dmg, this.props.player.attSpd, this.props.currentEnemy.def, this.props.currentEnemy.eva, location)
-                    this.startEnemyAttack(this.props.currentEnemy.dmg, this.props.currentEnemy.attSpd, this.props.player.def, this.props.player.eva)
+                    this.startPlayerAttack(this.props.playerStats.dmg, this.props.playerStats.attSpd, this.props.currentEnemy.def, this.props.currentEnemy.eva, location)
+                    this.startEnemyAttack(this.props.currentEnemy.dmg, this.props.currentEnemy.attSpd, this.props.playerStats.def, this.props.playerStats.eva)
                 }, this.props.globalTimeout);
             } else {
                 console.log('Please wait for an enemy to load');
@@ -73,7 +73,7 @@ class GameContainer extends Component {
             this.resetActions();
             
             setTimeout(() => {
-                this.props.setCurrentPlayerHp(this.props.player.hp);
+                this.props.setCurrentPlayerHp(this.props.playerStats.hp);
                 this.props.setCurrentEnemyHp(0);
                 this.props.setCurrentEnemyStats({ name: 'Select Location', hp:0, dmg:0, attSpd:0, def:0, eva:0 });
 
@@ -84,10 +84,10 @@ class GameContainer extends Component {
         }
 
         handleUseItem = (item) => {
-            if(item.heal) {
-                const newHp = this.props.currentPlayerHp+item.heal >= this.props.player.hp ? this.props.player.hp : this.props.currentPlayerHp+item.heal;
+            if(item.stats.heal) {
+                const newHp = this.props.currentPlayerHp+item.stats.heal >= this.props.playerStats.hp ? this.props.playerStats.hp : this.props.currentPlayerHp+item.stats.heal;
                 this.props.setCurrentPlayerHp(newHp);
-                this.playerHpBar.style.width = `${Math.floor((newHp/this.props.player.hp)*100)}%`;
+                this.playerHpBar.style.width = `${Math.floor((newHp/this.props.playerStats.hp)*100)}%`;
 
                 const itemKeyName = item.name.toLowerCase().replace(' ', '_');
                 if (this.props.invItemCount[itemKeyName] > 1) {
@@ -114,7 +114,7 @@ class GameContainer extends Component {
                 this.playerAttStatus.classList.add('dmg');
 
                 this.props.playerTakesDmg(dmg);
-                this.playerHpBar.style.width = `${Math.floor((this.props.currentPlayerHp/this.props.player.hp)*100)}%`;
+                this.playerHpBar.style.width = `${Math.floor((this.props.currentPlayerHp/this.props.playerStats.hp)*100)}%`;
             } else {
                 this.playerAttStatus.classList.remove('dmg');
                 this.playerAttStatus.classList.add('miss');
@@ -197,7 +197,7 @@ class GameContainer extends Component {
 const mapStateToProps = state => {
 	return {
         locationEnemies: state.locationEnemies,
-        player: state.player,
+        playerStats: state.player.stats,
         invItemCount: state.inventory.itemCount,
         currentEnemyHp: state.gameData.currentEnemyHp,
         currentPlayerHp: state.gameData.currentPlayerHp,

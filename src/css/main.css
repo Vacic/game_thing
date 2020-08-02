@@ -10,6 +10,147 @@
   100% {
     transform: rotate(360deg); } }
 
+.container .inv-equip .inventory {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 48%;
+  border: 2px solid #2ca94b;
+  border-top: none;
+  border-radius: 10px; }
+  .container .inv-equip .inventory h3 {
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #65c6df;
+    border-left: none;
+    border-right: none;
+    background: #155363;
+    border-radius: 8px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; }
+  .container .inv-equip .inventory .inv-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    min-height: 104px;
+    padding: 10px 8px 10px 8px; }
+    .container .inv-equip .inventory .inv-list .inv-item:hover {
+      cursor: pointer; }
+    .container .inv-equip .inventory .inv-list .inv-item {
+      width: 70px;
+      height: 70px;
+      padding: 5px;
+      margin: 7px;
+      border: 2px solid #269ab8;
+      text-align: center;
+      border-radius: 10px;
+      background-color: #155363; }
+      .container .inv-equip .inventory .inv-list .inv-item .item-count {
+        position: relative;
+        height: 20px;
+        margin: 0 5px 0 5px;
+        border-radius: 10px;
+        padding: 2px;
+        background: rgba(44, 169, 75, 0.6);
+        bottom: 2px;
+        text-align: center;
+        line-height: 15px;
+        font-size: 0.9rem; }
+      .container .inv-equip .inventory .inv-list .inv-item .item-description {
+        visibility: visible;
+        position: relative;
+        background-color: #155363;
+        width: 150px;
+        top: -80px;
+        left: -47px;
+        border-radius: 10px;
+        z-index: 1; }
+        .container .inv-equip .inventory .inv-list .inv-item .item-description .item-name {
+          background-color: #2ca94b;
+          padding: 5px;
+          border-bottom: solid 1px #175827;
+          font-weight: 700; }
+        .container .inv-equip .inventory .inv-list .inv-item .item-description .item-stats {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          list-style-type: none;
+          padding: 10px 10px 10px 10px;
+          text-align: left; }
+          .container .inv-equip .inventory .inv-list .inv-item .item-description .item-stats span {
+            float: right; }
+      .container .inv-equip .inventory .inv-list .inv-item .item-menu {
+        position: relative;
+        visibility: visible;
+        top: -82px;
+        left: -12px;
+        padding: 4px;
+        background-color: #155363;
+        border-radius: 10px;
+        width: 81px;
+        z-index: 1; }
+        .container .inv-equip .inventory .inv-list .inv-item .item-menu :first-child {
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px; }
+        .container .inv-equip .inventory .inv-list .inv-item .item-menu div:hover {
+          cursor: pointer;
+          background-color: #2ca94b; }
+        .container .inv-equip .inventory .inv-list .inv-item .item-menu div:active {
+          background-color: #269ab8; }
+        .container .inv-equip .inventory .inv-list .inv-item .item-menu div {
+          padding: 7px;
+          background-color: #155363;
+          width: 100%;
+          border-bottom: 2px solid #65c6df;
+          transition: background-color 0.1s ease-in-out; }
+        .container .inv-equip .inventory .inv-list .inv-item .item-menu :last-child {
+          border-bottom: none;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px; }
+      .container .inv-equip .inventory .inv-list .inv-item .hide {
+        visibility: hidden; }
+
+.container .inv-equip .equipment {
+  width: 48%;
+  border: 2px solid #2ca94b;
+  border-top: none;
+  border-radius: 10px; }
+  .container .inv-equip .equipment h3 {
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #65c6df;
+    border-left: none;
+    border-right: none;
+    background: #155363;
+    border-radius: 8px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; }
+  .container .inv-equip .equipment .equipment-slots {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px;
+    justify-items: center; }
+    .container .inv-equip .equipment .equipment-slots .helmet, .container .inv-equip .equipment .equipment-slots .weapon, .container .inv-equip .equipment .equipment-slots .armor, .container .inv-equip .equipment .equipment-slots .shield, .container .inv-equip .equipment .equipment-slots .pants, .container .inv-equip .equipment .equipment-slots .boots {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 20px;
+      padding: 8px;
+      background-color: #155363;
+      border: 2px solid #269ab8;
+      border-radius: 10px; }
+    .container .inv-equip .equipment .equipment-slots .helmet, .container .inv-equip .equipment .equipment-slots .pants, .container .inv-equip .equipment .equipment-slots .boots {
+      grid-column: 1/4; }
+    .container .inv-equip .equipment .equipment-slots .weapon {
+      justify-self: end; }
+    .container .inv-equip .equipment .equipment-slots .shield {
+      justify-self: start; }
+    .container .inv-equip .equipment .equipment-slots .boots {
+      margin-bottom: 0px; }
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -135,7 +276,7 @@ body {
         top: -6px;
         z-index: 2;
         width: 0%; }
-      .container .battle-screen .player .player-stats, .container .battle-screen .player .enemy-stats, .container .battle-screen .enemy .player-stats, .container .battle-screen .enemy .enemy-stats {
+      .container .battle-screen .player .stats, .container .battle-screen .enemy .stats {
         padding: 8px;
         border-radius: 10px;
         text-align: left;
@@ -143,9 +284,9 @@ body {
         margin-top: 10px;
         border-top: 2px solid #2ca94b;
         border-left: 2px solid #2ca94b; }
-        .container .battle-screen .player .player-stats h3, .container .battle-screen .player .enemy-stats h3, .container .battle-screen .enemy .player-stats h3, .container .battle-screen .enemy .enemy-stats h3 {
+        .container .battle-screen .player .stats h3, .container .battle-screen .enemy .stats h3 {
           text-align: center; }
-        .container .battle-screen .player .player-stats p span, .container .battle-screen .player .enemy-stats p span, .container .battle-screen .enemy .player-stats p span, .container .battle-screen .enemy .enemy-stats p span {
+        .container .battle-screen .player .stats p span, .container .battle-screen .enemy .stats p span {
           float: right;
           font-size: 1.2rem; }
     .container .battle-screen .dead {
@@ -154,143 +295,6 @@ body {
     display: flex;
     padding: 0 15px 15px 15px;
     justify-content: space-between; }
-    .container .inv-equip .equipment {
-      width: 48%;
-      border: 2px solid #2ca94b;
-      border-top: none;
-      border-radius: 10px; }
-      .container .inv-equip .equipment h3 {
-        width: 100%;
-        height: 70px;
-        text-align: center;
-        padding: 20px;
-        border: 2px solid #65c6df;
-        border-left: none;
-        border-right: none;
-        background: #155363;
-        border-radius: 8px;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0; }
-      .container .inv-equip .equipment .equipment-slots {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        padding: 20px;
-        justify-items: center; }
-        .container .inv-equip .equipment .equipment-slots div {
-          width: 70px;
-          height: 70px;
-          margin-bottom: 20px;
-          border: 2px solid #269ab8;
-          border-radius: 10px; }
-        .container .inv-equip .equipment .equipment-slots .helmet, .container .inv-equip .equipment .equipment-slots .pants, .container .inv-equip .equipment .equipment-slots .boots {
-          grid-column: 1/4; }
-        .container .inv-equip .equipment .equipment-slots .weapon {
-          justify-self: end; }
-        .container .inv-equip .equipment .equipment-slots .shield {
-          justify-self: start; }
-        .container .inv-equip .equipment .equipment-slots .boots {
-          margin-bottom: 0px; }
-    .container .inv-equip .inventory {
-      display: flex;
-      flex-wrap: wrap;
-      align-content: flex-start;
-      width: 48%;
-      border: 2px solid #2ca94b;
-      border-top: none;
-      border-radius: 10px; }
-      .container .inv-equip .inventory h3 {
-        width: 100%;
-        height: 70px;
-        text-align: center;
-        padding: 20px;
-        border: 2px solid #65c6df;
-        border-left: none;
-        border-right: none;
-        background: #155363;
-        border-radius: 8px;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0; }
-      .container .inv-equip .inventory .inv-list {
-        display: flex;
-        flex-wrap: wrap;
-        align-content: flex-start;
-        min-height: 104px;
-        padding: 10px 8px 10px 8px; }
-        .container .inv-equip .inventory .inv-list .inv-item:hover {
-          cursor: pointer; }
-        .container .inv-equip .inventory .inv-list .inv-item {
-          width: 70px;
-          height: 70px;
-          padding: 5px;
-          margin: 7px;
-          border: 2px solid #269ab8;
-          text-align: center;
-          border-radius: 10px;
-          background-color: #155363; }
-          .container .inv-equip .inventory .inv-list .inv-item .item-count {
-            position: relative;
-            height: 20px;
-            margin: 0 5px 0 5px;
-            border-radius: 10px;
-            padding: 2px;
-            background: rgba(44, 169, 75, 0.6);
-            bottom: 2px;
-            text-align: center;
-            line-height: 15px;
-            font-size: 0.9rem; }
-          .container .inv-equip .inventory .inv-list .inv-item .item-description {
-            visibility: visible;
-            position: relative;
-            background-color: #155363;
-            width: 150px;
-            top: -80px;
-            left: -47px;
-            border-radius: 10px;
-            z-index: 1; }
-            .container .inv-equip .inventory .inv-list .inv-item .item-description .item-name {
-              background-color: #2ca94b;
-              padding: 5px;
-              border-bottom: solid 1px #175827;
-              font-weight: 700; }
-            .container .inv-equip .inventory .inv-list .inv-item .item-description .item-stats {
-              display: flex;
-              flex-direction: column;
-              flex-wrap: wrap;
-              list-style-type: none;
-              padding: 10px 10px 10px 10px;
-              text-align: left; }
-              .container .inv-equip .inventory .inv-list .inv-item .item-description .item-stats span {
-                float: right; }
-          .container .inv-equip .inventory .inv-list .inv-item .item-menu {
-            position: relative;
-            visibility: visible;
-            top: -82px;
-            left: -12px;
-            padding: 4px;
-            background-color: #155363;
-            border-radius: 10px;
-            width: 81px;
-            z-index: 1; }
-            .container .inv-equip .inventory .inv-list .inv-item .item-menu :first-child {
-              border-top-left-radius: 10px;
-              border-top-right-radius: 10px; }
-            .container .inv-equip .inventory .inv-list .inv-item .item-menu div:hover {
-              cursor: pointer;
-              background-color: #2ca94b; }
-            .container .inv-equip .inventory .inv-list .inv-item .item-menu div:active {
-              background-color: #269ab8; }
-            .container .inv-equip .inventory .inv-list .inv-item .item-menu div {
-              padding: 7px;
-              background-color: #155363;
-              width: 100%;
-              border-bottom: 2px solid #65c6df;
-              transition: background-color 0.3s ease-in-out; }
-            .container .inv-equip .inventory .inv-list .inv-item .item-menu :last-child {
-              border-bottom: none;
-              border-bottom-left-radius: 10px;
-              border-bottom-right-radius: 10px; }
-          .container .inv-equip .inventory .inv-list .inv-item .hide {
-            visibility: hidden; }
 
 @media screen and (min-width: 1601) {
   .container {
@@ -358,7 +362,7 @@ body {
           top: 7px; }
         .container .battle-screen .player .attack-bar .att-progress, .container .battle-screen .enemy .attack-bar .att-progress {
           top: -3px; }
-        .container .battle-screen .player .player-stats p span, .container .battle-screen .player .enemy-stats p span, .container .battle-screen .enemy .player-stats p span, .container .battle-screen .enemy .enemy-stats p span {
+        .container .battle-screen .player .stats p span, .container .battle-screen .enemy .stats p span {
           font-size: 0.86rem; }
     .container .inv-equip {
       padding: 8px; }
