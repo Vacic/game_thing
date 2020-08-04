@@ -142,56 +142,55 @@
       background-color: #155363;
       border: 2px solid #269ab8;
       border-radius: 10px; }
-      .container .inv-equip .equipment .equipment-slots .helmet .item-description, .container .inv-equip .equipment .equipment-slots .weapon .item-description, .container .inv-equip .equipment .equipment-slots .armor .item-description, .container .inv-equip .equipment .equipment-slots .shield .item-description, .container .inv-equip .equipment .equipment-slots .pants .item-description, .container .inv-equip .equipment .equipment-slots .boots .item-description {
-        visibility: visible;
-        position: relative;
-        background-color: #155363;
-        width: 150px;
-        left: -47px;
-        border-radius: 10px;
-        z-index: 1; }
-        .container .inv-equip .equipment .equipment-slots .helmet .item-description .item-name, .container .inv-equip .equipment .equipment-slots .weapon .item-description .item-name, .container .inv-equip .equipment .equipment-slots .armor .item-description .item-name, .container .inv-equip .equipment .equipment-slots .shield .item-description .item-name, .container .inv-equip .equipment .equipment-slots .pants .item-description .item-name, .container .inv-equip .equipment .equipment-slots .boots .item-description .item-name {
-          background-color: #2ca94b;
-          padding: 5px;
-          border-bottom: solid 1px #175827;
-          font-weight: 700; }
-        .container .inv-equip .equipment .equipment-slots .helmet .item-description .item-stats, .container .inv-equip .equipment .equipment-slots .weapon .item-description .item-stats, .container .inv-equip .equipment .equipment-slots .armor .item-description .item-stats, .container .inv-equip .equipment .equipment-slots .shield .item-description .item-stats, .container .inv-equip .equipment .equipment-slots .pants .item-description .item-stats, .container .inv-equip .equipment .equipment-slots .boots .item-description .item-stats {
-          display: flex;
-          flex-direction: column;
-          flex-wrap: wrap;
-          list-style-type: none;
-          padding: 10px 10px 10px 10px;
-          text-align: left; }
-          .container .inv-equip .equipment .equipment-slots .helmet .item-description .item-stats span, .container .inv-equip .equipment .equipment-slots .weapon .item-description .item-stats span, .container .inv-equip .equipment .equipment-slots .armor .item-description .item-stats span, .container .inv-equip .equipment .equipment-slots .shield .item-description .item-stats span, .container .inv-equip .equipment .equipment-slots .pants .item-description .item-stats span, .container .inv-equip .equipment .equipment-slots .boots .item-description .item-stats span {
-            float: right; }
-      .container .inv-equip .equipment .equipment-slots .helmet .item-menu, .container .inv-equip .equipment .equipment-slots .weapon .item-menu, .container .inv-equip .equipment .equipment-slots .armor .item-menu, .container .inv-equip .equipment .equipment-slots .shield .item-menu, .container .inv-equip .equipment .equipment-slots .pants .item-menu, .container .inv-equip .equipment .equipment-slots .boots .item-menu {
-        position: relative;
-        visibility: visible;
-        top: -82px;
-        left: -12px;
-        padding: 4px;
-        background-color: #155363;
-        border-radius: 10px;
-        width: 81px;
-        z-index: 1; }
-        .container .inv-equip .equipment .equipment-slots .helmet .item-menu :first-child, .container .inv-equip .equipment .equipment-slots .weapon .item-menu :first-child, .container .inv-equip .equipment .equipment-slots .armor .item-menu :first-child, .container .inv-equip .equipment .equipment-slots .shield .item-menu :first-child, .container .inv-equip .equipment .equipment-slots .pants .item-menu :first-child, .container .inv-equip .equipment .equipment-slots .boots .item-menu :first-child {
-          border-top-left-radius: 10px;
-          border-top-right-radius: 10px; }
-        .container .inv-equip .equipment .equipment-slots .helmet .item-menu div:hover, .container .inv-equip .equipment .equipment-slots .weapon .item-menu div:hover, .container .inv-equip .equipment .equipment-slots .armor .item-menu div:hover, .container .inv-equip .equipment .equipment-slots .shield .item-menu div:hover, .container .inv-equip .equipment .equipment-slots .pants .item-menu div:hover, .container .inv-equip .equipment .equipment-slots .boots .item-menu div:hover {
-          cursor: pointer;
-          background-color: #2ca94b; }
-        .container .inv-equip .equipment .equipment-slots .helmet .item-menu div:active, .container .inv-equip .equipment .equipment-slots .weapon .item-menu div:active, .container .inv-equip .equipment .equipment-slots .armor .item-menu div:active, .container .inv-equip .equipment .equipment-slots .shield .item-menu div:active, .container .inv-equip .equipment .equipment-slots .pants .item-menu div:active, .container .inv-equip .equipment .equipment-slots .boots .item-menu div:active {
-          background-color: #269ab8; }
-        .container .inv-equip .equipment .equipment-slots .helmet .item-menu div, .container .inv-equip .equipment .equipment-slots .weapon .item-menu div, .container .inv-equip .equipment .equipment-slots .armor .item-menu div, .container .inv-equip .equipment .equipment-slots .shield .item-menu div, .container .inv-equip .equipment .equipment-slots .pants .item-menu div, .container .inv-equip .equipment .equipment-slots .boots .item-menu div {
-          padding: 7px;
+      .container .inv-equip .equipment .equipment-slots .helmet .equipped-item, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item, .container .inv-equip .equipment .equipment-slots .armor .equipped-item, .container .inv-equip .equipment .equipment-slots .shield .equipped-item, .container .inv-equip .equipment .equipment-slots .pants .equipped-item, .container .inv-equip .equipment .equipment-slots .boots .equipped-item {
+        height: 100%;
+        text-align: center; }
+        .container .inv-equip .equipment .equipment-slots .helmet .equipped-item .item-description, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item .item-description, .container .inv-equip .equipment .equipment-slots .armor .equipped-item .item-description, .container .inv-equip .equipment .equipment-slots .shield .equipped-item .item-description, .container .inv-equip .equipment .equipment-slots .pants .equipped-item .item-description, .container .inv-equip .equipment .equipment-slots .boots .equipped-item .item-description {
+          visibility: visible;
+          position: relative;
           background-color: #155363;
-          width: 100%;
-          border-bottom: 2px solid #65c6df;
-          transition: background-color 0.1s ease-in-out; }
-        .container .inv-equip .equipment .equipment-slots .helmet .item-menu :last-child, .container .inv-equip .equipment .equipment-slots .weapon .item-menu :last-child, .container .inv-equip .equipment .equipment-slots .armor .item-menu :last-child, .container .inv-equip .equipment .equipment-slots .shield .item-menu :last-child, .container .inv-equip .equipment .equipment-slots .pants .item-menu :last-child, .container .inv-equip .equipment .equipment-slots .boots .item-menu :last-child {
-          border-bottom: none;
-          border-bottom-left-radius: 10px;
-          border-bottom-right-radius: 10px; }
+          width: 150px;
+          top: -33px;
+          left: -52px;
+          border-radius: 10px;
+          z-index: 1; }
+          .container .inv-equip .equipment .equipment-slots .helmet .equipped-item .item-description .item-name, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item .item-description .item-name, .container .inv-equip .equipment .equipment-slots .armor .equipped-item .item-description .item-name, .container .inv-equip .equipment .equipment-slots .shield .equipped-item .item-description .item-name, .container .inv-equip .equipment .equipment-slots .pants .equipped-item .item-description .item-name, .container .inv-equip .equipment .equipment-slots .boots .equipped-item .item-description .item-name {
+            background-color: #2ca94b;
+            padding: 5px;
+            border-bottom: solid 1px #175827;
+            font-weight: 700; }
+          .container .inv-equip .equipment .equipment-slots .helmet .equipped-item .item-description .item-stats, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item .item-description .item-stats, .container .inv-equip .equipment .equipment-slots .armor .equipped-item .item-description .item-stats, .container .inv-equip .equipment .equipment-slots .shield .equipped-item .item-description .item-stats, .container .inv-equip .equipment .equipment-slots .pants .equipped-item .item-description .item-stats, .container .inv-equip .equipment .equipment-slots .boots .equipped-item .item-description .item-stats {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            list-style-type: none;
+            padding: 10px 10px 10px 10px;
+            text-align: left; }
+            .container .inv-equip .equipment .equipment-slots .helmet .equipped-item .item-description .item-stats span, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item .item-description .item-stats span, .container .inv-equip .equipment .equipment-slots .armor .equipped-item .item-description .item-stats span, .container .inv-equip .equipment .equipment-slots .shield .equipped-item .item-description .item-stats span, .container .inv-equip .equipment .equipment-slots .pants .equipped-item .item-description .item-stats span, .container .inv-equip .equipment .equipment-slots .boots .equipped-item .item-description .item-stats span {
+              float: right; }
+        .container .inv-equip .equipment .equipment-slots .helmet .equipped-item .item-menu, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item .item-menu, .container .inv-equip .equipment .equipment-slots .armor .equipped-item .item-menu, .container .inv-equip .equipment .equipment-slots .shield .equipped-item .item-menu, .container .inv-equip .equipment .equipment-slots .pants .equipped-item .item-menu, .container .inv-equip .equipment .equipment-slots .boots .equipped-item .item-menu {
+          position: relative;
+          visibility: visible;
+          top: -50px;
+          left: -16px;
+          padding: 4px;
+          background-color: #155363;
+          border-radius: 10px;
+          width: 81px;
+          z-index: 1; }
+          .container .inv-equip .equipment .equipment-slots .helmet .equipped-item .item-menu div:hover, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item .item-menu div:hover, .container .inv-equip .equipment .equipment-slots .armor .equipped-item .item-menu div:hover, .container .inv-equip .equipment .equipment-slots .shield .equipped-item .item-menu div:hover, .container .inv-equip .equipment .equipment-slots .pants .equipped-item .item-menu div:hover, .container .inv-equip .equipment .equipment-slots .boots .equipped-item .item-menu div:hover {
+            cursor: pointer;
+            background-color: #2ca94b; }
+          .container .inv-equip .equipment .equipment-slots .helmet .equipped-item .item-menu div:active, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item .item-menu div:active, .container .inv-equip .equipment .equipment-slots .armor .equipped-item .item-menu div:active, .container .inv-equip .equipment .equipment-slots .shield .equipped-item .item-menu div:active, .container .inv-equip .equipment .equipment-slots .pants .equipped-item .item-menu div:active, .container .inv-equip .equipment .equipment-slots .boots .equipped-item .item-menu div:active {
+            background-color: #269ab8; }
+          .container .inv-equip .equipment .equipment-slots .helmet .equipped-item .item-menu div, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item .item-menu div, .container .inv-equip .equipment .equipment-slots .armor .equipped-item .item-menu div, .container .inv-equip .equipment .equipment-slots .shield .equipped-item .item-menu div, .container .inv-equip .equipment .equipment-slots .pants .equipped-item .item-menu div, .container .inv-equip .equipment .equipment-slots .boots .equipped-item .item-menu div {
+            padding: 7px;
+            background-color: #155363;
+            width: 100%;
+            border-radius: 10px;
+            transition: background-color 0.1s ease-in-out; }
+        .container .inv-equip .equipment .equipment-slots .helmet .equipped-item .hide, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item .hide, .container .inv-equip .equipment .equipment-slots .armor .equipped-item .hide, .container .inv-equip .equipment .equipment-slots .shield .equipped-item .hide, .container .inv-equip .equipment .equipment-slots .pants .equipped-item .hide, .container .inv-equip .equipment .equipment-slots .boots .equipped-item .hide {
+          visibility: hidden; }
     .container .inv-equip .equipment .equipment-slots .helmet, .container .inv-equip .equipment .equipment-slots .pants, .container .inv-equip .equipment .equipment-slots .boots {
       grid-column: 1/4; }
     .container .inv-equip .equipment .equipment-slots .weapon {

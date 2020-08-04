@@ -10,6 +10,7 @@ const itemListState = {
         }
     },
     bronze_sword: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_sword.png',
         name: 'Bronze Sword',
         type: 'weapon',
         stats: {
@@ -18,6 +19,7 @@ const itemListState = {
         }
     },
     iron_sword: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_sword.png',
         name: 'Iron Sword',
         type: 'weapon',
         stats: {
@@ -26,6 +28,7 @@ const itemListState = {
         }
     },
     steel_sword: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_sword.png',
         name: 'Iron Sword',
         type: 'weapon',
         stats: {
@@ -34,6 +37,7 @@ const itemListState = {
         }
     },
     diamond_sword: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_sword.png',
         name: 'Diamond Sword',
         type: 'weapon',
         stats: {
@@ -53,6 +57,7 @@ const itemListState = {
         }
     },
     bronze_shield: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_shield.png',
         name: 'Bronze Shield',
         type: 'shield',
         stats: {
@@ -61,6 +66,7 @@ const itemListState = {
         }
     },
     iron_shield: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_shield.png',
         name: 'Iron Shield',
         type: 'shield',
         stats: {
@@ -69,6 +75,7 @@ const itemListState = {
         }
     },
     steel_shield: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_shield.png',
         name: 'Steel Shield',
         type: 'shield',
         stats: {
@@ -77,6 +84,7 @@ const itemListState = {
         }
     },
     diamond_shield: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_shield.png',
         name: 'Diamond Shield',
         type: 'shield',
         stats: {
@@ -96,6 +104,7 @@ const itemListState = {
         }
     },
     bronze_helmet: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_helmet.png',
         name: 'Bronze Helmet',
         type: 'helmet',
         stats: {
@@ -104,6 +113,7 @@ const itemListState = {
         }
     },
     iron_helmet: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_helmet.png',
         name: 'Iron Helmet',
         type: 'helmet',
         stats: {
@@ -112,6 +122,7 @@ const itemListState = {
         }
     },
     steel_helmet: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_helmet.png',
         name: 'Steel Helmet',
         type: 'helmet',
         stats: {
@@ -120,6 +131,7 @@ const itemListState = {
         }
     },
     diamond_helmet: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_helmet.png',
         name: 'Diamond Helmet',
         type: 'helmet',
         stats: {
@@ -140,6 +152,7 @@ const itemListState = {
         }
     },
     bronze_armor: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_armor.png',
         name: 'Bronze Armor',
         type: 'armor',
         stats: {
@@ -149,6 +162,7 @@ const itemListState = {
         }
     },
     iron_armor: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_armor.png',
         name: 'Iron Armor',
         type: 'armor',
         stats: {
@@ -158,6 +172,7 @@ const itemListState = {
         }
     },
     steel_armor: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_armor.png',
         name: 'Steel Armor',
         type: 'armor',
         stats: {
@@ -167,6 +182,7 @@ const itemListState = {
         }
     },
     diamond_armor: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_armor.png',
         name: 'Diamond Armor',
         type: 'armor',
         stats: {
@@ -187,6 +203,7 @@ const itemListState = {
         }
     },
     bronze_platelegs: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_pants.png',
         name: 'Bronze Platelegs',
         type: 'pants',
         stats: {
@@ -195,6 +212,7 @@ const itemListState = {
         }
     },
     iron_platelegs: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_pants.png',
         name: 'Iron Platelegs',
         type: 'pants',
         stats: {
@@ -204,6 +222,7 @@ const itemListState = {
         }
     },
     steel_platelegs: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_pants.png',
         name: 'Steel Platelegs',
         type: 'pants',
         stats: {
@@ -213,6 +232,7 @@ const itemListState = {
         }
     },
     diamond_platelegs: {
+        img: process.env.PUBLIC_URL + '/item_imgs/wooden_pants.png',
         name: 'Diamond Platelegs',
         type: 'pants',
         stats: {
@@ -232,6 +252,7 @@ const itemListState = {
         }
     },
     bronze_boots: {
+        img: process.env.PUBLIC_URL + '/item_imgs/leather_boots.png',
         name: 'Bronze Boots',
         type: 'boots',
         stats: {
@@ -240,6 +261,7 @@ const itemListState = {
         }
     },
     iron_boots: {
+        img: process.env.PUBLIC_URL + '/item_imgs/leather_boots.png',
         name: 'Iron Boots',
         type: 'boots',
         stats: {
@@ -249,6 +271,7 @@ const itemListState = {
         }
     },
     steel_boots: {
+        img: process.env.PUBLIC_URL + '/item_imgs/leather_boots.png',
         name: 'Steel Boots',
         type: 'boots',
         stats: {
@@ -258,6 +281,7 @@ const itemListState = {
         }
     },
     diamond_boots: {
+        img: process.env.PUBLIC_URL + '/item_imgs/leather_boots.png',
         name: 'Diamond Boots',
         type: 'boots',
         stats: {
@@ -285,6 +309,7 @@ const itemListState = {
     },
 
     rations: {
+        img: process.env.PUBLIC_URL + '/item_imgs/cow_meat.png',
         name: 'Rations',
         stats: {
             heal: 100
@@ -292,6 +317,7 @@ const itemListState = {
     },
 
     health_potion: {
+        img: process.env.PUBLIC_URL + '/item_imgs/cow_meat.png',
         name: 'Health Potion',
         stats: {
             heal: 200

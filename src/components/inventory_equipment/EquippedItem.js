@@ -1,16 +1,31 @@
 import React from 'react';
 import chicken from '../../img/chicken_meat.png';
 import ItemDescription from './ItemDescription';
+import ItemMenu from './ItemMenu';
+import hideShowDescriptionMenu from './hideShowDescriptionMenu';
 
-function EquippedItem({ item }) {
-    const { img, name } = item;
-    const { dmg, def, eva, attSpd, hp } = item.stats
+function EquippedItem(props) {
+    const { item, unequipItem } = props;
+    const img = item.img;
+    const { hideMenuState, hideDescriptionState, showDescription, hideDescription, toggleMenu, hideMenu, itemDiv } = props; // From HOC
     return (
-        <div>
+        <div className="equipped-item" onMouseEnter={showDescription} onMouseLeave={hideDescription} onClick={toggleMenu} ref={itemDiv}>
             <img src={img||chicken} alt=""/>
-            <ItemDescription item={item} />
+                <ItemMenu 
+                    hideMenuState={hideMenuState} 
+                    hideMenu={hideMenu} 
+                    hideDescription={hideDescription}
+                    item={item}
+                    unequipItem={unequipItem}
+                />
+
+                <ItemDescription 
+                    item={item}
+                    hideDescriptionState={hideDescriptionState}
+                    hideDescription={hideDescription}
+                />
         </div>
     )
 }
 
-export default EquippedItem;
+export default hideShowDescriptionMenu(EquippedItem);

@@ -60,7 +60,7 @@ class GameContainer extends Component {
             return def <= 10 ? def <= 8 ? Math.floor(dmg - (def / 8)) : Math.ceil(dmg - (def / 8)) :  Math.floor(dmg - ((dmg * (def / 5)) / 100));
         }
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~PLAYER LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        startPlayerAttack = (dmg, attSpd, enemyDef, enemyEva, location) => {
+        startPlayerAttack = (dmg, attSpd, enemyDef, enemyEva, location = null) => {
             this.playerAttProgressDiv.style.animation = `attBar ${attSpd}s linear infinite`;
             this.playerAttInterval = setInterval(() => {  // Assigning it to a variable so i can stop the interval in 'resetActions'
                 this.enemyTakesDamage(dmg, enemyDef, enemyEva);
@@ -73,11 +73,11 @@ class GameContainer extends Component {
             this.resetActions();
             
             setTimeout(() => {
-                this.props.setCurrentPlayerHp(this.props.playerStats.hp);
+                this.props.setCurrentPlayerHp(this.props.playerStats.hp <= 120 ? Math.floor(this.props.playerStats.hp / 2) : Math.floor(this.props.playerStats.hp / 3));
                 this.props.setCurrentEnemyHp(0);
                 this.props.setCurrentEnemyStats({ name: 'Select Location', hp:0, dmg:0, attSpd:0, def:0, eva:0 });
 
-                this.playerHpBar.style.width = '100%';
+                this.playerHpBar.style.width = `${Math.floor((this.props.currentPlayerHp/this.props.playerStats.hp)*100)}%`;
                 this.enemyHpBar.style.width = '100%';
                 this.playerDiv.classList.remove('dead');
             }, this.props.globalTimeout);
@@ -138,9 +138,10 @@ class GameContainer extends Component {
             const drops = this.props.currentEnemy.drops;
             const dropKeys = Object.keys(this.props.currentEnemy.drops);
             const chance = Math.ceil(Math.random()*10000)/100;
+            console.log(chance);
             dropKeys.forEach(drop => {
-                if (chance >= drops[drop].min && chance <= drops[drop].max) {
-                    console.log(drop)
+                if (chance >= drops[drop].min && chance < drops[drop].max) {
+                    console.log(drop);
                     let newItemCount = { ...this.props.invItemCount };
                     newItemCount[drop] = (newItemCount[drop] || 0) + 1;
                     this.props.updateItemCount(newItemCount);
@@ -189,7 +190,10 @@ class GameContainer extends Component {
                     enemyAttStatus={el => this.enemyAttStatus = el}
                 />
 
-                <InvAndEquip handleUseItem={this.handleUseItem} />
+                <InvAndEquip 
+                    handleUseItem={this.handleUseItem} 
+                    playerHpBar={this.playerHpBar}
+                />
             </div>
         )
     }

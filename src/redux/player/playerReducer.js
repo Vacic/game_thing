@@ -3,11 +3,11 @@ import { UPDATE_PLAYER_STATS, UPDATE_PLAYER_EQUIPMENT } from "./playerTypes";
 const playerState = {
     stats: {
         weapon: 'Fists',
-        hp: 70,
-        dmg: 5, //5
+        hp: 80,
+        dmg: 100, //5
         attSpd: 1, //1
         def: 0,
-        eva: 2
+        eva: 1
     },
 
     equipped: {}

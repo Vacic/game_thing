@@ -6,12 +6,12 @@ const locationEnemiesState = {
             hp: 50,
             dmg: 5,
             attSpd: 2,
-            def: 10,
+            def: 5,
             eva: 2,
             drops: {
                 cow_meat: { min: 0, max: 60 },
-                leather_boots: { min: 61, max: 81 },
-                wooden_helmet: { min: 82, max: 97 }
+                leather_boots: { min: 60, max: 80 },
+                wooden_helmet: { min: 80, max: 95 }
             }
         },
         chicken: {
@@ -22,8 +22,8 @@ const locationEnemiesState = {
             def: 0,
             eva: 1,
             drops: {
-                chicken_meat: { min: 1, max: 85 },
-                leather_boots: { min: 86, max: 91 }
+                chicken_meat: { min: 0, max: 85 },
+                leather_boots: { min: 85, max: 90 }
             }
         },
         farmer: {
@@ -34,12 +34,12 @@ const locationEnemiesState = {
             def: 3,
             eva: 3,
             drops: {
-                wooden_sword: { min: 0, max:15 },
-                wooden_armor: { min: 16, max: 31 },
-                wooden_pants: { min: 32, max: 47 },
-                wooden_shield: { min: 48, max: 63 },
-                leather_boots: { min: 64, max: 79 },
-                wooden_helmet: { min: 80, max: 95 }
+                wooden_sword: { min: 0, max:100 },
+                wooden_armor: { min: 15, max: 30 },
+                wooden_pants: { min: 30, max: 45 },
+                wooden_shield: { min: 45, max: 60 },
+                leather_boots: { min: 60, max: 75 },
+                wooden_helmet: { min: 75, max: 90 }
             }
         }
     },
@@ -51,7 +51,16 @@ const locationEnemiesState = {
             dmg: 10,
             attSpd: 2.1,
             def: 5,
-            eva: 5
+            eva: 5,
+            drops: {
+                bronze_platelegs: { min: 0, max: 10 },
+                bronze_boots: { min: 10, max: 20 },
+                bronze_helmet: { min: 20, max: 30 },
+                iron_boots: { min: 30, max: 35 },
+                iron_helmet: { min: 35, max: 38 },
+                iron_platelegs: { min: 38, max: 39 },
+                cow_meat: { min: 40, max: 60}
+            }
         },
         bandit_leader: {
             name: 'Bandit Leader',
@@ -59,7 +68,22 @@ const locationEnemiesState = {
             dmg: 20,
             attSpd: 1.8,
             def: 8,
-            eva: 10
+            eva: 10,
+            drops: {
+                bronze_sword: { min: 0, max: 8 },
+                bronze_armor: { min: 8, max: 16 },
+                bronze_platelegs: { min: 16, max: 30 },
+                bronze_shield: { min: 30, max: 45 },
+                bronze_boots: { min: 45, max: 65 },
+                bronze_helmet: { min: 65, max: 85 },
+                iron_sword: { min: 85, max: 85.5 },
+                iron_armor: { min: 85.5, max: 90 },
+                iron_platelegs: { min: 90, max: 91 },
+                iron_shield: { min: 91, max: 92 },
+                iron_boots: { min: 92, max: 97 },
+                iron_helmet: { min: 97, max: 100 },
+                rations: { min: 15, max: 30}
+            }
         },
         bandit_archer: {
             name: 'Bandit Archer',
@@ -67,7 +91,14 @@ const locationEnemiesState = {
             dmg: 25,
             attSpd: 1.5,
             def: 3,
-            eva: 3
+            eva: 3,
+            drops: {
+                bronze_boots: { min: 0, max: 20 },
+                bronze_helmet: { min: 20, max: 40 },
+                iron_boots: { min: 40, max: 41 },
+                iron_helmet: { min: 41, max: 42 },
+                rations: { min: 42, max: 72}
+            }
         },
         bandit_swordsman: {
             name: 'Bandit Swordsman',
@@ -75,7 +106,18 @@ const locationEnemiesState = {
             dmg: 18,
             attSpd: 2.5,
             def: 7,
-            eva: 7
+            eva: 7,
+            drops: {
+                bronze_sword: { min: 0, max: 15 },
+                bronze_armor: { min: 15, max: 30 },
+                bronze_platelegs: { min: 30, max: 45 },
+                bronze_shield: { min: 45, max: 60 },
+                iron_sword: { min: 60, max: 61 },
+                iron_armor: { min: 61, max: 60.2 },
+                iron_platelegs: { min: 60.2, max: 60.4 },
+                iron_shield: { min: 60.4, max: 60.6 },
+                rations: { min: 60.6, max: 85}
+            }
         }
     },
     dungeon: {
