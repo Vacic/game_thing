@@ -57,7 +57,6 @@ class InventoryItem extends Component {
             const itemKeyName = item.name.toLowerCase().replace(' ', '_')
 
             newPlayerEquip[item.type] = item;
-            console.log(newPlayerEquip)
             this.props.updatePlayerEquipment(newPlayerEquip);
 
             let newPlayerStats = {...this.props.playerStats};
