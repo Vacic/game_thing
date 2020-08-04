@@ -34,7 +34,7 @@ const locationEnemiesState = {
             def: 3,
             eva: 3,
             drops: {
-                wooden_sword: { min: 0, max:100 },
+                wooden_sword: { min: 0, max: 15 },
                 wooden_armor: { min: 15, max: 30 },
                 wooden_pants: { min: 30, max: 45 },
                 wooden_shield: { min: 45, max: 60 },
