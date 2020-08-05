@@ -1,4 +1,4 @@
-import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, SET_LOADING, PLAYER_TAKES_DAMAGE, ENEMY_TAKES_DAMAGE, SET_CURRENT_LOCATION } from "./gameDataTypes";
+import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, SET_LOADING, PLAYER_TAKES_DAMAGE, ENEMY_TAKES_DAMAGE, SET_CURRENT_LOCATION, SET_NOTIFICATION_MESSAGE, SET_NOTIFICATION_CLASS } from "./gameDataTypes";
 
 const gameDataState = {
     currentEnemy: {  // Stores the stats of the enemy that the player is currently fighting
@@ -13,6 +13,8 @@ const gameDataState = {
     currentEnemyHp: 0,  // Current hp required for the ui and HP bar calculation
     currentPlayerHp: 80,// Current hp required for the ui and HP bar calculation
     currentLocation: 'farm',
+    notificationMessage: {},
+    notificationClass: 'msg-success hide',
 
     loadingEnemy: false,  // Controls whether the loading screen instead of enemy picture shows up & makes the user unable to spam click locations which otherwise breaks the game
 }
@@ -37,6 +39,16 @@ const gameDataReducer = (state = gameDataState, action) => {
         case SET_CURRENT_LOCATION: return {
             ...state,
             currentLocation: action.location
+        }
+
+        case SET_NOTIFICATION_MESSAGE: return {
+            ...state,
+            notificationMessage: action.message
+        }
+
+        case SET_NOTIFICATION_CLASS: return {
+            ...state,
+            notificationClass: action.classStr
         }
 
         case SET_LOADING: return {

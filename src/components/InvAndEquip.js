@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Inventory from './inventory_equipment/Inventory';
 import Equipment from './inventory_equipment/Equipment';
 import { updatePlayerStats, updatePlayerEquipment } from '../redux/player/playerAction';
 import { updateItemCount, setCurrentPlayerHp } from '../redux';
+import Message from './Message';
 
-function InvAndEquip(props) {
+const InvAndEquip = React.memo((props) => {
     const { handleUseItem, playerHpBar } = props // From Game Container
-    const { itemCount, playerStats, playerEquip, currentPlayerHp } = props // State
+    const { itemCount, playerStats, playerEquip, currentPlayerHp, globalTimeout } = props // State
     const { updatePlayerStats, updatePlayerEquipment, updateItemCount, setCurrentPlayerHp } = props // Dispatch
+
+    const [msg, setMsg] = useState({});
+    const [classStr, setMsgClass] = useState('msg-danger hide');
 
     const equipItem = item => {
         let newPlayerEquip = {...playerEquip};
@@ -47,7 +51,9 @@ function InvAndEquip(props) {
             }
 
         } else {
-            console.log(`You already have the ${item.name} equipped`)
+            setMsg({ str: `You already have the ${item.name} equipped`, img: item.img });
+            setMsgClass('msg-danger');
+            setTimeout(() => setMsgClass('msg-danger hide'), globalTimeout);
         }
     }
 
@@ -66,7 +72,7 @@ function InvAndEquip(props) {
             });
             if (item.type === 'weapon') newPlayerStats.weapon = 'Fists';
             updatePlayerStats(newPlayerStats);
-            if(newPlayerStats.hp < currentPlayerHp) setCurrentPlayerHp(newPlayerStats.hp)
+            if(item.stats.hp) setCurrentPlayerHp((currentPlayerHp-item.stats.hp))
             playerHpBar.style.width = (currentPlayerHp>newPlayerStats.hp) ? '100%' : `${Math.floor((currentPlayerHp/newPlayerStats.hp)*100)}%`;
 
             const itemKeyName = item.name.toLowerCase().replace(' ', '_');
@@ -80,16 +86,18 @@ function InvAndEquip(props) {
         <div className="inv-equip">
             <Equipment unequipItem={unequipItem} />
             <Inventory handleUseItem={handleUseItem} equipItem={equipItem} />
+            <Message notificationMessage={msg} classStr={classStr} invEquip={true}/>
         </div>
     )
-}
+});
 
 const mapStateToProps = state => {
     return {
         itemCount: state.inventory.itemCount,
         playerStats: state.player.stats,
         playerEquip: state.player.equipped,
-        currentPlayerHp: state.gameData.currentPlayerHp
+        currentPlayerHp: state.gameData.currentPlayerHp,
+        globalTimeout: state.gameData.globalTimeout
     }
 }
 

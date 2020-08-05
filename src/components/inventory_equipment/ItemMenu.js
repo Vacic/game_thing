@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ItemMenu({ item, hideMenuState, hideMenu, handleUseItem, equipItem, removeItem, equippedItem, unequipItem }) {
+function ItemMenu({ item, hideMenuState, hideMenu, handleUseItem, equipItem, removeItem, unequipItem }) {
     if (!unequipItem) { return (
         <div className={hideMenuState ? "item-menu hide" : "item-menu"} onMouseLeave={hideMenu}>
             {item.stats.heal ? <div className="item-use" onClick={() => {handleUseItem(item)}}>Use</div> : <div className="item-equip" onClick={() => equipItem(item)}>Equip</div>}

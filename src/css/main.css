@@ -261,6 +261,8 @@ body {
       padding: 0;
       border: 0; }
       .container .location-selection-mobile .location-card .location-name {
+        position: relative;
+        right: 20px;
         font-size: 0rem;
         opacity: 0;
         transition: all 0.3s ease-in-out; }
@@ -429,6 +431,34 @@ body {
     display: flex;
     padding: 0 15px 15px 15px;
     justify-content: space-between; }
+  .container .msg-success, .container .msg-danger {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 12px;
+    margin-left: -160px;
+    left: 50%;
+    bottom: 30px;
+    height: 50px;
+    width: 320px;
+    opacity: 1;
+    border-radius: 10px;
+    border-top: 2px solid #65c6df;
+    border-left: 2px solid #65c6df;
+    background-color: #155363;
+    overflow: hidden;
+    transition: all 1s cubic-bezier(0, 0.9, 0.4, 1); }
+    .container .msg-success img, .container .msg-danger img {
+      width: 40px;
+      height: 40px; }
+  .container .msg-danger {
+    background-color: #ec6767; }
+  .container .hide {
+    visibility: hidden;
+    bottom: -50px;
+    opacity: 0; }
 
 @media screen and (min-width: 1601) {
   .container {

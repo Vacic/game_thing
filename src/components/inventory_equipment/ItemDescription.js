@@ -12,7 +12,7 @@ function ItemDescription({ item, hideDescriptionState, hideDescription }) {
                 {def && <p>Defense: <span>{def}</span></p>}
                 {eva && <p>Evasion: <span>{eva}</span></p>}
                 {dmg && <p>Damage: <span>{dmg}</span></p>}
-                {attSpd && <p>Attack Speed: <span>{attSpd+1}</span></p>}
+                {attSpd && <p>Attack Speed: <span>{attSpd}</span></p>}
             </div>
         </div>
     )

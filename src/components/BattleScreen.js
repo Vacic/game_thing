@@ -2,7 +2,7 @@ import React from 'react';
 import Enemy from './enemy/Enemy.js';
 import Player from './player/Player.js';
 
-export default function BattleScreen({ playerAttProgressDiv, playerHpBar, playerDiv, enemyHpBar, enemyDiv, enemyAttProgressDiv, playerAttStatus, enemyAttStatus }) {
+const BattleScreen = React.memo(({ playerAttProgressDiv, playerHpBar, playerDiv, enemyHpBar, enemyDiv, enemyAttProgressDiv, playerAttStatus, enemyAttStatus }) => {
     return (
         <div className="battle-screen">
             <Player
@@ -20,4 +20,6 @@ export default function BattleScreen({ playerAttProgressDiv, playerHpBar, player
             />
         </div>
     )
-}
+});
+
+export default BattleScreen;

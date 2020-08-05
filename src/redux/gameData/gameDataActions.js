@@ -1,4 +1,4 @@
-import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, SET_LOADING, ENEMY_TAKES_DAMAGE, PLAYER_TAKES_DAMAGE, SET_CURRENT_LOCATION } from './gameDataTypes';
+import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, SET_LOADING, ENEMY_TAKES_DAMAGE, PLAYER_TAKES_DAMAGE, SET_CURRENT_LOCATION, SET_NOTIFICATION_MESSAGE, SET_NOTIFICATION_CLASS } from './gameDataTypes';
 
 export const setCurrentEnemyHp = currentEnemyHp => {
     return {
@@ -46,5 +46,19 @@ export const setCurrentLocation = location => {
     return {
         type: SET_CURRENT_LOCATION,
         location
+    }
+}
+
+export const setNotificationMessage = message => {
+    return {
+        type: SET_NOTIFICATION_MESSAGE,
+        message
+    }
+}
+
+export const setNotificationClass = classStr => {
+    return {
+        type: SET_NOTIFICATION_CLASS,
+        classStr
     }
 }

@@ -1,13 +1,23 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import BattleScreen from './BattleScreen';
 import LocationSelection from './location/LocationSelection';
-import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading, enemyTakesDamage, playerTakesDamage, updateItemCount, setCurrentLocation } from '../redux';
+import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading, enemyTakesDamage, playerTakesDamage, updateItemCount, setCurrentLocation, setNotificationMessage, setNotificationClass } from '../redux';
 import InvAndEquip from './InvAndEquip';
+import Message from './Message';
 
 
-class GameContainer extends Component {
+class GameContainer extends PureComponent {
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~GAME LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~  
+        constructor(props) {
+            super(props)
+        
+            this.state = {
+                msg: {},
+                classStr: 'msg-success hide'
+            }
+        }
+        
         initCombat = (location) => {
             if(!this.props.loadingEnemy) {
                 this.resetActions();
@@ -36,15 +46,17 @@ class GameContainer extends Component {
         }
         // Resets animations and attack intervals
         resetActions = () => {
-            this.playerAttProgressDiv.style.animation = 'none';
-            this.enemyAttProgressDiv.style.animation = 'none';
-            this.playerAttStatus.classList.remove('dmg');
-            this.enemyAttStatus.classList.remove('dmg');
-            this.playerAttStatus.classList.remove('miss');
-            this.enemyAttStatus.classList.remove('miss');
-            this.resetFlow = this.enemyAttProgressDiv.offsetHeight;  // resets the flow of the animations
-            clearInterval(this.playerAttInterval);
-            clearInterval(this.enemyAttInterval);
+            if(this.playerAttInterval) {
+                this.playerAttProgressDiv.style.animation = 'none';
+                this.enemyAttProgressDiv.style.animation = 'none';
+                this.playerAttStatus.classList.remove('dmg');
+                this.enemyAttStatus.classList.remove('dmg');
+                this.playerAttStatus.classList.remove('miss');
+                this.enemyAttStatus.classList.remove('miss');
+                this.resetFlow = this.enemyAttProgressDiv.offsetHeight;  // resets the flow of the animations
+                clearInterval(this.playerAttInterval);
+                clearInterval(this.enemyAttInterval);
+            }
         }
 
         shouldAttHit = (eva) => {
@@ -57,7 +69,13 @@ class GameContainer extends Component {
         }
 
         calcDef = (dmg, def) => {
-            return def <= 10 ? def <= 8 ? Math.floor(dmg - (def / 8)) : Math.ceil(dmg - (def / 8)) :  Math.floor(dmg - ((dmg * (def / 5)) / 100));
+            return def <= 10 ? (dmg - Math.ceil(def / 5)) : Math.ceil(dmg - ((def * (def / 5)) / 20));
+        }
+
+        setMessage = (msg, classStr) => {
+            this.setState({ msg, classStr })
+
+            setTimeout(() => this.setState({ classStr: `${classStr} hide` }), this.props.globalTimeout);
         }
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~PLAYER LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         startPlayerAttack = (dmg, attSpd, enemyDef, enemyEva, location = null) => {
@@ -106,8 +124,8 @@ class GameContainer extends Component {
     
         playerTakesDamage = (dmg, def, eva) => {
             if (this.shouldAttHit(eva)) {
-                dmg = this.calcDef(dmg, def);
                 dmg = this.calcDmg(dmg);
+                dmg = this.calcDef(dmg, def);
 
                 this.playerAttStatus.innerHTML = `-${dmg}`;
                 this.playerAttStatus.classList.remove('miss');
@@ -138,16 +156,15 @@ class GameContainer extends Component {
             const drops = this.props.currentEnemy.drops;
             const dropKeys = Object.keys(this.props.currentEnemy.drops);
             const chance = Math.ceil(Math.random()*10000)/100;
-            console.log(chance);
             dropKeys.forEach(drop => {
                 if (chance >= drops[drop].min && chance < drops[drop].max) {
-                    console.log(drop);
                     let newItemCount = { ...this.props.invItemCount };
                     newItemCount[drop] = (newItemCount[drop] || 0) + 1;
                     this.props.updateItemCount(newItemCount);
+                    this.setMessage(this.props.itemList[drop], 'msg-success');
                 }
             });
-    
+            
             setTimeout(() => {
                 this.enemyDiv.classList.remove('dead');
             }, this.props.globalTimeout);
@@ -155,8 +172,8 @@ class GameContainer extends Component {
         
         enemyTakesDamage = (dmg, def, eva) => {
             if (this.shouldAttHit(eva)) {
-                dmg = this.calcDef(dmg, def);
                 dmg = this.calcDmg(dmg);
+                dmg = this.calcDef(dmg, def);
 
                 this.enemyAttStatus.innerHTML = `-${dmg}`;
                 this.enemyAttStatus.classList.remove('miss');
@@ -194,6 +211,8 @@ class GameContainer extends Component {
                     handleUseItem={this.handleUseItem} 
                     playerHpBar={this.playerHpBar}
                 />
+
+                <Message notificationMessage={this.state.msg} classStr={this.state.classStr} gameContainer={true} />
             </div>
         )
     }
@@ -204,6 +223,7 @@ const mapStateToProps = state => {
         locationEnemies: state.locationEnemies,
         playerStats: state.player.stats,
         invItemCount: state.inventory.itemCount,
+        itemList: state.items,
         currentEnemyHp: state.gameData.currentEnemyHp,
         currentPlayerHp: state.gameData.currentPlayerHp,
         globalTimeout: state.gameData.globalTimeout,
@@ -218,6 +238,8 @@ const mapDispatchToProps = dispatch => {
         setCurrentEnemyStats: currentEnemy => dispatch(setCurrentEnemyStats(currentEnemy)),
         setCurrentPlayerHp: currentPlayerHp => dispatch(setCurrentPlayerHp(currentPlayerHp)),
         setCurrentLocation: location => dispatch(setCurrentLocation(location)),
+        setNotificationMessage: message => dispatch(setNotificationMessage(message)),
+        setNotificationClass: classStr => dispatch(setNotificationClass(classStr)),
         setLoading: (isLoading) => dispatch(setLoading(isLoading)),
         enemyTakesDmg: damage => dispatch(enemyTakesDamage(damage)),
         playerTakesDmg: damage => dispatch(playerTakesDamage(damage)),
