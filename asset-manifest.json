@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/game_thing/static/css/main.4598d746.chunk.css",
+    "main.css": "/game_thing/static/css/main.00080a3c.chunk.css",
     "main.js": "/game_thing/static/js/main.9b201463.chunk.js",
     "main.js.map": "/game_thing/static/js/main.9b201463.chunk.js.map",
     "runtime-main.js": "/game_thing/static/js/runtime-main.cd607a02.js",
@@ -8,16 +8,16 @@
     "static/js/2.59578384.chunk.js": "/game_thing/static/js/2.59578384.chunk.js",
     "static/js/2.59578384.chunk.js.map": "/game_thing/static/js/2.59578384.chunk.js.map",
     "index.html": "/game_thing/index.html",
-    "precache-manifest.a8ebea838718ecb6f44ea7ee8f74409b.js": "/game_thing/precache-manifest.a8ebea838718ecb6f44ea7ee8f74409b.js",
+    "precache-manifest.da29584dc3947475d4d02d9bd59d5077.js": "/game_thing/precache-manifest.da29584dc3947475d4d02d9bd59d5077.js",
     "service-worker.js": "/game_thing/service-worker.js",
-    "static/css/main.4598d746.chunk.css.map": "/game_thing/static/css/main.4598d746.chunk.css.map",
+    "static/css/main.00080a3c.chunk.css.map": "/game_thing/static/css/main.00080a3c.chunk.css.map",
     "static/js/2.59578384.chunk.js.LICENSE.txt": "/game_thing/static/js/2.59578384.chunk.js.LICENSE.txt",
     "static/media/loading.png": "/game_thing/static/media/loading.a87f14b9.png"
   },
   "entrypoints": [
     "static/js/runtime-main.cd607a02.js",
     "static/js/2.59578384.chunk.js",
-    "static/css/main.4598d746.chunk.css",
+    "static/css/main.00080a3c.chunk.css",
     "static/js/main.9b201463.chunk.js"
   ]
 }
