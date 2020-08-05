@@ -15,6 +15,10 @@ export class LocationSelection extends PureComponent {
         this.state.hideMenu ? this.setState({ hideMenu: false }) : this.setState({ hideMenu: true })
     }
 
+    hideMenu = e => {
+        this.setState({ hideMenu: true })
+    }
+
     render() {
         const locationKeys = Object.keys(this.props.locations);
         return (
@@ -30,8 +34,8 @@ export class LocationSelection extends PureComponent {
                             initCombat={this.props.initCombat} 
                             img={this.props.locations[location].img} 
                             mobile={true}
-                            hideMenu={this.state.hideMenu}
-                            toggleMenu={this.toggleMenu}
+                            hideMenuState={this.state.hideMenu}
+                            hideMenu={this.hideMenu}
                         />
                     )}
                     <div className={this.state.hideMenu ? "mobile-dropdown-btn" : "mobile-dropdown-btn btn-opened"} onClick={this.toggleMenu} ref={this.menuButton}><span>&#x25bc;</span></div>
