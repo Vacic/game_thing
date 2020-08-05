@@ -1,4 +1,4 @@
-import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, SET_LOADING, ENEMY_TAKES_DAMAGE, PLAYER_TAKES_DAMAGE } from './gameDataTypes';
+import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, SET_LOADING, ENEMY_TAKES_DAMAGE, PLAYER_TAKES_DAMAGE, SET_CURRENT_LOCATION } from './gameDataTypes';
 
 export const setCurrentEnemyHp = currentEnemyHp => {
     return {
@@ -39,5 +39,12 @@ export const playerTakesDamage = damage => {
     return {
         type: PLAYER_TAKES_DAMAGE,
         damage
+    }
+}
+
+export const setCurrentLocation = location => {
+    return {
+        type: SET_CURRENT_LOCATION,
+        location
     }
 }

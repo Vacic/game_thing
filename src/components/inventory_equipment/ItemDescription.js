@@ -1,7 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
-function ItemDescription({ item, hideDescriptionState, hideDescription, playerStats }) {
+function ItemDescription({ item, hideDescriptionState, hideDescription }) {
     const {heal, hp, def, eva, dmg, attSpd} = item.stats;
     const name = item.name;
     return (
@@ -19,10 +18,4 @@ function ItemDescription({ item, hideDescriptionState, hideDescription, playerSt
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        playerStats: state.player.stats
-    }
-}
-
-export default connect(mapStateToProps)(ItemDescription);
+export default ItemDescription;

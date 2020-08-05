@@ -214,18 +214,18 @@ body {
   margin: auto;
   color: #f7f7f7;
   user-select: none; }
-  .container .location-selection {
+  .container .location-selection, .container .location-selection-mobile {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
     padding-bottom: 15px;
     border-bottom: 2px solid #2ca94b; }
-    .container .location-selection .location-card:hover {
+    .container .location-selection .location-card:hover, .container .location-selection-mobile .location-card:hover {
       transform: translate(2px, -2px);
       cursor: pointer;
       box-shadow: -2px 2px 5px rgba(38, 154, 184, 0.7), -1px 1px 5px rgba(38, 154, 184, 0.7); }
-    .container .location-selection .location-card {
+    .container .location-selection .location-card, .container .location-selection-mobile .location-card {
       position: relative;
       display: flex;
       flex: 1 1 29%;
@@ -237,11 +237,11 @@ body {
       border-radius: 10px;
       margin: 15px 15px 0px 15px;
       background-color: #155363;
-      transition: all 0.1s ease-in-out; }
-      .container .location-selection .location-card .location-img {
+      transition: all 0.2s ease-out; }
+      .container .location-selection .location-card .location-img, .container .location-selection-mobile .location-card .location-img {
         height: 60px;
         width: 60px; }
-      .container .location-selection .location-card .location-name {
+      .container .location-selection .location-card .location-name, .container .location-selection-mobile .location-card .location-name {
         text-transform: capitalize;
         font-size: 1.6rem;
         width: 100%;
@@ -249,6 +249,90 @@ body {
         font-weight: 500;
         line-height: 55px;
         overflow: hidden; }
+  .container .location-selection-mobile {
+    display: none;
+    grid-template-columns: 1fr;
+    padding: 0 8px 8px 8px; }
+    .container .location-selection-mobile .location-card {
+      display: flex;
+      align-items: center;
+      height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0; }
+      .container .location-selection-mobile .location-card .location-name {
+        font-size: 0rem;
+        opacity: 0;
+        transition: all 0.3s ease-in-out; }
+      .container .location-selection-mobile .location-card .location-img {
+        position: relative;
+        top: 20px;
+        left: 20px;
+        height: 0px;
+        width: 0px;
+        opacity: 0;
+        transition: all 0.3s ease-in-out; }
+    .container .location-selection-mobile .mobile-dropdown-btn:hover {
+      cursor: pointer;
+      box-shadow: -2px 2px 5px rgba(38, 154, 184, 0.7), -1px 1px 5px rgba(38, 154, 184, 0.7);
+      font-size: 0.95rem; }
+    .container .location-selection-mobile .mobile-dropdown-btn {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin: 0px;
+      height: 32px;
+      font-size: 0.8rem;
+      border-right: 2px solid #2ca94b;
+      border-top: 1px solid #2ca94b;
+      border-radius: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      background-color: #155363;
+      transition: all 0.3s ease-out; }
+      .container .location-selection-mobile .mobile-dropdown-btn span {
+        transition: all 0.5s ease-in-out; }
+    .container .location-selection-mobile .btn-opened {
+      border-radius: 10px;
+      margin-top: 8px; }
+      .container .location-selection-mobile .btn-opened span {
+        transform: rotate(180deg); }
+    .container .location-selection-mobile .show {
+      height: 50px;
+      margin: 8px 0px 0px 0px;
+      padding: 12px;
+      border-top: 2px solid #2ca94b;
+      border-right: 2px solid #2ca94b; }
+      .container .location-selection-mobile .show .location-name {
+        opacity: 1;
+        font-size: 1.2rem; }
+      .container .location-selection-mobile .show .location-img {
+        top: 0;
+        left: 0;
+        opacity: 1;
+        height: 40px;
+        width: 40px; }
+    .container .location-selection-mobile .first {
+      top: 0;
+      left: 0;
+      height: 50px;
+      margin: 8px 0px 0px 0px;
+      padding: 12px;
+      justify-content: center;
+      border-top: 2px solid #2ca94b;
+      border-right: 2px solid #2ca94b;
+      grid-row-start: 1;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0; }
+      .container .location-selection-mobile .first .location-name {
+        display: block; }
+      .container .location-selection-mobile .first .location-img {
+        display: block; }
+    .container .location-selection-mobile .first-card-opened {
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px; }
   .container .battle-screen {
     display: flex;
     justify-content: space-between;
@@ -364,10 +448,10 @@ body {
 @media screen and (max-width: 768px) {
   .container {
     width: 85%; }
-    .container .location-selection .location-card {
-      flex: 1 1 40%; }
-      .container .location-selection .location-card .location-name {
-        font-size: 1.2rem; }
+    .container .location-selection {
+      display: none; }
+    .container .location-selection-mobile {
+      display: grid; }
     .container .battle-screen .player, .container .battle-screen .enemy {
       width: 45%; }
       .container .battle-screen .player .player-card .name, .container .battle-screen .player .enemy-card .name, .container .battle-screen .enemy .player-card .name, .container .battle-screen .enemy .enemy-card .name {
@@ -387,13 +471,6 @@ body {
 @media screen and (max-width: 500px) {
   .container {
     width: 95%; }
-    .container .location-selection {
-      padding-bottom: 9px; }
-      .container .location-selection .location-card {
-        margin: 9px 8px 0px 8px;
-        flex: 1 1 100%; }
-        .container .location-selection .location-card .location-name {
-          font-size: 1.2rem; }
     .container .battle-screen {
       padding: 8px; }
       .container .battle-screen .player, .container .battle-screen .enemy {

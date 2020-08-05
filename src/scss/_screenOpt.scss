@@ -31,12 +31,11 @@
         width: 85%;
 
         .location-selection {
-            .location-card {
-                flex: 1 1 40%;
-                .location-name {
-                    font-size: 1.2rem;
-                }
-            }
+            display: none;
+        }
+
+        .location-selection-mobile {
+            display: grid;
         }
 
         .battle-screen {
@@ -76,19 +75,6 @@
 @include mediaXsm {
     .container {
         width: 95%;
-
-        .location-selection {
-            padding-bottom: 9px;
-
-            .location-card {
-                margin: 9px 8px 0px 8px;
-                flex: 1 1 100%;
-
-                .location-name {
-                    font-size: 1.2rem;
-                }
-            }
-        }
 
         .battle-screen {
             padding: 8px;

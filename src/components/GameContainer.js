@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BattleScreen from './BattleScreen';
 import LocationSelection from './location/LocationSelection';
-import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading, enemyTakesDamage, playerTakesDamage, updateItemCount } from '../redux';
+import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading, enemyTakesDamage, playerTakesDamage, updateItemCount, setCurrentLocation } from '../redux';
 import InvAndEquip from './InvAndEquip';
 
 
@@ -30,7 +30,7 @@ class GameContainer extends Component {
             const randEnemy = Math.floor(Math.random() * (enemies.length - 1) + 1); // Randomizes the enemy
             const enemyStats = this.props.locationEnemies[location][enemies[randEnemy]]; // Get stats form the random enemy
 
-
+            this.props.setCurrentLocation(location);
             this.props.setCurrentEnemyStats(enemyStats);
             this.props.setCurrentEnemyHp(enemyStats.hp);
         }
@@ -216,8 +216,9 @@ const mapDispatchToProps = dispatch => {
     return {
         setCurrentEnemyHp: currentEnemyHp => dispatch(setCurrentEnemyHp(currentEnemyHp)),
         setCurrentEnemyStats: currentEnemy => dispatch(setCurrentEnemyStats(currentEnemy)),
-        setLoading: (isLoading) => dispatch(setLoading(isLoading)),
         setCurrentPlayerHp: currentPlayerHp => dispatch(setCurrentPlayerHp(currentPlayerHp)),
+        setCurrentLocation: location => dispatch(setCurrentLocation(location)),
+        setLoading: (isLoading) => dispatch(setLoading(isLoading)),
         enemyTakesDmg: damage => dispatch(enemyTakesDamage(damage)),
         playerTakesDmg: damage => dispatch(playerTakesDamage(damage)),
         updateItemCount: itemCount => dispatch(updateItemCount(itemCount))
