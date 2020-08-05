@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 const Message = ({ notificationMessage, classStr, invEquip, gameContainer, str }) => {
     if(gameContainer) { return (
@@ -17,6 +16,4 @@ const Message = ({ notificationMessage, classStr, invEquip, gameContainer, str }
     }
 };
 
-
-
-export default (Message);
+export default Message;
