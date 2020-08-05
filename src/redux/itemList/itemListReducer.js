@@ -5,7 +5,7 @@ const itemListState = {
         name: 'Wooden Sword',
         type: 'weapon',
         stats: {
-            attSpd: 0.7,
+            attSpd: 1.7,
             dmg: 10
         }
     },
@@ -14,7 +14,7 @@ const itemListState = {
         name: 'Bronze Sword',
         type: 'weapon',
         stats: {
-            attSpd: 0.6,
+            attSpd: 1.6,
             dmg: 15
         }
     },
@@ -23,7 +23,7 @@ const itemListState = {
         name: 'Iron Sword',
         type: 'weapon',
         stats: {
-            attSpd: 0.6,
+            attSpd: 1.6,
             dmg: 20
         }
     },
@@ -32,7 +32,7 @@ const itemListState = {
         name: 'Iron Sword',
         type: 'weapon',
         stats: {
-            attSpd: 0.5,
+            attSpd: 1.5,
             dmg: 25
         }
     },
@@ -41,7 +41,7 @@ const itemListState = {
         name: 'Diamond Sword',
         type: 'weapon',
         stats: {
-            attSpd: 0.2,
+            attSpd: 1.2,
             dmg: 40
         }
     },

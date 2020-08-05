@@ -15,7 +15,7 @@ function InvAndEquip(props) {
         newPlayerEquip[item.type] = newPlayerEquip[item.type] ? newPlayerEquip[item.type] : 'empty slot';
 
         if (newPlayerEquip[item.type]==='empty slot' || item.name !== newPlayerEquip[item.type].name) { // App crashes if not checking for 'empty slow' because it tries to read newPlayerEquip[item.type].name
-            unequipItem(item, newPlayerEquip[item.type]);
+            unequipItem(playerEquip[item.type], newPlayerEquip[item.type]);
             const itemKeyName = item.name.toLowerCase().replace(' ', '_');
 
             newPlayerEquip[item.type] = item;
@@ -25,7 +25,7 @@ function InvAndEquip(props) {
             const prevPlayerHp = newPlayerStats.hp;
             const itemStatKeys = Object.keys(item.stats);
             itemStatKeys.forEach(key => {
-                if (key==='dmg') newPlayerStats[key] = item.stats[key];
+                if (key==='dmg' || key==='attSpd') newPlayerStats[key] = item.stats[key];
                 else newPlayerStats[key] = newPlayerStats[key] + item.stats[key];
             });
             if (item.type === 'weapon') newPlayerStats.weapon = newPlayerEquip.weapon.name;
