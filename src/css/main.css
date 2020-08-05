@@ -325,7 +325,8 @@ body {
       border-right: 2px solid #2ca94b;
       grid-row-start: 1;
       border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0; }
+      border-bottom-right-radius: 0;
+      z-index: 1; }
       .container .location-selection-mobile .first .location-name {
         display: block; }
       .container .location-selection-mobile .first .location-img {
