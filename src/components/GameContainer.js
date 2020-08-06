@@ -124,8 +124,8 @@ class GameContainer extends PureComponent {
     
         playerTakesDamage = (dmg, def, eva) => {
             if (this.shouldAttHit(eva)) {
-                dmg = this.calcDmg(dmg);
                 dmg = this.calcDef(dmg, def);
+                dmg = this.calcDmg(dmg);
 
                 this.playerAttStatus.innerHTML = `-${dmg}`;
                 this.playerAttStatus.classList.remove('miss');
@@ -172,8 +172,8 @@ class GameContainer extends PureComponent {
         
         enemyTakesDamage = (dmg, def, eva) => {
             if (this.shouldAttHit(eva)) {
-                dmg = this.calcDmg(dmg);
                 dmg = this.calcDef(dmg, def);
+                dmg = this.calcDmg(dmg);
 
                 this.enemyAttStatus.innerHTML = `-${dmg}`;
                 this.enemyAttStatus.classList.remove('miss');

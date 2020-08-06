@@ -16,40 +16,42 @@ const InvAndEquip = React.memo((props) => {
 
     const equipItem = item => {
         let newPlayerEquip = {...playerEquip};
-        newPlayerEquip[item.type] = newPlayerEquip[item.type] ? newPlayerEquip[item.type] : 'empty slot';
-
-        if (newPlayerEquip[item.type]==='empty slot' || item.name !== newPlayerEquip[item.type].name) { // App crashes if not checking for 'empty slow' because it tries to read newPlayerEquip[item.type].name
-            unequipItem(playerEquip[item.type], newPlayerEquip[item.type]);
-            const itemKeyName = item.name.toLowerCase().replace(' ', '_');
-
-            newPlayerEquip[item.type] = item;
-            updatePlayerEquipment(newPlayerEquip);
-
-            let newPlayerStats = {...playerStats};
-            const prevPlayerHp = newPlayerStats.hp;
-            const itemStatKeys = Object.keys(item.stats);
-            itemStatKeys.forEach(key => {
-                if (key==='dmg' || key==='attSpd') newPlayerStats[key] = item.stats[key];
-                else newPlayerStats[key] = newPlayerStats[key] + item.stats[key];
-            });
-            if (item.type === 'weapon') newPlayerStats.weapon = newPlayerEquip.weapon.name;
-            updatePlayerStats(newPlayerStats);
-            if (newPlayerStats.hp > prevPlayerHp) {
-                const newCurrentHp = (newPlayerStats.hp - prevPlayerHp) + currentPlayerHp
-                setCurrentPlayerHp(newCurrentHp);
-                playerHpBar.style.width = `${Math.floor((newCurrentHp/newPlayerStats.hp)*100)}%`;
-            } 
-
-            if (itemCount[itemKeyName] > 1) {
-                let newItemCount = { ...itemCount };
-                newItemCount[itemKeyName] = newItemCount[itemKeyName] - 1;
-                updateItemCount(newItemCount);
-            } else {
-                let newItemCount = { ...itemCount };
-                delete newItemCount[itemKeyName];
-                updateItemCount(newItemCount);
+        let newItemCount = { ...itemCount };
+        const prevPlayerHp = playerStats.hp;
+        const itemStatKeys = Object.keys(item.stats);
+        const itemKeyName = item.name.toLowerCase().replace(' ', '_');
+        const emptySlot = newPlayerEquip[item.type] ? false : true;
+        
+        
+        if (emptySlot || item.name !== newPlayerEquip[item.type].name) { // App crashes if not checking for 'empty slow' because it tries to read newPlayerEquip[item.type].name
+        //  Decreasing item count from inventory
+        if (itemCount[itemKeyName] > 1) {
+            newItemCount[itemKeyName] = newItemCount[itemKeyName] - 1;
+            updateItemCount(newItemCount);
+        } else {
+            delete newItemCount[itemKeyName];
+            updateItemCount(newItemCount);
+        }
+        
+        // Unequip current item and get new player stats after the item has been unequipped
+        let newPlayerStats = unequipItem(playerEquip[item.type], emptySlot, newItemCount);
+        // Equip the new item
+        newPlayerEquip[item.type] = item;
+        updatePlayerEquipment(newPlayerEquip);
+        // Setting new player stats
+        itemStatKeys.forEach(key => {
+            switch(item.type) {
+                case 'weapon': newPlayerStats[key] = equipWeapon(item, key); break;
+                case 'boots': newPlayerStats[key] = equipBoots(item, key, newPlayerStats); break;
+                default: newPlayerStats[key] = newPlayerStats[key] + item.stats[key]; break;
             }
-
+        });
+        if (item.type === 'weapon') newPlayerStats.weapon = newPlayerEquip.weapon.name;
+        updatePlayerStats(newPlayerStats);
+        // Update currentPlayerHp
+        const newCurrentHp = (newPlayerStats.hp - prevPlayerHp) + currentPlayerHp
+        setCurrentPlayerHp(newCurrentHp);
+        playerHpBar.style.width = `${Math.floor((newCurrentHp/newPlayerStats.hp)*100)}%`;
         } else {
             setMsg({ str: `You already have the ${item.name} equipped`, img: item.img });
             setMsgClass('msg-danger');
@@ -57,29 +59,65 @@ const InvAndEquip = React.memo((props) => {
         }
     }
 
-    
-    const unequipItem = (item, emptySlot = false) => { // If the slot is empty don't run the code
+    const unequipItem = (item, emptySlot = false, prevItemCount = false) => { // If the slot is empty don't run the code // prevItemCount needed to update the inventory correctly
         if (!emptySlot) {
+            let newPlayerStats = {...playerStats};
             let newPlayerEquip = {...playerEquip};
+            const itemKeyName = item.name.toLowerCase().replace(' ', '_');
+            const itemStatKeys = Object.keys(item.stats);
+            // Remove equipped item
             delete newPlayerEquip[item.type];
             updatePlayerEquipment(newPlayerEquip);
-
-            let newPlayerStats = {...playerStats};
-            const itemStatKeys = Object.keys(item.stats);
+            // Update player stats
             itemStatKeys.forEach(key => {
-                if (key==='dmg') newPlayerStats[key] = 5;
-                else newPlayerStats[key] = newPlayerStats[key] - item.stats[key];
+                switch(item.type) {
+                    case 'weapon': newPlayerStats[key] = unequipWeapon(key); break;
+                    case 'boots': newPlayerStats[key] = unequipBoots(item, key, newPlayerStats); break;
+                    default: newPlayerStats[key] = newPlayerStats[key] - item.stats[key]; break;
+                }
             });
             if (item.type === 'weapon') newPlayerStats.weapon = 'Fists';
             updatePlayerStats(newPlayerStats);
-            if(item.stats.hp) setCurrentPlayerHp((currentPlayerHp-item.stats.hp))
-            playerHpBar.style.width = (currentPlayerHp>newPlayerStats.hp) ? '100%' : `${Math.floor((currentPlayerHp/newPlayerStats.hp)*100)}%`;
-
-            const itemKeyName = item.name.toLowerCase().replace(' ', '_');
-            let newItemCount = { ...itemCount };
-            newItemCount[itemKeyName] = (newItemCount[itemKeyName] || 0) + 1;
-            updateItemCount(newItemCount);
+            // Update currentPlayerHp
+            if(item.stats.hp) {
+                const newCurrentHp = currentPlayerHp-item.stats.hp;
+                setCurrentPlayerHp((newCurrentHp))
+                playerHpBar.style.width = `${Math.floor((newCurrentHp/newPlayerStats.hp)*100)}%`;
+            }
+            // Update inventory item count
+            if (prevItemCount) {
+                prevItemCount[itemKeyName] = (prevItemCount[itemKeyName] || 0) + 1;
+                updateItemCount(prevItemCount);
+            } else {
+                let newItemCount = {...itemCount};
+                newItemCount[itemKeyName] = (newItemCount[itemKeyName] || 0) + 1;
+                updateItemCount(newItemCount);
+            }
+            return newPlayerStats;
+        } else {
+            return playerStats;
         }
+    }
+
+    const equipWeapon = (item, statKey) => {
+        if (playerEquip.boots !== undefined && playerEquip.boots.stats.attSpd !== undefined && statKey==='attSpd') return Math.round((item.stats[statKey] + playerEquip.boots.stats.attSpd) * 10) / 10;
+        else return item.stats[statKey];
+    }
+
+    const equipBoots = (item, statKey, playerStats) => {
+        if (statKey==='attSpd') return Math.round((playerStats[statKey] + item.stats[statKey]) * 10) / 10;
+        else return playerStats[statKey] + item.stats[statKey];
+    }
+
+    const unequipBoots = (item, statKey, playerStats) => {
+        if (statKey==='attSpd') return Math.round((playerStats[statKey] - item.stats[statKey]) * 10) / 10;
+        else return playerStats[statKey] - item.stats[statKey];
+    }
+
+    const unequipWeapon = (stat) => {
+        if (stat==='dmg') return 5;
+        else if (stat==='attSpd' && playerEquip.boots !== undefined && playerEquip.boots.stats.attSpd !== undefined) return Math.round((1 + playerEquip.boots.stats.attSpd) * 10) / 10;
+        else if (stat==='attSpd') return 1;
     }
 
     return (

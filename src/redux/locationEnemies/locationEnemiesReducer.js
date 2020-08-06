@@ -5,7 +5,7 @@ const locationEnemiesState = {
             name: 'Cow',
             hp: 50,
             dmg: 5,
-            attSpd: 2,
+            attSpd: 1.8,
             def: 5,
             eva: 2,
             drops: {
@@ -33,13 +33,14 @@ const locationEnemiesState = {
             attSpd: 1.5,
             def: 3,
             eva: 3,
-            drops: {
+            drops: {                
                 wooden_sword: { min: 0, max: 15 },
                 wooden_armor: { min: 15, max: 30 },
                 wooden_pants: { min: 30, max: 45 },
                 wooden_shield: { min: 45, max: 60 },
                 leather_boots: { min: 60, max: 75 },
-                wooden_helmet: { min: 75, max: 90 }
+                wooden_helmet: { min: 75, max: 90 },
+                cow_meat: { min: 90, max: 100 }
             }
         }
     },
