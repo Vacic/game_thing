@@ -9,16 +9,9 @@ const locationEnemiesState = {
             def: 5,
             eva: 2,
             drops: {
-                wooden_sword: { min: 0, max: 100 },
-                wooden_armor: { min: 0, max: 100 },
-                wooden_pants: { min: 0, max: 100 },
-                wooden_shield: { min: 0, max: 100 },
-                leather_boots: { min: 0, max: 100 },
-                wooden_helmet: { min: 0, max: 100 },
-                cow_meat: { min: 90, max: 100 }
-                // cow_meat: { min: 0, max: 65 },
-                // leather_boots: { min: 65, max: 75 },
-                // wooden_helmet: { min: 75, max: 85 }
+                cow_meat: { min: 0, max: 65 },
+                leather_boots: { min: 65, max: 75 },
+                wooden_helmet: { min: 75, max: 85 }
             }
         },
         chicken: {
@@ -47,7 +40,7 @@ const locationEnemiesState = {
                 wooden_shield: { min: 45, max: 60 },
                 leather_boots: { min: 60, max: 75 },
                 wooden_helmet: { min: 75, max: 90 },
-                cow_meat: { min: 90, max: 100 }
+                cow_meat: { min: 90, max: 95 }
             }
         }
     },
@@ -90,7 +83,7 @@ const locationEnemiesState = {
                 iron_shield: { min: 91, max: 92 },
                 iron_boots: { min: 92, max: 97 },
                 iron_helmet: { min: 97, max: 100 },
-                rations: { min: 15, max: 30}
+                first_aid_kit: { min: 15, max: 30}
             }
         },
         bandit_archer: {
@@ -105,7 +98,7 @@ const locationEnemiesState = {
                 bronze_helmet: { min: 20, max: 40 },
                 iron_boots: { min: 40, max: 41 },
                 iron_helmet: { min: 41, max: 42 },
-                rations: { min: 42, max: 72}
+                first_aid_kit: { min: 42, max: 72}
             }
         },
         bandit_swordsman: {
@@ -124,7 +117,7 @@ const locationEnemiesState = {
                 iron_armor: { min: 61, max: 60.2 },
                 iron_platelegs: { min: 60.2, max: 60.4 },
                 iron_shield: { min: 60.4, max: 60.6 },
-                rations: { min: 60.6, max: 85}
+                first_aid_kit: { min: 60.6, max: 85}
             }
         }
     },

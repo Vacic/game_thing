@@ -308,8 +308,8 @@ const itemListState = {
         }
     },
 
-    rations: {
-        img: process.env.PUBLIC_URL + '/item_imgs/cow_meat.png',
+    first_aid_kit: {
+        img: process.env.PUBLIC_URL + '/item_imgs/first_aid_kit.png',
         name: 'Rations',
         stats: {
             heal: 100
@@ -317,7 +317,7 @@ const itemListState = {
     },
 
     health_potion: {
-        img: process.env.PUBLIC_URL + '/item_imgs/cow_meat.png',
+        img: process.env.PUBLIC_URL + '/item_imgs/health_potion.png',
         name: 'Health Potion',
         stats: {
             heal: 200
