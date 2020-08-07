@@ -310,7 +310,7 @@ const itemListState = {
 
     first_aid_kit: {
         img: process.env.PUBLIC_URL + '/item_imgs/first_aid_kit.png',
-        name: 'Rations',
+        name: 'First Aid Kit',
         stats: {
             heal: 100
         }
