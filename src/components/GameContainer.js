@@ -117,15 +117,20 @@ class GameContainer extends PureComponent {
                 this.props.setCurrentPlayerHp(newHp);
                 this.playerHpBar.style.width = `${Math.floor((newHp/this.props.playerStats.hp)*100)}%`;
 
-                const itemKeyName = item.name.toLowerCase().replace(' ', '_');
+                const itemKeyName = item.name.toLowerCase().replace(/ /g, '_');
                 if (this.props.invItemCount[itemKeyName] > 1) {
                     let newItemCount = { ...this.props.invItemCount };
                     newItemCount[itemKeyName] = newItemCount[itemKeyName] - 1;
                     this.props.updateItemCount(newItemCount);
+                    console.log('-1')
                 } else {
                     let newItemCount = { ...this.props.invItemCount };
+                    console.log(newItemCount)
+                    console.log(itemKeyName)
+                    console.log(newItemCount[itemKeyName])
                     delete newItemCount[itemKeyName];
                     this.props.updateItemCount(newItemCount);
+                    console.log('deleted')
                 }
             } else {
                 console.log('Congratulations, You Did The Impossible');
