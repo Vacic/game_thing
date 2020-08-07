@@ -19,7 +19,7 @@ const itemListState = {
         }
     },
     iron_sword: {
-        img: process.env.PUBLIC_URL + '/item_imgs/wooden_sword.png',
+        img: process.env.PUBLIC_URL + '/item_imgs/iron_sword.png',
         name: 'Iron Sword',
         type: 'weapon',
         stats: {
@@ -28,8 +28,8 @@ const itemListState = {
         }
     },
     steel_sword: {
-        img: process.env.PUBLIC_URL + '/item_imgs/wooden_sword.png',
-        name: 'Iron Sword',
+        img: process.env.PUBLIC_URL + '/item_imgs/steel_sword.png',
+        name: 'Steel Sword',
         type: 'weapon',
         stats: {
             attSpd: 1.5,
@@ -37,7 +37,7 @@ const itemListState = {
         }
     },
     diamond_sword: {
-        img: process.env.PUBLIC_URL + '/item_imgs/wooden_sword.png',
+        img: process.env.PUBLIC_URL + '/item_imgs/diamond_sword.png',
         name: 'Diamond Sword',
         type: 'weapon',
         stats: {
@@ -66,7 +66,7 @@ const itemListState = {
         }
     },
     iron_shield: {
-        img: process.env.PUBLIC_URL + '/item_imgs/wooden_shield.png',
+        img: process.env.PUBLIC_URL + '/item_imgs/iron_shield.png',
         name: 'Iron Shield',
         type: 'shield',
         stats: {
@@ -75,7 +75,7 @@ const itemListState = {
         }
     },
     steel_shield: {
-        img: process.env.PUBLIC_URL + '/item_imgs/wooden_shield.png',
+        img: process.env.PUBLIC_URL + '/item_imgs/steel_shield.png',
         name: 'Steel Shield',
         type: 'shield',
         stats: {
@@ -84,7 +84,7 @@ const itemListState = {
         }
     },
     diamond_shield: {
-        img: process.env.PUBLIC_URL + '/item_imgs/wooden_shield.png',
+        img: process.env.PUBLIC_URL + '/item_imgs/diamond_shield.png',
         name: 'Diamond Shield',
         type: 'shield',
         stats: {
