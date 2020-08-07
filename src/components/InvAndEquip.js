@@ -15,7 +15,7 @@ const InvAndEquip = React.memo((props) => {
         let newItemCount = { ...itemCount };
         const prevPlayerHp = playerStats.hp;
         const itemStatKeys = Object.keys(item.stats);
-        const itemKeyName = item.name.toLowerCase().replace(' ', '_');
+        const itemKeyName = item.name.toLowerCase().replace(/ /g, '_');
         const emptySlot = newPlayerEquip[item.type] ? false : true;
         
         
@@ -57,7 +57,7 @@ const InvAndEquip = React.memo((props) => {
         if (!emptySlot) {
             let newPlayerStats = {...playerStats};
             let newPlayerEquip = {...playerEquip};
-            const itemKeyName = item.name.toLowerCase().replace(' ', '_');
+            const itemKeyName = item.name.toLowerCase().replace(/ /g, '_');
             const itemStatKeys = Object.keys(item.stats);
             // Remove equipped item
             delete newPlayerEquip[item.type];

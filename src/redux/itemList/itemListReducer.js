@@ -10,7 +10,7 @@ const itemListState = {
         }
     },
     bronze_sword: {
-        img: process.env.PUBLIC_URL + '/item_imgs/wooden_sword.png',
+        img: process.env.PUBLIC_URL + '/item_imgs/bronze_sword.png',
         name: 'Bronze Sword',
         type: 'weapon',
         stats: {
@@ -57,7 +57,7 @@ const itemListState = {
         }
     },
     bronze_shield: {
-        img: process.env.PUBLIC_URL + '/item_imgs/wooden_shield.png',
+        img: process.env.PUBLIC_URL + '/item_imgs/bronze_shield.png',
         name: 'Bronze Shield',
         type: 'shield',
         stats: {
