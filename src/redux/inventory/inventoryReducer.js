@@ -1,19 +1,7 @@
 import { UPDATE_ITEM_COUNT, REDUCE_SINGLE_ITEM_COUNT } from "./inventoryTypes";
 
 const inventoryState = {
-    itemCount: {
-        wooden_sword: 1,
-        bronze_sword: 1,
-        iron_sword: 1,
-        steel_sword: 1,
-        diamond_sword: 1,
-        wooden_shield: 1,
-        bronze_shield: 1,
-        iron_shield: 1,
-        steel_shield: 1,
-        diamond_shield: 1,
-
-    }
+    itemCount: {}
 }
 
 const inventoryReducer = (state = inventoryState, action) => {
