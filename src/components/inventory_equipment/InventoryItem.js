@@ -13,12 +13,12 @@ function InventoryItem(props) {
     }
 
     const { hideMenuState, hideDescriptionState, showDescription, hideDescription, toggleMenu, hideMenu, itemDiv } = props; // From HOC
-    const { itemCount, itemList, handleUseItem, invItemName, equipItem } = props;
-    const item = itemList[invItemName];
+    const { itemCount, itemList, handleUseItem, itemName, equipItem } = props;
+    const item = itemList[itemName];
     return (
         <div className="inv-item" onMouseEnter={showDescription} onMouseLeave={hideDescription} onClick={toggleMenu} ref={itemDiv} >
             <img src={item.img ? item.img : chickenMeat} alt=""/>
-            <div className="item-count">{itemCount[invItemName]}</div>
+            <div className="item-count">{itemCount[itemName]}</div>
 
             <ItemMenu 
                 hideMenuState={hideMenuState} 

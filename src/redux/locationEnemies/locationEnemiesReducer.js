@@ -9,9 +9,16 @@ const locationEnemiesState = {
             def: 5,
             eva: 2,
             drops: {
-                cow_meat: { min: 0, max: 65 },
-                leather_boots: { min: 65, max: 75 },
-                wooden_helmet: { min: 75, max: 85 }
+                wooden_sword: { min: 0, max: 100 },
+                wooden_armor: { min: 0, max: 100 },
+                wooden_pants: { min: 0, max: 100 },
+                wooden_shield: { min: 0, max: 100 },
+                leather_boots: { min: 0, max: 100 },
+                wooden_helmet: { min: 0, max: 100 },
+                cow_meat: { min: 90, max: 100 }
+                // cow_meat: { min: 0, max: 65 },
+                // leather_boots: { min: 65, max: 75 },
+                // wooden_helmet: { min: 75, max: 85 }
             }
         },
         chicken: {

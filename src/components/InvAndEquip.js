@@ -1,18 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Inventory from './inventory_equipment/Inventory';
 import Equipment from './inventory_equipment/Equipment';
 import { updatePlayerStats, updatePlayerEquipment } from '../redux/player/playerAction';
 import { updateItemCount, setCurrentPlayerHp } from '../redux';
-import Message from './Message';
 
 const InvAndEquip = React.memo((props) => {
-    const { handleUseItem, playerHpBar } = props // From Game Container
-    const { itemCount, playerStats, playerEquip, currentPlayerHp, globalTimeout } = props // State
+    const { handleUseItem, playerHpBar, setMessage } = props // From Game Container
+    const { itemCount, playerStats, playerEquip, currentPlayerHp } = props // State
     const { updatePlayerStats, updatePlayerEquipment, updateItemCount, setCurrentPlayerHp } = props // Dispatch
-
-    const [msg, setMsg] = useState({});
-    const [classStr, setMsgClass] = useState('msg-danger hide');
 
     const equipItem = item => {
         let newPlayerEquip = {...playerEquip};
@@ -53,9 +49,7 @@ const InvAndEquip = React.memo((props) => {
         setCurrentPlayerHp(newCurrentHp);
         playerHpBar.style.width = `${Math.floor((newCurrentHp/newPlayerStats.hp)*100)}%`;
         } else {
-            setMsg({ str: `You already have the ${item.name} equipped`, img: item.img });
-            setMsgClass('msg-danger');
-            setTimeout(() => setMsgClass('msg-danger hide'), globalTimeout);
+            setMessage({item, class: 'msg-danger', str:'You have already equipped'});
         }
     }
 
@@ -124,7 +118,6 @@ const InvAndEquip = React.memo((props) => {
         <div className="inv-equip">
             <Equipment unequipItem={unequipItem} />
             <Inventory handleUseItem={handleUseItem} equipItem={equipItem} />
-            <Message notificationMessage={msg} classStr={classStr} invEquip={true}/>
         </div>
     )
 });

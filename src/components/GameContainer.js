@@ -13,26 +13,22 @@ class GameContainer extends PureComponent {
             super(props)
         
             this.state = {
-                msg: {},
-                classStr: 'msg-success hide'
+                msg: [],
+                hideMsg: true
             }
         }
         
         initCombat = (location) => {
-            if(!this.props.loadingEnemy) {
-                this.resetActions();
-                this.props.setLoading(true);
-                setTimeout(() => {
-                    this.props.setLoading(false); // Makes it so the code can't be run untill the timeout fires off
-                    this.enemyHpBar.style.width = '100%'; // Whenever a new enemy is called the hp is reset to 100%
-                    this.getEnemy(location);
-                    
-                    this.startPlayerAttack(this.props.playerStats.dmg, this.props.playerStats.attSpd, this.props.currentEnemy.def, this.props.currentEnemy.eva, location)
-                    this.startEnemyAttack(this.props.currentEnemy.dmg, this.props.currentEnemy.attSpd, this.props.playerStats.def, this.props.playerStats.eva)
-                }, this.props.globalTimeout);
-            } else {
-                console.log('Please wait for an enemy to load');
-            }
+            this.resetActions();
+            this.props.setLoading(true);
+            this.loadingTimeout = setTimeout(() => {
+                this.props.setLoading(false); // Makes it so the code can't be run untill the timeout fires off
+                this.enemyHpBar.style.width = '100%'; // Whenever a new enemy is called the hp is reset to 100%
+                this.getEnemy(location);
+                
+                this.startPlayerAttack(this.props.playerStats.dmg, this.props.playerStats.attSpd, this.props.currentEnemy.def, this.props.currentEnemy.eva, location)
+                this.startEnemyAttack(this.props.currentEnemy.dmg, this.props.currentEnemy.attSpd, this.props.playerStats.def, this.props.playerStats.eva)
+            }, this.props.globalTimeout);
         }
         
         getEnemy = (location) => {
@@ -56,6 +52,7 @@ class GameContainer extends PureComponent {
                 this.resetFlow = this.enemyAttProgressDiv.offsetHeight;  // resets the flow of the animations
                 clearInterval(this.playerAttInterval);
                 clearInterval(this.enemyAttInterval);
+                clearTimeout(this.loadingTimeout);
             }
         }
 
@@ -72,10 +69,23 @@ class GameContainer extends PureComponent {
             return def <= 10 ? (dmg - Math.ceil(def / 5)) : Math.ceil(dmg - ((def * (def / 5)) / 20));
         }
 
-        setMessage = (msg, classStr) => {
-            this.setState({ msg, classStr })
+        setMessage = (msg) => {
+            if (this.timeout) clearTimeout(this.timeout);
+            this.setState({ hideMsg: false });
+            
+            let newMsg = this.state.msg.slice();
+            newMsg.unshift(msg);
+            this.setState({msg: newMsg});
 
-            setTimeout(() => this.setState({ classStr: `${classStr} hide` }), this.props.globalTimeout);
+            setTimeout(() => {
+                let newNewMsg = this.state.msg.slice();
+                newNewMsg.pop();
+                this.setState({msg: newNewMsg});
+            }, 2000)
+
+            this.timeout = setTimeout(() => {
+                this.setState({ hideMsg: true });
+            }, 1500);
         }
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~PLAYER LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         startPlayerAttack = (dmg, attSpd, enemyDef, enemyEva, location = null) => {
@@ -161,7 +171,7 @@ class GameContainer extends PureComponent {
                     let newItemCount = { ...this.props.invItemCount };
                     newItemCount[drop] = (newItemCount[drop] || 0) + 1;
                     this.props.updateItemCount(newItemCount);
-                    this.setMessage(this.props.itemList[drop], 'msg-success');
+                    this.setMessage({item: this.props.itemList[drop], class:'msg-success', str:'You have recieved'});
                 }
             });
             
@@ -210,9 +220,11 @@ class GameContainer extends PureComponent {
                 <InvAndEquip 
                     handleUseItem={this.handleUseItem} 
                     playerHpBar={this.playerHpBar}
+                    setMessage={this.setMessage}
                 />
-
-                <Message notificationMessage={this.state.msg} classStr={this.state.classStr} gameContainer={true} />
+                <div className={this.state.hideMsg ? 'msg hide' : 'msg'}>
+                    {this.state.msg.map((msg, i) => <Message key={i} msg={msg} i={i} />)}
+                </div>
             </div>
         )
     }

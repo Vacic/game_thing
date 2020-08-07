@@ -391,9 +391,7 @@ body {
       .container .battle-screen .player .player-card .player-img, .container .battle-screen .player .player-card .enemy-img, .container .battle-screen .player .player-card .loading-img, .container .battle-screen .player .enemy-card .player-img, .container .battle-screen .player .enemy-card .enemy-img, .container .battle-screen .player .enemy-card .loading-img, .container .battle-screen .enemy .player-card .player-img, .container .battle-screen .enemy .player-card .enemy-img, .container .battle-screen .enemy .player-card .loading-img, .container .battle-screen .enemy .enemy-card .player-img, .container .battle-screen .enemy .enemy-card .enemy-img, .container .battle-screen .enemy .enemy-card .loading-img {
         width: 100%; }
       .container .battle-screen .player .player-card .loading-img, .container .battle-screen .player .enemy-card .loading-img, .container .battle-screen .enemy .player-card .loading-img, .container .battle-screen .enemy .enemy-card .loading-img {
-        animation: loading 0.8s linear;
-        animation-iteration-count: 1.25;
-        animation-delay: 0.01s; }
+        animation: loading 0.8s linear infinite; }
       .container .battle-screen .player .attack-bar .weapon-name, .container .battle-screen .enemy .attack-bar .weapon-name {
         position: relative;
         top: 4px; }
@@ -431,34 +429,43 @@ body {
     display: flex;
     padding: 0 15px 15px 15px;
     justify-content: space-between; }
-  .container .msg-success, .container .msg-danger {
+  .container .msg {
     position: fixed;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    padding: 12px;
+    flex-direction: column;
     margin-left: -160px;
     left: 50%;
     bottom: 30px;
-    height: 50px;
     width: 320px;
+    min-height: 50px;
     opacity: 1;
-    border-radius: 10px;
-    border-top: 2px solid #65c6df;
-    border-left: 2px solid #65c6df;
-    background-color: #155363;
     overflow: hidden;
-    transition: all 1s cubic-bezier(0, 0.9, 0.4, 1); }
-    .container .msg-success img, .container .msg-danger img {
-      width: 40px;
-      height: 40px; }
-  .container .msg-danger {
-    background-color: #ec6767; }
+    transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
+    z-index: 2; }
+    .container .msg .msg-success, .container .msg .msg-danger {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+      padding: 12px;
+      height: 50px;
+      border-radius: 10px;
+      border-top: 2px solid #65c6df;
+      border-left: 2px solid #65c6df;
+      margin-bottom: 15px;
+      transition: all 1s cubic-bezier(0, 0.9, 0.4, 1); }
+      .container .msg .msg-success img, .container .msg .msg-danger img {
+        width: 40px;
+        height: 40px; }
+    .container .msg .msg-success {
+      background-color: #155363; }
+    .container .msg .msg-danger {
+      background-color: #ec6767; }
   .container .hide {
     visibility: hidden;
     bottom: -50px;
-    opacity: 0; }
+    opacity: 0;
+    overflow: hidden; }
 
 @media screen and (min-width: 1601) {
   .container {

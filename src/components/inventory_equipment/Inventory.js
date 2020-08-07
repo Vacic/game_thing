@@ -8,7 +8,7 @@ function Inventory({ itemCount, handleUseItem, equipItem }) {
         <div className="inventory">
             <h3>Inventory</h3>
             <div className="inv-list">
-                {InvItemNames.map((invItemName, i) => <InventoryItem key={i} invItemName={invItemName} handleUseItem={handleUseItem} equipItem={equipItem} />)}
+                {InvItemNames.map((itemName, i) => <InventoryItem key={i} itemName={itemName} handleUseItem={handleUseItem} equipItem={equipItem} />)}
             </div>
         </div>
     )

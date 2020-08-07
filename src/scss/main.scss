@@ -263,9 +263,7 @@ body {
                 }
                 
                 .loading-img {
-                    animation: loading $loading-animation-time linear;
-                    animation-iteration-count: 1.25;
-                    animation-delay: 0.01s;
+                    animation: loading $loading-animation-time linear infinite;
                 }
             }
     
@@ -330,35 +328,49 @@ body {
         justify-content: space-between;
     }
 
-    .msg-success, .msg-danger {
+    .msg {
         position: fixed;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        text-align: center;
-        padding: 12px;
+        flex-direction: column;
         margin-left: -160px;
         left: 50%;
         bottom: 30px;
-        height: 50px;
         width: 320px;
+        min-height: 50px;
         opacity: 1;
-        border-radius: $border-radius;
-        border-top: 2px solid $secondary-color-lighter;
-        border-left: 2px solid $secondary-color-lighter;
-        background-color: $secondary-color-darker;
         overflow: hidden;
-        transition: all 1s cubic-bezier(0,.9,.4,1);
+        transition: all 1s cubic-bezier(0, .9, .4, 1);
+        z-index: 2;
 
-        img {
-            width: 40px;
-            height: 40px;
+        .msg-success, .msg-danger {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            padding: 12px;
+            height: 50px;
+            border-radius: $border-radius;
+            border-top: 2px solid $secondary-color-lighter;
+            border-left: 2px solid $secondary-color-lighter;
+            margin-bottom: 15px;
+            transition: all 1s cubic-bezier(0, .9, .4, 1);
+
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .msg-success {
+            background-color: $secondary-color-darker;
+        }
+
+        .msg-danger {
+            background-color: #ec6767;
         }
     }
 
-    .msg-danger {
-        background-color: #ec6767;
-    }
+    
 
     .hide {
         visibility: hidden;
