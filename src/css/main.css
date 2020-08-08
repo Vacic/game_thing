@@ -645,7 +645,7 @@ body {
     .container .modal-container .confirmation-modal {
       height: 140px;
       width: 260px;
-      margin-top: 45%;
+      margin-top: 40%;
       font-size: 0.8rem; }
       .container .modal-container .confirmation-modal span {
         display: none; }
@@ -665,7 +665,6 @@ body {
 
 @media screen and (max-width: 365px) {
   .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container {
-    flex-wrap: wrap-reverse;
-    top: -50px; }
+    bottom: -40px; }
     .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item {
-      margin-bottom: 8px; } }
+      padding: 4px; } }

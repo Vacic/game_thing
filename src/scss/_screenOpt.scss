@@ -207,11 +207,10 @@
                 .player-card {
                     .heal-quick-bar {
                         .heal-quick-bar-container {
-                            flex-wrap: wrap-reverse;
-                            top: -50px;
+                            bottom: -40px;
 
                             .heal-quick-bar-item {
-                                margin-bottom: 8px;
+                                padding: 4px;
                             }
                         }
                     }
