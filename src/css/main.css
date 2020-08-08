@@ -413,6 +413,7 @@ body {
             background-color: rgba(21, 83, 99, 0.5);
             box-shadow: -1px -1px 1px 1px #2ca94b;
             padding: 8px;
+            bottom: 2px;
             margin: 0 2px 0 2px;
             border-radius: 50%;
             justify-content: center;
@@ -634,6 +635,10 @@ body {
           top: -7px; }
         .container .battle-screen .player .player-card .hp-bar .hp, .container .battle-screen .player .enemy-card .hp-bar .hp, .container .battle-screen .enemy .player-card .hp-bar .hp, .container .battle-screen .enemy .enemy-card .hp-bar .hp {
           font-size: 0.8rem; }
+        .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container {
+          padding: 0 5px 0 5px;
+          left: 4px;
+          justify-content: space-around; }
         .container .battle-screen .player .attack-bar .att-empty, .container .battle-screen .player .attack-bar .att-progress, .container .battle-screen .enemy .attack-bar .att-empty, .container .battle-screen .enemy .attack-bar .att-progress {
           height: 10px; }
         .container .battle-screen .player .attack-bar .att-empty, .container .battle-screen .enemy .attack-bar .att-empty {

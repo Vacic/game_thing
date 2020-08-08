@@ -138,6 +138,14 @@
                             font-size: 0.8rem;
                         }
                     }
+
+                    .heal-quick-bar {
+                        .heal-quick-bar-container {
+                            padding: 0 5px 0 5px;
+                            left: 4px;
+                            justify-content: space-around;
+                        }
+                    }
                 }
 
                 .attack-bar {
