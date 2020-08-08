@@ -7,10 +7,10 @@ import AttackSpeed from '../stats/AttackSpeed';
 const Player = (props) => {    
     const { weapon, hp, dmg, attSpd, def, eva } = props.playerStats;
     const { playerDiv, playerAttProgressDiv, playerHpBar, playerAttStatus } = props;  // DOM element refs
-    const currentPlayerHp = props.currentPlayerHp;
+    const { currentPlayerHp, handleUseItem } = props;
     return (
         <div className="player" ref={playerDiv}>
-            <PlayerCard currentHp={currentPlayerHp} maxHp={hp} playerHpBar={playerHpBar} playerAttStatus = {playerAttStatus} />
+            <PlayerCard currentHp={currentPlayerHp} maxHp={hp} playerHpBar={playerHpBar} playerAttStatus = {playerAttStatus} handleUseItem={handleUseItem} />
             <AttackSpeed attSpd={attSpd} playerAttProgressDiv={playerAttProgressDiv} weapon={weapon} />
             <Stats dmg={dmg} def={def} eva={eva} />
         </div>

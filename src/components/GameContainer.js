@@ -5,6 +5,7 @@ import LocationSelection from './location/LocationSelection';
 import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading, enemyTakesDamage, playerTakesDamage, updateItemCount, setCurrentLocation, setNotificationMessage, setNotificationClass } from '../redux';
 import InvAndEquip from './InvAndEquip';
 import Message from './Message';
+import { updatePlayerQuickBarEquipment } from '../redux/player/playerAction';
 
 
 class GameContainer extends PureComponent {
@@ -112,7 +113,7 @@ class GameContainer extends PureComponent {
         }
 
         handleUseItem = (item) => {
-            if(item.stats.heal) {
+            if(item && item.stats.heal) {
                 const newHp = this.props.currentPlayerHp+item.stats.heal >= this.props.playerStats.hp ? this.props.playerStats.hp : this.props.currentPlayerHp+item.stats.heal;
                 this.props.setCurrentPlayerHp(newHp);
                 this.playerHpBar.style.width = `${Math.floor((newHp/this.props.playerStats.hp)*100)}%`;
@@ -122,15 +123,14 @@ class GameContainer extends PureComponent {
                     let newItemCount = { ...this.props.invItemCount };
                     newItemCount[itemKeyName] = newItemCount[itemKeyName] - 1;
                     this.props.updateItemCount(newItemCount);
-                    console.log('-1')
                 } else {
                     let newItemCount = { ...this.props.invItemCount };
-                    console.log(newItemCount)
-                    console.log(itemKeyName)
-                    console.log(newItemCount[itemKeyName])
                     delete newItemCount[itemKeyName];
                     this.props.updateItemCount(newItemCount);
-                    console.log('deleted')
+                    // Remove from quickbar
+                    let newQBEquip = this.props.quickBarEquipment.slice();
+                    newQBEquip = newQBEquip.map(item => item.replace(itemKeyName, ''))
+                    this.props.updatePlayerQuickBarEquipment(newQBEquip);
                 }
             } else {
                 console.log('Congratulations, You Did The Impossible');
@@ -215,6 +215,7 @@ class GameContainer extends PureComponent {
                     playerDiv={el => this.playerDiv = el}
                     playerAttProgressDiv={el => this.playerAttProgressDiv = el}
                     playerAttStatus={el => this.playerAttStatus = el}
+                    handleUseItem={this.handleUseItem}
 
                     enemyHpBar={el => this.enemyHpBar = el}
                     enemyDiv={el => this.enemyDiv = el}
@@ -241,6 +242,7 @@ const mapStateToProps = state => {
         playerStats: state.player.stats,
         invItemCount: state.inventory.itemCount,
         itemList: state.items,
+        quickBarEquipment: state.player.quickBarEquipment,
         currentEnemyHp: state.gameData.currentEnemyHp,
         currentPlayerHp: state.gameData.currentPlayerHp,
         globalTimeout: state.gameData.globalTimeout,
@@ -260,7 +262,8 @@ const mapDispatchToProps = dispatch => {
         setLoading: (isLoading) => dispatch(setLoading(isLoading)),
         enemyTakesDmg: damage => dispatch(enemyTakesDamage(damage)),
         playerTakesDmg: damage => dispatch(playerTakesDamage(damage)),
-        updateItemCount: itemCount => dispatch(updateItemCount(itemCount))
+        updateItemCount: itemCount => dispatch(updateItemCount(itemCount)),
+        updatePlayerQuickBarEquipment: newQBEquip => dispatch(updatePlayerQuickBarEquipment(newQBEquip))
     }
 }
 

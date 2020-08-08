@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Inventory from './inventory_equipment/Inventory';
 import Equipment from './inventory_equipment/Equipment';
-import { updatePlayerStats, updatePlayerEquipment } from '../redux/player/playerAction';
+import { updatePlayerStats, updatePlayerEquipment, updatePlayerQuickBarEquipment } from '../redux/player/playerAction';
 import { updateItemCount, setCurrentPlayerHp } from '../redux';
 
 const InvAndEquip = React.memo((props) => {
     const { handleUseItem, playerHpBar, setMessage } = props // From Game Container
-    const { itemCount, playerStats, playerEquip, currentPlayerHp } = props // State
-    const { updatePlayerStats, updatePlayerEquipment, updateItemCount, setCurrentPlayerHp } = props // Dispatch
+    const { itemCount, playerStats, playerEquip, currentPlayerHp, quickBarEquipment } = props // State
+    const { updatePlayerStats, updatePlayerEquipment, updateItemCount, setCurrentPlayerHp, updatePlayerQuickBarEquipment } = props // Dispatch
 
     const equipItem = item => {
         let newPlayerEquip = {...playerEquip};
@@ -93,6 +93,16 @@ const InvAndEquip = React.memo((props) => {
         }
     }
 
+    const equipToQuickSlot = item => {
+        let newQBEquip = quickBarEquipment.slice();
+        const itemKeyName = item.name.toLowerCase().replace(/ /g, '_');
+
+        newQBEquip.push(itemKeyName);
+        newQBEquip.shift();
+
+        updatePlayerQuickBarEquipment(newQBEquip);
+    }
+
     const equipWeapon = (item, statKey) => {
         if (playerEquip.boots !== undefined && playerEquip.boots.stats.attSpd !== undefined && statKey==='attSpd') return Math.round((item.stats[statKey] + playerEquip.boots.stats.attSpd) * 10) / 10;
         else return item.stats[statKey];
@@ -117,7 +127,7 @@ const InvAndEquip = React.memo((props) => {
     return (
         <div className="inv-equip">
             <Equipment unequipItem={unequipItem} />
-            <Inventory handleUseItem={handleUseItem} equipItem={equipItem} />
+            <Inventory handleUseItem={handleUseItem} equipItem={equipItem} equipToQuickSlot={equipToQuickSlot} />
         </div>
     )
 });
@@ -128,7 +138,8 @@ const mapStateToProps = state => {
         playerStats: state.player.stats,
         playerEquip: state.player.equipped,
         currentPlayerHp: state.gameData.currentPlayerHp,
-        globalTimeout: state.gameData.globalTimeout
+        globalTimeout: state.gameData.globalTimeout,
+        quickBarEquipment: state.player.quickBarEquipment
     }
 }
 
@@ -137,7 +148,8 @@ const mapDispatchToProps = dispatch => {
         updatePlayerStats: newPlayerStats => dispatch(updatePlayerStats(newPlayerStats)),
         updatePlayerEquipment: newPlayerEquip => dispatch(updatePlayerEquipment(newPlayerEquip)),
         updateItemCount: newItemCount => dispatch(updateItemCount(newItemCount)),
-        setCurrentPlayerHp: newHp => dispatch(setCurrentPlayerHp(newHp))
+        setCurrentPlayerHp: newHp => dispatch(setCurrentPlayerHp(newHp)),
+        updatePlayerQuickBarEquipment: newQBEquip => dispatch(updatePlayerQuickBarEquipment(newQBEquip))
     }
 }
 

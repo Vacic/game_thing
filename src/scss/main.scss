@@ -14,7 +14,7 @@ body {
 
 .container {
     width: 60%;
-    min-width: 288px;
+    min-width: 363px;
     margin: auto;
     color: rgb(247, 247, 247);
     user-select: none;
@@ -26,12 +26,6 @@ body {
         width: 100%;
         padding-bottom: 15px;
         border-bottom: 2px solid $primary-color-lighter;
-        
-        .location-card:hover {
-            transform: translate( 2px, -2px);
-            cursor: pointer;
-            box-shadow: -2px 2px 5px rgba($color: $secondary-color, $alpha: 0.7), -1px 1px 5px rgba($color: $secondary-color, $alpha: 0.7);
-        }
         
         .location-card {
             position: relative;
@@ -46,6 +40,12 @@ body {
             margin: 15px 15px 0px 15px;
             background-color: $secondary-color-darker;
             transition: all 0.2s ease-out;
+
+            &:hover {
+                transform: translate( 2px, -2px);
+                cursor: pointer;
+                box-shadow: -2px 2px 5px rgba($color: $secondary-color, $alpha: 0.7), -1px 1px 5px rgba($color: $secondary-color, $alpha: 0.7);
+            }
             
             .location-img {
                 height: 60px;
@@ -96,12 +96,6 @@ body {
             }
         }
 
-        .mobile-dropdown-btn:hover {
-            cursor: pointer;
-            box-shadow: -2px 2px 5px rgba($color: $secondary-color, $alpha: 0.7), -1px 1px 5px rgba($color: $secondary-color, $alpha: 0.7);
-            font-size: 0.95rem;
-        }
-
         .mobile-dropdown-btn {
             position: relative;
             display: flex;
@@ -118,6 +112,12 @@ body {
             border-top-right-radius: 0;
             background-color: $secondary-color-darker;
             transition: all 0.3s ease-out;
+
+            &:hover {
+                cursor: pointer;
+                box-shadow: -2px 2px 5px rgba($color: $secondary-color, $alpha: 0.7), -1px 1px 5px rgba($color: $secondary-color, $alpha: 0.7);
+                font-size: 0.95rem;
+            }
 
             span {
                 transition: all 0.5s ease-in-out;
@@ -261,6 +261,63 @@ body {
                 .player-img, .enemy-img, .loading-img {
                     width: 100%;
                 }
+
+                .heal-quick-bar {
+                    display: none;
+                    position: relative;
+                    top: -50px;
+                    right: 3px;
+
+                    .heal-quick-bar-container {
+                        position: absolute;
+                        display: flex;
+                        flex-direction: row-reverse;
+                        width: 100%;
+                        
+                        .heal-quick-bar-item {
+                            display: flex;
+                            background-color: rgba($color: $secondary-color-darker, $alpha: 0.5);
+                            box-shadow: -1px -1px 1px 1px rgba($color: $primary-color-lighter, $alpha: 1.0);
+                            padding: 8px;
+                            margin: 0 2px 0 2px;
+                            border-radius: 50%;
+                            justify-content: center;
+                            align-items: center;
+                            z-index: 3;
+
+                            &:active {
+                                box-shadow: inset 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
+                            }
+
+                            &:hover {
+                                cursor: pointer;
+                            }
+
+                            .item-num {
+                                justify-content: center;
+                                align-items: center;
+                                display: flex;
+                                position: absolute;
+                                background-color: rgba($color: $primary-color, $alpha: 0.4);
+                                border-radius: 50%;
+                                width: 15px;
+                                height: 15px;
+                                font-size: 0.6rem;
+                                bottom: -5px;
+                            }
+
+                            .item-img {
+                                width: 25px;
+                                height: 25px;
+
+                                img {
+                                    width: 100%;
+                                    height: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
                 
                 .loading-img {
                     animation: loading $loading-animation-time linear infinite;
@@ -369,8 +426,6 @@ body {
             background-color: #ec6767;
         }
     }
-
-    
 
     .hide {
         visibility: hidden;

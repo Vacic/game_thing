@@ -1,4 +1,4 @@
-import { UPDATE_PLAYER_STATS, UPDATE_PLAYER_EQUIPMENT } from "./playerTypes";
+import { UPDATE_PLAYER_STATS, UPDATE_PLAYER_EQUIPMENT, UPDATE_PLAYER_QUICKBAR_EQUIPMENT } from "./playerTypes";
 
 const playerState = {
     stats: {
@@ -10,7 +10,9 @@ const playerState = {
         eva: 1
     },
 
-    equipped: {}
+    equipped: {},
+
+    quickBarEquipment: ['', '', '']
 }
 
 const playerReducer = (state = playerState, action) => {
@@ -23,6 +25,11 @@ const playerReducer = (state = playerState, action) => {
         case UPDATE_PLAYER_EQUIPMENT: return {
             ...state,
             equipped: action.newEquip
+        }
+
+        case UPDATE_PLAYER_QUICKBAR_EQUIPMENT: return {
+            ...state,
+            quickBarEquipment: action.newQBEquip
         }
 
         default: return state;

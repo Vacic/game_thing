@@ -12,7 +12,7 @@ function InventoryItem(props) {
 
     }
 
-    const { hideMenuState, hideDescriptionState, showDescription, hideDescription, toggleMenu, hideMenu, itemDiv } = props; // From HOC
+    const { hideMenuState, hideDescriptionState, showDescription, hideDescription, toggleMenu, hideMenu, itemDiv, equipToQuickSlot } = props; // From HOC
     const { itemCount, itemList, handleUseItem, itemName, equipItem } = props;
     const item = itemList[itemName];
     return (
@@ -28,6 +28,7 @@ function InventoryItem(props) {
                 handleUseItem={handleUseItem}
                 equipItem={equipItem}
                 removeItem={removeItem}
+                equipToQuickSlot={equipToQuickSlot}
             />
 
             <ItemDescription 

@@ -210,7 +210,7 @@ body {
 
 .container {
   width: 60%;
-  min-width: 288px;
+  min-width: 363px;
   margin: auto;
   color: #f7f7f7;
   user-select: none; }
@@ -221,10 +221,6 @@ body {
     width: 100%;
     padding-bottom: 15px;
     border-bottom: 2px solid #2ca94b; }
-    .container .location-selection .location-card:hover, .container .location-selection-mobile .location-card:hover {
-      transform: translate(2px, -2px);
-      cursor: pointer;
-      box-shadow: -2px 2px 5px rgba(38, 154, 184, 0.7), -1px 1px 5px rgba(38, 154, 184, 0.7); }
     .container .location-selection .location-card, .container .location-selection-mobile .location-card {
       position: relative;
       display: flex;
@@ -238,6 +234,10 @@ body {
       margin: 15px 15px 0px 15px;
       background-color: #155363;
       transition: all 0.2s ease-out; }
+      .container .location-selection .location-card:hover, .container .location-selection-mobile .location-card:hover {
+        transform: translate(2px, -2px);
+        cursor: pointer;
+        box-shadow: -2px 2px 5px rgba(38, 154, 184, 0.7), -1px 1px 5px rgba(38, 154, 184, 0.7); }
       .container .location-selection .location-card .location-img, .container .location-selection-mobile .location-card .location-img {
         height: 60px;
         width: 60px; }
@@ -274,10 +274,6 @@ body {
         width: 0px;
         opacity: 0;
         transition: all 0.3s ease-in-out; }
-    .container .location-selection-mobile .mobile-dropdown-btn:hover {
-      cursor: pointer;
-      box-shadow: -2px 2px 5px rgba(38, 154, 184, 0.7), -1px 1px 5px rgba(38, 154, 184, 0.7);
-      font-size: 0.95rem; }
     .container .location-selection-mobile .mobile-dropdown-btn {
       position: relative;
       display: flex;
@@ -294,6 +290,10 @@ body {
       border-top-right-radius: 0;
       background-color: #155363;
       transition: all 0.3s ease-out; }
+      .container .location-selection-mobile .mobile-dropdown-btn:hover {
+        cursor: pointer;
+        box-shadow: -2px 2px 5px rgba(38, 154, 184, 0.7), -1px 1px 5px rgba(38, 154, 184, 0.7);
+        font-size: 0.95rem; }
       .container .location-selection-mobile .mobile-dropdown-btn span {
         transition: all 0.5s ease-in-out; }
     .container .location-selection-mobile .btn-opened {
@@ -390,6 +390,47 @@ body {
         visibility: visible; }
       .container .battle-screen .player .player-card .player-img, .container .battle-screen .player .player-card .enemy-img, .container .battle-screen .player .player-card .loading-img, .container .battle-screen .player .enemy-card .player-img, .container .battle-screen .player .enemy-card .enemy-img, .container .battle-screen .player .enemy-card .loading-img, .container .battle-screen .enemy .player-card .player-img, .container .battle-screen .enemy .player-card .enemy-img, .container .battle-screen .enemy .player-card .loading-img, .container .battle-screen .enemy .enemy-card .player-img, .container .battle-screen .enemy .enemy-card .enemy-img, .container .battle-screen .enemy .enemy-card .loading-img {
         width: 100%; }
+      .container .battle-screen .player .player-card .heal-quick-bar, .container .battle-screen .player .enemy-card .heal-quick-bar, .container .battle-screen .enemy .player-card .heal-quick-bar, .container .battle-screen .enemy .enemy-card .heal-quick-bar {
+        display: none;
+        position: relative;
+        top: -50px;
+        right: 3px; }
+        .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container {
+          position: absolute;
+          display: flex;
+          flex-direction: row-reverse;
+          width: 100%; }
+          .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item {
+            display: flex;
+            background-color: rgba(21, 83, 99, 0.5);
+            box-shadow: -1px -1px 1px 1px #2ca94b;
+            padding: 8px;
+            margin: 0 2px 0 2px;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            z-index: 3; }
+            .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:active, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:active, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:active, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:active {
+              box-shadow: inset 2px 2px 5px 2px rgba(0, 0, 0, 0.1); }
+            .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:hover, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:hover, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:hover, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:hover {
+              cursor: pointer; }
+            .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num {
+              justify-content: center;
+              align-items: center;
+              display: flex;
+              position: absolute;
+              background-color: rgba(23, 88, 39, 0.4);
+              border-radius: 50%;
+              width: 15px;
+              height: 15px;
+              font-size: 0.6rem;
+              bottom: -5px; }
+            .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img {
+              width: 25px;
+              height: 25px; }
+              .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img {
+                width: 100%;
+                height: 100%; }
       .container .battle-screen .player .player-card .loading-img, .container .battle-screen .player .enemy-card .loading-img, .container .battle-screen .enemy .player-card .loading-img, .container .battle-screen .enemy .enemy-card .loading-img {
         animation: loading 0.8s linear infinite; }
       .container .battle-screen .player .attack-bar .weapon-name, .container .battle-screen .enemy .attack-bar .weapon-name {
@@ -497,6 +538,8 @@ body {
         line-height: 1.6rem; }
       .container .battle-screen .player .player-card .hp-bar .hp, .container .battle-screen .player .enemy-card .hp-bar .hp, .container .battle-screen .enemy .player-card .hp-bar .hp, .container .battle-screen .enemy .enemy-card .hp-bar .hp {
         font-size: 1rem; }
+      .container .battle-screen .player .player-card .heal-quick-bar, .container .battle-screen .player .enemy-card .heal-quick-bar, .container .battle-screen .enemy .player-card .heal-quick-bar, .container .battle-screen .enemy .enemy-card .heal-quick-bar {
+        display: flex; }
     .container .inv-equip {
       flex-wrap: wrap;
       justify-content: center;
