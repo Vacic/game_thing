@@ -215,7 +215,8 @@ const locationEnemiesState = {
                 iron_dagger: { min: 0, max: 15 },
                 iron_boots: { min: 15, max: 25 },
                 iron_helmet: { min: 25, max: 35 },
-                first_aid_kit: { min: 35, max: 80}
+                steel_dagger: { min: 35, max: 36},
+                first_aid_kit: { min: 36, max: 80}
             }
         },
         bandit_swordsman: {

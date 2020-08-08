@@ -36,6 +36,15 @@ const itemListState = {
             dmg: 12
         }
     },
+    steel_dagger: {
+        img: process.env.PUBLIC_URL + '/item_imgs/steel_dagger.png',
+        name: 'Steel Dagger',
+        type: 'weapon',
+        stats: {
+            attSpd: 0.7,
+            dmg: 14
+        }
+    },
     steel_sword: {
         img: process.env.PUBLIC_URL + '/item_imgs/steel_sword.png',
         name: 'Steel Sword',
