@@ -19,7 +19,7 @@ class GameContainer extends PureComponent {
                 hideMsg: true,
                 isModalHidden: true,
                 modalText: '',
-                modalFunc: () => console.log('hello world'),
+                modalFunc: '',
                 itemToRemove: {}
             }
         }
