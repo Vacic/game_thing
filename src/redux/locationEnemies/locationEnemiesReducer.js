@@ -1,6 +1,18 @@
 const locationEnemiesState = {
     farm: {
         img: process.env.PUBLIC_URL + '/location_imgs/farm.png',
+        chicken: {
+            name: 'Chicken',
+            hp: 20,
+            dmg: 3,
+            attSpd: 0.8,
+            def: 0,
+            eva: 1,
+            drops: {
+                chicken_meat: { min: 0, max: 60 },
+                egg: { min: 60, max: 100 },
+            }
+        },
         cow: {
             name: 'Cow',
             hp: 45,
@@ -12,18 +24,6 @@ const locationEnemiesState = {
                 cow_meat: { min: 0, max: 65 },
                 leather_boots: { min: 65, max: 75 },
                 wooden_helmet: { min: 75, max: 85 }
-            }
-        },
-        chicken: {
-            name: 'Chicken',
-            hp: 20,
-            dmg: 3,
-            attSpd: 0.8,
-            def: 0,
-            eva: 1,
-            drops: {
-                chicken_meat: { min: 0, max: 85 },
-                leather_boots: { min: 85, max: 86 }
             }
         },
         farmer: {
@@ -61,6 +61,20 @@ const locationEnemiesState = {
                 iron_helmet: { min: 40.3, max: 40.6 },
                 iron_platelegs: { min: 40.6, max: 40.9 },
                 chicken_meat: { min: 40.9, max: 50.9}
+            }
+        },
+        bull: {
+            name: 'Bull',
+            hp: 60,
+            dmg: 7,
+            attSpd: 1.7,
+            def: 9,
+            eva: 2,
+            drops: {
+                bronze_platelegs: { min: 0, max: 8 },
+                bronze_boots: { min: 8, max: 16 },
+                bronze_helmet: { min: 16, max: 24 },
+                bull_meat: { min: 24, max: 100}
             }
         },
         goblin_archer: {
@@ -159,6 +173,70 @@ const locationEnemiesState = {
                 cow_meat: { min: 30.9, max: 50.9}
             }
         },
+        wolf: {
+            name: 'Wolf',
+            hp: 60,
+            dmg: 8,
+            attSpd: 1.5,
+            def: 4,
+            eva: 10,
+            drops: {
+                iron_platelegs: { min: 0, max: 8 },
+                iron_boots: { min: 8, max: 16 },
+                iron_helmet: { min: 16, max: 24 },
+                wolf_meat: { min: 24, max: 100}
+            }
+        },
+        bandit_archer: {
+            name: 'Bandit Archer',
+            hp: 40,
+            dmg: 25,
+            attSpd: 1.5,
+            def: 3,
+            eva: 3,
+            drops: {
+                iron_boots: { min: 0, max: 20 },
+                iron_helmet: { min: 20, max: 40 },
+                iron_armor: { min: 40, max: 45},
+                steel_boots: { min: 40, max: 41 },
+                steel_helmet: { min: 41, max: 42 },
+                steel_armor: { min: 42, max: 42.2},
+                first_aid_kit: { min: 42, max: 72}
+            }
+        },
+        thief: {
+            name: 'Thief',
+            hp: 100,
+            dmg: 12,
+            attSpd: 1.6,
+            def: 3,
+            eva: 15,
+            drops: {
+                iron_dagger: { min: 0, max: 15 },
+                iron_boots: { min: 15, max: 25 },
+                iron_helmet: { min: 25, max: 35 },
+                first_aid_kit: { min: 35, max: 80}
+            }
+        },
+        bandit_swordsman: {
+            name: 'Bandit Swordsman',
+            hp: 100,
+            dmg: 22,
+            attSpd: 2.2,
+            def: 7,
+            eva: 7,
+            drops: {
+                iron_sword: { min: 0, max: 15 },
+                iron_armor: { min: 15, max: 30 },
+                iron_platelegs: { min: 30, max: 45 },
+                iron_shield: { min: 45, max: 60 },
+                steel_sword: { min: 60, max: 61 },
+                steel_armor: { min: 61, max: 61.2 },
+                steel_platelegs: { min: 61.2, max: 61.4 },
+                steel_shield: { min: 61.4, max: 61.6 },
+                first_aid_kit: { min: 61.6, max: 85}
+            }
+        },
         bandit_leader: {
             name: 'Bandit Leader',
             hp: 150,
@@ -181,42 +259,6 @@ const locationEnemiesState = {
                 steel_helmet: { min: 97, max: 100 },
                 first_aid_kit: { min: 15, max: 35}
             }
-        },
-        bandit_archer: {
-            name: 'Bandit Archer',
-            hp: 40,
-            dmg: 25,
-            attSpd: 1.5,
-            def: 3,
-            eva: 3,
-            drops: {
-                iron_boots: { min: 0, max: 20 },
-                iron_helmet: { min: 20, max: 40 },
-                iron_armor: { min: 40, max: 45},
-                steel_boots: { min: 40, max: 41 },
-                steel_helmet: { min: 41, max: 42 },
-                steel_armor: { min: 42, max: 42.2},
-                first_aid_kit: { min: 42, max: 72}
-            }
-        },
-        bandit_swordsman: {
-            name: 'Bandit Swordsman',
-            hp: 100,
-            dmg: 22,
-            attSpd: 2.2,
-            def: 7,
-            eva: 7,
-            drops: {
-                iron_sword: { min: 0, max: 15 },
-                iron_armor: { min: 15, max: 30 },
-                iron_platelegs: { min: 30, max: 45 },
-                iron_shield: { min: 45, max: 60 },
-                steel_sword: { min: 60, max: 61 },
-                steel_armor: { min: 61, max: 61.2 },
-                steel_platelegs: { min: 61.2, max: 61.4 },
-                steel_shield: { min: 61.4, max: 61.6 },
-                first_aid_kit: { min: 61.6, max: 85}
-            }
         }
     },
     dungeon: {
@@ -231,13 +273,13 @@ const locationEnemiesState = {
             drops: {
                 steel_boots: { min: 0, max: 7 },
                 steel_helmet: { min: 7, max: 14 },
-                steel_armor: { min: 14, max: 16 },
-                steel_platelegs: { min: 16, max: 18 },
-                diamond_boots: { min: 18, max: 18.5 },
-                diamond_helmet: { min: 18.5, max: 19 },
-                diamond_armor: { min: 19, max: 19.2 },
-                diamond_platelegs: { min: 19.2, max: 19.4 },
-                health_potion: { min: 19.4, max: 19.45}
+                steel_armor: { min: 14, max: 20 },
+                steel_platelegs: { min: 20, max: 26 },
+                diamond_boots: { min: 26, max: 27 },
+                diamond_helmet: { min: 27, max: 28 },
+                diamond_armor: { min: 28, max: 28.5 },
+                diamond_platelegs: { min: 28.5, max: 29 },
+                health_potion: { min: 29, max: 34}
             }
         },
         harpy: {
@@ -250,7 +292,7 @@ const locationEnemiesState = {
             drops: {
                 steel_boots: { min: 0, max: 30 },
                 diamond_boots: { min: 30, max: 40 },
-                health_potion: { min: 40, max: 41}
+                health_potion: { min: 40, max: 50}
             }
         },
         minotaur: {

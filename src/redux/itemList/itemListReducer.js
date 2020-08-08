@@ -27,6 +27,15 @@ const itemListState = {
             dmg: 20
         }
     },
+    iron_dagger: {
+        img: process.env.PUBLIC_URL + '/item_imgs/iron_dagger.png',
+        name: 'Iron Dagger',
+        type: 'weapon',
+        stats: {
+            attSpd: 0.9,
+            dmg: 12
+        }
+    },
     steel_sword: {
         img: process.env.PUBLIC_URL + '/item_imgs/steel_sword.png',
         name: 'Steel Sword',
@@ -292,6 +301,14 @@ const itemListState = {
     },
 
 // healing_items
+    egg: {
+        img: process.env.PUBLIC_URL + '/item_imgs/egg.png',
+        name: 'Egg',
+        stats: {
+            heal: 10
+        }
+    },
+
     chicken_meat: {
         img: process.env.PUBLIC_URL + '/item_imgs/chicken_meat.png',
         name: 'Chicken Meat',
@@ -306,6 +323,24 @@ const itemListState = {
         stats: {
             heal: 50
         }
+    },
+
+    bull_meat: {
+        img: process.env.PUBLIC_URL + '/item_imgs/bull_meat.png',
+        name: 'Bull Meat',
+        stats: {
+            heal: 70
+        }
+    },
+
+    wolf_meat: {
+        cow_meat: {
+            img: process.env.PUBLIC_URL + '/item_imgs/wolf_meat.png',
+            name: 'Wolf Meat',
+            stats: {
+                heal: 80
+            }
+        },
     },
 
     first_aid_kit: {
