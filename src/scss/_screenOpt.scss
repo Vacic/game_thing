@@ -23,6 +23,12 @@
                 }
             }
         }
+
+        .modal-container {
+            .confirmation-modal {
+                margin-top: 18%;
+            }
+        }
     }
 }
 
@@ -60,6 +66,12 @@
                 }
             }
         }
+        
+        .modal-container {
+            .confirmation-modal {
+                margin-top: 30%;
+            }
+        }
 
         .inv-equip {
             flex-wrap: wrap;
@@ -79,6 +91,32 @@
 @include mediaXsm {
     .container {
         width: 95%;
+
+        .location-selection-mobile {
+            .location-card {
+                &:hover {
+                    transform: none;
+                    box-shadow: none;
+                }
+
+                &:active {
+                    transform: translate( 2px, -2px);
+                    box-shadow: -2px 2px 5px rgba($color: $secondary-color, $alpha: 0.7), -1px 1px 5px rgba($color: $secondary-color, $alpha: 0.7);
+                }
+            }
+
+            .mobile-dropdown-btn {
+                transition: none;
+
+                &:hover {
+                    box-shadow: none;
+                }
+
+                &:active {
+                    box-shadow: -2px 2px 5px rgba($color: $secondary-color, $alpha: 0.7), -1px 1px 5px rgba($color: $secondary-color, $alpha: 0.7);
+                }
+            }
+        }
 
         .battle-screen {
             padding: 8px;
@@ -122,6 +160,33 @@
                 }    
             }
         }
+
+        .modal-container {
+            .confirmation-modal {
+                height: 140px;
+                width: 260px;
+                margin-top: 45%;
+                font-size: 0.8rem;
+
+                span {
+                    display: none;
+                }
+
+                .modal-text {
+                    font-size: 0.9rem;
+                    padding: 26px 10px 0 10px
+                }
+
+                .btn-yes {
+                    margin: 22px 0px 0px 35px;
+                }
+
+                .btn-no {
+                    margin: 22px 35px 0px 0px;
+                }
+            }
+        }
+
         .inv-equip {
             padding: 8px;
             .equipment, .inventory {
@@ -130,6 +195,27 @@
 
             .equipment {
                 margin-bottom: 8px;
+            }
+        }
+    }
+}
+
+@include mediaXxsm {
+    .container {
+        .battle-screen {
+            .player {
+                .player-card {
+                    .heal-quick-bar {
+                        .heal-quick-bar-container {
+                            flex-wrap: wrap-reverse;
+                            top: -50px;
+
+                            .heal-quick-bar-item {
+                                margin-bottom: 8px;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

@@ -62,7 +62,7 @@
                         position: relative;
                         background-color: $secondary-color-darker;
                         width: 150px;
-                        top: -80px;
+                        top: -123px;
                         left: -47px;
                         border-radius: $border-radius;
                         z-index: 1;
@@ -91,12 +91,12 @@
                     .item-menu {
                         position: relative;
                         visibility: visible;
-                        top: -82px;
-                        left: -12px;
-                        padding: 4px;
+                        top: -204px;
+                        left: -26px;
+                        padding: 7px;
                         background-color: $secondary-color-darker;
                         border-radius: $border-radius;
-                        width: 81px;
+                        width: 108px;
                         z-index: 1;
 
                         :first-child {

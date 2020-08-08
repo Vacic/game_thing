@@ -10,6 +10,12 @@ $bar-height-smaller: 10px;
 $loading-animation-time: 0.8s;
 
 // Media Query Mixins
+@mixin mediaXxsm {
+    @media screen and (max-width: 365px) {
+        @content;
+    }
+}
+
 @mixin mediaXsm {
     @media screen and (max-width: 500px) {
         @content;

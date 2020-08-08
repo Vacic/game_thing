@@ -6,7 +6,7 @@ import { updatePlayerStats, updatePlayerEquipment, updatePlayerQuickBarEquipment
 import { updateItemCount, setCurrentPlayerHp } from '../redux';
 
 const InvAndEquip = React.memo((props) => {
-    const { handleUseItem, playerHpBar, setMessage } = props // From Game Container
+    const { handleUseItem, playerHpBar, setMessage, showModal } = props // From Game Container
     const { itemCount, playerStats, playerEquip, currentPlayerHp, quickBarEquipment } = props // State
     const { updatePlayerStats, updatePlayerEquipment, updateItemCount, setCurrentPlayerHp, updatePlayerQuickBarEquipment } = props // Dispatch
 
@@ -18,17 +18,15 @@ const InvAndEquip = React.memo((props) => {
         const itemKeyName = item.name.toLowerCase().replace(/ /g, '_');
         const emptySlot = newPlayerEquip[item.type] ? false : true;
         
-        
         if (emptySlot || item.name !== newPlayerEquip[item.type].name) { // App crashes if not checking for 'empty slow' because it tries to read newPlayerEquip[item.type].name
         //  Decreasing item count from inventory
-        if (itemCount[itemKeyName] > 1) {
+        if (newItemCount[itemKeyName] > 1) {
             newItemCount[itemKeyName] = newItemCount[itemKeyName] - 1;
             updateItemCount(newItemCount);
         } else {
             delete newItemCount[itemKeyName];
             updateItemCount(newItemCount);
         }
-        
         // Unequip current item and get new player stats after the item has been unequipped
         let newPlayerStats = unequipItem(playerEquip[item.type], emptySlot, newItemCount);
         // Equip the new item
@@ -102,6 +100,26 @@ const InvAndEquip = React.memo((props) => {
 
         updatePlayerQuickBarEquipment(newQBEquip);
     }
+    
+    const removeAllItems = item => {
+        const itemKeyName = item.name.toLowerCase().replace(/ /g, '_');
+        let newItemCount = {...itemCount};
+        delete newItemCount[itemKeyName];
+        updateItemCount(newItemCount);
+    }
+
+    const removeItem = item => {
+        const itemKeyName = item.name.toLowerCase().replace(/ /g, '_');
+        let newItemCount = {...itemCount};
+
+        if (newItemCount[itemKeyName] > 1) {
+            newItemCount[itemKeyName] = newItemCount[itemKeyName] - 1;
+            updateItemCount(newItemCount);
+        } else {
+            delete newItemCount[itemKeyName];
+            updateItemCount(newItemCount);
+        }
+    }
 
     const equipWeapon = (item, statKey) => {
         if (playerEquip.boots !== undefined && playerEquip.boots.stats.attSpd !== undefined && statKey==='attSpd') return Math.round((item.stats[statKey] + playerEquip.boots.stats.attSpd) * 10) / 10;
@@ -127,7 +145,7 @@ const InvAndEquip = React.memo((props) => {
     return (
         <div className="inv-equip">
             <Equipment unequipItem={unequipItem} />
-            <Inventory handleUseItem={handleUseItem} equipItem={equipItem} equipToQuickSlot={equipToQuickSlot} />
+            <Inventory handleUseItem={handleUseItem} equipItem={equipItem} equipToQuickSlot={equipToQuickSlot} removeItem={removeItem} removeAllItems={removeAllItems} showModal={showModal} />
         </div>
     )
 });

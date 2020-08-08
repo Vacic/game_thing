@@ -6,6 +6,7 @@ import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading
 import InvAndEquip from './InvAndEquip';
 import Message from './Message';
 import { updatePlayerQuickBarEquipment } from '../redux/player/playerAction';
+import ConfirmationModal from './ConfirmationModal';
 
 
 class GameContainer extends PureComponent {
@@ -15,7 +16,11 @@ class GameContainer extends PureComponent {
         
             this.state = {
                 msg: [],
-                hideMsg: true
+                hideMsg: true,
+                isModalHidden: true,
+                modalText: '',
+                modalFunc: () => console.log('hello world'),
+                itemToRemove: {}
             }
         }
         
@@ -87,6 +92,14 @@ class GameContainer extends PureComponent {
             this.timeout = setTimeout(() => {
                 this.setState({ hideMsg: true });
             }, 1500);
+        }
+
+        showModal = (text, func, item) => {
+            this.setState({ isModalHidden: false, modalText: text, modalFunc: func, itemToRemove: item });
+        }
+
+        hideModal = () => {
+            this.setState({ isModalHidden: true });
         }
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~PLAYER LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         startPlayerAttack = (dmg, attSpd, enemyDef, enemyEva, location = null) => {
@@ -227,10 +240,13 @@ class GameContainer extends PureComponent {
                     handleUseItem={this.handleUseItem} 
                     playerHpBar={this.playerHpBar}
                     setMessage={this.setMessage}
+                    showModal={this.showModal}
                 />
                 <div className={this.state.hideMsg ? 'msg hide' : 'msg'}>
                     {this.state.msg.map((msg, i) => <Message key={i} msg={msg} i={i} />)}
                 </div>
+
+                <ConfirmationModal text={this.state.modalText} func={this.state.modalFunc} isHidden={this.state.isModalHidden} hideModal={this.hideModal} itemToRemove={this.state.itemToRemove} />
             </div>
         )
     }

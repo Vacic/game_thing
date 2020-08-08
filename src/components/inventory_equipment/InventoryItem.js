@@ -8,12 +8,8 @@ import { updateItemCount, setCurrentPlayerHp } from '../../redux';
 import hideShowDescriptionMenu from './hideShowDescriptionMenu';
 
 function InventoryItem(props) {
-    const removeItem = () => {
-
-    }
-
-    const { hideMenuState, hideDescriptionState, showDescription, hideDescription, toggleMenu, hideMenu, itemDiv, equipToQuickSlot } = props; // From HOC
-    const { itemCount, itemList, handleUseItem, itemName, equipItem } = props;
+    const { hideMenuState, hideDescriptionState, showDescription, hideDescription, toggleMenu, hideMenu, itemDiv, equipToQuickSlot, showModal } = props; // From HOC
+    const { itemCount, itemList, handleUseItem, itemName, equipItem, removeAllItems, removeItem } = props;
     const item = itemList[itemName];
     return (
         <div className="inv-item" onMouseEnter={showDescription} onMouseLeave={hideDescription} onClick={toggleMenu} ref={itemDiv} >
@@ -27,8 +23,10 @@ function InventoryItem(props) {
                 item={item}
                 handleUseItem={handleUseItem}
                 equipItem={equipItem}
+                removeAllItems={removeAllItems}
                 removeItem={removeItem}
                 equipToQuickSlot={equipToQuickSlot}
+                showModal={showModal}
             />
 
             <ItemDescription 

@@ -6,18 +6,25 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://pbs.twimg.com/media/C4TkyIrWYAADSyy?format=png&name=large);
+    
 }
 
 .container {
     width: 60%;
-    min-width: 363px;
+    min-width: 288px; //288
     margin: auto;
     color: rgb(247, 247, 247);
-    user-select: none;
     
     .location-selection, .location-selection-mobile {
         display: flex;
@@ -271,10 +278,12 @@ body {
                     .heal-quick-bar-container {
                         position: absolute;
                         display: flex;
-                        flex-direction: row-reverse;
+                        justify-content: flex-end;
                         width: 100%;
+                        left: 2px;
                         
                         .heal-quick-bar-item {
+                            position: relative;
                             display: flex;
                             background-color: rgba($color: $secondary-color-darker, $alpha: 0.5);
                             box-shadow: -1px -1px 1px 1px rgba($color: $primary-color-lighter, $alpha: 1.0);
@@ -283,10 +292,13 @@ body {
                             border-radius: 50%;
                             justify-content: center;
                             align-items: center;
-                            z-index: 3;
 
                             &:active {
                                 box-shadow: inset 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
+
+                                .item-num {
+                                    margin-right: 0;
+                                }
                             }
 
                             &:hover {
@@ -304,6 +316,7 @@ body {
                                 height: 15px;
                                 font-size: 0.6rem;
                                 bottom: -5px;
+                                margin-right: 1px;
                             }
 
                             .item-img {
@@ -432,6 +445,70 @@ body {
         bottom: -50px;
         opacity: 0;
         overflow: hidden;
+    }
+
+    .modal-container {
+        position: fixed;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 2;
+
+        .confirmation-modal {
+            width: 400px;
+            height: 179px;
+            margin: auto;
+            margin-top: 10%;
+            background-color: rgba(241, 241, 241, 0.88);
+            color: rgb(48, 48, 48);
+            font-weight: 500;
+            border-radius: $border-radius;
+            
+            span {
+                float: right;
+                padding: 0 9px 0 0;
+                color: black;
+                font-weight: 1000;
+                font-size: 1.5rem;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .modal-text {
+                font-size: 1.1rem;
+                text-align: center;
+                padding: 42px 40px 0 40px
+            }
+
+            .btn-yes, .btn-no {
+                padding: 10px;
+                text-align: center;
+                width: 30%;
+                float: left;
+                background-color: rgb(38, 128, 202);
+                color: white;
+                border-radius: 10px;
+                margin: 30px 20px 0px 20px;
+
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .btn-no {
+                float: right;
+                background-color: rgb(255, 80, 80);
+            }
+        }
+    }
+
+    .hide-modal {
+        visibility: hidden;
     }
 }
 
