@@ -248,9 +248,9 @@ const locationEnemiesState = {
             def: 9,
             eva: 40,
             drops: {
-                steel_boots: { min: 0, max: 20 },
-                diamond_boots: { min: 20, max: 30 },
-                health_potion: { min: 30.1, max: 30.3}
+                steel_boots: { min: 0, max: 30 },
+                diamond_boots: { min: 30, max: 40 },
+                health_potion: { min: 40, max: 41}
             }
         },
         minotaur: {
@@ -261,19 +261,13 @@ const locationEnemiesState = {
             def: 30,
             eva: 15,
             drops: {
-                steel_sword: { min: 0, max: 5 },
-                steel_armor: { min: 5, max: 10 },
-                steel_platelegs: { min: 10, max: 15 },
-                steel_shield: { min: 15, max: 20 },
-                steel_boots: { min: 25, max: 35 },
-                steel_helmet: { min: 35, max: 45 },
-                diamond_sword: { min: 46, max: 47 },
-                diamond_armor: { min: 47, max: 48 },
-                diamond_platelegs: { min: 48, max: 49 },
-                diamond_shield: { min: 49, max: 50 },
-                diamond_boots: { min: 50, max: 52 },
-                diamond_helmet: { min: 52, max: 54 },
-                health_potion: { min: 54.3, max: 55}
+                diamond_helmet: { min: 0, max: 18 },
+                diamond_boots: { min: 18, max: 36 },
+                diamond_sword: { min: 36, max: 52 },
+                diamond_armor: { min: 52, max: 68 },
+                diamond_platelegs: { min: 68, max: 84 },
+                diamond_shield: { min: 84, max: 100 },
+                health_potion: { min: 0, max: 100}
             }
         }
     }
