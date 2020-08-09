@@ -264,6 +264,19 @@ const locationEnemiesState = {
     },
     dungeon: {
         img: process.env.PUBLIC_URL + '/location_imgs/dungeon.png',
+        harpy: {
+            name: 'Harpy',
+            hp: 200,
+            dmg: 32,
+            attSpd: 1,
+            def: 9,
+            eva: 40,
+            drops: {
+                steel_boots: { min: 0, max: 30 },
+                diamond_boots: { min: 30, max: 40 },
+                health_potion: { min: 40, max: 50}
+            }
+        },
         basilisk: {
             name: 'Basilisk',
             hp: 250,
@@ -283,25 +296,31 @@ const locationEnemiesState = {
                 health_potion: { min: 29, max: 34}
             }
         },
-        harpy: {
-            name: 'Harpy',
-            hp: 200,
-            dmg: 32,
-            attSpd: 1,
-            def: 9,
-            eva: 40,
+        werewolf: {
+            name: 'Werewolf',
+            hp: 400,
+            dmg: 35,
+            attSpd: 1.2,
+            def: 30,
+            eva: 30,
             drops: {
-                steel_boots: { min: 0, max: 30 },
-                diamond_boots: { min: 30, max: 40 },
-                health_potion: { min: 40, max: 50}
+                steel_boots: { min: 0, max: 13 },
+                steel_helmet: { min: 13, max: 26 },
+                steel_armor: { min: 26, max: 36 },
+                steel_platelegs: { min: 36, max: 46 },
+                diamond_boots: { min: 46, max: 51 },
+                diamond_helmet: { min: 51, max: 56 },
+                diamond_armor: { min: 56, max: 59 },
+                diamond_platelegs: { min: 59, max: 62 },
+                health_potion: { min: 46, max: 100}
             }
         },
         minotaur: {
             name: 'Minotaur',
-            hp: 500,
+            hp: 600,
             dmg: 60,
-            attSpd: 2,
-            def: 30,
+            attSpd: 1.8,
+            def: 35,
             eva: 15,
             drops: {
                 diamond_helmet: { min: 0, max: 18 },

@@ -19,8 +19,8 @@ function ConfirmationModal({ text, func, isHidden, hideModal, itemToRemove }) {
     
     const confirmationModal = useRef(null)
     return (
-        <div className={isHidden ? "modal-container hide-modal" : "modal-container"}>
-            <div className="confirmation-modal" ref={confirmationModal}>
+        <div className={isHidden ? "modal-container hide-modal" : "modal-container show-modal"}>
+            <div className={isHidden ? "confirmation-modal hidden" : "confirmation-modal" } ref={confirmationModal}>
                 <span onClick={() => hideModal()}>x</span>
                 <p className="modal-text">{text}</p>
                 <div className="btn-yes" onClick={() => runFunc()}>Yes</div>

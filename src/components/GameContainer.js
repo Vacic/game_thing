@@ -16,10 +16,10 @@ class GameContainer extends PureComponent {
         
             this.state = {
                 msg: [],
-                hideMsg: true,
+                isMsgHidden: true,
                 isModalHidden: true,
                 modalText: '',
-                modalFunc: '',
+                modalFunc: () => null,
                 itemToRemove: {}
             }
         }
@@ -32,7 +32,7 @@ class GameContainer extends PureComponent {
                 this.enemyHpBar.style.width = '100%'; // Whenever a new enemy is called the hp is reset to 100%
                 this.getEnemy(location);
                 
-                this.startPlayerAttack(this.props.playerStats.dmg, this.props.playerStats.attSpd, this.props.currentEnemy.def, this.props.currentEnemy.eva, location)
+                this.startPlayerAttack(this.props.playerStats.dmg, this.props.playerStats.attSpd, this.props.currentEnemy.def, this.props.currentEnemy.eva)
                 this.startEnemyAttack(this.props.currentEnemy.dmg, this.props.currentEnemy.attSpd, this.props.playerStats.def, this.props.playerStats.eva)
             }, this.props.globalTimeout);
         }
@@ -62,13 +62,18 @@ class GameContainer extends PureComponent {
             }
         }
 
+        resetPlayerAttack = (playerDmg, playerAttSpd) => {
+            clearInterval(this.playerAttInterval);
+            this.playerAttProgressDiv.style.animation = 'none';
+            setTimeout(() => this.startPlayerAttack(playerDmg, playerAttSpd, this.props.currentEnemy.def, this.props.currentEnemy.eva), 100);
+        }
+
         shouldAttHit = (eva) => {
             return Math.floor(Math.random() * 100) <= eva ? false : true;
         }
 
         calcDmg = (dmg) => {
-            const randDmg = (Math.random() >= 0.5) ? (Math.random() * (dmg - Math.ceil(dmg/2)) + Math.ceil(dmg/2)) : (Math.random() * (dmg - Math.floor(dmg/2)) + Math.floor(dmg/2))
-            console.log(randDmg)
+            const randDmg = (Math.random() > 0.5) ? (Math.random() * (dmg - Math.ceil(dmg/2)) + Math.ceil(dmg/2)) : (Math.random() * (dmg - Math.floor(dmg/2)) + Math.floor(dmg/2))
             return Math.ceil(randDmg);
         }
 
@@ -80,7 +85,7 @@ class GameContainer extends PureComponent {
 
         setMessage = (msg) => {
             if (this.timeout) clearTimeout(this.timeout);
-            this.setState({ hideMsg: false });
+            this.setState({ isMsgHidden: false });
             
             let newMsg = this.state.msg.slice();
             newMsg.unshift(msg);
@@ -93,7 +98,7 @@ class GameContainer extends PureComponent {
             }, 2000)
 
             this.timeout = setTimeout(() => {
-                this.setState({ hideMsg: true });
+                this.setState({ isMsgHidden: true });
             }, 1500);
         }
 
@@ -105,11 +110,11 @@ class GameContainer extends PureComponent {
             this.setState({ isModalHidden: true });
         }
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~PLAYER LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        startPlayerAttack = (dmg, attSpd, enemyDef, enemyEva, location = null) => {
+        startPlayerAttack = (dmg, attSpd, enemyDef, enemyEva) => {
             this.playerAttProgressDiv.style.animation = `attBar ${attSpd}s linear infinite`;
             this.playerAttInterval = setInterval(() => {  // Assigning it to a variable so i can stop the interval in 'resetActions'
                 this.enemyTakesDamage(dmg, enemyDef, enemyEva);
-                if (this.props.currentEnemyHp <= 0) this.handleEnemyDeath(location);
+                if (this.props.currentEnemyHp <= 0) this.handleEnemyDeath();
             }, attSpd * 1000);
         }
     
@@ -180,9 +185,9 @@ class GameContainer extends PureComponent {
             }, attSpd * 1000);
         }
     
-        handleEnemyDeath = (location) => {
+        handleEnemyDeath = () => {
             this.enemyDiv.classList.add('dead');
-            this.initCombat(location);
+            this.initCombat(this.props.currentLocation);
             
             const drops = this.props.currentEnemy.drops;
             const dropKeys = Object.keys(this.props.currentEnemy.drops);
@@ -245,8 +250,9 @@ class GameContainer extends PureComponent {
                     playerHpBar={this.playerHpBar}
                     setMessage={this.setMessage}
                     showModal={this.showModal}
+                    resetPlayerAttack={this.resetPlayerAttack}
                 />
-                <div className={this.state.hideMsg ? 'msg hide' : 'msg'}>
+                <div className={this.state.isMsgHidden ? 'msg hide' : 'msg'}>
                     {this.state.msg.map((msg, i) => <Message key={i} msg={msg} i={i} />)}
                 </div>
 
@@ -267,6 +273,7 @@ const mapStateToProps = state => {
         currentPlayerHp: state.gameData.currentPlayerHp,
         globalTimeout: state.gameData.globalTimeout,
         loadingEnemy: state.gameData.loadingEnemy,
+        currentLocation: state.gameData.currentLocation,
         currentEnemy: state.gameData.currentEnemy
 	}
 }

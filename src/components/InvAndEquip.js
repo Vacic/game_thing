@@ -6,8 +6,8 @@ import { updatePlayerStats, updatePlayerEquipment, updatePlayerQuickBarEquipment
 import { updateItemCount, setCurrentPlayerHp } from '../redux';
 
 const InvAndEquip = React.memo((props) => {
-    const { handleUseItem, playerHpBar, setMessage, showModal } = props // From Game Container
-    const { itemCount, playerStats, playerEquip, currentPlayerHp, quickBarEquipment } = props // State
+    const { handleUseItem, playerHpBar, setMessage, showModal, resetPlayerAttack } = props // From Game Container
+    const { itemCount, playerStats, playerEquip, currentPlayerHp, quickBarEquipment, currentEnemy } = props // State
     const { updatePlayerStats, updatePlayerEquipment, updateItemCount, setCurrentPlayerHp, updatePlayerQuickBarEquipment } = props // Dispatch
 
     const equipItem = item => {
@@ -40,7 +40,10 @@ const InvAndEquip = React.memo((props) => {
                 default: newPlayerStats[key] = newPlayerStats[key] + item.stats[key]; break;
             }
         });
-        if (item.type === 'weapon') newPlayerStats.weapon = newPlayerEquip.weapon.name;
+        if (item.type === 'weapon') {
+            newPlayerStats.weapon = newPlayerEquip.weapon.name;
+            if (currentEnemy.hp!==0) resetPlayerAttack(newPlayerStats.dmg, newPlayerStats.attSpd);  // resets attack and applies new values
+        }
         updatePlayerStats(newPlayerStats);
         // Update currentPlayerHp
         const newCurrentHp = (newPlayerStats.hp - prevPlayerHp) + currentPlayerHp
@@ -155,9 +158,10 @@ const mapStateToProps = state => {
         itemCount: state.inventory.itemCount,
         playerStats: state.player.stats,
         playerEquip: state.player.equipped,
+        quickBarEquipment: state.player.quickBarEquipment,
         currentPlayerHp: state.gameData.currentPlayerHp,
         globalTimeout: state.gameData.globalTimeout,
-        quickBarEquipment: state.player.quickBarEquipment
+        currentEnemy: state.gameData.currentEnemy
     }
 }
 

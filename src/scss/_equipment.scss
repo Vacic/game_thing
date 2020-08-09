@@ -95,6 +95,10 @@
                                 background-color: $secondary-color-darker;
                                 width: 100%;
                                 border-radius: $border-radius;
+                                -webkit-transition: background-color 0.1s ease-in-out;
+                                -moz-transition: background-color 0.1s ease-in-out;
+                                -ms-transition: background-color 0.1s ease-in-out;
+                                -o-transition: background-color 0.1s ease-in-out;
                                 transition: background-color 0.1s ease-in-out;
                             }
                         }

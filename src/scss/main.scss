@@ -1,6 +1,7 @@
 @import 'config';
 @import 'inventory';
 @import 'equipment';
+@import 'modal_msg';
 
 * {
     box-sizing: border-box;
@@ -17,7 +18,6 @@
 
 body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://pbs.twimg.com/media/C4TkyIrWYAADSyy?format=png&name=large);
-    
 }
 
 .container {
@@ -46,6 +46,10 @@ body {
             border-radius: $border-radius;
             margin: 15px 15px 0px 15px;
             background-color: $secondary-color-darker;
+            -webkit-transition: all 0.2s ease-out;
+            -moz-transition: all 0.2s ease-out;
+            -ms-transition: all 0.2s ease-out;
+            -o-transition: all 0.2s ease-out;
             transition: all 0.2s ease-out;
 
             &:hover {
@@ -89,6 +93,10 @@ body {
                 right: 20px;
                 font-size: 0rem;
                 opacity: 0;
+                -webkit-transition: all 0.3s ease-in-out;
+                -moz-transition: all 0.3s ease-in-out;
+                -ms-transition: all 0.3s ease-in-out;
+                -o-transition: all 0.3s ease-in-out;
                 transition: all 0.3s ease-in-out;
             }
 
@@ -99,6 +107,10 @@ body {
                 height: 0px;
                 width: 0px;
                 opacity: 0;
+                -webkit-transition: all 0.3s ease-in-out;
+                -moz-transition: all 0.3s ease-in-out;
+                -ms-transition: all 0.3s ease-in-out;
+                -o-transition: all 0.3s ease-in-out;
                 transition: all 0.3s ease-in-out;
             }
         }
@@ -118,6 +130,10 @@ body {
             border-top-left-radius: 0;
             border-top-right-radius: 0;
             background-color: $secondary-color-darker;
+            -webkit-transition: all 0.3s ease-out;
+            -moz-transition: all 0.3s ease-out;
+            -ms-transition: all 0.3s ease-out;
+            -o-transition: all 0.3s ease-out;
             transition: all 0.3s ease-out;
 
             &:hover {
@@ -127,6 +143,10 @@ body {
             }
 
             span {
+                -webkit-transition: all 0.5s ease-in-out;
+                -moz-transition: all 0.5s ease-in-out;
+                -ms-transition: all 0.5s ease-in-out;
+                -o-transition: all 0.5s ease-in-out;
                 transition: all 0.5s ease-in-out;
             }
         }
@@ -192,7 +212,7 @@ body {
     
     .battle-screen {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         width: 100%;
         padding: 20px;
         
@@ -270,9 +290,9 @@ body {
                 }
 
                 .heal-quick-bar {
-                    display: none;
+                    display: flex;
                     position: relative;
-                    top: -50px;
+                    top: -74px;
                     right: 3px;
 
                     .heal-quick-bar-container {
@@ -287,7 +307,7 @@ body {
                             display: flex;
                             background-color: rgba($color: $secondary-color-darker, $alpha: 0.5);
                             box-shadow: -1px -1px 1px 1px rgba($color: $primary-color-lighter, $alpha: 1.0);
-                            padding: 8px;
+                            padding: 12px;
                             bottom: 2px;
                             margin: 0 2px 0 2px;
                             border-radius: 50%;
@@ -313,16 +333,16 @@ body {
                                 position: absolute;
                                 background-color: rgba($color: $primary-color, $alpha: 0.4);
                                 border-radius: 50%;
-                                width: 15px;
-                                height: 15px;
-                                font-size: 0.6rem;
-                                bottom: -5px;
+                                width: 25px;
+                                height: 25px;
+                                font-size: 1rem;
+                                bottom: -7px;
                                 margin-right: 1px;
                             }
 
                             .item-img {
-                                width: 25px;
-                                height: 25px;
+                                width: 40px;
+                                height: 40px;
 
                                 img {
                                     width: 100%;
@@ -334,6 +354,7 @@ body {
                 }
                 
                 .loading-img {
+                    -webkit-animation: loading $loading-animation-time linear infinite;
                     animation: loading $loading-animation-time linear infinite;
                 }
             }
@@ -397,119 +418,6 @@ body {
         display: flex;
         padding: 0 15px 15px 15px;
         justify-content: space-between;
-    }
-
-    .msg {
-        position: fixed;
-        display: flex;
-        flex-direction: column;
-        margin-left: -160px;
-        left: 50%;
-        bottom: 30px;
-        width: 320px;
-        min-height: 50px;
-        opacity: 1;
-        overflow: hidden;
-        transition: all 1s cubic-bezier(0, .9, .4, 1);
-        z-index: 2;
-
-        .msg-success, .msg-danger {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            text-align: center;
-            padding: 12px;
-            height: 50px;
-            border-radius: $border-radius;
-            border-top: 2px solid $secondary-color-lighter;
-            border-left: 2px solid $secondary-color-lighter;
-            margin-bottom: 15px;
-            transition: all 1s cubic-bezier(0, .9, .4, 1);
-
-            img {
-                width: 40px;
-                height: 40px;
-            }
-        }
-
-        .msg-success {
-            background-color: $secondary-color-darker;
-        }
-
-        .msg-danger {
-            background-color: #ec6767;
-        }
-    }
-
-    .hide {
-        visibility: hidden;
-        bottom: -50px;
-        opacity: 0;
-        overflow: hidden;
-    }
-
-    .modal-container {
-        position: fixed;
-        top:0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.3);
-        z-index: 2;
-
-        .confirmation-modal {
-            width: 400px;
-            height: 179px;
-            margin: auto;
-            margin-top: 10%;
-            background-color: rgba(241, 241, 241, 0.88);
-            color: rgb(48, 48, 48);
-            font-weight: 500;
-            border-radius: $border-radius;
-            
-            span {
-                float: right;
-                padding: 0 9px 0 0;
-                color: black;
-                font-weight: 1000;
-                font-size: 1.5rem;
-
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-
-            .modal-text {
-                font-size: 1.1rem;
-                text-align: center;
-                padding: 42px 40px 0 40px
-            }
-
-            .btn-yes, .btn-no {
-                padding: 10px;
-                text-align: center;
-                width: 30%;
-                float: left;
-                background-color: rgb(38, 128, 202);
-                color: white;
-                border-radius: 10px;
-                margin: 30px 20px 0px 20px;
-
-
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-
-            .btn-no {
-                float: right;
-                background-color: rgb(255, 80, 80);
-            }
-        }
-    }
-
-    .hide-modal {
-        visibility: hidden;
     }
 }
 
