@@ -1,10 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import chickenMeat from '../../img/chicken_meat.png';
 import ItemDescription from './ItemDescription';
 import ItemMenu from './ItemMenu';
-import { updatePlayerStats, updatePlayerEquipment } from '../../redux/player/playerAction';
-import { updateItemCount, setCurrentPlayerHp } from '../../redux';
+import { updateItemCount, setCurrentPlayerHp, updatePlayerStats, updatePlayerEquipment } from '../../redux';
 import hideShowDescriptionMenu from './hideShowDescriptionMenu';
 
 function InventoryItem(props) {
@@ -13,7 +11,7 @@ function InventoryItem(props) {
     const item = itemList[itemName];
     return (
         <div className="inv-item" onMouseEnter={showDescription} onMouseLeave={hideDescription} onClick={toggleMenu} ref={itemDiv} >
-            <img src={item.img ? item.img : chickenMeat} alt=""/>
+            <img src={item.img ? item.img : console.log('Img Missing: Inventory Item')} alt=""/>
             <div className="item-count">{itemCount[itemName]}</div>
 
             <ItemMenu 

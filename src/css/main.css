@@ -576,7 +576,7 @@ body {
       .container .battle-screen .player .player-card .hp-bar .miss, .container .battle-screen .player .enemy-card .hp-bar .miss, .container .battle-screen .enemy .player-card .hp-bar .miss, .container .battle-screen .enemy .enemy-card .hp-bar .miss {
         color: inherit;
         visibility: visible; }
-      .container .battle-screen .player .player-card .player-img, .container .battle-screen .player .player-card .enemy-img, .container .battle-screen .player .player-card .loading-img, .container .battle-screen .player .enemy-card .player-img, .container .battle-screen .player .enemy-card .enemy-img, .container .battle-screen .player .enemy-card .loading-img, .container .battle-screen .enemy .player-card .player-img, .container .battle-screen .enemy .player-card .enemy-img, .container .battle-screen .enemy .player-card .loading-img, .container .battle-screen .enemy .enemy-card .player-img, .container .battle-screen .enemy .enemy-card .enemy-img, .container .battle-screen .enemy .enemy-card .loading-img {
+      .container .battle-screen .player .player-card .player-img, .container .battle-screen .player .player-card .enemy-img, .container .battle-screen .player .enemy-card .player-img, .container .battle-screen .player .enemy-card .enemy-img, .container .battle-screen .enemy .player-card .player-img, .container .battle-screen .enemy .player-card .enemy-img, .container .battle-screen .enemy .enemy-card .player-img, .container .battle-screen .enemy .enemy-card .enemy-img {
         width: 100%; }
       .container .battle-screen .player .player-card .heal-quick-bar, .container .battle-screen .player .enemy-card .heal-quick-bar, .container .battle-screen .enemy .player-card .heal-quick-bar, .container .battle-screen .enemy .enemy-card .heal-quick-bar {
         display: flex;
@@ -624,7 +624,8 @@ body {
               .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img {
                 width: 100%;
                 height: 100%; }
-      .container .battle-screen .player .player-card .loading-img, .container .battle-screen .player .enemy-card .loading-img, .container .battle-screen .enemy .player-card .loading-img, .container .battle-screen .enemy .enemy-card .loading-img {
+      .container .battle-screen .player .player-card .loading-img img, .container .battle-screen .player .enemy-card .loading-img img, .container .battle-screen .enemy .player-card .loading-img img, .container .battle-screen .enemy .enemy-card .loading-img img {
+        width: 100%;
         -webkit-animation: loading 1s linear infinite;
         animation: loading 1s linear infinite; }
       .container .battle-screen .player .attack-bar .weapon-name, .container .battle-screen .enemy .attack-bar .weapon-name {

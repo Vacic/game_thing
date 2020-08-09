@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Inventory from './inventory_equipment/Inventory';
 import Equipment from './inventory_equipment/Equipment';
-import { updatePlayerStats, updatePlayerEquipment, updatePlayerQuickBarEquipment } from '../redux/player/playerAction';
-import { updateItemCount, setCurrentPlayerHp } from '../redux';
+import { updateItemCount, setCurrentPlayerHp, updatePlayerStats, updatePlayerEquipment, updatePlayerQuickBarEquipment } from '../redux';
 
 const InvAndEquip = React.memo((props) => {
     const { handleUseItem, playerHpBar, setMessage, showModal, resetPlayerAttack } = props // From Game Container
@@ -28,7 +27,7 @@ const InvAndEquip = React.memo((props) => {
             updateItemCount(newItemCount);
         }
         // Unequip current item and get new player stats after the item has been unequipped
-        let newPlayerStats = unequipItem(playerEquip[item.type], emptySlot, newItemCount);
+        let newPlayerStats = unequipItem(newPlayerEquip[item.type], emptySlot, newItemCount);
         // Equip the new item
         newPlayerEquip[item.type] = item;
         updatePlayerEquipment(newPlayerEquip);

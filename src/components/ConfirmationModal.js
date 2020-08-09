@@ -13,7 +13,7 @@ function ConfirmationModal({ text, func, isHidden, hideModal, itemToRemove }) {
     }, [hideModal]);
 
     const runFunc = () => {
-        func(itemToRemove);
+        func && func(itemToRemove);
         hideModal();
     }
     

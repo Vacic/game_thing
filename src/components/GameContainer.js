@@ -2,10 +2,9 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import BattleScreen from './BattleScreen';
 import LocationSelection from './location/LocationSelection';
-import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading, enemyTakesDamage, playerTakesDamage, updateItemCount, setCurrentLocation, setNotificationMessage, setNotificationClass } from '../redux';
+import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading, enemyTakesDamage, playerTakesDamage, updateItemCount, setCurrentLocation, setNotificationMessage, setNotificationClass, updatePlayerQuickBarEquipment } from '../redux';
 import InvAndEquip from './InvAndEquip';
 import Message from './Message';
-import { updatePlayerQuickBarEquipment } from '../redux/player/playerAction';
 import ConfirmationModal from './ConfirmationModal';
 
 
@@ -17,10 +16,11 @@ class GameContainer extends PureComponent {
             this.state = {
                 msg: [],
                 isMsgHidden: true,
-                isModalHidden: true,
+
                 modalText: '',
                 modalFunc: () => null,
-                itemToRemove: {}
+                itemToRemove: {},
+                isModalHidden: true
             }
         }
         
@@ -62,7 +62,7 @@ class GameContainer extends PureComponent {
             }
         }
 
-        resetPlayerAttack = (playerDmg, playerAttSpd) => {
+        resetPlayerAttack = (playerDmg, playerAttSpd) => {  // Using this after equipping a new weapon
             clearInterval(this.playerAttInterval);
             this.playerAttProgressDiv.style.animation = 'none';
             setTimeout(() => this.startPlayerAttack(playerDmg, playerAttSpd, this.props.currentEnemy.def, this.props.currentEnemy.eva), 100);
@@ -78,7 +78,7 @@ class GameContainer extends PureComponent {
         }
 
         calcDef = (dmg, def) => {
-            if ( def > 40 && dmg < def) return Math.ceil(dmg / 3)
+            if ( def > 40 && dmg < def) return Math.ceil(dmg / 3);
             else if (def <= 10 ) return (dmg - Math.ceil(def / 5));
             else return Math.ceil(dmg - ((def * (def / 5)) / 20));
         }
@@ -158,16 +158,16 @@ class GameContainer extends PureComponent {
             }
         }
     
-        playerTakesDamage = (dmg, def, eva) => {
+        playerTakesDamage = (enemyDmg, def, eva) => {
             if (this.shouldAttHit(eva)) {
-                dmg = this.calcDef(dmg, def);
-                dmg = this.calcDmg(dmg);
+                enemyDmg = this.calcDef(enemyDmg, def);
+                enemyDmg = this.calcDmg(enemyDmg);
 
-                this.playerAttStatus.innerHTML = `-${dmg}`;
+                this.playerAttStatus.innerHTML = `-${enemyDmg}`;
                 this.playerAttStatus.classList.remove('miss');
                 this.playerAttStatus.classList.add('dmg');
 
-                this.props.playerTakesDmg(dmg);
+                this.props.playerTakesDmg(enemyDmg);
                 this.playerHpBar.style.width = `${Math.floor((this.props.currentPlayerHp/this.props.playerStats.hp)*100)}%`;
             } else {
                 this.playerAttStatus.classList.remove('dmg');
@@ -207,16 +207,16 @@ class GameContainer extends PureComponent {
             }, this.props.globalTimeout);
         }
         
-        enemyTakesDamage = (dmg, def, eva) => {
+        enemyTakesDamage = (playerDmg, def, eva) => {
             if (this.shouldAttHit(eva)) {
-                dmg = this.calcDef(dmg, def);
-                dmg = this.calcDmg(dmg);
+                playerDmg = this.calcDef(playerDmg, def);
+                playerDmg = this.calcDmg(playerDmg);
 
-                this.enemyAttStatus.innerHTML = `-${dmg}`;
+                this.enemyAttStatus.innerHTML = `-${playerDmg}`;
                 this.enemyAttStatus.classList.remove('miss');
                 this.enemyAttStatus.classList.add('dmg');
 
-                this.props.enemyTakesDmg(dmg);
+                this.props.enemyTakesDmg(playerDmg);
                 this.enemyHpBar.style.width = `${Math.floor((this.props.currentEnemyHp/this.props.currentEnemy.hp)*100)}%`;
             } else {
                 this.enemyAttStatus.classList.remove('dmg');

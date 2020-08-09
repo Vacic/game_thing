@@ -285,7 +285,7 @@ body {
                     }
                 }
                 
-                .player-img, .enemy-img, .loading-img {
+                .player-img, .enemy-img {
                     width: 100%;
                 }
 
@@ -354,8 +354,11 @@ body {
                 }
                 
                 .loading-img {
-                    -webkit-animation: loading $loading-animation-time linear infinite;
-                    animation: loading $loading-animation-time linear infinite;
+                    img {
+                        width: 100%;
+                        -webkit-animation: loading $loading-animation-time linear infinite;
+                        animation: loading $loading-animation-time linear infinite;
+                    }
                 }
             }
     
