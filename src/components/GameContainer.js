@@ -115,7 +115,7 @@ class GameContainer extends PureComponent {
             this.resetActions();
             
             setTimeout(() => {
-                this.props.setCurrentPlayerHp(this.props.playerStats.hp <= 120 ? Math.floor(this.props.playerStats.hp / 2) : Math.floor(this.props.playerStats.hp / 3));
+                this.props.setCurrentPlayerHp(Math.floor(this.props.playerStats.hp / 2));
                 this.props.setCurrentEnemyHp(0);
                 this.props.setCurrentEnemyStats({ name: 'Select Location', hp:0, dmg:0, attSpd:0, def:0, eva:0 });
 
