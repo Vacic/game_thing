@@ -343,13 +343,11 @@ const itemListState = {
     },
 
     wolf_meat: {
-        cow_meat: {
-            img: process.env.PUBLIC_URL + '/item_imgs/wolf_meat.png',
-            name: 'Wolf Meat',
-            stats: {
-                heal: 80
-            }
-        },
+        img: process.env.PUBLIC_URL + '/item_imgs/wolf_meat.png',
+        name: 'Wolf Meat',
+        stats: {
+            heal: 80
+        }
     },
 
     first_aid_kit: {

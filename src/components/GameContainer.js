@@ -186,6 +186,7 @@ class GameContainer extends PureComponent {
             const chance = Math.ceil(Math.random()*10000)/100;
             dropKeys.forEach(drop => {
                 if (chance >= drops[drop].min && chance < drops[drop].max) {
+                    console.log(drop)
                     let newItemCount = { ...this.props.invItemCount };
                     newItemCount[drop] = (newItemCount[drop] || 0) + 1;
                     this.props.updateItemCount(newItemCount);
