@@ -8,7 +8,7 @@ export default function EnemyCard({ currentEnemyHp, maxHp, name, loadingEnemy, e
             <p className="name">{name}</p>
             <HpBar currentHp={currentEnemyHp} maxHp={maxHp} enemyHpBar={enemyHpBar} enemyAttStatus={enemyAttStatus} />
             {loadingEnemy 
-                ? <img className="loading-img" src={loadingImg} alt=""/>
+                ? <div className="loading-img"><img src={loadingImg} alt=""/></div>
                 : <img className="enemy-img" src="https://via.placeholder.com/150" alt=""/>
             }
         </div>

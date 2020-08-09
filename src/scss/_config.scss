@@ -60,19 +60,3 @@ $loading-animation-time: 1s;
     0% { transform: rotate(0) }
     100% { transform: rotate(360deg) }
 }
-
-@-webkit-keyframes showModal {
-    0% { height: 0px; width: 0px }
-    90% { height: 209px; width: 430px }
-    100% { height: 179px; width: 400px }
-} @keyframes showModal {
-    0% {}
-    90% {}
-    100% {}
-}
-
-@keyframes hideModal {
-    0% {}
-    90% {}
-    100% {}
-}
