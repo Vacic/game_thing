@@ -78,6 +78,10 @@
         .modal-container {
             .confirmation-modal {
                 margin-top: 18%;
+
+                &.hidden {
+                    margin-top: calc(18% + (179px/2));
+                }
             }
         }
     }
@@ -142,6 +146,10 @@
         .modal-container {
             .confirmation-modal {
                 margin-top: 30%;
+
+                &.hidden {
+                    margin-top: calc(30% + (179px/2));
+                }
             }
         }
 
@@ -249,8 +257,12 @@
             .confirmation-modal {
                 height: 140px;
                 width: 260px;
-                margin-top: 40%;
+                margin-top: 45%;
                 font-size: 0.8rem;
+
+                &.hidden {
+                    margin-top: calc(45% + (140px/2));
+                }
 
                 span {
                     display: none;

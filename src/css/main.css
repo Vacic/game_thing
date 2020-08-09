@@ -320,7 +320,8 @@
     .container .modal-container .confirmation-modal.hidden {
       height: 0px;
       width: 0px;
-      opacity: 0; }
+      opacity: 0;
+      margin-top: calc(10% + (179px/2)); }
       .container .modal-container .confirmation-modal.hidden span {
         padding: 0;
         font-size: 0;
@@ -723,7 +724,9 @@ body {
             width: 33px;
             height: 33px; }
     .container .modal-container .confirmation-modal {
-      margin-top: 18%; } }
+      margin-top: 18%; }
+      .container .modal-container .confirmation-modal.hidden {
+        margin-top: calc(18% + (179px/2)); } }
 
 @media screen and (max-width: 768px) {
   .container {
@@ -756,6 +759,8 @@ body {
             height: 25px; }
     .container .modal-container .confirmation-modal {
       margin-top: 30%; }
+      .container .modal-container .confirmation-modal.hidden {
+        margin-top: calc(30% + (179px/2)); }
     .container .inv-equip {
       flex-wrap: wrap;
       justify-content: center;
@@ -810,8 +815,10 @@ body {
     .container .modal-container .confirmation-modal {
       height: 140px;
       width: 260px;
-      margin-top: 40%;
+      margin-top: 45%;
       font-size: 0.8rem; }
+      .container .modal-container .confirmation-modal.hidden {
+        margin-top: calc(45% + (140px/2)); }
       .container .modal-container .confirmation-modal span {
         display: none; }
       .container .modal-container .confirmation-modal .modal-text {
