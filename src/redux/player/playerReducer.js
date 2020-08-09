@@ -6,7 +6,7 @@ const playerState = {
         hp: 80,
         dmg: 5, //5
         attSpd: 1, //1
-        def: 0,
+        def: 60,
         eva: 1
     },
 

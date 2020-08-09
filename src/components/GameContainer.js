@@ -67,7 +67,8 @@ class GameContainer extends PureComponent {
         }
 
         calcDmg = (dmg) => {
-            const randDmg = Math.random() * (dmg - Math.ceil(dmg/2)) + Math.ceil(dmg/2);
+            const randDmg = (Math.random() >= 0.5) ? (Math.random() * (dmg - Math.ceil(dmg/2)) + Math.ceil(dmg/2)) : (Math.random() * (dmg - Math.floor(dmg/2)) + Math.floor(dmg/2))
+            console.log(randDmg)
             return Math.ceil(randDmg);
         }
 
