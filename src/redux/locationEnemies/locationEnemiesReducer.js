@@ -175,17 +175,16 @@ const locationEnemiesState = {
         },
         wolf: {
             name: 'Wolf',
-            hp: 60,
-            dmg: 11,
-            attSpd: 1.5,
+            hp: 70,
+            dmg: 12,
+            attSpd: 1.3,
             def: 4,
             eva: 15,
             drops: {
                 iron_platelegs: { min: 0, max: 8 },
                 iron_boots: { min: 8, max: 16 },
                 iron_helmet: { min: 16, max: 24 },
-                wolf_meat: { min: 0, max: 100}
-                //wolf_meat: { min: 24, max: 100}
+                wolf_meat: { min: 24, max: 100}
             }
         },
         bandit_archer: {
@@ -213,16 +212,11 @@ const locationEnemiesState = {
             def: 3,
             eva: 15,
             drops: {
-                iron_dagger: { min: 0, max: 100 },
-                iron_boots: { min: 0, max: 100 },
-                iron_helmet: { min: 0, max: 100 },
-                steel_dagger: { min: 0, max: 100 },
-                first_aid_kit: { min: 0, max: 100 },
-                // iron_dagger: { min: 0, max: 15 },
-                // iron_boots: { min: 15, max: 25 },
-                // iron_helmet: { min: 25, max: 35 },
-                // steel_dagger: { min: 35, max: 36},
-                // first_aid_kit: { min: 36, max: 80}
+                iron_dagger: { min: 0, max: 15 },
+                iron_boots: { min: 15, max: 25 },
+                iron_helmet: { min: 25, max: 35 },
+                steel_dagger: { min: 35, max: 36},
+                first_aid_kit: { min: 36, max: 80}
             }
         },
         bandit_swordsman: {
