@@ -72,7 +72,9 @@ class GameContainer extends PureComponent {
         }
 
         calcDef = (dmg, def) => {
-            return def <= 10 ? (dmg - Math.ceil(def / 5)) : Math.ceil(dmg - ((def * (def / 5)) / 20));
+            if ( def > 40 && dmg < def) return Math.ceil(dmg / 3)
+            else if (def <= 10 ) return (dmg - Math.ceil(def / 5));
+            else return Math.ceil(dmg - ((def * (def / 5)) / 20));
         }
 
         setMessage = (msg) => {
