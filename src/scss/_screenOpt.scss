@@ -163,10 +163,14 @@
                 -o-transition: all 0.3s ease-out;
                 transition: all 0.3s ease-out;
     
-                &:hover {
-                    cursor: pointer;
+                &:active {
                     box-shadow: -2px 2px 5px rgba($color: $secondary-color, $alpha: 0.7), -1px 1px 5px rgba($color: $secondary-color, $alpha: 0.7);
                     font-size: 0.95rem;
+                }
+
+                &:hover {
+                    transform: none;
+                    box-shadow: none;
                 }
     
                 span {
