@@ -104,6 +104,11 @@
                 margin: 0;
                 padding: 0;
                 border: 0;
+
+                &:hover {
+                    transform: none;
+                    box-shadow: none;
+                }
     
                 &:active {
                     transform: translate( 2px, -2px);
