@@ -633,6 +633,9 @@ body {
         margin: 0;
         padding: 0;
         border: 0; }
+        .container .location-selection .location-card:hover {
+          transform: none;
+          box-shadow: none; }
         .container .location-selection .location-card:active {
           transform: translate(2px, -2px);
           box-shadow: -2px 2px 5px rgba(38, 154, 184, 0.7), -1px 1px 5px rgba(38, 154, 184, 0.7); }
