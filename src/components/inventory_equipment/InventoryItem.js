@@ -6,11 +6,11 @@ import { updateItemCount, setCurrentPlayerHp, updatePlayerStats, updatePlayerEqu
 import hideShowDescriptionMenu from './hideShowDescriptionMenu';
 
 function InventoryItem(props) {
-    const { hideMenuState, hideDescriptionState, showDescription, hideDescription, toggleMenu, hideMenu, itemDiv, equipToQuickSlot, showModal } = props; // From HOC
-    const { itemCount, itemList, handleUseItem, itemName, equipItem, removeAllItems, removeItem } = props;
+    const { hideMenuState, hideDescriptionState, showDescription, hideDescription, toggleMenu, hideMenu, itemDiv } = props; // From HOC
+    const { itemCount, itemList, handleUseItem, itemName, equipItem, removeAllItems, removeItem, equipToQuickSlot, showModal, id } = props;
     const item = itemList[itemName];
     return (
-        <div className="inv-item" onMouseEnter={showDescription} onMouseLeave={hideDescription} onClick={toggleMenu} ref={itemDiv} >
+        <div className="inv-item" id={id} onMouseEnter={showDescription} onMouseLeave={hideDescription} onClick={toggleMenu} ref={itemDiv}>
             <img src={item.img ? item.img : console.log('Img Missing: Inventory Item')} alt=""/>
             <div className="item-count">{itemCount[itemName]}</div>
 

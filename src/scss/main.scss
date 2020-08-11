@@ -26,7 +26,7 @@ body {
     margin: auto;
     color: rgb(247, 247, 247);
     
-    .location-selection, .location-selection-mobile {
+    .location-selection {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -46,6 +46,7 @@ body {
             border-radius: $border-radius;
             margin: 15px 15px 0px 15px;
             background-color: $secondary-color-darker;
+            box-shadow: -1px 1px 4px 1px rgba($color: rgb(10, 10, 10), $alpha: 0.6), -2px 2px 3px 1px rgba($color: rgb(10, 10, 10), $alpha: 0.1);
             -webkit-transition: all 0.2s ease-out;
             -moz-transition: all 0.2s ease-out;
             -ms-transition: all 0.2s ease-out;
@@ -73,145 +74,15 @@ body {
                 overflow: hidden;
             }
         }
-    }
-
-    .location-selection-mobile {
-        display: none;
-        grid-template-columns: 1fr;
-        padding: 0 8px 8px 8px;
-
-        .location-card {
-            display: flex;
-            align-items: center;
-            height: 0;
-            margin: 0;
-            padding: 0;
-            border: 0;
-
-            .location-name {
-                position: relative;
-                right: 20px;
-                font-size: 0rem;
-                opacity: 0;
-                -webkit-transition: all 0.3s ease-in-out;
-                -moz-transition: all 0.3s ease-in-out;
-                -ms-transition: all 0.3s ease-in-out;
-                -o-transition: all 0.3s ease-in-out;
-                transition: all 0.3s ease-in-out;
-            }
-
-            .location-img {
-                position: relative;
-                top: 20px;
-                left: 20px;
-                height: 0px;
-                width: 0px;
-                opacity: 0;
-                -webkit-transition: all 0.3s ease-in-out;
-                -moz-transition: all 0.3s ease-in-out;
-                -ms-transition: all 0.3s ease-in-out;
-                -o-transition: all 0.3s ease-in-out;
-                transition: all 0.3s ease-in-out;
-            }
-        }
 
         .mobile-dropdown-btn {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            margin: 0px;
-            height: 32px;
-            font-size: 0.8rem;
-            border-right: 2px solid $primary-color-lighter;
-            border-top: 1px solid $primary-color-lighter;
-            border-radius: $border-radius;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-            background-color: $secondary-color-darker;
-            -webkit-transition: all 0.3s ease-out;
-            -moz-transition: all 0.3s ease-out;
-            -ms-transition: all 0.3s ease-out;
-            -o-transition: all 0.3s ease-out;
-            transition: all 0.3s ease-out;
-
-            &:hover {
-                cursor: pointer;
-                box-shadow: -2px 2px 5px rgba($color: $secondary-color, $alpha: 0.7), -1px 1px 5px rgba($color: $secondary-color, $alpha: 0.7);
-                font-size: 0.95rem;
-            }
-
-            span {
-                -webkit-transition: all 0.5s ease-in-out;
-                -moz-transition: all 0.5s ease-in-out;
-                -ms-transition: all 0.5s ease-in-out;
-                -o-transition: all 0.5s ease-in-out;
-                transition: all 0.5s ease-in-out;
-            }
-        }
-
-        .btn-opened {
-            border-radius: $border-radius;
-            margin-top: 8px;
-            
-            span {
-                transform: rotate(180deg);
-            }
-        }
-
-        .show {
-            height: 50px;
-            margin: 8px 0px 0px 0px;
-            padding: 12px;
-            border-top: 2px solid $primary-color-lighter;
-            border-right: 2px solid $primary-color-lighter;
-
-            .location-name {
-                opacity: 1;
-                font-size: 1.2rem;
-            }
-
-            .location-img {
-                top: 0;
-                left: 0;
-                opacity: 1;
-                height: 40px;
-                width: 40px;
-            }
-        }
-        
-        .first {
-            top: 0;
-            left: 0;
-            height: 50px;
-            margin: 8px 0px 0px 0px;
-            padding: 12px;
-            justify-content: center;
-            border-top: 2px solid $primary-color-lighter;
-            border-right: 2px solid $primary-color-lighter;
-            grid-row-start: 1;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-            z-index: 1;
-
-            .location-name {
-                display: block;
-            }
-
-            .location-img {
-                display: block;
-            }
-        }
-
-        .first-card-opened {
-            border-bottom-left-radius: $border-radius;
-            border-bottom-right-radius: $border-radius;
+            display: none;
         }
     }
     
     .battle-screen {
         display: flex;
+        align-items: center;
         justify-content: space-around;
         width: 100%;
         padding: 20px;
@@ -229,6 +100,7 @@ body {
                 .name {
                     font-size: 1.6rem;
                     text-transform: capitalize;
+                    
                 }
                 
                 .hp-bar {
@@ -305,8 +177,8 @@ body {
                         .heal-quick-bar-item {
                             position: relative;
                             display: flex;
-                            background-color: rgba($color: $secondary-color-darker, $alpha: 0.5);
-                            box-shadow: -1px -1px 1px 1px rgba($color: $primary-color-lighter, $alpha: 1.0);
+                            background-color: rgba($color: white, $alpha: 0.3);
+                            box-shadow: -1px -1px 1px 1px rgba($color: $primary-color-lighter, $alpha: 0.4);
                             padding: 12px;
                             bottom: 2px;
                             margin: 0 2px 0 2px;
@@ -327,17 +199,18 @@ body {
                             }
 
                             .item-num {
+                                display: flex;
                                 justify-content: center;
                                 align-items: center;
-                                display: flex;
                                 position: absolute;
-                                background-color: rgba($color: $primary-color, $alpha: 0.4);
+                                background-color: rgba($color: $primary-color, $alpha: 0.5);
                                 border-radius: 50%;
                                 width: 25px;
                                 height: 25px;
                                 font-size: 1rem;
                                 bottom: -7px;
                                 margin-right: 1px;
+                                font-weight: 500;
                             }
 
                             .item-img {
@@ -400,6 +273,7 @@ body {
                 margin-top: 10px;
                 border-top: 2px solid $primary-color-lighter;
                 border-left: 2px solid $primary-color-lighter;
+                box-shadow: 1px 1px 4px 1px rgba($color: white, $alpha: 0.3), 2px 2px 2px 1px rgba($color: white, $alpha: 0.1);
                 
                 h3 {
                     text-align: center;
@@ -414,6 +288,10 @@ body {
         
         .dead {
             color: rgb(230, 68, 68);
+
+            .item-num {
+                color: #f7f7f7;
+            }
         }
     }
     

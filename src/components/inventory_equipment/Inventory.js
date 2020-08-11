@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import InventoryItem from './InventoryItem';
 
 function Inventory({ itemCount, handleUseItem, equipItem, equipToQuickSlot, removeItem, removeAllItems, showModal }) {
-    const InvItemNames = Object.keys(itemCount);
+    const invItemNames = Object.keys(itemCount);
     return (
         <div className="inventory">
             <h3>Inventory</h3>
             <div className="inv-list">
-                {InvItemNames.map((itemName, i) => <InventoryItem 
+                {invItemNames.map((itemName, i) => <InventoryItem
                     key={i} 
+                    id={i}
                     itemName={itemName} 
                     handleUseItem={handleUseItem} 
                     equipItem={equipItem} 

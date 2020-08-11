@@ -92,11 +92,144 @@
         width: 85%;
 
         .location-selection {
-            display: none;
-        }
-
-        .location-selection-mobile {
             display: grid;
+            grid-template-columns: 1fr;
+            padding: 0 8px 8px 8px;
+    
+            .location-card {
+                display: flex;
+                align-items: center;
+                box-shadow: none;
+                height: 0;
+                margin: 0;
+                padding: 0;
+                border: 0;
+    
+                &:active {
+                    transform: translate( 2px, -2px);
+                    box-shadow: -2px 2px 5px rgba($color: $secondary-color, $alpha: 0.7), -1px 1px 5px rgba($color: $secondary-color, $alpha: 0.7);
+                }
+    
+                .location-name {
+                    position: relative;
+                    right: 20px;
+                    font-size: 0rem;
+                    opacity: 0;
+                    -webkit-transition: all 0.3s ease-in-out;
+                    -moz-transition: all 0.3s ease-in-out;
+                    -ms-transition: all 0.3s ease-in-out;
+                    -o-transition: all 0.3s ease-in-out;
+                    transition: all 0.3s ease-in-out;
+                }
+    
+                .location-img {
+                    position: relative;
+                    top: 20px;
+                    left: 20px;
+                    height: 0px;
+                    width: 0px;
+                    opacity: 0;
+                    -webkit-transition: all 0.3s ease-in-out;
+                    -moz-transition: all 0.3s ease-in-out;
+                    -ms-transition: all 0.3s ease-in-out;
+                    -o-transition: all 0.3s ease-in-out;
+                    transition: all 0.3s ease-in-out;
+                }
+            }
+    
+            .mobile-dropdown-btn {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                margin: 0px;
+                height: 32px;
+                font-size: 0.8rem;
+                border-right: 2px solid $primary-color-lighter;
+                border-top: 1px solid $primary-color-lighter;
+                border-radius: $border-radius;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                background-color: $secondary-color-darker;
+                -webkit-transition: all 0.3s ease-out;
+                -moz-transition: all 0.3s ease-out;
+                -ms-transition: all 0.3s ease-out;
+                -o-transition: all 0.3s ease-out;
+                transition: all 0.3s ease-out;
+    
+                &:hover {
+                    cursor: pointer;
+                    box-shadow: -2px 2px 5px rgba($color: $secondary-color, $alpha: 0.7), -1px 1px 5px rgba($color: $secondary-color, $alpha: 0.7);
+                    font-size: 0.95rem;
+                }
+    
+                span {
+                    -webkit-transition: all 0.5s ease-in-out;
+                    -moz-transition: all 0.5s ease-in-out;
+                    -ms-transition: all 0.5s ease-in-out;
+                    -o-transition: all 0.5s ease-in-out;
+                    transition: all 0.5s ease-in-out;
+                }
+            }
+    
+            .btn-opened {
+                border-radius: $border-radius;
+                margin-top: 8px;
+                
+                span {
+                    transform: rotate(180deg);
+                }
+            }
+    
+            .show {
+                height: 50px;
+                margin: 8px 0px 0px 0px;
+                padding: 12px;
+                border-top: 2px solid $primary-color-lighter;
+                border-right: 2px solid $primary-color-lighter;
+    
+                .location-name {
+                    opacity: 1;
+                    font-size: 1.2rem;
+                }
+    
+                .location-img {
+                    top: 0;
+                    left: 0;
+                    opacity: 1;
+                    height: 40px;
+                    width: 40px;
+                }
+            }
+            
+            .first {
+                top: 0;
+                left: 0;
+                height: 50px;
+                margin: 8px 0px 0px 0px;
+                padding: 12px;
+                justify-content: center;
+                border-top: 2px solid $primary-color-lighter;
+                border-right: 2px solid $primary-color-lighter;
+                grid-row-start: 1;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                z-index: 1;
+    
+                .location-name {
+                    display: block;
+                }
+    
+                .location-img {
+                    display: block;
+                }
+            }
+    
+            .first-card-opened {
+                border-bottom-left-radius: $border-radius;
+                border-bottom-right-radius: $border-radius;
+            }
         }
 
         .battle-screen {
@@ -140,15 +273,25 @@
                         }
                     }
                 }
-            }
-        }
-        
-        .modal-container {
-            .confirmation-modal {
-                margin-top: 30%;
 
-                &.hidden {
-                    margin-top: calc(30% + (179px/2));
+                .attack-bar {
+                    p {
+                        font-size: 0.9rem;
+                    }
+                }
+
+                .stats {
+                    h3 {
+                        font-size: 1rem;
+                    }
+
+                    p {
+                        font-size: 0.9rem;
+
+                        span {
+                            font-size: 1rem
+                        }
+                    }
                 }
             }
         }
@@ -157,12 +300,52 @@
             flex-wrap: wrap;
             justify-content: center;
             flex-direction: column-reverse;
+            font-size: 0.9rem;
+            
             .equipment, .inventory {
                 width: 100%;
+
+                .inv-list .inv-item {
+                    .item-description {
+                        top: -121px;
+                    }
+
+                    .item-menu {
+                        top: -202px;
+                    }
+
+                    .item-count {
+                        font-size: 0.8rem;
+                    }
+                }
             }
 
             .equipment {
                 margin-top: 15px;
+            }
+        }
+        
+        .modal-container {
+            .confirmation-modal {
+                margin-top: 30%;
+                font-size: 1rem;
+
+                &.hidden {
+                    margin-top: calc(30% + (179px/2));
+                }
+
+                .modal-text {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        .msg {
+            font-size: 0.9rem;
+
+            img {
+                width: 30px;
+                height: 30px;
             }
         }
     }
@@ -172,43 +355,18 @@
     .container {
         width: 95%;
 
-        .location-selection-mobile {
-            .location-card {
-                &:hover {
-                    transform: none;
-                    box-shadow: none;
-                }
-
-                &:active {
-                    transform: translate( 2px, -2px);
-                    box-shadow: -2px 2px 5px rgba($color: $secondary-color, $alpha: 0.7), -1px 1px 5px rgba($color: $secondary-color, $alpha: 0.7);
-                }
-            }
-
-            .mobile-dropdown-btn {
-                -webkit-transition: none;
-                -moz-transition: none;
-                -ms-transition: none;
-                -o-transition: none;
-                transition: none;
-
-                &:hover {
-                    box-shadow: none;
-                }
-
-                &:active {
-                    box-shadow: -2px 2px 5px rgba($color: $secondary-color, $alpha: 0.7), -1px 1px 5px rgba($color: $secondary-color, $alpha: 0.7);
-                }
-            }
-        }
-
         .battle-screen {
             padding: 8px;
 
             .player, .enemy {
                 width: 48%;
                 .player-card, .enemy-card {
+
+                    .name {
+                        font-size: 1rem;
+                    }
                     .hp-bar {
+
                         .current, .max {
                             height: $bar-height-smaller;
                             top: 3px;
@@ -233,6 +391,10 @@
                 }
 
                 .attack-bar {
+                    p {
+                        font-size: 0.8rem
+                    }
+
                     .att-empty, .att-progress {
                         height: $bar-height-smaller;
                     }
@@ -246,10 +408,47 @@
                     }
                 }
                 .stats {
-                    p span {
-                        font-size: 0.86rem
+                    h3 {
+                        font-size: 0.9rem;
+                    }
+
+                    p {
+                        font-size: 0.85rem;
+
+                        span {
+                            font-size: 0.9rem;
+                        }
                     }
                 }    
+            }
+        }
+
+        .inv-equip {
+            padding: 8px;
+            font-size: 0.85rem;
+
+            .equipment, .inventory {
+                width: 100%;
+            }
+
+            .equipment {
+                margin-bottom: 8px;
+            }
+
+            .inventory {
+                .inv-list .inv-item {
+                    .item-description {
+                        top: -115px;
+                    }
+
+                    .item-menu {
+                        top: -195px;
+                    }
+
+                    .item-count {
+                        font-size: 0.8rem;
+                    }
+                }
             }
         }
 
@@ -283,14 +482,13 @@
             }
         }
 
-        .inv-equip {
-            padding: 8px;
-            .equipment, .inventory {
-                width: 100%;
-            }
+        .msg {
+            margin-left: -145px;
+            width: 290px;
+            font-size: 0.85rem;
 
-            .equipment {
-                margin-bottom: 8px;
+            .msg-success, .msg-danger {
+                padding: 12px 12px 12px 15px;
             }
         }
     }

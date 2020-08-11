@@ -61,6 +61,7 @@
                         visibility: visible;
                         position: relative;
                         background-color: $secondary-color-darker;
+                        box-shadow: 1px 1px 4px 1px rgba($color: rgb(10, 10, 10), $alpha: 0.5), 2px 2px 2px 1px rgba($color: rgb(10, 10, 10), $alpha: 0.1);
                         width: 150px;
                         top: -123px;
                         left: -47px;
@@ -95,6 +96,7 @@
                         left: -26px;
                         padding: 7px;
                         background-color: $secondary-color-darker;
+                        box-shadow: 1px 1px 4px 1px rgba($color: rgb(10, 10, 10), $alpha: 0.5), 2px 2px 2px 1px rgba($color: rgb(10, 10, 10), $alpha: 0.1);
                         border-radius: $border-radius;
                         width: 108px;
                         z-index: 1;
