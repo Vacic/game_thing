@@ -6,7 +6,7 @@ export default function AttackSpeed({ attSpd, weapon, playerAttProgressDiv, enem
             {weapon ? <p className="weapon-name">{weapon}</p> : <p className="no-weapon">no-weapon</p>}
             <div className="att-empty"></div>
             <div className="att-progress" ref={playerAttProgressDiv ? playerAttProgressDiv : enemyAttProgressDiv}></div>
-            <span>Attack Speed: {attSpd}sec</span>
+            <p>Attack Speed: {attSpd}s</p>
         </div>
     )
 }

@@ -3,11 +3,12 @@
         position: fixed;
         display: flex;
         flex-direction: column;
-        margin-left: -160px;
+        margin-left: -210px;
         left: 50%;
         bottom: 30px;
-        width: 320px;
+        width: 420px;
         min-height: 50px;
+        padding: 12px;
         opacity: 1;
         overflow: hidden;
         -webkit-transition: all 1s cubic-bezier(0, .9, .4, 1);
@@ -19,12 +20,13 @@
 
         .msg-success, .msg-danger {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
             text-align: center;
-            padding: 12px;
+            padding: 12px 20px 12px 20px;
             height: 50px;
             border-radius: $border-radius;
+            box-shadow: 1px 1px 3px 1px $primary-color-lighter;
             border-top: 2px solid $secondary-color-lighter;
             border-left: 2px solid $secondary-color-lighter;
             margin-bottom: 15px;
@@ -77,6 +79,7 @@
             margin: auto;
             margin-top: 10%;
             background-color: rgba(241, 241, 241, 0.88);
+            box-shadow: 1px 1px 4px 1px rgba($color: rgb(10, 10, 10), $alpha: 0.7), 1px 1px 3px 1px rgba($color: rgb(10, 10, 10), $alpha: 0.5);
             color: rgb(48, 48, 48);
             font-weight: 500;
             border-radius: $border-radius;
