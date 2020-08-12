@@ -32,7 +32,7 @@ const itemListState = {
         name: 'Iron Dagger',
         type: 'weapon',
         stats: {
-            attSpd: 0.9,
+            attSpd: 1,
             dmg: 12
         }
     },
@@ -41,7 +41,7 @@ const itemListState = {
         name: 'Steel Dagger',
         type: 'weapon',
         stats: {
-            attSpd: 0.7,
+            attSpd: 0.8,
             dmg: 14
         }
     },

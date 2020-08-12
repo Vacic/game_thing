@@ -208,7 +208,7 @@ const locationEnemiesState = {
             name: 'Thief',
             hp: 100,
             dmg: 12,
-            attSpd: 1.6,
+            attSpd: 1,
             def: 3,
             eva: 15,
             drops: {
@@ -301,17 +301,19 @@ const locationEnemiesState = {
             hp: 400,
             dmg: 35,
             attSpd: 1.2,
-            def: 30,
+            def: 18,
             eva: 30,
             drops: {
                 steel_boots: { min: 0, max: 13 },
                 steel_helmet: { min: 13, max: 26 },
                 steel_armor: { min: 26, max: 36 },
                 steel_platelegs: { min: 36, max: 46 },
-                diamond_boots: { min: 46, max: 51 },
-                diamond_helmet: { min: 51, max: 56 },
-                diamond_armor: { min: 56, max: 59 },
-                diamond_platelegs: { min: 59, max: 62 },
+                steel_sword: { min: 46, max: 56 },
+                steel_shield: { min: 56, max: 66 },
+                diamond_boots: { min: 66, max: 71 },
+                diamond_helmet: { min: 71, max: 76 },
+                diamond_armor: { min: 76, max: 79 },
+                diamond_platelegs: { min: 79, max: 82 },
                 health_potion: { min: 46, max: 100}
             }
         },
