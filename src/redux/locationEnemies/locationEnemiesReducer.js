@@ -10,7 +10,7 @@ const locationEnemiesState = {
             eva: 1,
             drops: {
                 chicken_meat: { min: 0, max: 60 },
-                egg: { min: 30, max: 100 },
+                egg: { min: 30, max: 100 }
             }
         },
         cow: {

@@ -2,7 +2,7 @@ import React from 'react';
 import HpBar from '../stats/HpBar';
 import loadingImg from '../../img/loading.png';
 
-export default function EnemyCard({ currentEnemyHp, maxHp, name, loadingEnemy, enemyHpBar, enemyAttStatus }) {
+const EnemyCard = React.memo(({ currentEnemyHp, maxHp, name, loadingEnemy, enemyHpBar, enemyAttStatus }) => {
     return (
         <div className="enemy-card">
             <p className="name">{name}</p>
@@ -13,4 +13,6 @@ export default function EnemyCard({ currentEnemyHp, maxHp, name, loadingEnemy, e
             }
         </div>
     )
-}
+})
+
+export default EnemyCard
