@@ -27,7 +27,8 @@ router.post('/', joiValidate(userLoginSchema), async (req, res) => {
             cookie = req.cookie && req.cookie.token
             console.log(cookie);
             if (cookie === undefined) {
-                res.cookie('token', `Bearer ${token}`, { maxAge: 1296000, httpOnly: true, /*secure: true*/ });
+                res.cookie('token', `Bearer ${token}`, { maxAge: 1296000, httpOnly: true, secure: true });
+                console.log(res.cookie)
                 res.status(200).end();
             } else {
                 console.log('cookie exists', cookie);

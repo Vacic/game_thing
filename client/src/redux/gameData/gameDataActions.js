@@ -24,7 +24,7 @@ export const login = (email, password) => async dispatch => {
             console.log('should set token')
             userToken = cookies.get('token');
             console.log(userToken);
-            const { data } = await axios.get(`/users/progress`, { headers: { "Authorization": userToken } });
+            const { data } = await axios.get(`/users/progress`, { headers: { "Authorization": userToken, withCredentials: true } });
             userData = data;
             console.log(data)
         }
