@@ -7,7 +7,7 @@ const checkToken = (req, res, next) => {
     let bearerToken = cookieToken.token;
     console.log(bearerToken)
     if(!bearerToken) return res.status(400).json({ error: "Token Not Provided." });
-    bearerToken = bearerToken.split('%20')
+    bearerToken = bearerToken.split(' ')
     const bearer = bearerToken[0];
     const token = bearerToken[1];
     console.log(bearer)
