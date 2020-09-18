@@ -17,8 +17,7 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
-    "scss": "^0.2.4",
-    "universal-cookie": "^4.0.3"
+    "scss": "^0.2.4"
   },
   "scripts": {
     "sass": "node-sass -w src/scss/ -o src/css/ --recursive",

@@ -1,14 +1,12 @@
 const jwt = require('jsonwebtoken');
 
 const checkToken = (req, res, next) => {
-    // COOKIE LOGIC
-    // const cookieToken = req.cookies;
-    // console.log(cookieToken)
-    // if(!cookieToken[0]) return res.status(400).json({error: 'Cookie Not Present'})
-    // let bearerToken = cookieToken.token;
-    let bearerToken = req.header('Authorization');
+    const cookieToken = req.cookies;
+    console.log(cookieToken)
+    if(!cookieToken[0]) return res.status(400).json({error: 'Cookie Not Present'})
+    let bearerToken = cookieToken.token;
     if(!bearerToken) return res.status(400).json({ error: "Token Not Provided." });
-    bearerToken = bearerToken.split(' ')
+    bearerToken = bearerToken.split('%20')
     const bearer = bearerToken[0];
     const token = bearerToken[1];
 
