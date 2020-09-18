@@ -4,7 +4,7 @@ const playerState = {
     stats: {
         weapon: 'Fists',
         hp: 80,
-        dmg: 50, //5
+        dmg: 5, //5
         attSpd: 1, //1
         def: 0,
         eva: 1
@@ -12,7 +12,7 @@ const playerState = {
 
     name: '',
 
-    inventory: {leather_boots: 5},
+    inventory: {},
 
     equipped: {},
 

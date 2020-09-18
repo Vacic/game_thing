@@ -19,7 +19,6 @@
     "redux-thunk": "^2.3.0",
     "scss": "^0.2.4"
   },
-  "homepage": "http://Vacic.github.io/game_thing",
   "scripts": {
     "sass": "node-sass -w src/scss/ -o src/css/ --recursive",
     "predeploy": "npm run build",
@@ -44,7 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "gh-pages": "^3.1.0"
-  }
+  "devDependencies": {}
 }
