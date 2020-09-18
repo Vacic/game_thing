@@ -19,6 +19,7 @@ const LogIn = ({ isLoginHidden, toggleLogin, login, setMessage, setLogin, isLoad
         return () => {
             document.removeEventListener('mousedown', hideLoginOnOutsideClick);
             clearTimeout(timeout.current);
+            setMessage({ showMsg: false });
         }
     }, [isLoginHidden, toggleLogin]);
     
@@ -45,7 +46,7 @@ const LogIn = ({ isLoginHidden, toggleLogin, login, setMessage, setLogin, isLoad
         } else setMessage({ showMsg: true, msg: isLoggedIn.error, classType: 'danger' });
 
         if(timeout.current) clearTimeout(timeout.current);
-        timeout.current = setTimeout(() => setMessage({ showMsg: false }), 3000);
+        timeout.current = setTimeout(() => setMessage({ showMsg: false }), 2000);
     }
     
     const timeout = useRef();

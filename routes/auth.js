@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 
 const joiValidate = require('../middleware/joiValidate');
 const userLoginSchema = require('../validationSchemas/userLoginSchema');
@@ -21,16 +22,17 @@ router.post('/', joiValidate(userLoginSchema), async (req, res) => {
 
         jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn:'15 days' }, (err, token) => {
             if(err) throw err;
-            res.json({token});
-            // COOKIE LOGIC - CAN'T TEST WITH THIS IN DEVELOPMENT
-            // cookie = req.cookie && req.cookie.token
-            // if (cookie === undefined) {
-            //     res.cookie('token', `Bearer ${token}`, { maxAge: 1296000, httpOnly: true, /*secure: true*/ });
-            //     res.status(200).end();
-            // } else {
-            //     console.log('cookie exists', cookie);
-            //     res.status(200).end();
-            // } 
+            //res.json({token});
+            //COOKIE LOGIC - CAN'T TEST WITH THIS IN DEVELOPMENT
+            cookie = req.cookie && req.cookie.token
+            console.log(cookie);
+            if (cookie === undefined) {
+                res.cookie('token', `Bearer ${token}`, { maxAge: 1296000, httpOnly: true, /*secure: true*/ });
+                res.status(200).end();
+            } else {
+                console.log('cookie exists', cookie);
+                res.status(200).end();
+            } 
         });
     } catch (err) {
         console.log(err);

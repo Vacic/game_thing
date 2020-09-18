@@ -1,5 +1,6 @@
 import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, TOGGLE_LOADING, ENEMY_TAKES_DAMAGE, PLAYER_TAKES_DAMAGE, SET_CURRENT_LOCATION, SET_NOTIFICATION_MESSAGE, SET_NOTIFICATION_CLASS, LOGIN, SET_LOADING_ENEMY } from './gameDataTypes';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
 import { populatePlayer, updateInventory } from '../player/playerAction';
 
 export const login = (email, password) => async dispatch => {
@@ -7,17 +8,33 @@ export const login = (email, password) => async dispatch => {
     const config = { headers: { "Content-Type": "application/json" } };
     const body = JSON.stringify({ email, password });
     try {
+        let cookie = new Cookies();
+        let tokenn = cookie.get('token');
+        let dataa = {};
+        if (tokenn) {
+            console.log(tokenn)
+            // const { data } = await axios.get(`/users/progress`, { headers: { "Authorization": `Bearer ${token}` } });
+            const { data } = await axios.get(`http://localhost:3001/users/progress`, { headers: { "Authorization": `Bearer ${tokenn}` } });
+            dataa = data;
+        }
+        else {
+            // const { data: { token } } = await axios.post('/auth', body, config);
+            const { data: { token } } = await axios.post('http://localhost:3001/auth', body, config);
+            
+            tokenn = token;
+        }
+
+
         // COOKIE LOGIC
-        // const { status } = await axios.post('http://127.0.0.1:5000/auth', body, config);
+        // const { status } = await axios.post('/auth', body, config);
         // if(!status) return dispatch(setMessage({ showMsg: true, msg: 'Server Problem', classType: 'danger' }));
         
-        // const { data } = await axios.get(`http://127.0.0.1:5000/users/progress`, { withCredentials: true });
+        // const { data } = await axios.get(`/users/progress`, { withCredentials: true });
         
-        const { data: { token } } = await axios.post('/auth', body, config);
-        localStorage.setItem('token', token);
         
-        const { data } = await axios.get(`/users/progress`, { headers: { "Authorization": `Bearer ${token}` } });
-        const { currentHp, currentLocation, inventory = {}, playerStats, equipment = {}, quickBarEquipment = ['', '', ''], user: { username } } = data;
+        
+        
+        const { currentHp, currentLocation, inventory = {}, playerStats, equipment = {}, quickBarEquipment = ['', '', ''], user: { username } } = dataa;
         dispatch(populatePlayer(playerStats, username, equipment, quickBarEquipment));
         dispatch(setCurrentPlayerHp(currentHp));
         dispatch(setCurrentLocation(currentLocation));

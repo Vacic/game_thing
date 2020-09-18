@@ -36,8 +36,7 @@ router.post('/', joiValidate(userRegistrationSchema), async (req, res) => {
         const newUser = await user.save();
         progress.user = newUser._id;
         await progress.save();
-        //res.status(200).end();
-        res.json(newUser);
+        res.status(200).end();
     } catch (err) {
         console.log(err);
         res.status(500).send('Server Error');
@@ -72,12 +71,5 @@ router.put('/progress', checkToken, async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
-
-router.get('/randtoken', (req, res) => {
-    require('crypto').randomBytes(256, function(err, buf) {
-        const token = buf.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
-        res.send(token);
-    });
-})
 
 module.exports = router;
