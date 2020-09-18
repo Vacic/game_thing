@@ -8,22 +8,24 @@ export const login = (email, password) => async dispatch => {
     const config = { headers: { "Content-Type": "application/json" } };
     const body = JSON.stringify({ email, password });
     try {
-        let cookie = new Cookies();
-        let tokenn = cookie.get('token');
-        let dataa = {};
-        if (tokenn) {
-            console.log(tokenn)
-            const { data } = await axios.get(`/users/progress`, { headers: { "Authorization": `Bearer ${tokenn}` } });
-            // const { data } = await axios.get(`http://localhost:3001/users/progress`, { headers: { "Authorization": `Bearer ${tokenn}` } });
-            dataa = data;
+        let userToken = Cookies.get('token');
+        let userData = {};
+        if (userToken) {
+            console.log(userToken)
+            const { data } = await axios.get(`/users/progress`, { headers: { "Authorization": userToken } });
+            // const { data } = await axios.get(`http://localhost:3001/users/progress`, { headers: { "Authorization": `Bearer ${userToken}` } });
+            userData = data;
         }
         else {
             // const { data: { token } } = await axios.post('/auth', body, config);
             await axios.post('/auth', body, config);
             // await axios.post('http://localhost:3001/auth', body, config);
             console.log('should set token')
-            tokenn = cookie.get('token');
-            console.log(tokenn)
+            userToken = Cookies.get('token');
+            console.log(userToken);
+            const { data } = await axios.get(`/users/progress`, { headers: { "Authorization": userToken } });
+            userData = data;
+            console.log(data)
         }
 
 
@@ -36,7 +38,7 @@ export const login = (email, password) => async dispatch => {
         
         
         
-        const { currentHp, currentLocation, inventory = {}, playerStats, equipment = {}, quickBarEquipment = ['', '', ''], user: { username } } = dataa;
+        const { currentHp, currentLocation, inventory = {}, playerStats, equipment = {}, quickBarEquipment = ['', '', ''], user: { username } } = userData;
         dispatch(populatePlayer(playerStats, username, equipment, quickBarEquipment));
         dispatch(setCurrentPlayerHp(currentHp));
         dispatch(setCurrentLocation(currentLocation));
