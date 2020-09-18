@@ -13,7 +13,7 @@ export const login = (email, password) => async dispatch => {
         let dataa = {};
         if (tokenn) {
             console.log(tokenn)
-            const { data } = await axios.get(`/users/progress`, { headers: { "Authorization": `Bearer ${token}` } });
+            const { data } = await axios.get(`/users/progress`, { headers: { "Authorization": `Bearer ${tokenn}` } });
             // const { data } = await axios.get(`http://localhost:3001/users/progress`, { headers: { "Authorization": `Bearer ${tokenn}` } });
             dataa = data;
         }
@@ -23,7 +23,7 @@ export const login = (email, password) => async dispatch => {
             // await axios.post('http://localhost:3001/auth', body, config);
             console.log('should set token')
             tokenn = cookie.get('token');
-            console.log(token)
+            console.log(tokenn)
         }
 
 
