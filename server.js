@@ -10,7 +10,7 @@ const app = express();
 connectDB();
 // Middleware
 app.use(express.json());
-app.use(cors({ credentials: true, origin: 'https://game-thing.herokuapp.com/' }));
+app.use(cors({ credentials: true, origin: ['https://game-thing.herokuapp.com/', 'http://localhost:3000'] }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 // Routes
 app.use('/users', require('./routes/users'));

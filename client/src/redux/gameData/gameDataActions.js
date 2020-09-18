@@ -13,10 +13,10 @@ export const login = (email, password) => async dispatch => {
         
         // const { data } = await axios.get(`http://127.0.0.1:5000/users/progress`, { withCredentials: true });
         
-        const { data: { token } } = await axios.post('/auth', body, config);
+        const { data: { token } } = await axios.post('http://localhost:5000/auth', body, config);
         localStorage.setItem('token', token);
         
-        const { data } = await axios.get(`/users/progress`, { headers: { "Authorization": `Bearer ${token}` } });
+        const { data } = await axios.get(`http://localhost:5000/users/progress`, { headers: { "Authorization": `Bearer ${token}` } });
         const { currentHp, currentLocation, inventory = {}, playerStats, equipment = {}, quickBarEquipment = ['', '', ''], user: { username } } = data;
         dispatch(populatePlayer(playerStats, username, equipment, quickBarEquipment));
         dispatch(setCurrentPlayerHp(currentHp));
