@@ -19,9 +19,9 @@ export const login = (email, password) => async dispatch => {
         }
         else {
             // const { data: { token } } = await axios.post('/auth', body, config);
-            const { data: { token } } = await axios.post('http://localhost:3001/auth', body, config);
-            
-            tokenn = token;
+            await axios.post('http://localhost:3001/auth', body, config);
+            console.log('should set token')
+            tokenn = cookie.get('token');
         }
 
 
