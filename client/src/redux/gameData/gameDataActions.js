@@ -1,6 +1,5 @@
 import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, TOGGLE_LOADING, ENEMY_TAKES_DAMAGE, PLAYER_TAKES_DAMAGE, SET_CURRENT_LOCATION, SET_NOTIFICATION_MESSAGE, SET_NOTIFICATION_CLASS, LOGIN, SET_LOADING_ENEMY } from './gameDataTypes';
 import axios from 'axios';
-import Cookies from 'universal-cookie';
 import { populatePlayer, updateInventory } from '../player/playerAction';
 
 export const login = (email, password) => async dispatch => {
@@ -8,12 +7,9 @@ export const login = (email, password) => async dispatch => {
     const config = { headers: { "Content-Type": "application/json" } };
     const body = JSON.stringify({ email, password });
     try {
-        let cookies = new Cookies();
-        let userToken = cookies.get('token');
         let userData = {};
         if (userToken) {
-            console.log(userToken)
-            const { data } = await axios.get(`/users/progress`, { headers: { "Authorization": userToken } });
+            const { data } = await axios.get(`/users/progress`, { withCredentials: true });
             // const { data } = await axios.get(`http://localhost:3001/users/progress`, { headers: { "Authorization": `Bearer ${userToken}` } });
             userData = data;
         }
@@ -24,7 +20,7 @@ export const login = (email, password) => async dispatch => {
             console.log('should set token')
             userToken = cookies.get('token');
             console.log(userToken);
-            const { data } = await axios.get(`/users/progress`, { headers: { "Authorization": userToken } });
+            const { data } = await axios.get(`/users/progress`, { withCredentials: true });
             userData = data;
             console.log(data)
         }
