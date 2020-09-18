@@ -17,7 +17,7 @@ app.use('/users', require('./routes/users'));
 app.use('/auth', require('./routes/auth'));
 
 // Serve static assets in production
-if(PerformanceObserverEntryList.env.NODE_ENV === 'production') {
+if(process.env.NODE_ENV === 'production') {
     // Set Static Folder
     app.use(express.static('client/build'));
 
