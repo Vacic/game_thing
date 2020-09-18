@@ -7,35 +7,9 @@ export const login = (email, password) => async dispatch => {
     const config = { headers: { "Content-Type": "application/json" } };
     const body = JSON.stringify({ email, password });
     try {
-        let userData = {};
-        if (userToken) {
-            const { data } = await axios.get(`/users/progress`, { withCredentials: true });
-            // const { data } = await axios.get(`http://localhost:3001/users/progress`, { headers: { "Authorization": `Bearer ${userToken}` } });
-            userData = data;
-        }
-        else {
-            // const { data: { token } } = await axios.post('/auth', body, config);
-            await axios.post('/auth', body, config);
-            // await axios.post('http://localhost:3001/auth', body, config);
-            console.log('should set token')
-            userToken = cookies.get('token');
-            console.log(userToken);
-            const { data } = await axios.get(`/users/progress`, { withCredentials: true });
-            userData = data;
-            console.log(data)
-        }
-
-
-        // COOKIE LOGIC
-        // const { status } = await axios.post('/auth', body, config);
-        // if(!status) return dispatch(setMessage({ showMsg: true, msg: 'Server Problem', classType: 'danger' }));
-        
-        // const { data } = await axios.get(`/users/progress`, { withCredentials: true });
-        
-        
-        
-        
-        const { currentHp, currentLocation, inventory = {}, playerStats, equipment = {}, quickBarEquipment = ['', '', ''], user: { username } } = userData;
+        await axios.post('/auth', body, config);
+        const { data } = await axios.get(`/users/progress`, { withCredentials: true });
+        const { currentHp, currentLocation, inventory = {}, playerStats, equipment = {}, quickBarEquipment = ['', '', ''], user: { username } } = data;
         dispatch(populatePlayer(playerStats, username, equipment, quickBarEquipment));
         dispatch(setCurrentPlayerHp(currentHp));
         dispatch(setCurrentLocation(currentLocation));
