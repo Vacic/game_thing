@@ -38,9 +38,6 @@ const LogIn = ({ isLoginHidden, toggleLogin, login, setMessage, setLogin, isLoad
         e.preventDefault();
         const isLoggedIn = await login(email, password);
         if(isLoggedIn === true) {
-            while(loadingEnemy===true) {
-                console.log('loading enemy')
-            }
             toggleLogin(true);
             setLogin(true);
         } else setMessage({ showMsg: true, msg: isLoggedIn.error, classType: 'danger' });

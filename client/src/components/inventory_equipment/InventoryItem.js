@@ -11,7 +11,7 @@ function InventoryItem(props) {
     const item = itemList[itemName];
     return (
         <div className="inv-item" id={id} onMouseEnter={showDescription} onMouseLeave={hideDescription} onClick={toggleMenu} ref={itemDiv}>
-            <img src={item.img ? item.img : console.log('Img Missing: Inventory Item')} alt=""/>
+            <img src={item.img ? item.img : 'https://via.placeholder.com/50'} alt=""/>
             <div className="item-count">{inventory[itemName]}</div>
 
             <ItemMenu 
