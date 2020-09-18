@@ -8,7 +8,8 @@ export const login = (email, password) => async dispatch => {
     const config = { headers: { "Content-Type": "application/json" } };
     const body = JSON.stringify({ email, password });
     try {
-        let userToken = Cookies.get('token');
+        let cookies = new Cookies();
+        let userToken = cookies.get('token');
         let userData = {};
         if (userToken) {
             console.log(userToken)
@@ -21,7 +22,7 @@ export const login = (email, password) => async dispatch => {
             await axios.post('/auth', body, config);
             // await axios.post('http://localhost:3001/auth', body, config);
             console.log('should set token')
-            userToken = Cookies.get('token');
+            userToken = cookies.get('token');
             console.log(userToken);
             const { data } = await axios.get(`/users/progress`, { headers: { "Authorization": userToken } });
             userData = data;
