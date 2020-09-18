@@ -1,0 +1,111 @@
+@import 'config';
+@import 'elements/header';
+@import 'elements/inventory';
+@import 'elements/equipment';
+@import 'elements/modal_msg';
+@import 'elements/battleScreen';
+@import 'elements/registerLogin';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://pbs.twimg.com/media/C4TkyIrWYAADSyy?format=png&name=large);
+    font-family: 'Open Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.spinner-img {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    .spinner-placeholder {
+        margin-top: 100%;
+    }
+    .spinner {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        -webkit-animation: loading $loading-animation-time linear infinite;
+        animation: loading $loading-animation-time linear infinite;
+    }
+}
+
+.container {
+    width: 60%;
+    min-width: 288px; //288
+    margin: auto;
+    color: rgb(247, 247, 247);
+    
+    .location-selection {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        padding-bottom: 15px;
+        border-bottom: 2px solid $primary-color-lighter;
+        
+        .location-card {
+            position: relative;
+            display: flex;
+            flex: 1 1 29%;
+            margin: 5px;
+            height: 86px;
+            padding: 12px;
+            border-top: 2px solid $primary-color-lighter;
+            border-right: 2px solid $primary-color-lighter;
+            border-radius: $border-radius;
+            margin: 15px 15px 0px 15px;
+            background-color: $secondary-color-darker;
+            box-shadow: -1px 1px 4px 1px rgba($color: rgb(10, 10, 10), $alpha: 0.6), -2px 2px 3px 1px rgba($color: rgb(10, 10, 10), $alpha: 0.1);
+            -webkit-transition: all 0.2s ease-out;
+            -moz-transition: all 0.2s ease-out;
+            -ms-transition: all 0.2s ease-out;
+            -o-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+
+            &:hover {
+                transform: translate( 2px, -2px);
+                cursor: pointer;
+                box-shadow: -2px 2px 5px rgba($color: $secondary-color, $alpha: 0.7), -1px 1px 5px rgba($color: $secondary-color, $alpha: 0.7);
+            }
+            
+            .location-img {
+                height: 60px;
+                width: 60px;
+            }
+            
+            .location-name {
+                text-transform: capitalize;
+                font-size: 1.6rem;
+                width: 100%;
+                text-align: center;
+                font-weight: 500;
+                line-height: 55px;
+                overflow: hidden;
+            }
+        }
+
+        .mobile-dropdown-btn {
+            display: none;
+        }
+    }
+}
+
+@import 'screenOpt';

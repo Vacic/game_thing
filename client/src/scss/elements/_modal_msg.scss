@@ -1,0 +1,180 @@
+.container {
+    .msg {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        margin-left: -210px;
+        left: 50%;
+        bottom: 30px;
+        width: 420px;
+        min-height: 50px;
+        padding: 12px;
+        opacity: 1;
+        overflow: hidden;
+        -webkit-transition: all 1s cubic-bezier(0, .9, .4, 1);
+        -moz-transition: all 1s cubic-bezier(0, .9, .4, 1);
+        -ms-transition: all 1s cubic-bezier(0, .9, .4, 1);
+        -o-transition: all 1s cubic-bezier(0, .9, .4, 1);
+        transition: all 1s cubic-bezier(0, .9, .4, 1);
+        z-index: 2;
+
+        .msg-success, .msg-danger {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            padding: 12px 20px 12px 20px;
+            height: 50px;
+            border-radius: $border-radius;
+            box-shadow: 1px 1px 3px 1px $primary-color-lighter;
+            border-top: 2px solid $secondary-color-lighter;
+            border-left: 2px solid $secondary-color-lighter;
+            margin-bottom: 15px;
+            -webkit-transition: all 1s cubic-bezier(0, .9, .4, 1);
+            -moz-transition: all 1s cubic-bezier(0, .9, .4, 1);
+            -ms-transition: all 1s cubic-bezier(0, .9, .4, 1);
+            -o-transition: all 1s cubic-bezier(0, .9, .4, 1);
+            transition: all 1s cubic-bezier(0, .9, .4, 1);
+
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .msg-success {
+            background-color: $secondary-color-darker;
+        }
+
+        .msg-danger {
+            background-color: #ec6767;
+        }
+    }
+
+    .hide {
+        visibility: hidden;
+        bottom: -50px;
+        opacity: 0;
+        overflow: hidden;
+    }
+
+    .modal-container {
+        position: fixed;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 2;
+        opacity: 1;
+        -webkit-transition: all 0.2s linear;
+        -moz-transition: all 0.2s linear;
+        -ms-transition: all 0.2s linear;
+        -o-transition: all 0.2s linear;
+        transition: all 0.2s linear;
+
+        .confirmation-modal {
+            width: 400px;
+            height: 179px;
+            margin: auto;
+            margin-top: 10%;
+            background-color: rgba(241, 241, 241, 0.88);
+            box-shadow: 1px 1px 4px 1px rgba($color: rgb(10, 10, 10), $alpha: 0.7), 1px 1px 3px 1px rgba($color: rgb(10, 10, 10), $alpha: 0.5);
+            color: rgb(48, 48, 48);
+            font-weight: 500;
+            border-radius: $border-radius;
+            opacity: 1;
+            -webkit-transition: all 0.2s linear;
+            -moz-transition: all 0.2s linear;
+            -ms-transition: all 0.2s linear;
+            -o-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+
+            &.hidden {
+                height: 0px;
+                width: 0px;
+                opacity: 0;
+                margin-top: calc(10% + (179px/2));
+                
+                span {
+                    padding: 0;
+                    font-size: 0;
+                    opacity: 0;
+                }
+
+                .modal-text {
+                    font-size: 0;
+                    padding: 0;
+                    opacity: 0;
+                }
+
+                .btn-yes, .btn-no {
+                    padding: 0;
+                    margin: 0;
+                    opacity: 0;
+                }
+            }
+            
+            span {
+                float: right;
+                padding: 0 9px 0 0;
+                color: black;
+                font-weight: 1000;
+                font-size: 1.5rem;
+                opacity: 1;
+                -webkit-transition: all 0.2s linear;
+                -moz-transition: all 0.2s linear;
+                -ms-transition: all 0.2s linear;
+                -o-transition: all 0.2s linear;
+                transition: all 0.2s linear;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .modal-text {
+                font-size: 1.1rem;
+                text-align: center;
+                padding: 42px 40px 0 40px;
+                opacity: 1;
+                -webkit-transition: all 0.2s linear;
+                -moz-transition: all 0.2s linear;
+                -ms-transition: all 0.2s linear;
+                -o-transition: all 0.2s linear;
+                transition: all 0.2s linear;
+            }
+
+            .btn-yes, .btn-no {
+                padding: 10px;
+                text-align: center;
+                width: 30%;
+                float: left;
+                background-color: rgb(38, 128, 202);
+                color: white;
+                border-radius: 10px;
+                margin: 30px 20px 0px 20px;
+                opacity: 1;
+                -webkit-transition: all 0.2s linear;
+                -moz-transition: all 0.2s linear;
+                -ms-transition: all 0.2s linear;
+                -o-transition: all 0.2s linear;
+                transition: all 0.2s linear;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .btn-no {
+                float: right;
+                background-color: rgb(255, 80, 80);
+            }
+        }
+    }
+
+    .hide-modal {
+        visibility: hidden;
+        opacity: 0;
+    }
+}

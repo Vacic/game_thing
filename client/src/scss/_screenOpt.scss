@@ -1,0 +1,712 @@
+@include mediaXl {
+    .container {
+        width: 60%;
+    }
+}
+
+@include mediaLg {
+    .header {
+        padding: 0 20px 0 20px;
+    }
+    .container {
+        width: 70%;
+        
+        .battle-screen {
+            .player, .enemy {
+                .player-card, .enemy-card {
+                    .heal-quick-bar {
+                        top: -67px;
+
+                        .heal-quick-bar-container {
+                            .heal-quick-bar-item {
+                                padding: 10px;
+
+                                .item-num {
+                                    width: 25px;
+                                    height: 25px;
+                                    font-size: 0.9rem;
+                                }
+
+                                .item-img {
+                                    width: 36px;
+                                    height: 36px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .registration-container, .login-container {
+        .registration-form, .login-form {
+            width: 40%;
+        }
+    }
+}
+
+@include mediaMd {
+    .container {
+        width: 80%;
+        
+        .battle-screen {
+            .player, .enemy {
+                width: 39%;
+
+                .player-card, .enemy-card {
+
+                    .name {
+                        font-size: 1.5rem
+                    }
+
+                    .heal-quick-bar {
+                        top: -60px;
+
+                        .heal-quick-bar-container {
+                            .heal-quick-bar-item {
+                                padding: 8px;
+
+                                .item-num {
+                                    width: 22px;
+                                    height: 22px;
+                                    font-size: 0.9rem;
+                                }
+
+                                .item-img {
+                                    width: 33px;
+                                    height: 33px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .modal-container {
+            .confirmation-modal {
+                margin-top: 18%;
+
+                &.hidden {
+                    margin-top: calc(18% + (179px/2));
+                }
+            }
+        }
+    }
+
+    .registration-container, .login-container {
+        .registration-form, .login-form {
+            width: 60%;
+        }
+    }
+}
+
+@include mediaSm {
+    .header {
+        padding: 0 5px 0 5px;
+    
+        .header-text {
+            font-size: 0.8rem;
+        }
+
+        .header-button {
+            clip-path: polygon(25% 0, 100% 0, 75% 100%, 0 100%);
+            width: 100px;
+            font-size: 0.9rem;
+        }
+    
+        .header-links {
+            .login-form {
+                right: 10px;
+                width: 250px;
+                background-color: $secondary-color-darker;
+    
+                input {
+                    font-size: 0.9rem;
+    
+                    &::placeholder {
+                        font-size: 0.8rem;
+                    }
+                }
+    
+                .login-btn {
+                    padding: 7px;
+                    font-size: 0.9rem;
+                    margin-top: 0.7rem;
+                }
+    
+                .msg {
+                    font-size: 0.9rem;
+                    margin-top: 0.7rem;
+                }
+            }
+        }
+
+        .user-nav {
+            .user-menu {
+                width: 95px;
+                right: 13px;
+
+                .user-menu-options {
+                    list-style-type: none;
+
+                    .spinner-img {
+                        width: 40px;
+                        margin: -3px 0 -10px 0;
+                    }
+                    
+                    li {
+                        padding: 7px;
+                        text-align: center;
+                        font-size: 0.8rem;
+                        cursor: pointer;
+                    }
+    
+                    .separator {
+                        width: 100%;
+                        height: 2px;
+                        margin: 5px 0 5px 0;
+                        background: $primary-color-lighter;
+                    }
+                }
+            }
+        }
+    }
+    
+    .container {
+        width: 85%;
+
+        .location-selection {
+            display: grid;
+            grid-template-columns: 1fr;
+            padding: 0 8px 8px 8px;
+    
+            .location-card {
+                display: flex;
+                align-items: center;
+                box-shadow: none;
+                height: 0;
+                margin: 0;
+                padding: 0;
+                border: 0;
+
+                &:hover {
+                    transform: none;
+                    box-shadow: none;
+                }
+    
+                &:active {
+                    transform: translate( 2px, -2px);
+                    box-shadow: -2px 2px 5px rgba($color: $secondary-color, $alpha: 0.7), -1px 1px 5px rgba($color: $secondary-color, $alpha: 0.7);
+                }
+    
+                .location-name {
+                    position: relative;
+                    right: 20px;
+                    font-size: 0rem;
+                    opacity: 0;
+                    -webkit-transition: all 0.3s ease-in-out;
+                    -moz-transition: all 0.3s ease-in-out;
+                    -ms-transition: all 0.3s ease-in-out;
+                    -o-transition: all 0.3s ease-in-out;
+                    transition: all 0.3s ease-in-out;
+                }
+    
+                .location-img {
+                    position: relative;
+                    top: 20px;
+                    left: 20px;
+                    height: 0px;
+                    width: 0px;
+                    opacity: 0;
+                    -webkit-transition: all 0.3s ease-in-out;
+                    -moz-transition: all 0.3s ease-in-out;
+                    -ms-transition: all 0.3s ease-in-out;
+                    -o-transition: all 0.3s ease-in-out;
+                    transition: all 0.3s ease-in-out;
+                }
+            }
+    
+            .mobile-dropdown-btn {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                margin: 0px;
+                height: 32px;
+                font-size: 0.8rem;
+                border-right: 2px solid $primary-color-lighter;
+                border-top: 1px solid $primary-color-lighter;
+                border-radius: $border-radius;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                background-color: $secondary-color-darker;
+                -webkit-transition: all 0.3s ease-out;
+                -moz-transition: all 0.3s ease-out;
+                -ms-transition: all 0.3s ease-out;
+                -o-transition: all 0.3s ease-out;
+                transition: all 0.3s ease-out;
+    
+                &:active {
+                    box-shadow: -2px 2px 5px rgba($color: $secondary-color, $alpha: 0.7), -1px 1px 5px rgba($color: $secondary-color, $alpha: 0.7);
+                    font-size: 0.95rem;
+                }
+
+                &:hover {
+                    transform: none;
+                    box-shadow: none;
+                }
+    
+                span {
+                    -webkit-transition: all 0.5s ease-in-out;
+                    -moz-transition: all 0.5s ease-in-out;
+                    -ms-transition: all 0.5s ease-in-out;
+                    -o-transition: all 0.5s ease-in-out;
+                    transition: all 0.5s ease-in-out;
+                }
+            }
+    
+            .btn-opened {
+                border-radius: $border-radius;
+                margin-top: 8px;
+                
+                span {
+                    transform: rotate(180deg);
+                }
+            }
+    
+            .show {
+                height: 50px;
+                margin: 8px 0px 0px 0px;
+                padding: 12px;
+                border-top: 2px solid $primary-color-lighter;
+                border-right: 2px solid $primary-color-lighter;
+    
+                .location-name {
+                    opacity: 1;
+                    font-size: 1.2rem;
+                }
+    
+                .location-img {
+                    top: 0;
+                    left: 0;
+                    opacity: 1;
+                    height: 40px;
+                    width: 40px;
+                }
+            }
+            
+            .first {
+                top: 0;
+                left: 0;
+                height: 50px;
+                margin: 8px 0px 0px 0px;
+                padding: 12px;
+                justify-content: center;
+                border-top: 2px solid $primary-color-lighter;
+                border-right: 2px solid $primary-color-lighter;
+                grid-row-start: 1;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                z-index: 1;
+    
+                .location-name {
+                    display: block;
+                }
+    
+                .location-img {
+                    display: block;
+                }
+            }
+    
+            .first-card-opened {
+                border-bottom-left-radius: $border-radius;
+                border-bottom-right-radius: $border-radius;
+            }
+        }
+
+        .battle-screen {
+            .player, .enemy {
+                width: 45%;
+
+                .player-card, .enemy-card {
+                    .name {
+                        font-size: 1.2rem;
+                        line-height: 1.6rem;
+                    }
+
+                    .hp-bar {
+                        .hp {
+                            font-size: 1rem;
+                        }
+                    }
+
+                    .heal-quick-bar {
+                        top: -50px;
+    
+                        .heal-quick-bar-container {
+                            .heal-quick-bar-item {
+                                padding: 8px;
+                                border-radius: 50%;
+    
+                                .item-num {
+                                    border-radius: 50%;
+                                    width: 15px;
+                                    height: 15px;
+                                    font-size: 0.6rem;
+                                    bottom: -5px;
+                                    margin-right: 1px;
+                                }
+    
+                                .item-img {
+                                    width: 25px;
+                                    height: 25px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .attack-bar {
+                    p {
+                        font-size: 0.9rem;
+                    }
+                }
+
+                .stats {
+                    h3 {
+                        font-size: 1rem;
+                    }
+
+                    p {
+                        font-size: 0.9rem;
+
+                        span {
+                            font-size: 1rem
+                        }
+                    }
+                }
+            }
+        }
+
+        .inv-equip {
+            flex-wrap: wrap;
+            justify-content: center;
+            flex-direction: column-reverse;
+            font-size: 0.9rem;
+
+            
+            .equipment, .inventory {
+                width: 100%;
+                
+                h3 {
+                    height: 50px;
+                    padding: 10px 20px 10px 20px;
+                }
+
+                .inv-list .inv-item {
+                    .item-description {
+                        top: -121px;
+                    }
+
+                    .item-menu {
+                        top: -202px;
+                    }
+
+                    .item-count {
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+
+            .equipment {
+                margin-top: 15px;
+            }
+        }
+        
+        .modal-container {
+            .confirmation-modal {
+                margin-top: 30%;
+                font-size: 1rem;
+
+                &.hidden {
+                    margin-top: calc(30% + (179px/2));
+                }
+
+                .modal-text {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        .msg {
+            font-size: 0.9rem;
+
+            img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+
+    .registration-container, .login-container {
+        .registration-form, .login-form {
+            width: 80%;
+
+            .msg {
+                padding: 6px 6px 8px 6px;
+                width: 100%;
+                font-size: 1.1rem;
+                color: rgb(247, 247, 247);
+            }
+
+            h2 {
+                font-size: 1.5rem;
+                text-align: center;
+                padding: 0.5rem 0 1rem 0;
+            }
+
+            form {
+                padding: 0 1.5rem 2rem 1.5rem;
+        
+                label {
+                    font-size: 1.1rem;
+                }
+        
+                input {
+                    padding: 8px;
+                    margin: 7px 0 18px 0;
+                    font-size: 1.1rem;
+                }
+    
+                button {
+                    padding: 13px;
+                    font-size: 1.3rem;
+                    margin-top: 0.8rem;
+                }
+            }
+        }
+    }
+}
+
+@include mediaXsm {
+    .header {    
+        .header-links {
+            .login-form {
+                right: 10px;
+                width: 200px;
+                background-color: $secondary-color-darker;
+    
+                input {
+                    font-size: 0.8rem;
+    
+                    &::placeholder {
+                        font-size: 0.8rem;
+                    }
+                }
+    
+                .login-btn {
+                    padding: 7px;
+                    font-size: 0.8rem;
+                    margin-top: 0.7rem;
+                }
+    
+                .msg {
+                    font-size: 0.8rem;
+                    margin-top: 0.7rem;
+                }
+            }
+        }
+    }
+
+    .container {
+        width: 95%;
+
+        .battle-screen {
+            padding: 8px;
+
+            .player, .enemy {
+                width: 48%;
+                .player-card, .enemy-card {
+
+                    .name {
+                        font-size: 1rem;
+                    }
+                    .hp-bar {
+
+                        .current, .max {
+                            height: $bar-height-smaller;
+                            top: 3px;
+                        }
+            
+                        .max {
+                            top: -7px;
+                        }
+                        
+                        .hp {
+                            font-size: 0.8rem;
+                        }
+                    }
+
+                    .heal-quick-bar {
+                        .heal-quick-bar-container {
+                            padding: 0 5px 0 5px;
+                            left: 4px;
+                            justify-content: space-around;
+                        }
+                    }
+                }
+
+                .attack-bar {
+                    p {
+                        font-size: 0.8rem
+                    }
+
+                    .att-empty, .att-progress {
+                        height: $bar-height-smaller;
+                    }
+        
+                    .att-empty {
+                        top: 7px;
+                    }
+        
+                    .att-progress {
+                        top: -3px;
+                    }
+                }
+                .stats {
+                    h3 {
+                        font-size: 0.9rem;
+                    }
+
+                    p {
+                        font-size: 0.85rem;
+
+                        span {
+                            font-size: 0.9rem;
+                        }
+                    }
+                }    
+            }
+        }
+
+        .inv-equip {
+            padding: 8px;
+            font-size: 0.85rem;
+
+            .equipment, .inventory {
+                width: 100%;
+            }
+
+            .equipment {
+                margin-bottom: 8px;
+            }
+
+            .inventory {
+                .inv-list .inv-item {
+                    .item-description {
+                        top: -115px;
+                    }
+
+                    .item-menu {
+                        top: -195px;
+                    }
+
+                    .item-count {
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+        }
+
+        .modal-container {
+            .confirmation-modal {
+                height: 140px;
+                width: 260px;
+                margin-top: 45%;
+                font-size: 0.8rem;
+
+                &.hidden {
+                    margin-top: calc(45% + (140px/2));
+                }
+
+                span {
+                    display: none;
+                }
+
+                .modal-text {
+                    font-size: 0.9rem;
+                    padding: 26px 10px 0 10px
+                }
+
+                .btn-yes {
+                    margin: 22px 0px 0px 35px;
+                }
+
+                .btn-no {
+                    margin: 22px 35px 0px 0px;
+                }
+            }
+        }
+
+        .msg {
+            margin-left: -145px;
+            width: 290px;
+            font-size: 0.85rem;
+
+            .msg-success, .msg-danger {
+                padding: 12px 12px 12px 15px;
+            }
+        }
+    }
+
+    .registration-container, .login-container {
+        .registration-form, .login-form {
+            width: 90%;
+
+            form {
+                padding: 0 0.3rem 1.7rem 0.3rem;
+
+                label {
+                    font-size: 1rem;
+                }
+        
+                input {
+                    font-size: 1rem;
+                }
+    
+                button {
+                    font-size: 1.1rem;
+                }
+            }
+        }
+    }
+}
+
+@include mediaXxsm {
+    .header {
+        justify-content: flex-end;
+        .header-text {
+            display: none;
+        }
+    }
+    .container {
+        .battle-screen {
+            .player {
+                .player-card {
+                    .heal-quick-bar {
+                        .heal-quick-bar-container {
+                            bottom: -40px;
+
+                            .heal-quick-bar-item {
+                                padding: 4px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

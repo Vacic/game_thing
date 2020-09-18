@@ -1,0 +1,1180 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@-webkit-keyframes attBar {
+  0% {
+    width: 0%; }
+  100% {
+    width: 100%; } }
+
+@keyframes attBar {
+  0% {
+    width: 0%; }
+  100% {
+    width: 100%; } }
+
+@-webkit-keyframes loading {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
+
+@keyframes loading {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
+
+.header {
+  display: flex;
+  min-width: 288px;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  color: #f7f7f7;
+  background-color: #155363;
+  padding: 0 40px 0 40px;
+  border-bottom: 2px solid #2ca94b;
+  font-weight: 500; }
+  .header .header-text {
+    position: relative;
+    text-align: center;
+    bottom: 2px; }
+  .header .header-button {
+    display: inline-block;
+    clip-path: polygon(17% 0, 100% 0, 83% 100%, 0 100%);
+    background-color: #2ca94b;
+    width: 140px;
+    height: 42px;
+    text-align: center;
+    line-height: 43px;
+    color: #f7f7f7;
+    text-decoration: none; }
+    .header .header-button:hover {
+      color: #175827;
+      cursor: pointer; }
+  .header .header-links {
+    flex-shrink: 0;
+    position: relative;
+    bottom: 2px; }
+    .header .header-links .login-form {
+      display: none;
+      position: absolute;
+      margin-top: 10px;
+      padding: 10px;
+      right: 30px;
+      width: 250px;
+      z-index: 3;
+      background-color: #155363;
+      border-radius: 10px;
+      box-shadow: -1px 1px 2px 1px rgba(10, 10, 10, 0.6), 1px 1px 2px 1px rgba(10, 10, 10, 0.6);
+      text-align: center; }
+      .header .header-links .login-form.show {
+        display: block; }
+      .header .header-links .login-form input {
+        width: 100%;
+        padding: 5px 10px 5px 10px;
+        margin: 5px 0 5px 0;
+        border: none;
+        border-radius: 7px;
+        outline: none; }
+        .header .header-links .login-form input:focus {
+          box-shadow: 0 0 0 2px #2ca94b; }
+        .header .header-links .login-form input::placeholder {
+          color: #a1a1a1;
+          font-size: 1rem; }
+      .header .header-links .login-form .login-btn {
+        padding: 9px;
+        font-size: 1rem;
+        font-weight: 700;
+        width: 100%;
+        margin-top: 1rem;
+        border: none;
+        border-radius: 7px;
+        color: white;
+        background-color: #65c6df;
+        outline: none; }
+        .header .header-links .login-form .login-btn:active {
+          box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.2); }
+      .header .header-links .login-form .msg {
+        display: none;
+        background-color: #2ca94b;
+        text-align: center;
+        padding: 3px 0 6px 0;
+        width: 100%;
+        margin-top: 1rem;
+        border-bottom-right-radius: 7px;
+        border-bottom-left-radius: 7px; }
+        .header .header-links .login-form .msg.show {
+          display: block; }
+      .header .header-links .login-form .danger {
+        background-color: #ec6767; }
+  .header .user-nav {
+    margin-left: auto;
+    position: relative; }
+    .header .user-nav .user-menu {
+      display: none;
+      position: absolute;
+      width: 120px;
+      margin-top: 3px;
+      z-index: 3;
+      background-color: #155363;
+      border-radius: 10px;
+      box-shadow: -1px 1px 2px 1px rgba(10, 10, 10, 0.6), 1px 1px 2px 1px rgba(10, 10, 10, 0.6); }
+      .header .user-nav .user-menu.show {
+        display: block; }
+      .header .user-nav .user-menu .user-menu-options {
+        list-style-type: none;
+        text-align: center; }
+        .header .user-nav .user-menu .user-menu-options .spinner-img {
+          width: 40px;
+          margin: -3px 0 -9px 0; }
+        .header .user-nav .user-menu .user-menu-options li {
+          padding: 7px 15px 7px 15px;
+          font-size: 0.9rem;
+          cursor: pointer; }
+          .header .user-nav .user-menu .user-menu-options li a {
+            text-decoration: none;
+            color: inherit; }
+          .header .user-nav .user-menu .user-menu-options li:first-child {
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            padding-top: 9px; }
+          .header .user-nav .user-menu .user-menu-options li:last-child {
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            padding-bottom: 9px; }
+          .header .user-nav .user-menu .user-menu-options li:hover {
+            background-color: #269ab8; }
+        .header .user-nav .user-menu .user-menu-options .separator {
+          width: 100%;
+          height: 2px;
+          margin: 5px 0 5px 0;
+          background: #2ca94b; }
+  .header .spinner-img {
+    width: 50px;
+    margin-bottom: -12px; }
+
+.container .inv-equip .inventory {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 48%;
+  border: 2px solid #2ca94b;
+  border-top: none;
+  border-radius: 10px; }
+  .container .inv-equip .inventory h3 {
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #65c6df;
+    border-left: none;
+    border-right: none;
+    background: #155363;
+    border-radius: 8px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; }
+  .container .inv-equip .inventory .inv-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    min-height: 104px;
+    padding: 10px 8px 10px 8px; }
+    .container .inv-equip .inventory .inv-list .inv-item:hover {
+      cursor: pointer; }
+    .container .inv-equip .inventory .inv-list .inv-item {
+      width: 70px;
+      height: 70px;
+      padding: 5px;
+      margin: 7px;
+      border: 2px solid #269ab8;
+      text-align: center;
+      border-radius: 10px;
+      background-color: #155363; }
+      .container .inv-equip .inventory .inv-list .inv-item .item-count {
+        position: relative;
+        height: 20px;
+        margin: 0 5px 0 5px;
+        border-radius: 10px;
+        padding: 2px;
+        background: rgba(44, 169, 75, 0.6);
+        bottom: 2px;
+        text-align: center;
+        line-height: 15px;
+        font-size: 0.9rem; }
+      .container .inv-equip .inventory .inv-list .inv-item .item-description {
+        visibility: visible;
+        position: relative;
+        background-color: #155363;
+        box-shadow: 1px 1px 4px 1px rgba(10, 10, 10, 0.5), 2px 2px 2px 1px rgba(10, 10, 10, 0.1);
+        width: 150px;
+        top: -123px;
+        left: -47px;
+        border-radius: 10px;
+        z-index: 1; }
+        .container .inv-equip .inventory .inv-list .inv-item .item-description .item-name {
+          background-color: #2ca94b;
+          padding: 5px;
+          border-bottom: solid 1px #175827;
+          font-weight: 700; }
+        .container .inv-equip .inventory .inv-list .inv-item .item-description .item-stats {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          list-style-type: none;
+          padding: 10px 10px 10px 10px;
+          text-align: left; }
+          .container .inv-equip .inventory .inv-list .inv-item .item-description .item-stats span {
+            float: right; }
+      .container .inv-equip .inventory .inv-list .inv-item .item-menu {
+        position: relative;
+        visibility: visible;
+        top: -211px;
+        left: -30px;
+        padding: 7px;
+        background-color: #155363;
+        box-shadow: 1px 1px 4px 1px rgba(10, 10, 10, 0.5), 2px 2px 2px 1px rgba(10, 10, 10, 0.1);
+        border-radius: 10px;
+        width: 112px;
+        z-index: 1; }
+        .container .inv-equip .inventory .inv-list .inv-item .item-menu :first-child {
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px; }
+        .container .inv-equip .inventory .inv-list .inv-item .item-menu div:hover {
+          cursor: pointer;
+          background-color: #2ca94b; }
+        .container .inv-equip .inventory .inv-list .inv-item .item-menu div:active {
+          background-color: #269ab8; }
+        .container .inv-equip .inventory .inv-list .inv-item .item-menu div {
+          padding: 7px;
+          background-color: #155363;
+          width: 100%;
+          border-bottom: 2px solid #65c6df;
+          -webkit-transition: background-color 0.1s ease-in-out;
+          -moz-transition: background-color 0.1s ease-in-out;
+          -ms-transition: background-color 0.1s ease-in-out;
+          -o-transition: background-color 0.1s ease-in-out;
+          transition: background-color 0.1s ease-in-out; }
+        .container .inv-equip .inventory .inv-list .inv-item .item-menu :last-child {
+          border-bottom: none;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px; }
+      .container .inv-equip .inventory .inv-list .inv-item .hide {
+        visibility: hidden; }
+
+.container .inv-equip .equipment {
+  width: 48%;
+  border: 2px solid #2ca94b;
+  border-top: none;
+  border-radius: 10px; }
+  .container .inv-equip .equipment h3 {
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #65c6df;
+    border-left: none;
+    border-right: none;
+    background: #155363;
+    border-radius: 8px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; }
+  .container .inv-equip .equipment .equipment-slots {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px;
+    justify-items: center; }
+    .container .inv-equip .equipment .equipment-slots .helmet, .container .inv-equip .equipment .equipment-slots .weapon, .container .inv-equip .equipment .equipment-slots .armor, .container .inv-equip .equipment .equipment-slots .shield, .container .inv-equip .equipment .equipment-slots .pants, .container .inv-equip .equipment .equipment-slots .boots {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 20px;
+      padding: 8px;
+      background-color: #155363;
+      border: 2px solid #269ab8;
+      border-radius: 10px; }
+      .container .inv-equip .equipment .equipment-slots .helmet .equipped-item, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item, .container .inv-equip .equipment .equipment-slots .armor .equipped-item, .container .inv-equip .equipment .equipment-slots .shield .equipped-item, .container .inv-equip .equipment .equipment-slots .pants .equipped-item, .container .inv-equip .equipment .equipment-slots .boots .equipped-item {
+        height: 100%;
+        text-align: center; }
+        .container .inv-equip .equipment .equipment-slots .helmet .equipped-item .item-description, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item .item-description, .container .inv-equip .equipment .equipment-slots .armor .equipped-item .item-description, .container .inv-equip .equipment .equipment-slots .shield .equipped-item .item-description, .container .inv-equip .equipment .equipment-slots .pants .equipped-item .item-description, .container .inv-equip .equipment .equipment-slots .boots .equipped-item .item-description {
+          visibility: visible;
+          position: relative;
+          background-color: #155363;
+          width: 150px;
+          top: -33px;
+          left: -52px;
+          border-radius: 10px;
+          z-index: 1; }
+          .container .inv-equip .equipment .equipment-slots .helmet .equipped-item .item-description .item-name, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item .item-description .item-name, .container .inv-equip .equipment .equipment-slots .armor .equipped-item .item-description .item-name, .container .inv-equip .equipment .equipment-slots .shield .equipped-item .item-description .item-name, .container .inv-equip .equipment .equipment-slots .pants .equipped-item .item-description .item-name, .container .inv-equip .equipment .equipment-slots .boots .equipped-item .item-description .item-name {
+            background-color: #2ca94b;
+            padding: 5px;
+            border-bottom: solid 1px #175827;
+            font-weight: 700; }
+          .container .inv-equip .equipment .equipment-slots .helmet .equipped-item .item-description .item-stats, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item .item-description .item-stats, .container .inv-equip .equipment .equipment-slots .armor .equipped-item .item-description .item-stats, .container .inv-equip .equipment .equipment-slots .shield .equipped-item .item-description .item-stats, .container .inv-equip .equipment .equipment-slots .pants .equipped-item .item-description .item-stats, .container .inv-equip .equipment .equipment-slots .boots .equipped-item .item-description .item-stats {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            list-style-type: none;
+            padding: 10px 10px 10px 10px;
+            text-align: left; }
+            .container .inv-equip .equipment .equipment-slots .helmet .equipped-item .item-description .item-stats span, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item .item-description .item-stats span, .container .inv-equip .equipment .equipment-slots .armor .equipped-item .item-description .item-stats span, .container .inv-equip .equipment .equipment-slots .shield .equipped-item .item-description .item-stats span, .container .inv-equip .equipment .equipment-slots .pants .equipped-item .item-description .item-stats span, .container .inv-equip .equipment .equipment-slots .boots .equipped-item .item-description .item-stats span {
+              float: right; }
+        .container .inv-equip .equipment .equipment-slots .helmet .equipped-item .item-menu, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item .item-menu, .container .inv-equip .equipment .equipment-slots .armor .equipped-item .item-menu, .container .inv-equip .equipment .equipment-slots .shield .equipped-item .item-menu, .container .inv-equip .equipment .equipment-slots .pants .equipped-item .item-menu, .container .inv-equip .equipment .equipment-slots .boots .equipped-item .item-menu {
+          position: relative;
+          visibility: visible;
+          top: -50px;
+          left: -16px;
+          padding: 4px;
+          background-color: #155363;
+          border-radius: 10px;
+          width: 81px;
+          z-index: 1; }
+          .container .inv-equip .equipment .equipment-slots .helmet .equipped-item .item-menu div:hover, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item .item-menu div:hover, .container .inv-equip .equipment .equipment-slots .armor .equipped-item .item-menu div:hover, .container .inv-equip .equipment .equipment-slots .shield .equipped-item .item-menu div:hover, .container .inv-equip .equipment .equipment-slots .pants .equipped-item .item-menu div:hover, .container .inv-equip .equipment .equipment-slots .boots .equipped-item .item-menu div:hover {
+            cursor: pointer;
+            background-color: #2ca94b; }
+          .container .inv-equip .equipment .equipment-slots .helmet .equipped-item .item-menu div:active, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item .item-menu div:active, .container .inv-equip .equipment .equipment-slots .armor .equipped-item .item-menu div:active, .container .inv-equip .equipment .equipment-slots .shield .equipped-item .item-menu div:active, .container .inv-equip .equipment .equipment-slots .pants .equipped-item .item-menu div:active, .container .inv-equip .equipment .equipment-slots .boots .equipped-item .item-menu div:active {
+            background-color: #269ab8; }
+          .container .inv-equip .equipment .equipment-slots .helmet .equipped-item .item-menu div, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item .item-menu div, .container .inv-equip .equipment .equipment-slots .armor .equipped-item .item-menu div, .container .inv-equip .equipment .equipment-slots .shield .equipped-item .item-menu div, .container .inv-equip .equipment .equipment-slots .pants .equipped-item .item-menu div, .container .inv-equip .equipment .equipment-slots .boots .equipped-item .item-menu div {
+            padding: 7px;
+            background-color: #155363;
+            width: 100%;
+            border-radius: 10px;
+            -webkit-transition: background-color 0.1s ease-in-out;
+            -moz-transition: background-color 0.1s ease-in-out;
+            -ms-transition: background-color 0.1s ease-in-out;
+            -o-transition: background-color 0.1s ease-in-out;
+            transition: background-color 0.1s ease-in-out; }
+        .container .inv-equip .equipment .equipment-slots .helmet .equipped-item .hide, .container .inv-equip .equipment .equipment-slots .weapon .equipped-item .hide, .container .inv-equip .equipment .equipment-slots .armor .equipped-item .hide, .container .inv-equip .equipment .equipment-slots .shield .equipped-item .hide, .container .inv-equip .equipment .equipment-slots .pants .equipped-item .hide, .container .inv-equip .equipment .equipment-slots .boots .equipped-item .hide {
+          visibility: hidden; }
+    .container .inv-equip .equipment .equipment-slots .helmet, .container .inv-equip .equipment .equipment-slots .pants, .container .inv-equip .equipment .equipment-slots .boots {
+      grid-column: 1/4; }
+    .container .inv-equip .equipment .equipment-slots .weapon {
+      justify-self: end; }
+    .container .inv-equip .equipment .equipment-slots .shield {
+      justify-self: start; }
+    .container .inv-equip .equipment .equipment-slots .boots {
+      margin-bottom: 0px; }
+
+.container .msg {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  margin-left: -210px;
+  left: 50%;
+  bottom: 30px;
+  width: 420px;
+  min-height: 50px;
+  padding: 12px;
+  opacity: 1;
+  overflow: hidden;
+  -webkit-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
+  -moz-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
+  -ms-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
+  -o-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
+  transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
+  z-index: 2; }
+  .container .msg .msg-success, .container .msg .msg-danger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 12px 20px 12px 20px;
+    height: 50px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px 1px #2ca94b;
+    border-top: 2px solid #65c6df;
+    border-left: 2px solid #65c6df;
+    margin-bottom: 15px;
+    -webkit-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
+    -moz-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
+    -ms-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
+    -o-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
+    transition: all 1s cubic-bezier(0, 0.9, 0.4, 1); }
+    .container .msg .msg-success img, .container .msg .msg-danger img {
+      width: 40px;
+      height: 40px; }
+  .container .msg .msg-success {
+    background-color: #155363; }
+  .container .msg .msg-danger {
+    background-color: #ec6767; }
+
+.container .hide {
+  visibility: hidden;
+  bottom: -50px;
+  opacity: 0;
+  overflow: hidden; }
+
+.container .modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  opacity: 1;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear; }
+  .container .modal-container .confirmation-modal {
+    width: 400px;
+    height: 179px;
+    margin: auto;
+    margin-top: 10%;
+    background-color: rgba(241, 241, 241, 0.88);
+    box-shadow: 1px 1px 4px 1px rgba(10, 10, 10, 0.7), 1px 1px 3px 1px rgba(10, 10, 10, 0.5);
+    color: #303030;
+    font-weight: 500;
+    border-radius: 10px;
+    opacity: 1;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear; }
+    .container .modal-container .confirmation-modal.hidden {
+      height: 0px;
+      width: 0px;
+      opacity: 0;
+      margin-top: calc(10% + (179px/2)); }
+      .container .modal-container .confirmation-modal.hidden span {
+        padding: 0;
+        font-size: 0;
+        opacity: 0; }
+      .container .modal-container .confirmation-modal.hidden .modal-text {
+        font-size: 0;
+        padding: 0;
+        opacity: 0; }
+      .container .modal-container .confirmation-modal.hidden .btn-yes, .container .modal-container .confirmation-modal.hidden .btn-no {
+        padding: 0;
+        margin: 0;
+        opacity: 0; }
+    .container .modal-container .confirmation-modal span {
+      float: right;
+      padding: 0 9px 0 0;
+      color: black;
+      font-weight: 1000;
+      font-size: 1.5rem;
+      opacity: 1;
+      -webkit-transition: all 0.2s linear;
+      -moz-transition: all 0.2s linear;
+      -ms-transition: all 0.2s linear;
+      -o-transition: all 0.2s linear;
+      transition: all 0.2s linear; }
+      .container .modal-container .confirmation-modal span:hover {
+        cursor: pointer; }
+    .container .modal-container .confirmation-modal .modal-text {
+      font-size: 1.1rem;
+      text-align: center;
+      padding: 42px 40px 0 40px;
+      opacity: 1;
+      -webkit-transition: all 0.2s linear;
+      -moz-transition: all 0.2s linear;
+      -ms-transition: all 0.2s linear;
+      -o-transition: all 0.2s linear;
+      transition: all 0.2s linear; }
+    .container .modal-container .confirmation-modal .btn-yes, .container .modal-container .confirmation-modal .btn-no {
+      padding: 10px;
+      text-align: center;
+      width: 30%;
+      float: left;
+      background-color: #2680ca;
+      color: white;
+      border-radius: 10px;
+      margin: 30px 20px 0px 20px;
+      opacity: 1;
+      -webkit-transition: all 0.2s linear;
+      -moz-transition: all 0.2s linear;
+      -ms-transition: all 0.2s linear;
+      -o-transition: all 0.2s linear;
+      transition: all 0.2s linear; }
+      .container .modal-container .confirmation-modal .btn-yes:hover, .container .modal-container .confirmation-modal .btn-no:hover {
+        cursor: pointer; }
+    .container .modal-container .confirmation-modal .btn-no {
+      float: right;
+      background-color: #ff5050; }
+
+.container .hide-modal {
+  visibility: hidden;
+  opacity: 0; }
+
+.battle-screen {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  padding: 20px; }
+  .battle-screen .player, .battle-screen .enemy {
+    padding: 10px;
+    padding-top: 4px;
+    border: 2px solid #269ab8;
+    background-color: #155363;
+    border-radius: 10px;
+    text-align: center;
+    width: 30%; }
+    .battle-screen .player .player-card .name, .battle-screen .player .enemy-card .name, .battle-screen .enemy .player-card .name, .battle-screen .enemy .enemy-card .name {
+      font-size: 1.6rem;
+      text-transform: capitalize;
+      overflow: hidden; }
+    .battle-screen .player .player-card .hp-bar .current, .battle-screen .player .player-card .hp-bar .max, .battle-screen .player .enemy-card .hp-bar .current, .battle-screen .player .enemy-card .hp-bar .max, .battle-screen .enemy .player-card .hp-bar .current, .battle-screen .enemy .player-card .hp-bar .max, .battle-screen .enemy .enemy-card .hp-bar .current, .battle-screen .enemy .enemy-card .hp-bar .max {
+      height: 14px;
+      width: 100%;
+      position: relative; }
+    .battle-screen .player .player-card .hp-bar .current, .battle-screen .player .enemy-card .hp-bar .current, .battle-screen .enemy .player-card .hp-bar .current, .battle-screen .enemy .enemy-card .hp-bar .current {
+      background-color: #47d45e;
+      top: 5px;
+      z-index: 2;
+      width: 100%; }
+    .battle-screen .player .player-card .hp-bar .max, .battle-screen .player .enemy-card .hp-bar .max, .battle-screen .enemy .player-card .hp-bar .max, .battle-screen .enemy .enemy-card .hp-bar .max {
+      background-color: #ec6767;
+      top: -9px;
+      z-index: 1; }
+    .battle-screen .player .player-card .hp-bar .hp, .battle-screen .player .enemy-card .hp-bar .hp, .battle-screen .enemy .player-card .hp-bar .hp, .battle-screen .enemy .enemy-card .hp-bar .hp {
+      position: relative;
+      top: -13px;
+      font-size: 1.1rem;
+      line-height: 1.2rem; }
+    .battle-screen .player .player-card .hp-bar .player-att-status, .battle-screen .player .enemy-card .hp-bar .player-att-status, .battle-screen .enemy .player-card .hp-bar .player-att-status, .battle-screen .enemy .enemy-card .hp-bar .player-att-status {
+      position: relative;
+      text-align: right;
+      top: 4px;
+      visibility: hidden;
+      font-size: 0.8rem; }
+    .battle-screen .player .player-card .hp-bar .enemy-att-status, .battle-screen .player .enemy-card .hp-bar .enemy-att-status, .battle-screen .enemy .player-card .hp-bar .enemy-att-status, .battle-screen .enemy .enemy-card .hp-bar .enemy-att-status {
+      position: relative;
+      text-align: left;
+      top: 4px;
+      visibility: hidden;
+      font-size: 0.8rem; }
+    .battle-screen .player .player-card .hp-bar .dmg, .battle-screen .player .enemy-card .hp-bar .dmg, .battle-screen .enemy .player-card .hp-bar .dmg, .battle-screen .enemy .enemy-card .hp-bar .dmg {
+      color: #e64444;
+      visibility: visible; }
+    .battle-screen .player .player-card .hp-bar .miss, .battle-screen .player .enemy-card .hp-bar .miss, .battle-screen .enemy .player-card .hp-bar .miss, .battle-screen .enemy .enemy-card .hp-bar .miss {
+      color: inherit;
+      visibility: visible; }
+    .battle-screen .player .player-card .player-img, .battle-screen .player .player-card .enemy-img, .battle-screen .player .enemy-card .player-img, .battle-screen .player .enemy-card .enemy-img, .battle-screen .enemy .player-card .player-img, .battle-screen .enemy .player-card .enemy-img, .battle-screen .enemy .enemy-card .player-img, .battle-screen .enemy .enemy-card .enemy-img {
+      width: 100%; }
+    .battle-screen .player .player-card .heal-quick-bar, .battle-screen .player .enemy-card .heal-quick-bar, .battle-screen .enemy .player-card .heal-quick-bar, .battle-screen .enemy .enemy-card .heal-quick-bar {
+      display: flex;
+      position: relative;
+      top: -74px;
+      right: 3px; }
+      .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container, .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container, .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container, .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container {
+        position: absolute;
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        left: 2px; }
+        .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item {
+          position: relative;
+          display: flex;
+          background-color: rgba(255, 255, 255, 0.3);
+          box-shadow: -1px -1px 1px 1px rgba(44, 169, 75, 0.4);
+          padding: 12px;
+          bottom: 2px;
+          margin: 0 2px 0 2px;
+          border-radius: 50%;
+          justify-content: center;
+          align-items: center; }
+          .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:active, .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:active, .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:active, .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:active {
+            box-shadow: inset 2px 2px 5px 2px rgba(0, 0, 0, 0.1); }
+          .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:hover, .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:hover, .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:hover, .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:hover {
+            cursor: pointer; }
+          .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            background-color: rgba(23, 88, 39, 0.5);
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            font-size: 1rem;
+            bottom: -7px;
+            font-weight: 500; }
+          .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img {
+            width: 40px;
+            height: 40px; }
+            .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img, .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img, .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img, .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img {
+              width: 100%;
+              height: 100%; }
+    .battle-screen .player .attack-bar .weapon-name, .battle-screen .enemy .attack-bar .weapon-name {
+      position: relative;
+      top: 4px; }
+    .battle-screen .player .attack-bar .no-weapon, .battle-screen .enemy .attack-bar .no-weapon {
+      visibility: hidden; }
+    .battle-screen .player .attack-bar .att-empty, .battle-screen .player .attack-bar .att-progress, .battle-screen .enemy .attack-bar .att-empty, .battle-screen .enemy .attack-bar .att-progress {
+      height: 14px;
+      width: 100%;
+      position: relative; }
+    .battle-screen .player .attack-bar .att-empty, .battle-screen .enemy .attack-bar .att-empty {
+      background-color: #103c1a;
+      top: 8px;
+      z-index: 1; }
+    .battle-screen .player .attack-bar .att-progress, .battle-screen .enemy .attack-bar .att-progress {
+      background-color: #3bb6d6;
+      top: -6px;
+      z-index: 2;
+      width: 0%; }
+    .battle-screen .player .stats, .battle-screen .enemy .stats {
+      padding: 8px;
+      border-radius: 10px;
+      text-align: left;
+      line-height: 1.5rem;
+      margin-top: 10px;
+      border-top: 2px solid #2ca94b;
+      border-left: 2px solid #2ca94b;
+      box-shadow: 1px 1px 4px 1px rgba(255, 255, 255, 0.3), 2px 2px 2px 1px rgba(255, 255, 255, 0.1); }
+      .battle-screen .player .stats h3, .battle-screen .enemy .stats h3 {
+        text-align: center; }
+      .battle-screen .player .stats p span, .battle-screen .enemy .stats p span {
+        float: right;
+        font-size: 1.2rem; }
+  .battle-screen .dead {
+    color: #e64444; }
+    .battle-screen .dead .item-num {
+      color: #f7f7f7; }
+
+.inv-equip {
+  display: flex;
+  padding: 0 15px 15px 15px;
+  justify-content: space-between; }
+
+.registration-container, .login-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background: rgba(190, 190, 190, 0.7); }
+  .registration-container .registration-form, .registration-container .login-form, .login-container .registration-form, .login-container .login-form {
+    width: 30%;
+    margin: auto;
+    border-radius: 10px;
+    background-color: #e6e6e6;
+    padding: 1rem 20px 0 20px;
+    font-weight: 500;
+    color: #3c3c3c; }
+    .registration-container .registration-form .msg, .registration-container .login-form .msg, .login-container .registration-form .msg, .login-container .login-form .msg {
+      display: none;
+      background-color: #2ca94b;
+      text-align: center;
+      padding: 10px 10px 12px 10px;
+      width: 100%;
+      font-size: 1.2rem;
+      color: #f7f7f7; }
+    .registration-container .registration-form .danger, .registration-container .login-form .danger, .login-container .registration-form .danger, .login-container .login-form .danger {
+      background-color: #ec6767; }
+    .registration-container .registration-form .show, .registration-container .login-form .show, .login-container .registration-form .show, .login-container .login-form .show {
+      display: block; }
+    .registration-container .registration-form h2, .registration-container .login-form h2, .login-container .registration-form h2, .login-container .login-form h2 {
+      width: 100%;
+      font-size: 1.8rem;
+      text-align: center;
+      padding: 1rem 0 2rem 0; }
+    .registration-container .registration-form form, .registration-container .login-form form, .login-container .registration-form form, .login-container .login-form form {
+      padding: 0 2.5rem 3rem 2.5rem; }
+      .registration-container .registration-form form label, .registration-container .login-form form label, .login-container .registration-form form label, .login-container .login-form form label {
+        width: 100%;
+        font-size: 1.2rem; }
+      .registration-container .registration-form form input, .registration-container .login-form form input, .login-container .registration-form form input, .login-container .login-form form input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0 25px 0;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 7px;
+        outline: none; }
+        .registration-container .registration-form form input:focus, .registration-container .login-form form input:focus, .login-container .registration-form form input:focus, .login-container .login-form form input:focus {
+          box-shadow: 2px 2px 2px 2px rgba(9, 108, 221, 0.3), 1px 1px 1px 1px rgba(9, 108, 221, 0.3); }
+      .registration-container .registration-form form p, .registration-container .login-form form p, .login-container .registration-form form p, .login-container .login-form form p {
+        padding-left: 3px; }
+      .registration-container .registration-form form button, .registration-container .login-form form button, .login-container .registration-form form button, .login-container .login-form form button {
+        padding: 15px;
+        font-size: 1.5rem;
+        font-weight: 700;
+        width: 100%;
+        margin-top: 1rem;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        background-color: #007bce;
+        outline: none;
+        cursor: pointer; }
+        .registration-container .registration-form form button:active, .registration-container .login-form form button:active, .login-container .registration-form form button:active, .login-container .login-form form button:active {
+          box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.2); }
+        .registration-container .registration-form form button:disabled, .registration-container .login-form form button:disabled, .login-container .registration-form form button:disabled, .login-container .login-form form button:disabled {
+          box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.2); }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent; }
+
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://pbs.twimg.com/media/C4TkyIrWYAADSyy?format=png&name=large);
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.spinner-img {
+  display: inline-block;
+  position: relative;
+  width: 100%; }
+  .spinner-img .spinner-placeholder {
+    margin-top: 100%; }
+  .spinner-img .spinner {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -webkit-animation: loading 1s linear infinite;
+    animation: loading 1s linear infinite; }
+
+.container {
+  width: 60%;
+  min-width: 288px;
+  margin: auto;
+  color: #f7f7f7; }
+  .container .location-selection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #2ca94b; }
+    .container .location-selection .location-card {
+      position: relative;
+      display: flex;
+      flex: 1 1 29%;
+      margin: 5px;
+      height: 86px;
+      padding: 12px;
+      border-top: 2px solid #2ca94b;
+      border-right: 2px solid #2ca94b;
+      border-radius: 10px;
+      margin: 15px 15px 0px 15px;
+      background-color: #155363;
+      box-shadow: -1px 1px 4px 1px rgba(10, 10, 10, 0.6), -2px 2px 3px 1px rgba(10, 10, 10, 0.1);
+      -webkit-transition: all 0.2s ease-out;
+      -moz-transition: all 0.2s ease-out;
+      -ms-transition: all 0.2s ease-out;
+      -o-transition: all 0.2s ease-out;
+      transition: all 0.2s ease-out; }
+      .container .location-selection .location-card:hover {
+        transform: translate(2px, -2px);
+        cursor: pointer;
+        box-shadow: -2px 2px 5px rgba(38, 154, 184, 0.7), -1px 1px 5px rgba(38, 154, 184, 0.7); }
+      .container .location-selection .location-card .location-img {
+        height: 60px;
+        width: 60px; }
+      .container .location-selection .location-card .location-name {
+        text-transform: capitalize;
+        font-size: 1.6rem;
+        width: 100%;
+        text-align: center;
+        font-weight: 500;
+        line-height: 55px;
+        overflow: hidden; }
+    .container .location-selection .mobile-dropdown-btn {
+      display: none; }
+
+@media screen and (min-width: 1601) {
+  .container {
+    width: 60%; } }
+
+@media screen and (max-width: 1600px) {
+  .header {
+    padding: 0 20px 0 20px; }
+  .container {
+    width: 70%; }
+    .container .battle-screen .player .player-card .heal-quick-bar, .container .battle-screen .player .enemy-card .heal-quick-bar, .container .battle-screen .enemy .player-card .heal-quick-bar, .container .battle-screen .enemy .enemy-card .heal-quick-bar {
+      top: -67px; }
+      .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item {
+        padding: 10px; }
+        .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num {
+          width: 25px;
+          height: 25px;
+          font-size: 0.9rem; }
+        .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img {
+          width: 36px;
+          height: 36px; }
+  .registration-container .registration-form, .registration-container .login-form, .login-container .registration-form, .login-container .login-form {
+    width: 40%; } }
+
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 80%; }
+    .container .battle-screen .player, .container .battle-screen .enemy {
+      width: 39%; }
+      .container .battle-screen .player .player-card .name, .container .battle-screen .player .enemy-card .name, .container .battle-screen .enemy .player-card .name, .container .battle-screen .enemy .enemy-card .name {
+        font-size: 1.5rem; }
+      .container .battle-screen .player .player-card .heal-quick-bar, .container .battle-screen .player .enemy-card .heal-quick-bar, .container .battle-screen .enemy .player-card .heal-quick-bar, .container .battle-screen .enemy .enemy-card .heal-quick-bar {
+        top: -60px; }
+        .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item {
+          padding: 8px; }
+          .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num {
+            width: 22px;
+            height: 22px;
+            font-size: 0.9rem; }
+          .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img {
+            width: 33px;
+            height: 33px; }
+    .container .modal-container .confirmation-modal {
+      margin-top: 18%; }
+      .container .modal-container .confirmation-modal.hidden {
+        margin-top: calc(18% + (179px/2)); }
+  .registration-container .registration-form, .registration-container .login-form, .login-container .registration-form, .login-container .login-form {
+    width: 60%; } }
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 0 5px 0 5px; }
+    .header .header-text {
+      font-size: 0.8rem; }
+    .header .header-button {
+      clip-path: polygon(25% 0, 100% 0, 75% 100%, 0 100%);
+      width: 100px;
+      font-size: 0.9rem; }
+    .header .header-links .login-form {
+      right: 10px;
+      width: 250px;
+      background-color: #155363; }
+      .header .header-links .login-form input {
+        font-size: 0.9rem; }
+        .header .header-links .login-form input::placeholder {
+          font-size: 0.8rem; }
+      .header .header-links .login-form .login-btn {
+        padding: 7px;
+        font-size: 0.9rem;
+        margin-top: 0.7rem; }
+      .header .header-links .login-form .msg {
+        font-size: 0.9rem;
+        margin-top: 0.7rem; }
+    .header .user-nav .user-menu {
+      width: 95px;
+      right: 13px; }
+      .header .user-nav .user-menu .user-menu-options {
+        list-style-type: none; }
+        .header .user-nav .user-menu .user-menu-options .spinner-img {
+          width: 40px;
+          margin: -3px 0 -10px 0; }
+        .header .user-nav .user-menu .user-menu-options li {
+          padding: 7px;
+          text-align: center;
+          font-size: 0.8rem;
+          cursor: pointer; }
+        .header .user-nav .user-menu .user-menu-options .separator {
+          width: 100%;
+          height: 2px;
+          margin: 5px 0 5px 0;
+          background: #2ca94b; }
+  .container {
+    width: 85%; }
+    .container .location-selection {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding: 0 8px 8px 8px; }
+      .container .location-selection .location-card {
+        display: flex;
+        align-items: center;
+        box-shadow: none;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        border: 0; }
+        .container .location-selection .location-card:hover {
+          transform: none;
+          box-shadow: none; }
+        .container .location-selection .location-card:active {
+          transform: translate(2px, -2px);
+          box-shadow: -2px 2px 5px rgba(38, 154, 184, 0.7), -1px 1px 5px rgba(38, 154, 184, 0.7); }
+        .container .location-selection .location-card .location-name {
+          position: relative;
+          right: 20px;
+          font-size: 0rem;
+          opacity: 0;
+          -webkit-transition: all 0.3s ease-in-out;
+          -moz-transition: all 0.3s ease-in-out;
+          -ms-transition: all 0.3s ease-in-out;
+          -o-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out; }
+        .container .location-selection .location-card .location-img {
+          position: relative;
+          top: 20px;
+          left: 20px;
+          height: 0px;
+          width: 0px;
+          opacity: 0;
+          -webkit-transition: all 0.3s ease-in-out;
+          -moz-transition: all 0.3s ease-in-out;
+          -ms-transition: all 0.3s ease-in-out;
+          -o-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out; }
+      .container .location-selection .mobile-dropdown-btn {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0px;
+        height: 32px;
+        font-size: 0.8rem;
+        border-right: 2px solid #2ca94b;
+        border-top: 1px solid #2ca94b;
+        border-radius: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        background-color: #155363;
+        -webkit-transition: all 0.3s ease-out;
+        -moz-transition: all 0.3s ease-out;
+        -ms-transition: all 0.3s ease-out;
+        -o-transition: all 0.3s ease-out;
+        transition: all 0.3s ease-out; }
+        .container .location-selection .mobile-dropdown-btn:active {
+          box-shadow: -2px 2px 5px rgba(38, 154, 184, 0.7), -1px 1px 5px rgba(38, 154, 184, 0.7);
+          font-size: 0.95rem; }
+        .container .location-selection .mobile-dropdown-btn:hover {
+          transform: none;
+          box-shadow: none; }
+        .container .location-selection .mobile-dropdown-btn span {
+          -webkit-transition: all 0.5s ease-in-out;
+          -moz-transition: all 0.5s ease-in-out;
+          -ms-transition: all 0.5s ease-in-out;
+          -o-transition: all 0.5s ease-in-out;
+          transition: all 0.5s ease-in-out; }
+      .container .location-selection .btn-opened {
+        border-radius: 10px;
+        margin-top: 8px; }
+        .container .location-selection .btn-opened span {
+          transform: rotate(180deg); }
+      .container .location-selection .show {
+        height: 50px;
+        margin: 8px 0px 0px 0px;
+        padding: 12px;
+        border-top: 2px solid #2ca94b;
+        border-right: 2px solid #2ca94b; }
+        .container .location-selection .show .location-name {
+          opacity: 1;
+          font-size: 1.2rem; }
+        .container .location-selection .show .location-img {
+          top: 0;
+          left: 0;
+          opacity: 1;
+          height: 40px;
+          width: 40px; }
+      .container .location-selection .first {
+        top: 0;
+        left: 0;
+        height: 50px;
+        margin: 8px 0px 0px 0px;
+        padding: 12px;
+        justify-content: center;
+        border-top: 2px solid #2ca94b;
+        border-right: 2px solid #2ca94b;
+        grid-row-start: 1;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        z-index: 1; }
+        .container .location-selection .first .location-name {
+          display: block; }
+        .container .location-selection .first .location-img {
+          display: block; }
+      .container .location-selection .first-card-opened {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px; }
+    .container .battle-screen .player, .container .battle-screen .enemy {
+      width: 45%; }
+      .container .battle-screen .player .player-card .name, .container .battle-screen .player .enemy-card .name, .container .battle-screen .enemy .player-card .name, .container .battle-screen .enemy .enemy-card .name {
+        font-size: 1.2rem;
+        line-height: 1.6rem; }
+      .container .battle-screen .player .player-card .hp-bar .hp, .container .battle-screen .player .enemy-card .hp-bar .hp, .container .battle-screen .enemy .player-card .hp-bar .hp, .container .battle-screen .enemy .enemy-card .hp-bar .hp {
+        font-size: 1rem; }
+      .container .battle-screen .player .player-card .heal-quick-bar, .container .battle-screen .player .enemy-card .heal-quick-bar, .container .battle-screen .enemy .player-card .heal-quick-bar, .container .battle-screen .enemy .enemy-card .heal-quick-bar {
+        top: -50px; }
+        .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item {
+          padding: 8px;
+          border-radius: 50%; }
+          .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num {
+            border-radius: 50%;
+            width: 15px;
+            height: 15px;
+            font-size: 0.6rem;
+            bottom: -5px;
+            margin-right: 1px; }
+          .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img {
+            width: 25px;
+            height: 25px; }
+      .container .battle-screen .player .attack-bar p, .container .battle-screen .enemy .attack-bar p {
+        font-size: 0.9rem; }
+      .container .battle-screen .player .stats h3, .container .battle-screen .enemy .stats h3 {
+        font-size: 1rem; }
+      .container .battle-screen .player .stats p, .container .battle-screen .enemy .stats p {
+        font-size: 0.9rem; }
+        .container .battle-screen .player .stats p span, .container .battle-screen .enemy .stats p span {
+          font-size: 1rem; }
+    .container .inv-equip {
+      flex-wrap: wrap;
+      justify-content: center;
+      flex-direction: column-reverse;
+      font-size: 0.9rem; }
+      .container .inv-equip .equipment, .container .inv-equip .inventory {
+        width: 100%; }
+        .container .inv-equip .equipment h3, .container .inv-equip .inventory h3 {
+          height: 50px;
+          padding: 10px 20px 10px 20px; }
+        .container .inv-equip .equipment .inv-list .inv-item .item-description, .container .inv-equip .inventory .inv-list .inv-item .item-description {
+          top: -121px; }
+        .container .inv-equip .equipment .inv-list .inv-item .item-menu, .container .inv-equip .inventory .inv-list .inv-item .item-menu {
+          top: -202px; }
+        .container .inv-equip .equipment .inv-list .inv-item .item-count, .container .inv-equip .inventory .inv-list .inv-item .item-count {
+          font-size: 0.8rem; }
+      .container .inv-equip .equipment {
+        margin-top: 15px; }
+    .container .modal-container .confirmation-modal {
+      margin-top: 30%;
+      font-size: 1rem; }
+      .container .modal-container .confirmation-modal.hidden {
+        margin-top: calc(30% + (179px/2)); }
+      .container .modal-container .confirmation-modal .modal-text {
+        font-size: 1rem; }
+    .container .msg {
+      font-size: 0.9rem; }
+      .container .msg img {
+        width: 30px;
+        height: 30px; }
+  .registration-container .registration-form, .registration-container .login-form, .login-container .registration-form, .login-container .login-form {
+    width: 80%; }
+    .registration-container .registration-form .msg, .registration-container .login-form .msg, .login-container .registration-form .msg, .login-container .login-form .msg {
+      padding: 6px 6px 8px 6px;
+      width: 100%;
+      font-size: 1.1rem;
+      color: #f7f7f7; }
+    .registration-container .registration-form h2, .registration-container .login-form h2, .login-container .registration-form h2, .login-container .login-form h2 {
+      font-size: 1.5rem;
+      text-align: center;
+      padding: 0.5rem 0 1rem 0; }
+    .registration-container .registration-form form, .registration-container .login-form form, .login-container .registration-form form, .login-container .login-form form {
+      padding: 0 1.5rem 2rem 1.5rem; }
+      .registration-container .registration-form form label, .registration-container .login-form form label, .login-container .registration-form form label, .login-container .login-form form label {
+        font-size: 1.1rem; }
+      .registration-container .registration-form form input, .registration-container .login-form form input, .login-container .registration-form form input, .login-container .login-form form input {
+        padding: 8px;
+        margin: 7px 0 18px 0;
+        font-size: 1.1rem; }
+      .registration-container .registration-form form button, .registration-container .login-form form button, .login-container .registration-form form button, .login-container .login-form form button {
+        padding: 13px;
+        font-size: 1.3rem;
+        margin-top: 0.8rem; } }
+
+@media screen and (max-width: 500px) {
+  .header .header-links .login-form {
+    right: 10px;
+    width: 200px;
+    background-color: #155363; }
+    .header .header-links .login-form input {
+      font-size: 0.8rem; }
+      .header .header-links .login-form input::placeholder {
+        font-size: 0.8rem; }
+    .header .header-links .login-form .login-btn {
+      padding: 7px;
+      font-size: 0.8rem;
+      margin-top: 0.7rem; }
+    .header .header-links .login-form .msg {
+      font-size: 0.8rem;
+      margin-top: 0.7rem; }
+  .container {
+    width: 95%; }
+    .container .battle-screen {
+      padding: 8px; }
+      .container .battle-screen .player, .container .battle-screen .enemy {
+        width: 48%; }
+        .container .battle-screen .player .player-card .name, .container .battle-screen .player .enemy-card .name, .container .battle-screen .enemy .player-card .name, .container .battle-screen .enemy .enemy-card .name {
+          font-size: 1rem; }
+        .container .battle-screen .player .player-card .hp-bar .current, .container .battle-screen .player .player-card .hp-bar .max, .container .battle-screen .player .enemy-card .hp-bar .current, .container .battle-screen .player .enemy-card .hp-bar .max, .container .battle-screen .enemy .player-card .hp-bar .current, .container .battle-screen .enemy .player-card .hp-bar .max, .container .battle-screen .enemy .enemy-card .hp-bar .current, .container .battle-screen .enemy .enemy-card .hp-bar .max {
+          height: 10px;
+          top: 3px; }
+        .container .battle-screen .player .player-card .hp-bar .max, .container .battle-screen .player .enemy-card .hp-bar .max, .container .battle-screen .enemy .player-card .hp-bar .max, .container .battle-screen .enemy .enemy-card .hp-bar .max {
+          top: -7px; }
+        .container .battle-screen .player .player-card .hp-bar .hp, .container .battle-screen .player .enemy-card .hp-bar .hp, .container .battle-screen .enemy .player-card .hp-bar .hp, .container .battle-screen .enemy .enemy-card .hp-bar .hp {
+          font-size: 0.8rem; }
+        .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container {
+          padding: 0 5px 0 5px;
+          left: 4px;
+          justify-content: space-around; }
+        .container .battle-screen .player .attack-bar p, .container .battle-screen .enemy .attack-bar p {
+          font-size: 0.8rem; }
+        .container .battle-screen .player .attack-bar .att-empty, .container .battle-screen .player .attack-bar .att-progress, .container .battle-screen .enemy .attack-bar .att-empty, .container .battle-screen .enemy .attack-bar .att-progress {
+          height: 10px; }
+        .container .battle-screen .player .attack-bar .att-empty, .container .battle-screen .enemy .attack-bar .att-empty {
+          top: 7px; }
+        .container .battle-screen .player .attack-bar .att-progress, .container .battle-screen .enemy .attack-bar .att-progress {
+          top: -3px; }
+        .container .battle-screen .player .stats h3, .container .battle-screen .enemy .stats h3 {
+          font-size: 0.9rem; }
+        .container .battle-screen .player .stats p, .container .battle-screen .enemy .stats p {
+          font-size: 0.85rem; }
+          .container .battle-screen .player .stats p span, .container .battle-screen .enemy .stats p span {
+            font-size: 0.9rem; }
+    .container .inv-equip {
+      padding: 8px;
+      font-size: 0.85rem; }
+      .container .inv-equip .equipment, .container .inv-equip .inventory {
+        width: 100%; }
+      .container .inv-equip .equipment {
+        margin-bottom: 8px; }
+      .container .inv-equip .inventory .inv-list .inv-item .item-description {
+        top: -115px; }
+      .container .inv-equip .inventory .inv-list .inv-item .item-menu {
+        top: -195px; }
+      .container .inv-equip .inventory .inv-list .inv-item .item-count {
+        font-size: 0.8rem; }
+    .container .modal-container .confirmation-modal {
+      height: 140px;
+      width: 260px;
+      margin-top: 45%;
+      font-size: 0.8rem; }
+      .container .modal-container .confirmation-modal.hidden {
+        margin-top: calc(45% + (140px/2)); }
+      .container .modal-container .confirmation-modal span {
+        display: none; }
+      .container .modal-container .confirmation-modal .modal-text {
+        font-size: 0.9rem;
+        padding: 26px 10px 0 10px; }
+      .container .modal-container .confirmation-modal .btn-yes {
+        margin: 22px 0px 0px 35px; }
+      .container .modal-container .confirmation-modal .btn-no {
+        margin: 22px 35px 0px 0px; }
+    .container .msg {
+      margin-left: -145px;
+      width: 290px;
+      font-size: 0.85rem; }
+      .container .msg .msg-success, .container .msg .msg-danger {
+        padding: 12px 12px 12px 15px; }
+  .registration-container .registration-form, .registration-container .login-form, .login-container .registration-form, .login-container .login-form {
+    width: 90%; }
+    .registration-container .registration-form form, .registration-container .login-form form, .login-container .registration-form form, .login-container .login-form form {
+      padding: 0 0.3rem 1.7rem 0.3rem; }
+      .registration-container .registration-form form label, .registration-container .login-form form label, .login-container .registration-form form label, .login-container .login-form form label {
+        font-size: 1rem; }
+      .registration-container .registration-form form input, .registration-container .login-form form input, .login-container .registration-form form input, .login-container .login-form form input {
+        font-size: 1rem; }
+      .registration-container .registration-form form button, .registration-container .login-form form button, .login-container .registration-form form button, .login-container .login-form form button {
+        font-size: 1.1rem; } }
+
+@media screen and (max-width: 400px) {
+  .header {
+    justify-content: flex-end; }
+    .header .header-text {
+      display: none; }
+  .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container {
+    bottom: -40px; }
+    .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item {
+      padding: 4px; } }

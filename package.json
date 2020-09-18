@@ -1,47 +1,38 @@
 {
   "name": "game_thing",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "node-sass": "^4.14.1",
-    "pluralize": "^8.0.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
-    "react-scripts": "3.4.1",
-    "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8",
-    "scss": "^0.2.4"
-  },
-  "homepage": "http://Vacic.github.io/game_thing",
+  "version": "1.0.0",
+  "description": "RPG kind of a game made using the MERN stack",
+  "main": "server.js",
   "scripts": {
-    "sass": "node-sass -w src/scss/ -o src/css/ --recursive",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node server",
+    "client": "npm start --prefix client",
+    "server": "nodemon server",
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run sass --prefix client\""
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vacic/game_thing.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "author": "Nikola Vacic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vacic/game_thing/issues"
+  },
+  "homepage": "https://github.com/Vacic/game_thing#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "joi": "^17.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.2",
+    "uuid": "^8.3.0"
   },
   "devDependencies": {
-    "gh-pages": "^3.1.0"
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.4"
   }
 }
