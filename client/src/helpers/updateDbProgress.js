@@ -1,9 +1,8 @@
 import axios from 'axios';
 
 export const updateDbProgress = async () => {
-    const token = localStorage.getItem('token');
     const body = localStorage.getItem('progress');
-    const config = { headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` } };
+    const config = { headers: { "Content-Type": "application/json" }, withCredentials: true };
     try {
         await axios.put(`/users/progress`, body, config);
         console.log('Progress Updated');

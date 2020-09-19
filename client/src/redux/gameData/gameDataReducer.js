@@ -1,4 +1,4 @@
-import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, TOGGLE_LOADING, PLAYER_TAKES_DAMAGE, ENEMY_TAKES_DAMAGE, SET_CURRENT_LOCATION, SET_NOTIFICATION_MESSAGE, SET_NOTIFICATION_CLASS, LOGIN, SET_LOADING_ENEMY } from "./gameDataTypes";
+import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, TOGGLE_LOADING, PLAYER_TAKES_DAMAGE, ENEMY_TAKES_DAMAGE, SET_CURRENT_LOCATION, SET_NOTIFICATION_MESSAGE, SET_NOTIFICATION_CLASS, LOGIN, SET_LOADING_ENEMY, COOKIE_CHECKED } from "./gameDataTypes";
 
 const gameDataState = {
     currentEnemy: {  // Stores the stats of the enemy that the player is currently fighting
@@ -19,6 +19,7 @@ const gameDataState = {
     loggedIn: false,
     loadingEnemy: false,  // Controls whether the loading screen instead of enemy picture shows up & makes the user unable to spam click locations which otherwise breaks the game
     isLoading: false,  // Used for API requests
+    isCookieChecked: false
 }
 
 const gameDataReducer = (state = gameDataState, action) => {
@@ -76,6 +77,11 @@ const gameDataReducer = (state = gameDataState, action) => {
         case LOGIN: return {
             ...state,
             loggedIn: action.isLoggedIn
+        }
+
+        case COOKIE_CHECKED: return {
+            ...state,
+            cookieChecked: true
         }
 
         default: return state;

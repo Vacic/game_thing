@@ -2,11 +2,12 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import BattleScreen from './BattleScreen';
 import LocationSelection from './location/LocationSelection';
-import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, toggleLoading, enemyTakesDamage, playerTakesDamage, updateInventory, setCurrentLocation, setNotificationMessage, setNotificationClass, updatePlayerQuickBarEquipment, setMessage, setLoadingEnemy } from '../redux';
+import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, toggleLoading, enemyTakesDamage, playerTakesDamage, updateInventory, setCurrentLocation, setNotificationMessage, setNotificationClass, updatePlayerQuickBarEquipment, setMessage, setLoadingEnemy, cookieChecked, setLogin, populateGame } from '../redux';
 import InvAndEquip from './InvAndEquip';
 import Message from './Message';
 import ConfirmationModal from './ConfirmationModal';
 import { setLocalStorage, updateDbProgress } from '../helpers';
+import { checkCookie } from '../helpers/checkCookie';
 
 
 class GameContainer extends PureComponent {
@@ -24,9 +25,18 @@ class GameContainer extends PureComponent {
                 isModalHidden: true
             }
         }
-        componentDidMount = () => {
-            localStorage.removeItem('progress');
-            localStorage.removeItem('token');
+        componentDidMount = async () => {
+            if(!this.props.isCookieChecked) {
+                localStorage.removeItem('progress');
+                const cookie = await checkCookie();
+                if(cookie === true) {
+                    this.props.cookieChecked();
+                    this.props.setLogin(true);
+                    this.props.populateGame();
+                } else {
+                    console.log('Server Error')
+                }
+            }
             setInterval(() => setLocalStorage(), 500);
             this.playerHpBar.style.width = `${Math.floor((this.props.currentPlayerHp/this.props.playerStats.hp)*100)}%`;
         }
@@ -41,7 +51,6 @@ class GameContainer extends PureComponent {
                 if(this.props.loggedIn) this.updateProgressInterval = setInterval(() => updateDbProgress(), 5000);
                 else {
                     clearInterval(this.updateProgressInterval);
-                    localStorage.removeItem('token');
                 }
             }
         }
@@ -303,7 +312,8 @@ const mapStateToProps = state => {
         currentLocation: state.gameData.currentLocation,
         currentEnemy: state.gameData.currentEnemy,
 
-        loggedIn: state.gameData.loggedIn
+        loggedIn: state.gameData.loggedIn,
+        isCookieChecked: state.gameData.isCookieChecked
 	}
 }
 
@@ -321,7 +331,11 @@ const mapDispatchToProps = dispatch => {
         updateInventory: itemCount => dispatch(updateInventory(itemCount)),
         updatePlayerQuickBarEquipment: newQBEquip => dispatch(updatePlayerQuickBarEquipment(newQBEquip)),
         setMessage: newMessage => dispatch(setMessage(newMessage)),
-        setLoadingEnemy: () => dispatch(setLoadingEnemy())
+        setLoadingEnemy: () => dispatch(setLoadingEnemy()),
+
+        cookieChecked: () => dispatch(cookieChecked()),
+        setLogin: (isLoggedIn) => dispatch(setLogin(isLoggedIn)),
+        populateGame: () => dispatch(populateGame())
     }
 }
 

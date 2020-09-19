@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const joiValidate = require('../middleware/joiValidate');
+const checkToken = require('../middleware/checkToken');
 const userLoginSchema = require('../validationSchemas/userLoginSchema');
 
 const User = require('../models/User');
@@ -19,22 +20,35 @@ router.post('/', joiValidate(userLoginSchema), async (req, res) => {
         const match = await bcrypt.compare(password, user.password);
         if(!match) return res.status(400).json({ error: "Invalid Password" });
 
-        jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: 172815 }, (err, token) => {
+        jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '15 days' }, (err, token) => {
             if(err) throw err;
-            //res.json({token});
-            cookie = req.cookie && req.cookie.token
-            if (!cookie) {
-                res.cookie('token', `Bearer ${token}`, { maxAge: 1296000, httpOnly: true, secure: true });
-                res.status(200).end();
-            } else {
-                console.log('cookie exists', cookie);
-                res.status(200).end();
-            } 
+            res.cookie('token', `Bearer ${token}`, { maxAge: 1296000, httpOnly: true, secure: true });
+            res.status(200).end();
         });
     } catch (err) {
         console.log(err);
         res.status(400).json({ error: "Server Error" });
     }
 });
+
+router.get('/checkcookie', checkToken, async (req, res) => {
+    const exp = req.token.exp;
+    const id = req.token.id;
+    try {
+        if(exp - Date.now()/1000 < 864000) { // If less than 10 days remain before the token expires create a new one - refreshes every fifth day
+            jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '15 days' }, (err, token) => {
+                if(err) throw err;
+                res.cookie('token', `Bearer ${token}`, { maxAge: 1296000, httpOnly: true, secure: true });
+                res.status(200).end();
+            });
+        } else {
+            console.log('Cookie Still Valid');
+            res.status(200).end();
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(400).json({ error: "Server Error" });
+    }
+})
 
 module.exports = router;

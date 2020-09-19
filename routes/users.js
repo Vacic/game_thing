@@ -47,7 +47,7 @@ router.post('/', joiValidate(userRegistrationSchema), async (req, res) => {
 // @desc Get User Progress
 // @access Private
 router.get('/progress', checkToken, async (req, res) => {
-    const id = req.id;
+    const id = req.token.id;
     try {
         const userProgress = await UserProgress.findOne({ user: id }).populate('user', 'username').lean();
         res.json(userProgress);
@@ -62,7 +62,7 @@ router.get('/progress', checkToken, async (req, res) => {
 // @access Private
 router.put('/progress', checkToken, async (req, res) => {
     const progress = req.body;
-    const id = req.id;
+    const id = req.token.id;
     try {
         const userProgress = await UserProgress.findOneAndUpdate({'user': id}, { $set: progress })
         res.json(userProgress);

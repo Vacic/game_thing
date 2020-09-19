@@ -21,7 +21,7 @@ const LogIn = ({ isLoginHidden, toggleLogin, login, setMessage, setLogin, isLoad
             clearTimeout(timeout.current);
             setMessage({ showMsg: false });
         }
-    }, [isLoginHidden, toggleLogin]);
+    }, [isLoginHidden, toggleLogin, setMessage]);
     
     const [loginData, setFormData] = useState({
         email: '',
