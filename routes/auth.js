@@ -19,10 +19,9 @@ router.post('/', joiValidate(userLoginSchema), async (req, res) => {
         const match = await bcrypt.compare(password, user.password);
         if(!match) return res.status(400).json({ error: "Invalid Password" });
 
-        jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn:'15 days' }, (err, token) => {
+        jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: 172815 }, (err, token) => {
             if(err) throw err;
             //res.json({token});
-            //COOKIE LOGIC - CAN'T TEST WITH THIS IN DEVELOPMENT
             cookie = req.cookie && req.cookie.token
             if (!cookie) {
                 res.cookie('token', `Bearer ${token}`, { maxAge: 1296000, httpOnly: true, secure: true });
