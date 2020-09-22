@@ -21,6 +21,7 @@ export const checkCookie = async history => {
             }
             else {
                 console.log(err);
+                console.log('Internal Server Error');
             }
         }
     }
