@@ -8,6 +8,7 @@ import Spinner from '../Spinner';
 
 const UserMenu = ({ isUserMenuHidden, toggleMenu, logout, isLoading }) => {
     const [updateProgressLoading, toggleUpdateProgressLoading] = useState(false);
+    const history = useHistory();
 
     useEffect(() => {
         const hideMenuOnOutsideClick = e => {
@@ -31,7 +32,6 @@ const UserMenu = ({ isUserMenuHidden, toggleMenu, logout, isLoading }) => {
     }
 
     const userMenu = useRef();
-    const history = useHistory();
     return (
         <div className={isUserMenuHidden ? "user-menu" : "user-menu show"} ref={userMenu} >
             <ul className="user-menu-options">
