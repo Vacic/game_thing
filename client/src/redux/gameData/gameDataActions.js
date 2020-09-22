@@ -9,10 +9,9 @@ export const login = (email, password) => async dispatch => {
     const config = { headers: { "Content-Type": "application/json" } };
     const body = JSON.stringify({ email, password });
     try {
-        const res = await axios.post('/auth', body, config);
-        console.log(res)
+        await axios.post('/auth', body, config);
         dispatch(populateGame());
-        //cookies.set('loggedIn', 'yup');
+        cookies.set('loggedIn', 'yup');
         return true;
     } catch (err) {
         cookies.remove('loggedIn');
