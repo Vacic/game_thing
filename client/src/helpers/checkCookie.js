@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom'
 import axios from 'axios';
 import Cookies from 'universal-cookie';
-import { setMessage } from '../redux';
+import { logout, setMessage } from '../redux';
 const cookies = new Cookies();
 
 export const checkCookie = async () => {
@@ -14,6 +14,7 @@ export const checkCookie = async () => {
             if (err.response && err.response.data.error) return ({ error: err.response.data.error});
             else if (err.response.status === 403) {
                 setMessage({ msg: 'Please Login To Continue', classType: 'danger' });
+                logout();
                 cookies.remove('loggedIn');
                 return <Redirect to='/login' />;
             }

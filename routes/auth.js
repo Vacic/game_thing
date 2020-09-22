@@ -38,7 +38,7 @@ router.get('/checkcookie', checkCredentials, async (req, res) => {
         if(exp - Date.now()/1000 < 864000) { // If less than 10 days remain before the token expires create a new one - refreshes every fifth day
             jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '15 days' }, (err, token) => {
                 if(err) throw err;
-                res.cookie('token', `Bearer ${token}`, { maxAge: 1296000, httpOnly: true, secure: true });
+                res.cookie('token', `Bearer ${token}`, { maxAge: 1296000000, httpOnly: true, secure: true });
                 res.status(200).end();
             });
         } else {
