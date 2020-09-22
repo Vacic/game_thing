@@ -19,6 +19,7 @@ const checkToken = (req, res, next) => {
         next();
     } catch (err) {
         console.log(err);
+        if(err.message === 'jwt expired') return res.status(403).json({ error: 'Token Expired' });
         res.status(400).json({ error: "Server Error" });
     }
 }
