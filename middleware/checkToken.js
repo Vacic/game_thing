@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
 
 const checkToken = (req, res, next) => {
-    let cookieToken = req.cookies.token;
+    let cookieToken = req.cookies.token ?? null;
+
     if(!cookieToken) return res.status(403).json({error: 'Token Not Provided'})
 
     cookieToken = bearerToken.split(' ')
