@@ -7,6 +7,7 @@ export const updateDbProgress = async () => {
         await axios.put(`/users/progress`, body, config);
         console.log('Progress Updated');
     } catch (err) {
+        if(err.response.status === 403) return console.log('Unauthorized Request, Cookie Not Found')
         err.response && err.response.data && err.response.data.error && console.log(err.response.data.error);
         console.log(err);
     }

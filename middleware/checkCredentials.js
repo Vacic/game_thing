@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const checkCredentials = (req, res, next) => {
     const cookie = req.cookies;
+    console.log(cookie);
     if(!cookie) return res.status(403).json({error: 'Cookie Not Present'})
 
     const currentDate = Date.now();
