@@ -8,7 +8,7 @@ import InvAndEquip from './InvAndEquip';
 import Message from './Message';
 import ConfirmationModal from './ConfirmationModal';
 import { setLocalStorage, updateDbProgress } from '../helpers';
-import { checkCookie } from '../helpers/checkCookie';
+import { checkToken } from '../helpers/checkToken';
 
 
 class GameContainer extends PureComponent {
@@ -27,11 +27,11 @@ class GameContainer extends PureComponent {
             }
         }
         componentDidMount = async () => {
-            checkCookie(this.props.history)
+            checkToken(this.props.history)
             if(!this.props.isCookieChecked) {
                 this.props.cookieChecked();
                 localStorage.removeItem('progress');
-                const cookie = await checkCookie(this.props.history);
+                const cookie = await checkToken(this.props.history);
                 if(cookie === true) {
                     this.props.setLogin(true);
                     await this.props.populateGame();

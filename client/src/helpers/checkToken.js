@@ -3,7 +3,7 @@ import Cookies from 'universal-cookie';
 import { logout, setMessage } from '../redux';
 const cookies = new Cookies();
 
-export const checkCookie = async history => {
+export const checkToken = async history => {
     if(cookies.get('loggedIn')) {
         try {
             await axios.get('/auth/checkcookie', { withCredentials: true });
