@@ -48,7 +48,7 @@ class GameContainer extends PureComponent {
                 this.props.setCurrentEnemyStats({ name: 'Select Location', hp:0, dmg:0, attSpd:0, def:0, eva:0 });
                 this.enemyHpBar.style.width = '100%';
                 this.playerHpBar.style.width = `${Math.floor((this.props.currentPlayerHp/this.props.playerStats.hp)*100)}%`;
-                if(this.props.loggedIn) this.updateProgressInterval = setInterval(() => updateDbProgress(), 15000);
+                if(this.props.loggedIn) this.updateProgressInterval = setInterval(() => updateDbProgress(this.props.history), 15000);
                 else {
                     clearInterval(this.updateProgressInterval);
                 }
