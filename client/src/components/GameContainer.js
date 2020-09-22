@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import BattleScreen from './BattleScreen';
 import LocationSelection from './location/LocationSelection';
 import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, toggleLoading, enemyTakesDamage, playerTakesDamage, updateInventory, setCurrentLocation, setNotificationMessage, setNotificationClass, updatePlayerQuickBarEquipment, setMessage, setLoadingEnemy, cookieChecked, setLogin, populateGame, hideMessage } from '../redux';
@@ -26,17 +27,18 @@ class GameContainer extends PureComponent {
             }
         }
         componentDidMount = async () => {
+            checkCookie(this.props.history)
             if(!this.props.isCookieChecked) {
                 localStorage.removeItem('progress');
-                const cookie = await checkCookie();
+                const cookie = await checkCookie(this.props.history);
                 if(cookie === true) {
                     this.props.cookieChecked();
                     this.props.setLogin(true);
                     await this.props.populateGame();
+                    this.playerHpBar.style.width = `${Math.floor((this.props.currentPlayerHp/this.props.playerStats.hp)*100)}%`;
                 }
             }
-            setInterval(() => setLocalStorage(), 500);
-            this.playerHpBar.style.width = `${Math.floor((this.props.currentPlayerHp/this.props.playerStats.hp)*100)}%`;
+            setInterval(() => setLocalStorage(), 1000);
         }
 
         componentDidUpdate = (prevProps) => {
@@ -46,7 +48,7 @@ class GameContainer extends PureComponent {
                 this.props.setCurrentEnemyStats({ name: 'Select Location', hp:0, dmg:0, attSpd:0, def:0, eva:0 });
                 this.enemyHpBar.style.width = '100%';
                 this.playerHpBar.style.width = `${Math.floor((this.props.currentPlayerHp/this.props.playerStats.hp)*100)}%`;
-                if(this.props.loggedIn) this.updateProgressInterval = setInterval(() => updateDbProgress(), 5000);
+                if(this.props.loggedIn) this.updateProgressInterval = setInterval(() => updateDbProgress(), 15000);
                 else {
                     clearInterval(this.updateProgressInterval);
                 }
@@ -338,4 +340,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GameContainer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(GameContainer));

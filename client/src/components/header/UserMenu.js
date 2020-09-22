@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateDbProgress } from '../../helpers'
+import { setLocalStorage, updateDbProgress } from '../../helpers'
 import { logout } from '../../redux';
 import Spinner from '../Spinner';
 
@@ -26,6 +26,7 @@ const UserMenu = ({ isUserMenuHidden, toggleMenu, logout, isLoading }) => {
     const updateProgress = async () => {
         toggleUpdateProgressLoading(true);
         await updateDbProgress();
+        await setLocalStorage();
         toggleUpdateProgressLoading(false);
     }
 

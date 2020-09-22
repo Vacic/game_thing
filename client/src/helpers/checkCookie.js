@@ -5,7 +5,7 @@ import Cookies from 'universal-cookie';
 import { logout, setMessage } from '../redux';
 const cookies = new Cookies();
 
-export const checkCookie = async () => {
+export const checkCookie = async history => {
     if(cookies.get('loggedIn')) {
         try {
             await axios.get('/auth/checkcookie', { withCredentials: true });
@@ -16,7 +16,7 @@ export const checkCookie = async () => {
                 setMessage({ msg: 'Please Login To Continue', classType: 'danger' });
                 logout();
                 cookies.remove('loggedIn');
-                return <Redirect to='/login' />;
+                return history.push('/login');
             }
             else {
                 console.log(err);
