@@ -6,7 +6,7 @@ const cookies = new Cookies();
 export const checkToken = async history => {
     if(cookies.get('loggedIn')) {
         try {
-            await axios.get('/auth/checkcookie', { withCredentials: true });
+            await axios.get('/auth/checktoken', { withCredentials: true });
             return true;
         } catch (err) {
             if (err.response.status === 403) {
