@@ -32,7 +32,9 @@ class GameContainer extends PureComponent {
                 if(cookie === true) {
                     this.props.cookieChecked();
                     this.props.setLogin(true);
-                    this.props.populateGame();
+                    await this.props.populateGame();
+                } else {
+                    console.log(cookie.error)
                 }
             }
             setInterval(() => setLocalStorage(), 500);
