@@ -2,9 +2,9 @@ const jwt = require('jsonwebtoken');
 
 const checkToken = (req, res, next) => {
     let cookieToken = req.cookies.token;
-    if(!cookieToken || typeof cookieToken === 'undefined') return res.status(403).json({error: 'Token Not Provided'})
+    if(!cookieToken) return res.status(403).json({error: 'Token Not Provided'});
 
-    cookieToken = cookieToken.split(' ')
+    cookieToken = cookieToken.split(' ');
     const bearer = cookieToken[0];
     const token = cookieToken[1];
 
