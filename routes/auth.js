@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const joiValidate = require('../middleware/joiValidate');
-const checkCredentials = require('../middleware/checkCredentials');
+const checkToken = require('../middleware/checkToken');
 const userLoginSchema = require('../validationSchemas/userLoginSchema');
 
 const User = require('../models/User');
@@ -22,7 +22,7 @@ router.post('/', joiValidate(userLoginSchema), async (req, res) => {
 
         jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '15 days' }, (err, token) => {
             if(err) throw err;
-            res.cookie('token', `Bearer ${token}`, { maxAge: 10000, httpOnly: true, secure: true });
+            res.cookie('token', `Bearer ${token}`, { maxAge: 1296000000, httpOnly: true, secure: true });
             res.status(200).end();
         });
     } catch (err) {
@@ -31,14 +31,14 @@ router.post('/', joiValidate(userLoginSchema), async (req, res) => {
     }
 });
 
-router.get('/checkcookie', checkCredentials, async (req, res) => {
-    const cookie = req.cookies;
-    const currentDate = Date.now();
-    const cookieExpDate = new Date(cookie.Expires).getTime();
-    console.log(currentDate);
-    console.log(cookieExpDate);
+router.get('/checktoken', checkToken, async (req, res) => {
+    const id = req.token.id;
+    const exp = req.token.exp;
+    const currentDate = Date.now()/1000;
+    console.log(exp)
+    console.log(currentDate)
     try {
-        if(cookieExpDate - currentDate < 864000000) { // If less than 10 days remain before the token expires create a new one - refreshes every fifth day
+        if(cookieExpDate - currentDate < 864000) { // If less than 10 days remain before the token expires create a new one - refreshes every fifth day
             jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '15 days' }, (err, token) => {
                 if(err) throw err;
                 res.cookie('token', `Bearer ${token}`, { maxAge: 1296000000, httpOnly: true, secure: true });

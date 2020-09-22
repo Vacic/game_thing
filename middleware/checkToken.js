@@ -1,17 +1,9 @@
 const jwt = require('jsonwebtoken');
 
-const checkCredentials = (req, res, next) => {
-    const cookie = req.cookies;
-    console.log(cookie);
-    if(!cookie) return res.status(403).json({error: 'Cookie Not Present'})
+const checkToken = (req, res, next) => {
+    const token = req.cookies.token;
+    if(!token) return res.status(403).json({error: 'Token Not Provided'})
 
-    const currentDate = Date.now();
-    const cookieExpDate = new Date(cookie.Expires).getTime();
-    console.log(cookieExpDate)
-    if (currentDate > cookieExpDate) return res.status(403).json({ error: 'Cookie Has Expired' });
-
-    let bearerToken = cookie.token;
-    if(!bearerToken) return res.status(403).json({ error: "Token Not Provided." });
     bearerToken = bearerToken.split(' ')
     const bearer = bearerToken[0];
     const token = bearerToken[1];
@@ -31,4 +23,4 @@ const checkCredentials = (req, res, next) => {
     }
 }
 
-module.exports = checkCredentials;
+module.exports = checkToken;
