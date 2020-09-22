@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { setLogin } from '../redux';
 
 export const register = async formData => {
     const localProgress = localStorage.progress ? JSON.parse(localStorage.getItem('progress')) : {};

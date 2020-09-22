@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setMessage } from '../redux';
-import { store } from 'redux'
+import store from '../redux/store';
 
 export const updateDbProgress = async history => {
     const body = localStorage.getItem('progress');
