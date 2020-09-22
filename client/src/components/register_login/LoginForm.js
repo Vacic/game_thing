@@ -1,19 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import Message from '../notifications/Message';
-import { setMessage, login } from '../../redux';
+import { setMessage, login, hideMessage } from '../../redux';
 
-function LoginForm({ setMessage, login }) {
+function LoginForm({ setMessage, hideMessage, showMsg, login }) {
     const [loginFormData, setFormData] = useState({
         email: '',
         password: ''
     });
 
-    useEffect(() => () => {
-        clearTimeout(timeout.current);
-        setMessage({ showMsg: false });
-    }, [setMessage])
+    useEffect(() => () => hideMessage(), [hideMessage])
 
     const { email, password } = loginFormData;
 
@@ -25,19 +22,16 @@ function LoginForm({ setMessage, login }) {
         e.preventDefault();
         const isLoggedIn = await login(email, password);
         if(isLoggedIn === true) {
-            setMessage({ msg: 'Logged In Successfully', showMsg: true, classType: 'success' });
+            setMessage({ msg: 'Logged In Successfully' });
             setTimeout(() => history.push('/'), 1000);
         }
-        else setMessage({ msg: isLoggedIn.error, classType: 'danger', showMsg: true });
-        if(timeout.current) clearTimeout(timeout.current);
-        timeout.current = setTimeout(() => setMessage({ showMsg: false }), 5000);
+        else setMessage({ msg: isLoggedIn.error, classType: 'danger' });
     }
-    const timeout = useRef();
     const history = useHistory();
     return (
         <div className="login-container">
             <div className ="login-form">
-                <Message />
+                {showMsg && <Message />}
                 <h2>Log In</h2>
                 <form onSubmit={e => submit(e)}>
                     <label htmlFor="email">Email</label>
@@ -54,9 +48,14 @@ function LoginForm({ setMessage, login }) {
     )
 }
 
+const mapStateToProps = state => ({
+    showMsg: state.notifications.message.showMsg
+});
+
 const mapDispatchToProps = dispatch => ({
     setMessage: newMessage => dispatch(setMessage(newMessage)),
+    hideMessage: () => dispatch(hideMessage()),
     login: (email, password) => dispatch(login(email, password))
 });
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

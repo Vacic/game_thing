@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import BattleScreen from './BattleScreen';
 import LocationSelection from './location/LocationSelection';
-import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, toggleLoading, enemyTakesDamage, playerTakesDamage, updateInventory, setCurrentLocation, setNotificationMessage, setNotificationClass, updatePlayerQuickBarEquipment, setMessage, setLoadingEnemy, cookieChecked, setLogin, populateGame } from '../redux';
+import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, toggleLoading, enemyTakesDamage, playerTakesDamage, updateInventory, setCurrentLocation, setNotificationMessage, setNotificationClass, updatePlayerQuickBarEquipment, setMessage, setLoadingEnemy, cookieChecked, setLogin, populateGame, hideMessage } from '../redux';
 import InvAndEquip from './InvAndEquip';
 import Message from './Message';
 import ConfirmationModal from './ConfirmationModal';
@@ -33,8 +33,6 @@ class GameContainer extends PureComponent {
                     this.props.cookieChecked();
                     this.props.setLogin(true);
                     this.props.populateGame();
-                } else {
-                    console.log('Server Error')
                 }
             }
             setInterval(() => setLocalStorage(), 500);
@@ -56,7 +54,7 @@ class GameContainer extends PureComponent {
         }
 
         componentWillUnmount = () => {
-            setMessage({ showMsg: false });
+            hideMessage();
             this.resetActions();
         }
         
@@ -331,6 +329,7 @@ const mapDispatchToProps = dispatch => {
         updateInventory: itemCount => dispatch(updateInventory(itemCount)),
         updatePlayerQuickBarEquipment: newQBEquip => dispatch(updatePlayerQuickBarEquipment(newQBEquip)),
         setMessage: newMessage => dispatch(setMessage(newMessage)),
+        hideMessage: () => dispatch(hideMessage()),
         setLoadingEnemy: () => dispatch(setLoadingEnemy()),
 
         cookieChecked: () => dispatch(cookieChecked()),

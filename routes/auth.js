@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const joiValidate = require('../middleware/joiValidate');
-const checkToken = require('../middleware/checkToken');
+const checkCredentials = require('../middleware/checkCredentials');
 const userLoginSchema = require('../validationSchemas/userLoginSchema');
 
 const User = require('../models/User');
@@ -22,7 +22,7 @@ router.post('/', joiValidate(userLoginSchema), async (req, res) => {
 
         jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '15 days' }, (err, token) => {
             if(err) throw err;
-            res.cookie('token', `Bearer ${token}`, { maxAge: 1296000, httpOnly: true, secure: true });
+            res.cookie('token', `Bearer ${token}`, { maxAge: 10, httpOnly: true, secure: true });
             res.status(200).end();
         });
     } catch (err) {
@@ -31,7 +31,7 @@ router.post('/', joiValidate(userLoginSchema), async (req, res) => {
     }
 });
 
-router.get('/checkcookie', checkToken, async (req, res) => {
+router.get('/checkcookie', checkCredentials, async (req, res) => {
     const exp = req.token.exp;
     const id = req.token.id;
     try {

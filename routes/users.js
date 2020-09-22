@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 
-const checkToken = require('../middleware/checkToken');
+const checkCredentials = require('../middleware/checkCredentials');
 const joiValidate = require('../middleware/joiValidate');
 const userRegistrationSchema = require('../validationSchemas/userRegistrationSchema');
 
@@ -46,7 +46,7 @@ router.post('/', joiValidate(userRegistrationSchema), async (req, res) => {
 // @route GET /users/progress/:id
 // @desc Get User Progress
 // @access Private
-router.get('/progress', checkToken, async (req, res) => {
+router.get('/progress', checkCredentials, async (req, res) => {
     const id = req.token.id;
     try {
         const userProgress = await UserProgress.findOne({ user: id }).populate('user', 'username').lean();
@@ -60,7 +60,7 @@ router.get('/progress', checkToken, async (req, res) => {
 // @route PUT /users
 // @desc Update User Information
 // @access Private
-router.put('/progress', checkToken, async (req, res) => {
+router.put('/progress', checkCredentials, async (req, res) => {
     const progress = req.body;
     const id = req.token.id;
     try {

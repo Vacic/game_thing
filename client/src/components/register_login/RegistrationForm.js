@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import { register } from '../../helpers';
 import Message from '../notifications/Message';
-import { setMessage } from '../../redux';
+import { hideMessage, setMessage } from '../../redux';
 
-const RegistrationForm = React.memo(({ setMessage }) => {
+const RegistrationForm = React.memo(({ setMessage, hideMessage, showMsg }) => {
     const [registerFormData, setFormData] = useState({
         username: '',
         email: '',
@@ -15,10 +15,7 @@ const RegistrationForm = React.memo(({ setMessage }) => {
 
     const [regLoading, toggleRegLoading] = useState(false);
 
-    useEffect(() => () => {
-        setMessage({ showMsg: false });
-        clearTimeout(timeout.current);
-    }, [setMessage]);
+    useEffect(() => () => hideMessage(), [hideMessage]);
 
     const { username, email, password, confirmPassword } = registerFormData;
 
@@ -32,26 +29,23 @@ const RegistrationForm = React.memo(({ setMessage }) => {
             toggleRegLoading(true)
             const isRegistered = await register({ username, email, password });
             if(isRegistered === true) {
-                setMessage({ msg: 'Successfully Registered', showMsg: true, classType: 'success' });
+                setMessage({ msg: 'Successfully Registered' });
                 setTimeout(() => history.push('/'), 2000);
             }
             else {
-                setMessage({ msg: isRegistered.error, classType: 'danger', showMsg: true });
+                setMessage({ msg: isRegistered ?? 'Internal Server Error', classType: 'danger' });
                 toggleRegLoading(false);
             }
         } else {
-            setMessage({ msg: 'Passwords Don\'t Match', classType: 'danger', showMsg: true });
+            setMessage({ msg: 'Passwords Don\'t Match', classType: 'danger' });
             toggleRegLoading(false);
         }
-        if(timeout.current) clearTimeout(timeout.current)
-        timeout.current = setTimeout(() => setMessage({ showMsg: false }), 5000);
     }
-    const timeout = useRef();
     const history = useHistory();
     return (
         <div className="registration-container">
             <div className ="registration-form">
-                <Message />
+                {showMsg && <Message />}
                 <h2>Create an Account</h2>
                 <form onSubmit={e => submit(e)}>
                     <label htmlFor="username">Username</label>
@@ -70,8 +64,13 @@ const RegistrationForm = React.memo(({ setMessage }) => {
     )
 });
 
-const mapDispatchToProps = dispatch => ({
-    setMessage: newMessage => dispatch(setMessage(newMessage))
+const mapStateToProps = state => ({
+    showMsg: state.notifications.message.showMsg
 });
 
-export default connect(null, mapDispatchToProps)(RegistrationForm);
+const mapDispatchToProps = dispatch => ({
+    setMessage: newMessage => dispatch(setMessage(newMessage)),
+    hideMessage: () => dispatch(hideMessage())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationForm);

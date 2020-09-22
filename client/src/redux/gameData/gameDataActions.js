@@ -1,6 +1,8 @@
-import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, TOGGLE_LOADING, ENEMY_TAKES_DAMAGE, PLAYER_TAKES_DAMAGE, SET_CURRENT_LOCATION, SET_NOTIFICATION_MESSAGE, SET_NOTIFICATION_CLASS, LOGIN, SET_LOADING_ENEMY, COOKIE_CHECKED } from './gameDataTypes';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
+import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, TOGGLE_LOADING, ENEMY_TAKES_DAMAGE, PLAYER_TAKES_DAMAGE, SET_CURRENT_LOCATION, SET_NOTIFICATION_MESSAGE, SET_NOTIFICATION_CLASS, LOGIN, SET_LOADING_ENEMY, COOKIE_CHECKED } from './gameDataTypes';
 import { populatePlayer, updateInventory } from '../player/playerAction';
+const cookies = new Cookies();
 
 export const login = (email, password) => async dispatch => {
     dispatch(toggleLoading());
@@ -9,13 +11,15 @@ export const login = (email, password) => async dispatch => {
     try {
         await axios.post('/auth', body, config);
         dispatch(populateGame());
+        cookies.set('loggedIn', 'yup');
         return true;
     } catch (err) {
-        if (err.response && err.response.data && err.response.data.error) {
+        cookies.remove('loggedIn');
+        if (err.response && err.response.data.error) {
             dispatch(toggleLoading());
             return ({ error: err.response.data.error});
         } else { 
-            console.log(err);
+            console.log(err.response.statusText);
             dispatch(toggleLoading());
             return ({ error: 'Internal Server Error' });
         }
@@ -23,6 +27,7 @@ export const login = (email, password) => async dispatch => {
 }
 
 export const logout = () => dispatch => {
+    cookies.remove('loggedIn');
     dispatch(toggleLoading());
     let number = '';
     for(let i=0; i<8; i++) {
