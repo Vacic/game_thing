@@ -7,9 +7,10 @@ const checkCredentials = (req, res, next) => {
 
     const currentDate = Date.now();
     const cookieExpDate = new Date(cookie.Expires).getTime();
+    console.log(cookieExpDate)
     if (currentDate > cookieExpDate) return res.status(403).json({ error: 'Cookie Has Expired' });
 
-    let bearerToken = cookie.token;
+    let bearerToken = cookie;
     if(!bearerToken) return res.status(403).json({ error: "Token Not Provided." });
     bearerToken = bearerToken.split(' ')
     const bearer = bearerToken[0];
