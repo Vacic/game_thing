@@ -49,6 +49,7 @@ export const logout = () => dispatch => {
     dispatch(updateInventory({}));
     dispatch(setLogin(false));
     dispatch(toggleLoading());
+    disaptch(setLoadingEnemy());
     return true;
 }
 
