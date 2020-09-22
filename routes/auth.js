@@ -35,6 +35,8 @@ router.get('/checkcookie', checkCredentials, async (req, res) => {
     const cookie = req.cookies;
     const currentDate = Date.now();
     const cookieExpDate = new Date(cookie.Expires).getTime();
+    console.log(currentDate);
+    console.log(cookieExpDate);
     try {
         if(cookieExpDate - currentDate < 864000000) { // If less than 10 days remain before the token expires create a new one - refreshes every fifth day
             jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '15 days' }, (err, token) => {

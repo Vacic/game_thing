@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 const checkCredentials = (req, res, next) => {
-    const cookie = req.cookies;
+    const cookie = req.cookies.token;
     console.log(cookie);
     if(!cookie) return res.status(403).json({error: 'Cookie Not Present'})
 
