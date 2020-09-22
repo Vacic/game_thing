@@ -29,10 +29,10 @@ class GameContainer extends PureComponent {
         componentDidMount = async () => {
             checkCookie(this.props.history)
             if(!this.props.isCookieChecked) {
+                this.props.cookieChecked();
                 localStorage.removeItem('progress');
                 const cookie = await checkCookie(this.props.history);
                 if(cookie === true) {
-                    this.props.cookieChecked();
                     this.props.setLogin(true);
                     await this.props.populateGame();
                     this.playerHpBar.style.width = `${Math.floor((this.props.currentPlayerHp/this.props.playerStats.hp)*100)}%`;
