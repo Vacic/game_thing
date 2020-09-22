@@ -9,14 +9,15 @@ export const checkCookie = async history => {
             await axios.get('/auth/checkcookie', { withCredentials: true });
             return true;
         } catch (err) {
-            console.log(err.response)
-            if (err.response && err.response.data.error) return ({ error: err.response.data.error});
-            else if (err.response.status === 403) {
-                console.log(err.response)
+            if (err.response.status === 403) {
                 setMessage({ msg: 'Please Login To Continue', classType: 'danger' });
                 logout();
                 cookies.remove('loggedIn');
                 return history.push('/login');
+            }
+            else if (err.response && err.response.data.error) {
+                console.log(err.response.data.error);
+                return ({ error: err.response.data.error});
             }
             else {
                 console.log(err);
