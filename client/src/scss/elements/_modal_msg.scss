@@ -171,6 +171,30 @@
                 background-color: rgb(255, 80, 80);
             }
         }
+
+        .loading-modal {
+            width: 400px;
+            margin: auto;
+            margin-top: 10%;
+            background-color: rgba(241, 241, 241, 0.88);
+            box-shadow: 1px 1px 4px 1px rgba($color: rgb(10, 10, 10), $alpha: 0.7), 1px 1px 3px 1px rgba($color: rgb(10, 10, 10), $alpha: 0.5);
+            color: rgb(48, 48, 48);
+            border-radius: $border-radius;
+            opacity: 1;
+            -webkit-transition: all 0.2s linear;
+            -moz-transition: all 0.2s linear;
+            -ms-transition: all 0.2s linear;
+            -o-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+
+            p {
+                font-size: 1.2rem;
+                font-weight: 600;
+                text-align: center;
+                padding: 25px;
+                margin-top: -60px;
+            }
+        }
     }
 
     .hide-modal {

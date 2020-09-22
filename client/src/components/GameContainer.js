@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import BattleScreen from './BattleScreen';
 import LocationSelection from './location/LocationSelection';
-import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, toggleLoading, enemyTakesDamage, playerTakesDamage, updateInventory, setCurrentLocation, setNotificationMessage, setNotificationClass, updatePlayerQuickBarEquipment, setMessage, setLoadingEnemy, cookieChecked, setLogin, populateGame, hideMessage } from '../redux';
+import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading, enemyTakesDamage, playerTakesDamage, updateInventory, setCurrentLocation, setNotificationMessage, setNotificationClass, updatePlayerQuickBarEquipment, setMessage, setLoadingEnemy, cookieChecked, setLogin, populateGame, hideMessage } from '../redux';
 import InvAndEquip from './InvAndEquip';
 import Message from './Message';
 import ConfirmationModal from './ConfirmationModal';
 import { setLocalStorage, updateDbProgress } from '../helpers';
 import { checkToken } from '../helpers/checkToken';
+import LoadingModal from './LoadingModal';
 
 
 class GameContainer extends PureComponent {
@@ -27,9 +28,7 @@ class GameContainer extends PureComponent {
             }
         }
         componentDidMount = async () => {
-            checkToken(this.props.history)
             if(!this.props.isCookieChecked) {
-                this.props.cookieChecked();
                 localStorage.removeItem('progress');
                 const cookie = await checkToken(this.props.history);
                 if(cookie === true) {
@@ -37,6 +36,7 @@ class GameContainer extends PureComponent {
                     await this.props.populateGame();
                     this.playerHpBar.style.width = `${Math.floor((this.props.currentPlayerHp/this.props.playerStats.hp)*100)}%`;
                 }
+                this.props.cookieChecked();
             }
             setInterval(() => setLocalStorage(), 1000);
         }
@@ -62,7 +62,7 @@ class GameContainer extends PureComponent {
         
         initCombat = (location) => {
             this.resetActions();
-            this.props.setLoadingEnemy();
+            this.props.setLoadingEnemy(true);
             this.loadingTimeout = setTimeout(() => {
                 this.enemyHpBar.style.width = '100%'; // Whenever a new enemy is called the hp is reset to 100%
                 this.getEnemy(location);
@@ -292,6 +292,7 @@ class GameContainer extends PureComponent {
                 </div>
 
                 <ConfirmationModal text={this.state.modalText} func={this.state.modalFunc} isHidden={this.state.isModalHidden} hideModal={this.hideModal} itemToRemove={this.state.itemToRemove} />
+                {!this.props.isCookieChecked && <LoadingModal />}
             </div>
         )
     }
@@ -325,14 +326,14 @@ const mapDispatchToProps = dispatch => {
         setCurrentLocation: location => dispatch(setCurrentLocation(location)),
         setNotificationMessage: message => dispatch(setNotificationMessage(message)),
         setNotificationClass: classStr => dispatch(setNotificationClass(classStr)),
-        toggleLoading: (isLoading) => dispatch(toggleLoading(isLoading)),
+        setLoading: (isLoading) => dispatch(setLoading(isLoading)),
         enemyTakesDmg: damage => dispatch(enemyTakesDamage(damage)),
         playerTakesDmg: damage => dispatch(playerTakesDamage(damage)),
         updateInventory: itemCount => dispatch(updateInventory(itemCount)),
         updatePlayerQuickBarEquipment: newQBEquip => dispatch(updatePlayerQuickBarEquipment(newQBEquip)),
         setMessage: newMessage => dispatch(setMessage(newMessage)),
         hideMessage: () => dispatch(hideMessage()),
-        setLoadingEnemy: () => dispatch(setLoadingEnemy()),
+        setLoadingEnemy: isLoading => dispatch(setLoadingEnemy(isLoading)),
 
         cookieChecked: () => dispatch(cookieChecked()),
         setLogin: (isLoggedIn) => dispatch(setLogin(isLoggedIn)),

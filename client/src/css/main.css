@@ -126,7 +126,7 @@
         text-align: center; }
         .header .user-nav .user-menu .user-menu-options .spinner-img {
           width: 40px;
-          margin: -3px 0 -9px 0; }
+          margin: -4px 0 -7px 0; }
         .header .user-nav .user-menu .user-menu-options li {
           padding: 7px 15px 7px 15px;
           font-size: 0.9rem;
@@ -493,6 +493,26 @@
     .container .modal-container .confirmation-modal .btn-no {
       float: right;
       background-color: #ff5050; }
+  .container .modal-container .loading-modal {
+    width: 400px;
+    margin: auto;
+    margin-top: 10%;
+    background-color: rgba(241, 241, 241, 0.88);
+    box-shadow: 1px 1px 4px 1px rgba(10, 10, 10, 0.7), 1px 1px 3px 1px rgba(10, 10, 10, 0.5);
+    color: #303030;
+    border-radius: 10px;
+    opacity: 1;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear; }
+    .container .modal-container .loading-modal p {
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 25px;
+      margin-top: -60px; }
 
 .container .hide-modal {
   visibility: hidden;
@@ -831,6 +851,8 @@ body {
       margin-top: 18%; }
       .container .modal-container .confirmation-modal.hidden {
         margin-top: calc(18% + (179px/2)); }
+    .container .modal-container .loading-modal {
+      margin-top: 18%; }
   .registration-container .registration-form, .registration-container .login-form, .login-container .registration-form, .login-container .login-form {
     width: 60%; } }
 
@@ -1045,6 +1067,8 @@ body {
         margin-top: calc(30% + (179px/2)); }
       .container .modal-container .confirmation-modal .modal-text {
         font-size: 1rem; }
+    .container .modal-container .loading-modal {
+      margin-top: 30%; }
     .container .msg {
       font-size: 0.9rem; }
       .container .msg img {
@@ -1152,6 +1176,11 @@ body {
         margin: 22px 0px 0px 35px; }
       .container .modal-container .confirmation-modal .btn-no {
         margin: 22px 35px 0px 0px; }
+    .container .modal-container .loading-modal {
+      margin-top: 45%;
+      width: 320px; }
+      .container .modal-container .loading-modal p {
+        font-size: 1rem; }
     .container .msg {
       margin-left: -145px;
       width: 290px;

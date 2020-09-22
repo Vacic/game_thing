@@ -1,4 +1,4 @@
-import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, TOGGLE_LOADING, PLAYER_TAKES_DAMAGE, ENEMY_TAKES_DAMAGE, SET_CURRENT_LOCATION, SET_NOTIFICATION_MESSAGE, SET_NOTIFICATION_CLASS, LOGIN, SET_LOADING_ENEMY, COOKIE_CHECKED } from "./gameDataTypes";
+import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, SET_LOADING, PLAYER_TAKES_DAMAGE, ENEMY_TAKES_DAMAGE, SET_CURRENT_LOCATION, SET_NOTIFICATION_MESSAGE, SET_NOTIFICATION_CLASS, LOGIN, SET_LOADING_ENEMY, COOKIE_CHECKED } from "./gameDataTypes";
 
 const gameDataState = {
     currentEnemy: {  // Stores the stats of the enemy that the player is currently fighting
@@ -54,14 +54,14 @@ const gameDataReducer = (state = gameDataState, action) => {
             notificationClass: action.classStr
         }
 
-        case TOGGLE_LOADING: return {
+        case SET_LOADING: return {
             ...state,
-            isLoading: !state.isLoading
+            isLoading: action.isLoading
         }
         
         case SET_LOADING_ENEMY: return {
             ...state,
-            loadingEnemy: !state.loadingEnemy
+            loadingEnemy: action.isLoading
         }
 
         case PLAYER_TAKES_DAMAGE: return {
@@ -81,7 +81,7 @@ const gameDataReducer = (state = gameDataState, action) => {
 
         case COOKIE_CHECKED: return {
             ...state,
-            cookieChecked: true
+            isCookieChecked: true
         }
 
         default: return state;

@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState, useHistory } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setLocalStorage, updateDbProgress } from '../../helpers'
 import { logout } from '../../redux';
@@ -8,7 +8,7 @@ import Spinner from '../Spinner';
 
 const UserMenu = ({ isUserMenuHidden, toggleMenu, logout, isLoading }) => {
     const [updateProgressLoading, toggleUpdateProgressLoading] = useState(false);
-    const history = useHistory();
+    let history = useHistory();
 
     useEffect(() => {
         const hideMenuOnOutsideClick = e => {

@@ -92,6 +92,10 @@
                     margin-top: calc(18% + (179px/2));
                 }
             }
+
+            .loading-modal {
+                margin-top: 18%;
+            }
         }
     }
 
@@ -439,6 +443,10 @@
                     font-size: 1rem;
                 }
             }
+
+            .loading-modal {
+                margin-top: 30%;
+            }
         }
 
         .msg {
@@ -647,6 +655,15 @@
 
                 .btn-no {
                     margin: 22px 35px 0px 0px;
+                }
+            }
+
+            .loading-modal {
+                margin-top: 45%;
+                width: 320px;
+
+                p {
+                    font-size: 1rem;
                 }
             }
         }
