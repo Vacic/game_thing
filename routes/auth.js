@@ -22,7 +22,7 @@ router.post('/', joiValidate(userLoginSchema), async (req, res) => {
 
         jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '15 days' }, (err, token) => {
             if(err) throw err;
-            res.cookie('token', `Bearer ${token}`, { maxAge: 60, httpOnly: true, secure: true });
+            res.cookie('token', `Bearer ${token}`, { maxAge: 300, httpOnly: true, secure: true });
             res.status(200).end();
         });
     } catch (err) {

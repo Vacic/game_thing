@@ -19,7 +19,6 @@ export const checkCookie = async () => {
             }
             else {
                 console.log(err);
-                cookies.remove('loggedIn');
             }
         }
     }
