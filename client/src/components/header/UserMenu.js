@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useHistory } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setLocalStorage, updateDbProgress } from '../../helpers'
@@ -25,12 +25,13 @@ const UserMenu = ({ isUserMenuHidden, toggleMenu, logout, isLoading }) => {
 
     const updateProgress = async () => {
         toggleUpdateProgressLoading(true);
-        await updateDbProgress();
+        await updateDbProgress(history);
         await setLocalStorage();
         toggleUpdateProgressLoading(false);
     }
 
     const userMenu = useRef();
+    const history = useHistory();
     return (
         <div className={isUserMenuHidden ? "user-menu" : "user-menu show"} ref={userMenu} >
             <ul className="user-menu-options">
