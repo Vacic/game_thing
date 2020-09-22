@@ -5,7 +5,7 @@ const checkToken = (req, res, next) => {
     console.log(cookieToken)
 
 
-    if(!cookieToken) return res.status(403).json({error: 'Token Not Provided'})
+    if(!cookieToken || typeof cookieToken === 'undefined') return res.status(403).json({error: 'Token Not Provided'})
 
     cookieToken = bearerToken.split(' ')
     const bearer = bearerToken[0];
