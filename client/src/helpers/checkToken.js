@@ -1,6 +1,8 @@
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import { logout, setMessage } from '../redux';
+import store from '../redux/store';
+
 const cookies = new Cookies();
 
 export const checkToken = async history => {
@@ -10,8 +12,8 @@ export const checkToken = async history => {
             return true;
         } catch (err) {
             if (err.response.status === 403) {
-                setMessage({ msg: 'Please Login To Continue', classType: 'danger' });
-                logout();
+                store.dispatch(setMessage({ msg: 'Please Login To Continue', classType: 'danger' }));
+                store.dispatch(logout());
                 cookies.remove('loggedIn');
                 return history.push('/login');
             }
