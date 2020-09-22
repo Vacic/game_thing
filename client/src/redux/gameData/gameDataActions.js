@@ -12,6 +12,7 @@ export const login = (email, password) => async dispatch => {
         await axios.post('/auth', body, config);
         dispatch(populateGame());
         cookies.set('loggedIn', 'yup');
+        dispatch(toggleLoading());
         return true;
     } catch (err) {
         cookies.remove('loggedIn');
