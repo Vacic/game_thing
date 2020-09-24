@@ -48,14 +48,24 @@ const RegistrationForm = React.memo(({ setMessage, hideMessage, showMsg }) => {
                 {showMsg && <Message />}
                 <h2>Create an Account</h2>
                 <form onSubmit={e => submit(e)}>
-                    <label htmlFor="username">Username</label>
-                    <input type="text" name="username" onChange={e => onChange(e)} />  
-                    <label htmlFor="email">Email</label>
-                    <input type="email" name="email" onChange={e => onChange(e)} />
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name="password" onChange={e => onChange(e)} />
-                    <label htmlFor="confirm-password">Confirm Password</label>
-                    <input type="password" name="confirmPassword" onChange={e => onChange(e)} />
+                    <div>
+                        <label htmlFor="username">Username</label>
+                        <input type="text" name="username" onChange={e => onChange(e)} />
+                        <small>*Must contain at least 2 characters</small>
+                    </div>
+                    <div>
+                        <label htmlFor="email">Email</label>
+                        <input type="email" name="email" onChange={e => onChange(e)} />
+                    </div>
+                    <div>
+                        <label htmlFor="password">Password</label>
+                        <input type="password" name="password" onChange={e => onChange(e)} />
+                        <small>*Must contain at least one letter, number and a special character</small>
+                    </div>
+                    <div>
+                        <label htmlFor="confirm-password">Confirm Password</label>
+                        <input type="password" name="confirmPassword" onChange={e => onChange(e)} />
+                    </div>
                     <p><Link to="/login">Already have an account?</Link></p>
                     <button type="submit" disabled={regLoading ? true : false}>Create Account</button>
                 </form>

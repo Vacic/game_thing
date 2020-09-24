@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import BattleScreen from './BattleScreen';
 import LocationSelection from './location/LocationSelection';
-import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading, enemyTakesDamage, playerTakesDamage, updateInventory, setNotificationMessage, setNotificationClass, updatePlayerQuickBarEquipment, setMessage, setLoadingEnemy, cookieChecked, setLogin, populateGame, hideMessage } from '../redux';
+import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading, enemyTakesDamage, playerTakesDamage, updateInventory, updatePlayerQuickBarEquipment, setMessage, setLoadingEnemy, cookieChecked, setLogin, populateGame, hideMessage, setNotification } from '../redux';
 import InvAndEquip from './InvAndEquip';
-import Message from './Message';
 import ConfirmationModal from './ConfirmationModal';
 import { setLocalStorage, updateDbProgress } from '../helpers';
 import { checkToken } from '../helpers/checkToken';
 import LoadingModal from './LoadingModal';
+import Notifications from './notifications/Notifications';
 
 
 class GameContainer extends PureComponent {
@@ -18,9 +18,6 @@ class GameContainer extends PureComponent {
             super(props)
         
             this.state = {
-                msg: [],
-                isMsgHidden: true,
-
                 modalText: '',
                 modalFunc: () => null,
                 itemToRemove: {},
@@ -100,8 +97,10 @@ class GameContainer extends PureComponent {
 
         stopCombat = () => {
             this.resetActions();
-            this.props.setCurrentEnemyHp(0);
             this.props.setCurrentEnemyStats({ name: 'Select Location', hp:0, dmg:0, attSpd:0, def:0, eva:0 });
+            this.props.setCurrentEnemyHp(0);
+            this.enemyHpBar.style.width = '100%';
+            this.props.loadingEnemy && this.props.setLoadingEnemy(false);
         }
 
         resetPlayerAttack = (playerDmg, playerAttSpd) => {  // Using this after equipping a new weapon
@@ -122,25 +121,6 @@ class GameContainer extends PureComponent {
         calcDef = (dmg, def) => {
             if ( def > 40 && dmg < def) return Math.ceil(dmg / 3);
             else  return (dmg - Math.ceil(def / 3));
-        }
-
-        setNotification = (msg) => {
-            if (this.timeout) clearTimeout(this.timeout);
-            this.setState({ isMsgHidden: false });
-            
-            let newMsg = this.state.msg.slice();
-            newMsg.unshift(msg);
-            this.setState({msg: newMsg});
-
-            setTimeout(() => {
-                let newNewMsg = this.state.msg.slice();
-                newNewMsg.pop();
-                this.setState({msg: newNewMsg});
-            }, 2000)
-
-            this.timeout = setTimeout(() => {
-                this.setState({ isMsgHidden: true });
-            }, 1500);
         }
 
         showModal = (text, func, item) => {
@@ -235,10 +215,11 @@ class GameContainer extends PureComponent {
             const chance = Math.ceil(Math.random()*10000)/100;
             dropKeys.forEach(drop => {
                 if (chance >= drops[drop].min && chance < drops[drop].max) {
+                    const { name, img } = this.props.itemList[drop];
                     let newInventory = { ...this.props.inventory };
                     newInventory[drop] = (newInventory[drop] || 0) + 1;
                     this.props.updateInventory(newInventory);
-                    this.setNotification({item: this.props.itemList[drop], class:'msg-success', str:'You have recieved'});
+                    this.props.setNotification({ msg: `You have recieved ${name}`, img });
                 }
             });
             
@@ -290,13 +271,11 @@ class GameContainer extends PureComponent {
                 <InvAndEquip 
                     handleUseItem={this.handleUseItem} 
                     playerHpBar={this.playerHpBar}
-                    setNotification={this.setNotification}
                     showModal={this.showModal}
                     resetPlayerAttack={this.resetPlayerAttack}
                 />
-                <div className={this.state.isMsgHidden ? 'msg hide' : 'msg'}>
-                    {this.state.msg.map((msg, i) => <Message key={i} msg={msg} i={i} />)}
-                </div>
+
+                <Notifications />
 
                 <ConfirmationModal text={this.state.modalText} func={this.state.modalFunc} isHidden={this.state.isModalHidden} hideModal={this.hideModal} itemToRemove={this.state.itemToRemove} />
                 {!this.props.isCookieChecked && <LoadingModal />}
@@ -319,6 +298,7 @@ const mapStateToProps = state => {
         isLoading: state.gameData.isLoading,
         currentLocation: state.gameData.currentLocation,
         currentEnemy: state.gameData.currentEnemy,
+        loadingEnemy: state.gameData.loadingEnemy,
 
         loggedIn: state.gameData.loggedIn,
         isCookieChecked: state.gameData.isCookieChecked
@@ -330,8 +310,6 @@ const mapDispatchToProps = dispatch => {
         setCurrentEnemyHp: currentEnemyHp => dispatch(setCurrentEnemyHp(currentEnemyHp)),
         setCurrentEnemyStats: currentEnemy => dispatch(setCurrentEnemyStats(currentEnemy)),
         setCurrentPlayerHp: currentPlayerHp => dispatch(setCurrentPlayerHp(currentPlayerHp)),
-        setNotificationMessage: message => dispatch(setNotificationMessage(message)),
-        setNotificationClass: classStr => dispatch(setNotificationClass(classStr)),
         setLoading: (isLoading) => dispatch(setLoading(isLoading)),
         enemyTakesDmg: damage => dispatch(enemyTakesDamage(damage)),
         playerTakesDmg: damage => dispatch(playerTakesDamage(damage)),
@@ -339,6 +317,7 @@ const mapDispatchToProps = dispatch => {
         updatePlayerQuickBarEquipment: newQBEquip => dispatch(updatePlayerQuickBarEquipment(newQBEquip)),
         setMessage: newMessage => dispatch(setMessage(newMessage)),
         hideMessage: () => dispatch(hideMessage()),
+        setNotification: newNotif => dispatch(setNotification(newNotif)),
         setLoadingEnemy: isLoading => dispatch(setLoadingEnemy(isLoading)),
 
         cookieChecked: () => dispatch(cookieChecked()),

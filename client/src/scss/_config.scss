@@ -1,13 +1,34 @@
-$primary-color: rgb(23, 88, 39); // should be darker rgb(88, 62, 23);
-$primary-color-lighter: lighten($primary-color, 20);
-$primary-color-darker: darken($primary-color, 20);
-$secondary-color: rgb(38, 154, 184); // should be lighter rgb(153, 49, 201);
+$secondary-color: rgb(23, 88, 39); // should be darker rgb(88, 62, 23);
 $secondary-color-lighter: lighten($secondary-color, 20);
 $secondary-color-darker: darken($secondary-color, 20);
+$primary-color: rgb(38, 154, 184); // should be lighter rgb(153, 49, 201);
+$primary-color-lighter: lighten($primary-color, 20);
+$primary-color-darker: darken($primary-color, 20);
 $border-radius: 10px;
 $bar-height: 14px;
 $bar-height-smaller: 10px;
 $loading-animation-time: 1s;
+
+.danger {
+    background-color: rgb(236, 103, 103);
+}
+
+.success {
+    background-color: $secondary-color-lighter;
+}
+
+.primary {
+    background-color: $primary-color-darker;
+}
+
+.neutral {
+    background-color: $primary-color;
+}
+
+.center {
+    text-align: center !important;
+    justify-content: center !important;
+}
 
 // Media Query Mixins
 @mixin mediaXxsm {

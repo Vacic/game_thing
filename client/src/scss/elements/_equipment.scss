@@ -2,7 +2,7 @@
     .inv-equip {
         .equipment {
             width: 48%;
-            border: 2px solid $primary-color-lighter;
+            border: 2px solid $secondary-color-lighter;
             border-top: none;
             border-radius: $border-radius;
             align-self: flex-start;
@@ -12,10 +12,10 @@
                 height: 70px;
                 text-align: center;
                 padding: 20px;
-                border: 2px solid $secondary-color-lighter;
+                border: 2px solid $primary-color-lighter;
                 border-left: none;
                 border-right: none;
-                background: $secondary-color-darker;
+                background: $primary-color-darker;
                 border-radius: 8px;
                 border-bottom-left-radius: 0;
                 border-bottom-right-radius: 0;
@@ -33,8 +33,8 @@
                     height: 70px;
                     margin-bottom: 20px;
                     padding: 8px;
-                    background-color: $secondary-color-darker;
-                    border: 2px solid $secondary-color;
+                    background-color: $primary-color-darker;
+                    border: 2px solid $primary-color;
                     border-radius: $border-radius;
 
                     .equipped-item {
@@ -44,7 +44,7 @@
                         .item-description {
                             visibility: visible;
                             position: relative;
-                            background-color: $secondary-color-darker;
+                            background-color: $primary-color-darker;
                             width: 150px;
                             top: -33px;
                             left: -52px;
@@ -52,9 +52,9 @@
                             z-index: 1;
 
                             .item-name {
-                                background-color: $primary-color-lighter;
+                                background-color: $secondary-color-lighter;
                                 padding: 5px;
-                                border-bottom: solid 1px $primary-color;
+                                border-bottom: solid 1px $secondary-color;
                                 font-weight: 700;
                             }
 
@@ -78,23 +78,23 @@
                             top: -50px;
                             left: -16px;
                             padding: 4px;
-                            background-color: $secondary-color-darker;
+                            background-color: $primary-color-darker;
                             border-radius: $border-radius;
                             width: 81px;
                             z-index: 1;
 
                             div:hover {
                                 cursor: pointer;
-                                background-color: $primary-color-lighter;
+                                background-color: $secondary-color-lighter;
                             }
 
                             div:active {
-                                background-color: $secondary-color;
+                                background-color: $primary-color;
                             }
 
                             div {
                                 padding: 7px;
-                                background-color: $secondary-color-darker;
+                                background-color: $primary-color-darker;
                                 width: 100%;
                                 border-radius: $border-radius;
                                 -webkit-transition: background-color 0.1s ease-in-out;

@@ -1,8 +1,8 @@
 import axios from 'axios';
 import Cookies from 'universal-cookie';
-import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, SET_LOADING, ENEMY_TAKES_DAMAGE, PLAYER_TAKES_DAMAGE, SET_CURRENT_LOCATION, SET_NOTIFICATION_MESSAGE, SET_NOTIFICATION_CLASS, LOGIN, SET_LOADING_ENEMY, COOKIE_CHECKED } from './gameDataTypes';
+import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, SET_LOADING, ENEMY_TAKES_DAMAGE, PLAYER_TAKES_DAMAGE, SET_CURRENT_LOCATION, LOGIN, SET_LOADING_ENEMY, COOKIE_CHECKED } from './gameDataTypes';
 import { populatePlayer, updateInventory } from '../player/playerAction';
-import { setMessage } from '../notificationControl/notificationControlActions';
+import { setMessage, setNotification } from '../notificationControl/notificationControlActions';
 const cookies = new Cookies();
 
 export const login = (email, password) => async dispatch => {
@@ -18,11 +18,12 @@ export const login = (email, password) => async dispatch => {
             cookies.set('loggedIn', 'yup', { sameSite: true });
             setLogin(true);
             dispatch(setMessage({ msg: 'Logged In Successfully' }));
+            dispatch(setNotification({ msg: `Logged In Successfully`, classType: 'success' }));
             return true;
         }
     } catch (err) {
         cookies.remove('loggedIn');
-        // NOTIFICATION - FAILED TO LOG IN
+        dispatch(setNotification({ msg: `Login Failed`, classType: 'danger' }));
         if (err.response && err.response.data.error) {
             dispatch(setLoading(false));
             dispatch(setMessage({ msg: err.response.data.error, classType: 'danger' }));
@@ -73,10 +74,10 @@ export const populateGame = () => async dispatch => {
         dispatch(updateInventory(inventory));
         dispatch(setLogin(true));
         dispatch(setLoading(false));
-        // NOTIFICATION - SUCCESSFULLY LOGGED IN
+        dispatch(setNotification({ msg: `Save File Loaded`, classType: 'success' }));
         return true;
     } catch (err) {
-        // NOTIFICATION - FAILED TO LOG IN
+        dispatch(setNotification({ msg: `Save File Failed to Load`, classType: 'danger' }));
         if (err.response && err.response.data && err.response.data.error) {
             dispatch(setLoading(false));
             dispatch(setMessage({ msg: `${err.response.data.error} - Could Not Load Saved Data`, classType: 'danger' }));
@@ -133,20 +134,6 @@ export const setCurrentLocation = location => {
     return {
         type: SET_CURRENT_LOCATION,
         location
-    }
-}
-
-export const setNotificationMessage = message => {
-    return {
-        type: SET_NOTIFICATION_MESSAGE,
-        message
-    }
-}
-
-export const setNotificationClass = classStr => {
-    return {
-        type: SET_NOTIFICATION_CLASS,
-        classStr
     }
 }
 

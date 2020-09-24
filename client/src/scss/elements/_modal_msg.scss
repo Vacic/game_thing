@@ -1,59 +1,47 @@
 .container {
-    .msg {
+    .notifications {
         position: fixed;
         display: flex;
         flex-direction: column;
-        margin-left: -210px;
         left: 50%;
+        transform: translateX(-50%);
         bottom: 30px;
         width: 420px;
         min-height: 50px;
         padding: 12px;
         opacity: 1;
-        overflow: hidden;
-        -webkit-transition: all 1s cubic-bezier(0, .9, .4, 1);
-        -moz-transition: all 1s cubic-bezier(0, .9, .4, 1);
-        -ms-transition: all 1s cubic-bezier(0, .9, .4, 1);
-        -o-transition: all 1s cubic-bezier(0, .9, .4, 1);
-        transition: all 1s cubic-bezier(0, .9, .4, 1);
         z-index: 2;
 
-        .msg-success, .msg-danger {
+        .notification {
+            position: relative;
             display: flex;
+            bottom: 0;
             justify-content: space-between;
             align-items: center;
             text-align: center;
+            font-weight: 600;
             padding: 12px 20px 12px 20px;
             height: 50px;
             border-radius: $border-radius;
-            box-shadow: 1px 1px 3px 1px $primary-color-lighter;
-            border-top: 2px solid $secondary-color-lighter;
-            border-left: 2px solid $secondary-color-lighter;
+            box-shadow: 1px 1px 3px 1px $secondary-color-lighter;
+            border-top: 2px solid $primary-color-lighter;
+            border-left: 2px solid $primary-color-lighter;
             margin-bottom: 15px;
-            -webkit-transition: all 1s cubic-bezier(0, .9, .4, 1);
-            -moz-transition: all 1s cubic-bezier(0, .9, .4, 1);
-            -ms-transition: all 1s cubic-bezier(0, .9, .4, 1);
-            -o-transition: all 1s cubic-bezier(0, .9, .4, 1);
-            transition: all 1s cubic-bezier(0, .9, .4, 1);
+            -webkit-transition: all 0.5s linear;
+            -moz-transition: all 0.5s linear;
+            -ms-transition: all 0.5s linear;
+            -o-transition: all 0.5s linear;
+            transition: all 0.5s linear;
 
-            img {
+            .notification-img {
                 width: 40px;
                 height: 40px;
             }
         }
-
-        .msg-success {
-            background-color: $secondary-color-darker;
-        }
-
-        .msg-danger {
-            background-color: #ec6767;
-        }
     }
 
     .hide {
-        visibility: hidden;
-        bottom: -50px;
+        display: none;
         opacity: 0;
         overflow: hidden;
     }

@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Inventory from './inventory_equipment/Inventory';
 import Equipment from './inventory_equipment/Equipment';
-import { updateInventory, setCurrentPlayerHp, updatePlayerStats, updatePlayerEquipment, updatePlayerQuickBarEquipment, reduceSingleItem } from '../redux';
+import { updateInventory, setCurrentPlayerHp, updatePlayerStats, updatePlayerEquipment, updatePlayerQuickBarEquipment, reduceSingleItem, setNotification } from '../redux';
 
 const InvAndEquip = React.memo((props) => {
-    const { handleUseItem, playerHpBar, setNotification, showModal, resetPlayerAttack } = props // From Game Container
+    const { handleUseItem, playerHpBar, showModal, resetPlayerAttack } = props // From Game Container
     const { inventory, playerStats, playerEquip, currentPlayerHp, quickBarEquipment, currentEnemy } = props // State
     const { updatePlayerStats, updatePlayerEquipment, updateInventory, setCurrentPlayerHp, updatePlayerQuickBarEquipment, reduceSingleItem } = props // Dispatch
 
@@ -49,7 +49,7 @@ const InvAndEquip = React.memo((props) => {
         setCurrentPlayerHp(newCurrentHp);
         playerHpBar.style.width = `${Math.floor((newCurrentHp/newPlayerStats.hp)*100)}%`;
         } else {
-            setNotification({item, class: 'msg-danger', str:'You have already equipped'});
+            setNotification({ classType: 'danger', msg:`You have already equipped ${item.name}` });
         }
     }
 
@@ -168,6 +168,7 @@ const mapDispatchToProps = dispatch => {
         updatePlayerEquipment: newPlayerEquip => dispatch(updatePlayerEquipment(newPlayerEquip)),
         updateInventory: newInventory => dispatch(updateInventory(newInventory)),
         reduceSingleItem: itemName => dispatch(reduceSingleItem(itemName)),
+        setNotification: newNotif => dispatch(setNotification(newNotif)),
         setCurrentPlayerHp: newHp => dispatch(setCurrentPlayerHp(newHp)),
         updatePlayerQuickBarEquipment: newQBEquip => dispatch(updatePlayerQuickBarEquipment(newQBEquip))
     }

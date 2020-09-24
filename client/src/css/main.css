@@ -1,4 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+.danger {
+  background-color: #ec6767; }
+
+.success {
+  background-color: #2ca94b; }
+
+.primary {
+  background-color: #155363; }
+
+.neutral {
+  background-color: #269ab8; }
+
+.center {
+  text-align: center !important;
+  justify-content: center !important; }
+
 @-webkit-keyframes attBar {
   0% {
     width: 0%; }
@@ -161,6 +177,7 @@
 .container .inv-equip .inventory {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   width: 48%;
   border: 2px solid #2ca94b;
   border-top: none;
@@ -358,29 +375,26 @@
     .container .inv-equip .equipment .equipment-slots .boots {
       margin-bottom: 0px; }
 
-.container .msg {
+.container .notifications {
   position: fixed;
   display: flex;
   flex-direction: column;
-  margin-left: -210px;
   left: 50%;
+  transform: translateX(-50%);
   bottom: 30px;
   width: 420px;
   min-height: 50px;
   padding: 12px;
   opacity: 1;
-  overflow: hidden;
-  -webkit-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
-  -moz-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
-  -ms-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
-  -o-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
-  transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
   z-index: 2; }
-  .container .msg .msg-success, .container .msg .msg-danger {
+  .container .notifications .notification {
+    position: relative;
     display: flex;
+    bottom: 0;
     justify-content: space-between;
     align-items: center;
     text-align: center;
+    font-weight: 600;
     padding: 12px 20px 12px 20px;
     height: 50px;
     border-radius: 10px;
@@ -388,22 +402,17 @@
     border-top: 2px solid #65c6df;
     border-left: 2px solid #65c6df;
     margin-bottom: 15px;
-    -webkit-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
-    -moz-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
-    -ms-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
-    -o-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
-    transition: all 1s cubic-bezier(0, 0.9, 0.4, 1); }
-    .container .msg .msg-success img, .container .msg .msg-danger img {
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -ms-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear; }
+    .container .notifications .notification .notification-img {
       width: 40px;
       height: 40px; }
-  .container .msg .msg-success {
-    background-color: #155363; }
-  .container .msg .msg-danger {
-    background-color: #ec6767; }
 
 .container .hide {
-  visibility: hidden;
-  bottom: -50px;
+  display: none;
   opacity: 0;
   overflow: hidden; }
 
@@ -678,8 +687,10 @@
       border-radius: 7px;
       color: white;
       outline: none; }
-      .battle-screen .action-buttons .combat-btn:active {
+      .battle-screen .action-buttons .combat-btn:hover {
         box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.2); }
+      .battle-screen .action-buttons .combat-btn:active {
+        box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.5); }
 
 .inv-equip {
   display: flex;
@@ -692,7 +703,7 @@
   height: 100vh;
   background: rgba(190, 190, 190, 0.7); }
   .registration-container .registration-form, .registration-container .login-form, .login-container .registration-form, .login-container .login-form {
-    width: 30%;
+    width: 40%;
     margin: auto;
     border-radius: 10px;
     background-color: #e6e6e6;
@@ -715,19 +726,24 @@
       padding: 1rem 0 2rem 0; }
     .registration-container .registration-form form, .registration-container .login-form form, .login-container .registration-form form, .login-container .login-form form {
       padding: 0 2.5rem 3rem 2.5rem; }
-      .registration-container .registration-form form label, .registration-container .login-form form label, .login-container .registration-form form label, .login-container .login-form form label {
-        width: 100%;
-        font-size: 1.2rem; }
-      .registration-container .registration-form form input, .registration-container .login-form form input, .login-container .registration-form form input, .login-container .login-form form input {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0 25px 0;
-        font-size: 1.2rem;
-        border: none;
-        border-radius: 7px;
-        outline: none; }
-        .registration-container .registration-form form input:focus, .registration-container .login-form form input:focus, .login-container .registration-form form input:focus, .login-container .login-form form input:focus {
-          box-shadow: 2px 2px 2px 2px rgba(9, 108, 221, 0.3), 1px 1px 1px 1px rgba(9, 108, 221, 0.3); }
+      .registration-container .registration-form form div, .registration-container .login-form form div, .login-container .registration-form form div, .login-container .login-form form div {
+        margin: 10px 0 20px 0; }
+        .registration-container .registration-form form div label, .registration-container .login-form form div label, .login-container .registration-form form div label, .login-container .login-form form div label {
+          margin-left: 10px;
+          width: 100%;
+          font-size: 1.2rem; }
+        .registration-container .registration-form form div input, .registration-container .login-form form div input, .login-container .registration-form form div input, .login-container .login-form form div input {
+          width: 100%;
+          padding: 10px;
+          margin-top: 10px;
+          font-size: 1.2rem;
+          border: none;
+          border-radius: 7px;
+          outline: none; }
+          .registration-container .registration-form form div input:focus, .registration-container .login-form form div input:focus, .login-container .registration-form form div input:focus, .login-container .login-form form div input:focus {
+            box-shadow: 2px 2px 2px 2px rgba(9, 108, 221, 0.3), 1px 1px 1px 1px rgba(9, 108, 221, 0.3); }
+        .registration-container .registration-form form div small, .registration-container .login-form form div small, .login-container .registration-form form div small, .login-container .login-form form div small {
+          color: #686868; }
       .registration-container .registration-form form p, .registration-container .login-form form p, .login-container .registration-form form p, .login-container .login-form form p {
         padding-left: 3px; }
       .registration-container .registration-form form button, .registration-container .login-form form button, .login-container .registration-form form button, .login-container .login-form form button {
@@ -780,15 +796,6 @@ body {
     right: 0;
     -webkit-animation: loading 1s linear infinite;
     animation: loading 1s linear infinite; }
-
-.danger {
-  background-color: #ec6767; }
-
-.success {
-  background-color: #2ca94b; }
-
-.neutral {
-  background-color: #269ab8; }
 
 .container {
   width: 60%;
@@ -857,9 +864,7 @@ body {
           font-size: 0.9rem; }
         .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img {
           width: 36px;
-          height: 36px; }
-  .registration-container .registration-form, .registration-container .login-form, .login-container .registration-form, .login-container .login-form {
-    width: 40%; } }
+          height: 36px; } }
 
 @media screen and (max-width: 1200px) {
   .container {
@@ -1051,7 +1056,8 @@ body {
         font-size: 1.2rem;
         line-height: 1.6rem; }
       .container .battle-screen .player .player-card .hp-bar .hp, .container .battle-screen .player .enemy-card .hp-bar .hp, .container .battle-screen .enemy .player-card .hp-bar .hp, .container .battle-screen .enemy .enemy-card .hp-bar .hp {
-        font-size: 1rem; }
+        font-size: 1rem;
+        margin: -5px 0 -5px 0; }
       .container .battle-screen .player .player-card .heal-quick-bar, .container .battle-screen .player .enemy-card .heal-quick-bar, .container .battle-screen .enemy .player-card .heal-quick-bar, .container .battle-screen .enemy .enemy-card .heal-quick-bar {
         top: -50px; }
         .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item {
@@ -1118,12 +1124,13 @@ body {
       padding: 0.5rem 0 1rem 0; }
     .registration-container .registration-form form, .registration-container .login-form form, .login-container .registration-form form, .login-container .login-form form {
       padding: 0 1.5rem 2rem 1.5rem; }
-      .registration-container .registration-form form label, .registration-container .login-form form label, .login-container .registration-form form label, .login-container .login-form form label {
-        font-size: 1.1rem; }
-      .registration-container .registration-form form input, .registration-container .login-form form input, .login-container .registration-form form input, .login-container .login-form form input {
-        padding: 8px;
-        margin: 7px 0 18px 0;
-        font-size: 1.1rem; }
+      .registration-container .registration-form form div, .registration-container .login-form form div, .login-container .registration-form form div, .login-container .login-form form div {
+        margin: 7px 0 18px 0; }
+        .registration-container .registration-form form div label, .registration-container .login-form form div label, .login-container .registration-form form div label, .login-container .login-form form div label {
+          font-size: 1.1rem; }
+        .registration-container .registration-form form div input, .registration-container .login-form form div input, .login-container .registration-form form div input, .login-container .login-form form div input {
+          padding: 8px;
+          font-size: 1.1rem; }
       .registration-container .registration-form form button, .registration-container .login-form form button, .login-container .registration-form form button, .login-container .login-form form button {
         padding: 13px;
         font-size: 1.3rem;
@@ -1159,7 +1166,8 @@ body {
         .container .battle-screen .player .player-card .hp-bar .max, .container .battle-screen .player .enemy-card .hp-bar .max, .container .battle-screen .enemy .player-card .hp-bar .max, .container .battle-screen .enemy .enemy-card .hp-bar .max {
           top: -7px; }
         .container .battle-screen .player .player-card .hp-bar .hp, .container .battle-screen .player .enemy-card .hp-bar .hp, .container .battle-screen .enemy .player-card .hp-bar .hp, .container .battle-screen .enemy .enemy-card .hp-bar .hp {
-          font-size: 0.8rem; }
+          font-size: 0.8rem;
+          margin: -8px 0 -8px 0; }
         .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container {
           padding: 0 5px 0 5px;
           left: 4px;
@@ -1214,19 +1222,18 @@ body {
       width: 320px; }
       .container .modal-container .loading-modal p {
         font-size: 1rem; }
-    .container .msg {
-      margin-left: -145px;
+    .container .notifications {
       width: 290px;
       font-size: 0.85rem; }
-      .container .msg .msg-success, .container .msg .msg-danger {
+      .container .notifications .notification {
         padding: 12px 12px 12px 15px; }
   .registration-container .registration-form, .registration-container .login-form, .login-container .registration-form, .login-container .login-form {
     width: 90%; }
     .registration-container .registration-form form, .registration-container .login-form form, .login-container .registration-form form, .login-container .login-form form {
       padding: 0 0.3rem 1.7rem 0.3rem; }
-      .registration-container .registration-form form label, .registration-container .login-form form label, .login-container .registration-form form label, .login-container .login-form form label {
+      .registration-container .registration-form form div label, .registration-container .login-form form div label, .login-container .registration-form form div label, .login-container .login-form form div label {
         font-size: 1rem; }
-      .registration-container .registration-form form input, .registration-container .login-form form input, .login-container .registration-form form input, .login-container .login-form form input {
+      .registration-container .registration-form form div input, .registration-container .login-form form div input, .login-container .registration-form form div input, .login-container .login-form form div input {
         font-size: 1rem; }
       .registration-container .registration-form form button, .registration-container .login-form form button, .login-container .registration-form form button, .login-container .login-form form button {
         font-size: 1.1rem; } }
