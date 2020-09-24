@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
-import { hideMessage, login, setLogin } from '../../redux';
+import { hideMessage, login } from '../../redux';
 import Message from '../notifications/Message';
 import { setMessage } from '../../redux';
 import Spinner from '../Spinner';
 
-const LogIn = ({ isLoginHidden, toggleLogin, login, setMessage, setLogin, isLoading, showMsg, hideMessage }) => {
+const LogIn = ({ isLoginHidden, toggleLogin, login, setMessage, isLoading, showMsg, hideMessage }) => {
     useEffect(() => {
         loginEmail.current.focus();
 
@@ -37,10 +37,7 @@ const LogIn = ({ isLoginHidden, toggleLogin, login, setMessage, setLogin, isLoad
     const logIn = async e => {
         e.preventDefault();
         const isLoggedIn = await login(email, password);
-        if(isLoggedIn === true) {
-            toggleLogin(true);
-            setLogin(true);
-        } else setMessage({ msg: isLoggedIn.error, classType: 'danger' });
+        if(isLoggedIn === true) toggleLogin(true);
     }
 
     const loginEmail = useRef();
@@ -62,8 +59,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     login: (email, password) => dispatch(login(email, password)),
     setMessage: newMessage => dispatch(setMessage(newMessage)),
-    hideMessage: () => dispatch(hideMessage()),
-    setLogin: isLoggedIn => dispatch(setLogin(isLoggedIn)),
+    hideMessage: () => dispatch(hideMessage())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LogIn);

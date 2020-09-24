@@ -3,7 +3,6 @@
         .inventory {
             display: flex;
             flex-wrap: wrap;
-            align-content: flex-start;
             width: 48%;
             border: 2px solid $primary-color-lighter;
             border-top: none;
@@ -26,7 +25,6 @@
             .inv-list {
                 display: flex;
                 flex-wrap: wrap;
-                align-content: flex-start;
                 min-height: 104px;
                 padding: 10px 8px 10px 8px;
                 

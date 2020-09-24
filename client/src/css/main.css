@@ -98,15 +98,16 @@
         display: none;
         background-color: #2ca94b;
         text-align: center;
-        padding: 3px 0 6px 0;
+        padding: 5px 0 10px 0;
         width: 100%;
         margin-top: 1rem;
         border-bottom-right-radius: 7px;
         border-bottom-left-radius: 7px; }
         .header .header-links .login-form .msg.show {
           display: block; }
-      .header .header-links .login-form .danger {
-        background-color: #ec6767; }
+      .header .header-links .login-form .spinner-img {
+        width: 36px;
+        margin-top: 0.7rem; }
   .header .user-nav {
     margin-left: auto;
     position: relative; }
@@ -123,13 +124,10 @@
         display: block; }
       .header .user-nav .user-menu .user-menu-options {
         list-style-type: none;
-        text-align: center; }
-        .header .user-nav .user-menu .user-menu-options .spinner-img {
-          width: 40px;
-          margin: -4px 0 -7px 0; }
+        text-align: center;
+        font-size: 0.9rem; }
         .header .user-nav .user-menu .user-menu-options li {
           padding: 7px 15px 7px 15px;
-          font-size: 0.9rem;
           cursor: pointer; }
           .header .user-nav .user-menu .user-menu-options li a {
             text-decoration: none;
@@ -149,14 +147,21 @@
           height: 2px;
           margin: 5px 0 5px 0;
           background: #2ca94b; }
-  .header .spinner-img {
-    width: 50px;
-    margin-bottom: -12px; }
+        .header .user-nav .user-menu .user-menu-options .msg {
+          font-size: inherit;
+          padding: 7px 15px 7px 15px; }
+        .header .user-nav .user-menu .user-menu-options .spinner-img {
+          width: 23px;
+          margin: 3px; }
+        .header .user-nav .user-menu .user-menu-options .spinner-img {
+          top: 2px; }
+        .header .user-nav .user-menu .user-menu-options .spinner-img ~ .spinner-img {
+          top: 0px;
+          padding-bottom: 2px; }
 
 .container .inv-equip .inventory {
   display: flex;
   flex-wrap: wrap;
-  align-content: flex-start;
   width: 48%;
   border: 2px solid #2ca94b;
   border-top: none;
@@ -176,7 +181,6 @@
   .container .inv-equip .inventory .inv-list {
     display: flex;
     flex-wrap: wrap;
-    align-content: flex-start;
     min-height: 104px;
     padding: 10px 8px 10px 8px; }
     .container .inv-equip .inventory .inv-list .inv-item:hover {
@@ -265,7 +269,8 @@
   width: 48%;
   border: 2px solid #2ca94b;
   border-top: none;
-  border-radius: 10px; }
+  border-radius: 10px;
+  align-self: flex-start; }
   .container .inv-equip .equipment h3 {
     width: 100%;
     height: 70px;
@@ -280,6 +285,7 @@
     border-bottom-right-radius: 0; }
   .container .inv-equip .equipment .equipment-slots {
     display: grid;
+    height: 380px;
     grid-template-columns: 1fr 1fr 1fr;
     padding: 20px;
     justify-items: center; }
@@ -403,6 +409,10 @@
   overflow: hidden; }
 
 .container .modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -419,8 +429,6 @@
   .container .modal-container .confirmation-modal {
     width: 400px;
     height: 179px;
-    margin: auto;
-    margin-top: 10%;
     background-color: rgba(241, 241, 241, 0.88);
     box-shadow: 1px 1px 4px 1px rgba(10, 10, 10, 0.7), 1px 1px 3px 1px rgba(10, 10, 10, 0.5);
     color: #303030;
@@ -436,7 +444,7 @@
       height: 0px;
       width: 0px;
       opacity: 0;
-      margin-top: calc(10% + (179px/2)); }
+      margin-top: calc(179px/2); }
       .container .modal-container .confirmation-modal.hidden span {
         padding: 0;
         font-size: 0;
@@ -495,8 +503,6 @@
       background-color: #ff5050; }
   .container .modal-container .loading-modal {
     width: 400px;
-    margin: auto;
-    margin-top: 10%;
     background-color: rgba(241, 241, 241, 0.88);
     box-shadow: 1px 1px 4px 1px rgba(10, 10, 10, 0.7), 1px 1px 3px 1px rgba(10, 10, 10, 0.5);
     color: #303030;
@@ -507,6 +513,8 @@
     -ms-transition: all 0.2s linear;
     -o-transition: all 0.2s linear;
     transition: all 0.2s linear; }
+    .container .modal-container .loading-modal .spinner {
+      padding: 4em; }
     .container .modal-container .loading-modal p {
       font-size: 1.2rem;
       font-weight: 600;
@@ -520,8 +528,8 @@
 
 .battle-screen {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-between;
   width: 100%;
   padding: 20px; }
   .battle-screen .player, .battle-screen .enemy {
@@ -574,6 +582,8 @@
       visibility: visible; }
     .battle-screen .player .player-card .player-img, .battle-screen .player .player-card .enemy-img, .battle-screen .player .enemy-card .player-img, .battle-screen .player .enemy-card .enemy-img, .battle-screen .enemy .player-card .player-img, .battle-screen .enemy .player-card .enemy-img, .battle-screen .enemy .enemy-card .player-img, .battle-screen .enemy .enemy-card .enemy-img {
       width: 100%; }
+    .battle-screen .player .player-card .spinner, .battle-screen .player .enemy-card .spinner, .battle-screen .enemy .player-card .spinner, .battle-screen .enemy .enemy-card .spinner {
+      padding: 20px; }
     .battle-screen .player .player-card .heal-quick-bar, .battle-screen .player .enemy-card .heal-quick-bar, .battle-screen .enemy .player-card .heal-quick-bar, .battle-screen .enemy .enemy-card .heal-quick-bar {
       display: flex;
       position: relative;
@@ -654,6 +664,22 @@
     color: #e64444; }
     .battle-screen .dead .item-num {
       color: #f7f7f7; }
+  .battle-screen .action-buttons {
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    padding: 20px 0px 0 0px; }
+    .battle-screen .action-buttons .stop-combat-btn {
+      padding: 9px;
+      font-size: 1rem;
+      font-weight: 700;
+      width: 30%;
+      border: none;
+      border-radius: 7px;
+      color: white;
+      outline: none; }
+      .battle-screen .action-buttons .stop-combat-btn:active {
+        box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.2); }
 
 .inv-equip {
   display: flex;
@@ -675,14 +701,11 @@
     color: #3c3c3c; }
     .registration-container .registration-form .msg, .registration-container .login-form .msg, .login-container .registration-form .msg, .login-container .login-form .msg {
       display: none;
-      background-color: #2ca94b;
       text-align: center;
       padding: 10px 10px 12px 10px;
       width: 100%;
       font-size: 1.2rem;
       color: #f7f7f7; }
-    .registration-container .registration-form .danger, .registration-container .login-form .danger, .login-container .registration-form .danger, .login-container .login-form .danger {
-      background-color: #ec6767; }
     .registration-container .registration-form .show, .registration-container .login-form .show, .login-container .registration-form .show, .login-container .login-form .show {
       display: block; }
     .registration-container .registration-form h2, .registration-container .login-form h2, .login-container .registration-form h2, .login-container .login-form h2 {
@@ -757,6 +780,12 @@ body {
     right: 0;
     -webkit-animation: loading 1s linear infinite;
     animation: loading 1s linear infinite; }
+
+.danger {
+  background-color: #ec6767; }
+
+.success {
+  background-color: #2ca94b; }
 
 .container {
   width: 60%;
@@ -847,12 +876,8 @@ body {
           .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img {
             width: 33px;
             height: 33px; }
-    .container .modal-container .confirmation-modal {
-      margin-top: 18%; }
-      .container .modal-container .confirmation-modal.hidden {
-        margin-top: calc(18% + (179px/2)); }
-    .container .modal-container .loading-modal {
-      margin-top: 18%; }
+    .container .action-buttons .stop-combat-btn {
+      width: 39%; }
   .registration-container .registration-form, .registration-container .login-form, .login-container .registration-form, .login-container .login-form {
     width: 60%; } }
 
@@ -879,25 +904,30 @@ body {
         margin-top: 0.7rem; }
       .header .header-links .login-form .msg {
         font-size: 0.9rem;
-        margin-top: 0.7rem; }
+        margin-top: 0.7rem;
+        padding: 4px 0 8px 0; }
+      .header .header-links .login-form .spinner-img {
+        width: 30px;
+        margin-top: 0.4rem; }
     .header .user-nav .user-menu {
       width: 95px;
       right: 13px; }
       .header .user-nav .user-menu .user-menu-options {
-        list-style-type: none; }
-        .header .user-nav .user-menu .user-menu-options .spinner-img {
-          width: 40px;
-          margin: -3px 0 -10px 0; }
+        list-style-type: none;
+        font-size: 0.8rem; }
         .header .user-nav .user-menu .user-menu-options li {
           padding: 7px;
           text-align: center;
-          font-size: 0.8rem;
           cursor: pointer; }
         .header .user-nav .user-menu .user-menu-options .separator {
           width: 100%;
           height: 2px;
           margin: 5px 0 5px 0;
           background: #2ca94b; }
+        .header .user-nav .user-menu .user-menu-options .msg {
+          padding: 7px; }
+        .header .user-nav .user-menu .user-menu-options .spinner-img {
+          width: 22px; }
   .container {
     width: 85%; }
     .container .location-selection {
@@ -1042,6 +1072,9 @@ body {
         font-size: 0.9rem; }
         .container .battle-screen .player .stats p span, .container .battle-screen .enemy .stats p span {
           font-size: 1rem; }
+    .container .battle-screen .action-buttons .stop-combat-btn {
+      width: 100%;
+      font-size: 0.9em; }
     .container .inv-equip {
       flex-wrap: wrap;
       justify-content: center;
@@ -1053,7 +1086,7 @@ body {
           height: 50px;
           padding: 10px 20px 10px 20px; }
         .container .inv-equip .equipment .inv-list .inv-item .item-description, .container .inv-equip .inventory .inv-list .inv-item .item-description {
-          top: -121px; }
+          top: -117px; }
         .container .inv-equip .equipment .inv-list .inv-item .item-menu, .container .inv-equip .inventory .inv-list .inv-item .item-menu {
           top: -202px; }
         .container .inv-equip .equipment .inv-list .inv-item .item-count, .container .inv-equip .inventory .inv-list .inv-item .item-count {
@@ -1061,14 +1094,9 @@ body {
       .container .inv-equip .equipment {
         margin-top: 15px; }
     .container .modal-container .confirmation-modal {
-      margin-top: 30%;
       font-size: 1rem; }
-      .container .modal-container .confirmation-modal.hidden {
-        margin-top: calc(30% + (179px/2)); }
       .container .modal-container .confirmation-modal .modal-text {
         font-size: 1rem; }
-    .container .modal-container .loading-modal {
-      margin-top: 30%; }
     .container .msg {
       font-size: 0.9rem; }
       .container .msg img {
@@ -1157,16 +1185,15 @@ body {
       .container .inv-equip .inventory .inv-list .inv-item .item-description {
         top: -115px; }
       .container .inv-equip .inventory .inv-list .inv-item .item-menu {
-        top: -195px; }
+        top: -201px; }
       .container .inv-equip .inventory .inv-list .inv-item .item-count {
         font-size: 0.8rem; }
     .container .modal-container .confirmation-modal {
       height: 140px;
       width: 260px;
-      margin-top: 45%;
       font-size: 0.8rem; }
       .container .modal-container .confirmation-modal.hidden {
-        margin-top: calc(45% + (140px/2)); }
+        margin-top: calc(140px/2); }
       .container .modal-container .confirmation-modal span {
         display: none; }
       .container .modal-container .confirmation-modal .modal-text {
@@ -1177,7 +1204,6 @@ body {
       .container .modal-container .confirmation-modal .btn-no {
         margin: 22px 35px 0px 0px; }
     .container .modal-container .loading-modal {
-      margin-top: 45%;
       width: 320px; }
       .container .modal-container .loading-modal p {
         font-size: 1rem; }

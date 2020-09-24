@@ -1,7 +1,7 @@
 .battle-screen {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
     padding: 20px;
     
@@ -78,6 +78,10 @@
             
             .player-img, .enemy-img {
                 width: 100%;
+            }
+
+            .spinner {
+                padding: 20px;
             }
 
             .heal-quick-bar {
@@ -198,6 +202,30 @@
         .item-num {
             color: #f7f7f7;
         }
+    }
+
+    
+
+    .action-buttons {
+        display: flex;
+        width: 100%;
+        flex-direction: row-reverse;
+        padding: 20px 0px 0 0px;
+
+        .stop-combat-btn {
+            padding: 9px;
+            font-size: 1rem;
+            font-weight: 700;
+            width: 30%;
+            border: none;
+            border-radius: 7px;
+            color: rgb(255, 255, 255);
+            outline: none;
+    
+            &:active {
+                box-shadow: inset 0px 0px 100px 0px rgba($color: black, $alpha: 0.2);
+            }
+        }  
     }
 }
 

@@ -47,6 +47,15 @@ body {
     }
 }
 
+
+.danger {
+    background-color: rgb(236, 103, 103);
+}
+
+.success {
+    background-color: $primary-color-lighter;
+}
+
 .container {
     width: 60%;
     min-width: 288px; //288

@@ -21,11 +21,7 @@ function LoginForm({ setMessage, hideMessage, showMsg, login }) {
     const submit = async e => {
         e.preventDefault();
         const isLoggedIn = await login(email, password);
-        if(isLoggedIn === true) {
-            setMessage({ msg: 'Logged In Successfully' });
-            setTimeout(() => history.push('/'), 1000);
-        }
-        else setMessage({ msg: isLoggedIn.error, classType: 'danger' });
+        if(isLoggedIn === true) setTimeout(() => history.push('/'), 1000);
     }
     const history = useHistory();
     return (

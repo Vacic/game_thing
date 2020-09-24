@@ -99,6 +99,12 @@ class GameContainer extends PureComponent {
             }
         }
 
+        stopCombat = () => {
+            this.resetActions();
+            this.props.setCurrentEnemyHp(0);
+            this.props.setCurrentEnemyStats({ name: 'Select Location', hp:0, dmg:0, attSpd:0, def:0, eva:0 });
+        }
+
         resetPlayerAttack = (playerDmg, playerAttSpd) => {  // Using this after equipping a new weapon
             clearInterval(this.playerAttInterval);
             this.playerAttProgressDiv.style.animation = 'none';
@@ -278,8 +284,9 @@ class GameContainer extends PureComponent {
                     enemyDiv={el => this.enemyDiv = el}
                     enemyAttProgressDiv={el => this.enemyAttProgressDiv = el}
                     enemyAttStatus={el => this.enemyAttStatus = el}
-                />
 
+                    stopCombat={this.stopCombat}
+                />
                 <InvAndEquip 
                     handleUseItem={this.handleUseItem} 
                     playerHpBar={this.playerHpBar}

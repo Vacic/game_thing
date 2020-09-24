@@ -5,6 +5,7 @@
             border: 2px solid $primary-color-lighter;
             border-top: none;
             border-radius: $border-radius;
+            align-self: flex-start;
             
             h3 {
                 width: 100%;
@@ -22,6 +23,7 @@
             
             .equipment-slots {
                 display: grid;
+                height: 380px;
                 grid-template-columns: 1fr 1fr 1fr;
                 padding: 20px;
                 justify-items: center;

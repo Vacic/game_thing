@@ -2,6 +2,7 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, SET_LOADING, ENEMY_TAKES_DAMAGE, PLAYER_TAKES_DAMAGE, SET_CURRENT_LOCATION, SET_NOTIFICATION_MESSAGE, SET_NOTIFICATION_CLASS, LOGIN, SET_LOADING_ENEMY, COOKIE_CHECKED } from './gameDataTypes';
 import { populatePlayer, updateInventory } from '../player/playerAction';
+import { setMessage } from '../notificationControl/notificationControlActions';
 const cookies = new Cookies();
 
 export const login = (email, password) => async dispatch => {
@@ -10,20 +11,25 @@ export const login = (email, password) => async dispatch => {
     const body = JSON.stringify({ email, password });
     try {
         // const res = await axios.post('http://localhost:3001/auth', body, config);
-        // localStorage.setItem('token', res.data );
+        localStorage.setItem('token', res.data );
         await axios.post('/auth', body, config);
-        await dispatch(populateGame());
-        cookies.set('loggedIn', 'yup');
-        return true;
+        const populated = await dispatch(populateGame());
+        if(populated === true) {
+            cookies.set('loggedIn', 'yup', { sameSite: true });
+            setLogin(true);
+            dispatch(setMessage({ msg: 'Logged In Successfully' }));
+            return true;
+        }
     } catch (err) {
         cookies.remove('loggedIn');
+        // NOTIFICATION - FAILED TO LOG IN
         if (err.response && err.response.data.error) {
             dispatch(setLoading(false));
-            return ({ error: err.response.data.error});
+            dispatch(setMessage({ msg: err.response.data.error, classType: 'danger' }));
         } else { 
             console.log(err.response.statusText);
             dispatch(setLoading(false));
-            return ({ error: 'Internal Server Error' });
+            dispatch(setMessage({ msg: 'Internal Server Error', classType: 'danger' }));
         }
     }
 }
@@ -67,15 +73,17 @@ export const populateGame = () => async dispatch => {
         dispatch(updateInventory(inventory));
         dispatch(setLogin(true));
         dispatch(setLoading(false));
+        // NOTIFICATION - SUCCESSFULLY LOGGED IN
         return true;
     } catch (err) {
+        // NOTIFICATION - FAILED TO LOG IN
         if (err.response && err.response.data && err.response.data.error) {
             dispatch(setLoading(false));
-            return ({ error: err.response.data.error});
+            dispatch(setMessage({ msg: `${err.response.data.error} - Could Not Load Saved Data`, classType: 'danger' }));
         } else { 
             console.log(err);
             dispatch(setLoading(false));
-            return ({ error: 'Internal Server Error' });
+            dispatch(setMessage({ msg: 'Internal Server Error - Could Not Load Saved Data', classType: 'danger' }));
         }
     }
 }

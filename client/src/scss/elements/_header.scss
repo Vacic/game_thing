@@ -94,7 +94,7 @@
                 display: none;
                 background-color: $primary-color-lighter;
                 text-align: center;
-                padding: 3px 0 6px 0;
+                padding: 5px 0 10px 0;
                 width: 100%;
                 margin-top: 1rem;
                 border-bottom-right-radius: 7px;
@@ -105,8 +105,9 @@
                 }
             }
 
-            .danger {
-                background-color: rgb(236, 103, 103);
+            .spinner-img {
+                width: 36px;
+                margin-top: 0.7rem;
             }
         }
     }
@@ -132,15 +133,10 @@
             .user-menu-options {
                 list-style-type: none;
                 text-align: center;
-
-                .spinner-img {
-                    width: 40px;
-                    margin: -4px 0 -7px 0;
-                }
+                font-size: 0.9rem;
                 
                 li {
                     padding: 7px 15px 7px 15px;
-                    font-size: 0.9rem;
                     cursor: pointer;
 
                     a {
@@ -171,12 +167,26 @@
                     margin: 5px 0 5px 0;
                     background: $primary-color-lighter;
                 }
+
+                .msg {
+                    font-size: inherit;
+                    padding: 7px 15px 7px 15px;
+                }
+
+                .spinner-img {
+                    width: 23px;
+                    margin: 3px;
+                }
+
+                .spinner-img {
+                    top: 2px;
+                }
+
+                .spinner-img ~ .spinner-img {
+                    top: 0px;
+                    padding-bottom: 2px;
+                }
             }
         }
-    }
-
-    .spinner-img {
-        width: 50px;
-        margin-bottom: -12px;
     }
 }

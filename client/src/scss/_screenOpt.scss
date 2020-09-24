@@ -84,18 +84,10 @@
             }
         }
 
-        .modal-container {
-            .confirmation-modal {
-                margin-top: 18%;
-
-                &.hidden {
-                    margin-top: calc(18% + (179px/2));
-                }
-            }
-
-            .loading-modal {
-                margin-top: 18%;
-            }
+        .action-buttons {
+            .stop-combat-btn {
+                width: 39%;
+            }  
         }
     }
 
@@ -143,6 +135,12 @@
                 .msg {
                     font-size: 0.9rem;
                     margin-top: 0.7rem;
+                    padding: 4px 0 8px 0;
+                }
+
+                .spinner-img {
+                    width: 30px;
+                    margin-top: 0.4rem;
                 }
             }
         }
@@ -154,16 +152,11 @@
 
                 .user-menu-options {
                     list-style-type: none;
-
-                    .spinner-img {
-                        width: 40px;
-                        margin: -3px 0 -10px 0;
-                    }
+                    font-size: 0.8rem;
                     
                     li {
                         padding: 7px;
                         text-align: center;
-                        font-size: 0.8rem;
                         cursor: pointer;
                     }
     
@@ -172,6 +165,14 @@
                         height: 2px;
                         margin: 5px 0 5px 0;
                         background: $primary-color-lighter;
+                    }
+
+                    .msg {
+                        padding: 7px;
+                    }
+
+                    .spinner-img {
+                        width: 22px;
                     }
                 }
             }
@@ -393,6 +394,13 @@
                     }
                 }
             }
+
+            .action-buttons {
+                .stop-combat-btn {
+                    width: 100%;
+                    font-size: 0.9em;
+                }  
+            }
         }
 
         .inv-equip {
@@ -412,7 +420,7 @@
 
                 .inv-list .inv-item {
                     .item-description {
-                        top: -121px;
+                        top: -117px;
                     }
 
                     .item-menu {
@@ -432,20 +440,11 @@
         
         .modal-container {
             .confirmation-modal {
-                margin-top: 30%;
                 font-size: 1rem;
-
-                &.hidden {
-                    margin-top: calc(30% + (179px/2));
-                }
 
                 .modal-text {
                     font-size: 1rem;
                 }
-            }
-
-            .loading-modal {
-                margin-top: 30%;
             }
         }
 
@@ -619,7 +618,7 @@
                     }
 
                     .item-menu {
-                        top: -195px;
+                        top: -201px;
                     }
 
                     .item-count {
@@ -633,11 +632,10 @@
             .confirmation-modal {
                 height: 140px;
                 width: 260px;
-                margin-top: 45%;
                 font-size: 0.8rem;
 
                 &.hidden {
-                    margin-top: calc(45% + (140px/2));
+                    margin-top: calc(140px/2);
                 }
 
                 span {
@@ -659,7 +657,6 @@
             }
 
             .loading-modal {
-                margin-top: 45%;
                 width: 320px;
 
                 p {

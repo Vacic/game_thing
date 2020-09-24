@@ -15,16 +15,11 @@
 
         .msg {
             display: none;
-            background-color: $primary-color-lighter;
             text-align: center;
             padding: 10px 10px 12px 10px;
             width: 100%;
             font-size: 1.2rem;
             color: rgb(247, 247, 247);
-        }
-
-        .danger {
-            background-color: rgb(236, 103, 103);
         }
 
         .show {
