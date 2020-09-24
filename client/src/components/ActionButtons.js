@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const ActionButtons = ({ stopCombat, initCombat, currentLocation }) => {
     return (
         <div className="action-buttons">
-            <button className="combat-btn success" onClick={() => initCombat(currentLocation)}>Start Fight</button>
+            <button className="combat-btn neutral" onClick={() => initCombat(currentLocation)}>Start Fight</button>
             <button className="combat-btn danger" onClick={() => stopCombat()}>Run Away</button>
         </div>
     )
