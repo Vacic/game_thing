@@ -18,8 +18,8 @@
             .name {
                 font-size: 1.6rem;
                 text-transform: capitalize;
+                white-space: nowrap;
                 overflow: hidden;
-                
             }
             
             .hp-bar {
@@ -208,11 +208,11 @@
 
     .action-buttons {
         display: flex;
+        justify-content: space-between;
         width: 100%;
-        flex-direction: row-reverse;
         padding: 20px 0px 0 0px;
 
-        .stop-combat-btn {
+        .combat-btn {
             padding: 9px;
             font-size: 1rem;
             font-weight: 700;

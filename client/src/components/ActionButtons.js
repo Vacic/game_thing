@@ -1,11 +1,17 @@
-import React from 'react'
+import React from 'react';
+import { connect } from 'react-redux';
 
-const ActionButtons = ({ stopCombat }) => {
+const ActionButtons = ({ stopCombat, initCombat, currentLocation }) => {
     return (
         <div className="action-buttons">
-            <button className="stop-combat-btn danger" onClick={() => stopCombat()}>Run Away</button>
+            <button className="combat-btn success" onClick={() => initCombat(currentLocation)}>Start Fight</button>
+            <button className="combat-btn danger" onClick={() => stopCombat()}>Run Away</button>
         </div>
     )
 }
 
-export default ActionButtons
+const mapStateToProps = state => ({
+    currentLocation: state.gameData.currentLocation
+})
+
+export default connect(mapStateToProps)(ActionButtons);

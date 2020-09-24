@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import BattleScreen from './BattleScreen';
 import LocationSelection from './location/LocationSelection';
-import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading, enemyTakesDamage, playerTakesDamage, updateInventory, setCurrentLocation, setNotificationMessage, setNotificationClass, updatePlayerQuickBarEquipment, setMessage, setLoadingEnemy, cookieChecked, setLogin, populateGame, hideMessage } from '../redux';
+import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading, enemyTakesDamage, playerTakesDamage, updateInventory, setNotificationMessage, setNotificationClass, updatePlayerQuickBarEquipment, setMessage, setLoadingEnemy, cookieChecked, setLogin, populateGame, hideMessage } from '../redux';
 import InvAndEquip from './InvAndEquip';
 import Message from './Message';
 import ConfirmationModal from './ConfirmationModal';
@@ -79,7 +79,6 @@ class GameContainer extends PureComponent {
             const randEnemy = Math.floor(Math.random() * (enemies.length - 1) + 1); // Randomizes the enemy
             const enemyStats = this.props.locationEnemies[location][enemies[randEnemy]]; // Get stats form the random enemy
 
-            this.props.setCurrentLocation(location);
             this.props.setCurrentEnemyStats(enemyStats);
             this.props.setCurrentEnemyHp(enemyStats.hp);
         }
@@ -285,6 +284,7 @@ class GameContainer extends PureComponent {
                     enemyAttProgressDiv={el => this.enemyAttProgressDiv = el}
                     enemyAttStatus={el => this.enemyAttStatus = el}
 
+                    initCombat={this.initCombat} 
                     stopCombat={this.stopCombat}
                 />
                 <InvAndEquip 
@@ -330,7 +330,6 @@ const mapDispatchToProps = dispatch => {
         setCurrentEnemyHp: currentEnemyHp => dispatch(setCurrentEnemyHp(currentEnemyHp)),
         setCurrentEnemyStats: currentEnemy => dispatch(setCurrentEnemyStats(currentEnemy)),
         setCurrentPlayerHp: currentPlayerHp => dispatch(setCurrentPlayerHp(currentPlayerHp)),
-        setCurrentLocation: location => dispatch(setCurrentLocation(location)),
         setNotificationMessage: message => dispatch(setNotificationMessage(message)),
         setNotificationClass: classStr => dispatch(setNotificationClass(classStr)),
         setLoading: (isLoading) => dispatch(setLoading(isLoading)),

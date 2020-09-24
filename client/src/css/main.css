@@ -96,7 +96,6 @@
           box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.2); }
       .header .header-links .login-form .msg {
         display: none;
-        background-color: #2ca94b;
         text-align: center;
         padding: 5px 0 10px 0;
         width: 100%;
@@ -543,6 +542,7 @@
     .battle-screen .player .player-card .name, .battle-screen .player .enemy-card .name, .battle-screen .enemy .player-card .name, .battle-screen .enemy .enemy-card .name {
       font-size: 1.6rem;
       text-transform: capitalize;
+      white-space: nowrap;
       overflow: hidden; }
     .battle-screen .player .player-card .hp-bar .current, .battle-screen .player .player-card .hp-bar .max, .battle-screen .player .enemy-card .hp-bar .current, .battle-screen .player .enemy-card .hp-bar .max, .battle-screen .enemy .player-card .hp-bar .current, .battle-screen .enemy .player-card .hp-bar .max, .battle-screen .enemy .enemy-card .hp-bar .current, .battle-screen .enemy .enemy-card .hp-bar .max {
       height: 14px;
@@ -666,10 +666,10 @@
       color: #f7f7f7; }
   .battle-screen .action-buttons {
     display: flex;
+    justify-content: space-between;
     width: 100%;
-    flex-direction: row-reverse;
     padding: 20px 0px 0 0px; }
-    .battle-screen .action-buttons .stop-combat-btn {
+    .battle-screen .action-buttons .combat-btn {
       padding: 9px;
       font-size: 1rem;
       font-weight: 700;
@@ -678,7 +678,7 @@
       border-radius: 7px;
       color: white;
       outline: none; }
-      .battle-screen .action-buttons .stop-combat-btn:active {
+      .battle-screen .action-buttons .combat-btn:active {
         box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.2); }
 
 .inv-equip {
@@ -787,6 +787,9 @@ body {
 .success {
   background-color: #2ca94b; }
 
+.neutral {
+  background-color: #65c6df; }
+
 .container {
   width: 60%;
   min-width: 288px;
@@ -876,7 +879,7 @@ body {
           .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img {
             width: 33px;
             height: 33px; }
-    .container .action-buttons .stop-combat-btn {
+    .container .action-buttons .combat-btn {
       width: 39%; }
   .registration-container .registration-form, .registration-container .login-form, .login-container .registration-form, .login-container .login-form {
     width: 60%; } }
@@ -1072,8 +1075,8 @@ body {
         font-size: 0.9rem; }
         .container .battle-screen .player .stats p span, .container .battle-screen .enemy .stats p span {
           font-size: 1rem; }
-    .container .battle-screen .action-buttons .stop-combat-btn {
-      width: 100%;
+    .container .battle-screen .action-buttons .combat-btn {
+      width: 45%;
       font-size: 0.9em; }
     .container .inv-equip {
       flex-wrap: wrap;
@@ -1175,6 +1178,10 @@ body {
           font-size: 0.85rem; }
           .container .battle-screen .player .stats p span, .container .battle-screen .enemy .stats p span {
             font-size: 0.9rem; }
+      .container .battle-screen .action-buttons {
+        padding-top: 16px; }
+        .container .battle-screen .action-buttons .combat-btn {
+          width: 48%; }
     .container .inv-equip {
       padding: 8px;
       font-size: 0.85rem; }

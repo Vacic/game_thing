@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { setCurrentLocation } from '../../redux';
 
-const LocationCard = React.memo(({ location, initCombat, img, hideMenuState, toggleMenu, currentLocation }) => {
+const LocationCard = React.memo(({ location, initCombat, img, hideMenuState, toggleMenu, currentLocation, setCurrentLocation }) => {
     const onClick = () => {
         initCombat(location);
+        setCurrentLocation(location);
         toggleMenu(true);
     }
     const fixedLocationName = location.replace(/_/g, ' ');
@@ -18,10 +20,12 @@ const LocationCard = React.memo(({ location, initCombat, img, hideMenuState, tog
     )
 });
 
-const mapStateToProps = state => {
-    return {
+const mapStateToProps = state => ({
         currentLocation: state.gameData.currentLocation
-    }
-}
+});
 
-export default connect(mapStateToProps)(LocationCard)
+const mapDispatchToProps = dispatch => ({
+    setCurrentLocation: location => dispatch(setCurrentLocation(location))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LocationCard)

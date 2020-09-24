@@ -3,7 +3,7 @@ import ActionButtons from './ActionButtons.js';
 import Enemy from './enemy/Enemy.js';
 import Player from './player/Player.js';
 
-const BattleScreen = React.memo(({ playerAttProgressDiv, playerHpBar, playerDiv, enemyHpBar, enemyDiv, enemyAttProgressDiv, playerAttStatus, enemyAttStatus, handleUseItem, stopCombat }) => {
+const BattleScreen = React.memo(({ playerAttProgressDiv, playerHpBar, playerDiv, enemyHpBar, enemyDiv, enemyAttProgressDiv, playerAttStatus, enemyAttStatus, handleUseItem, stopCombat, initCombat }) => {
     return (
         <div className="battle-screen">
             <Player
@@ -21,7 +21,7 @@ const BattleScreen = React.memo(({ playerAttProgressDiv, playerHpBar, playerDiv,
                 enemyAttStatus={enemyAttStatus}
             />
 
-            <ActionButtons stopCombat={stopCombat} />
+            <ActionButtons stopCombat={stopCombat} initCombat={initCombat}  />
         </div>
     )
 });
