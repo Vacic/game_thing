@@ -11,7 +11,7 @@ export const login = (email, password) => async dispatch => {
     const body = JSON.stringify({ email, password });
     try {
         // const res = await axios.post('http://localhost:3001/auth', body, config);
-        localStorage.setItem('token', res.data );
+        // localStorage.setItem('token', res.data );
         await axios.post('/auth', body, config);
         const populated = await dispatch(populateGame());
         if(populated === true) {
