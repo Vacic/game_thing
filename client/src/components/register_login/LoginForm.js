@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import Message from '../notifications/Message';
-import { setMessage, login, hideMessage } from '../../redux';
+import { login, hideMessage } from '../../redux';
 
-function LoginForm({ setMessage, hideMessage, showMsg, login }) {
+function LoginForm({ hideMessage, showMsg, login }) {
     const [loginFormData, setFormData] = useState({
         email: '',
         password: ''
@@ -30,10 +30,14 @@ function LoginForm({ setMessage, hideMessage, showMsg, login }) {
                 {showMsg && <Message />}
                 <h2>Log In</h2>
                 <form onSubmit={e => submit(e)}>
-                    <label htmlFor="email">Email</label>
-                    <input type="email" name="email" onChange={e => onChange(e)} />
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name="password" onChange={e => onChange(e)} />
+                    <div>
+                        <label htmlFor="email">Email</label>
+                        <input type="email" name="email" onChange={e => onChange(e)} />
+                    </div>
+                    <div>
+                        <label htmlFor="password">Password</label>
+                        <input type="password" name="password" onChange={e => onChange(e)} />
+                    </div>
                     <p><Link to="/register">Don't have an account?</Link></p>
                     <button type="submit">Login</button>
                 </form>
@@ -49,7 +53,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    setMessage: newMessage => dispatch(setMessage(newMessage)),
     hideMessage: () => dispatch(hideMessage()),
     login: (email, password) => dispatch(login(email, password))
 });

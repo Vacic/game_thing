@@ -7,7 +7,7 @@ import { updateInventory, setCurrentPlayerHp, updatePlayerStats, updatePlayerEqu
 const InvAndEquip = React.memo((props) => {
     const { handleUseItem, playerHpBar, showModal, resetPlayerAttack } = props // From Game Container
     const { inventory, playerStats, playerEquip, currentPlayerHp, quickBarEquipment, currentEnemy } = props // State
-    const { updatePlayerStats, updatePlayerEquipment, updateInventory, setCurrentPlayerHp, updatePlayerQuickBarEquipment, reduceSingleItem } = props // Dispatch
+    const { updatePlayerStats, updatePlayerEquipment, updateInventory, setCurrentPlayerHp, updatePlayerQuickBarEquipment, reduceSingleItem, setNotification } = props // Dispatch
 
     const equipItem = item => {
         let newPlayerEquip = {...playerEquip};
@@ -49,7 +49,7 @@ const InvAndEquip = React.memo((props) => {
         setCurrentPlayerHp(newCurrentHp);
         playerHpBar.style.width = `${Math.floor((newCurrentHp/newPlayerStats.hp)*100)}%`;
         } else {
-            setNotification({ classType: 'danger', msg:`You have already equipped ${item.name}` });
+            setNotification({ classType: 'danger', msg:`You have already equipped ${item.name}`, img: item.img });
         }
     }
 

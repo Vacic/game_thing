@@ -59,6 +59,7 @@ export const logout = () => dispatch => {
     dispatch(setLogin(false));
     dispatch(setLoading(false));
     dispatch(setLoadingEnemy(false));
+    dispatch(setNotification({ msg: `Logged Out Successfully`, classType: 'danger' }));
     return true;
 }
 

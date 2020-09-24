@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { removeNotification } from '../../redux';
 
 const Notification = ({ notif: { msg, classType, img }, removeNotification }) => {
     const [isNotifHidden, toggleNotif] = useState(false);
+    const removeNotifTimeout = useRef();
     useEffect(() => {
-        const hideTimeout = setTimeout(() => toggleNotif(true), 1500);
-        const removeNotifTimeout = setTimeout(() => removeNotification(), 2000); // Hide Timeout + Animation Time
+        const hideTimeout = setTimeout(() => {
+            toggleNotif(true);
+            removeNotifTimeout.current = setTimeout(() => removeNotification(), 2000); // Higher delay in order to prevent getting an empty array in redux state so often
+        } ,1500);
         return () => {
             clearTimeout(hideTimeout);
-            clearTimeout(removeNotifTimeout);
+            clearTimeout(removeNotifTimeout.current)
         }
-    });
+    }, [removeNotification]);
     
     return (
         <div className={`notification ${classType} ${isNotifHidden ? 'hide' : ''} ${!img ? 'center' : ''}`}>
