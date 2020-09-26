@@ -387,6 +387,7 @@
   padding: 12px;
   opacity: 1;
   z-index: 2;
+  pointer-events: none;
   -webkit-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
   -moz-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
   -ms-transition: all 1s cubic-bezier(0, 0.9, 0.4, 1);
@@ -409,16 +410,17 @@
     border-top: 2px solid #65c6df;
     border-left: 2px solid #65c6df;
     margin-bottom: 15px;
-    -webkit-transition: opacity 0.5s linear;
-    -moz-transition: opacity 0.5s linear;
-    -ms-transition: opacity 0.5s linear;
-    -o-transition: opacity 0.5s linear;
-    transition: opacity 0.5s linear; }
+    -webkit-transition: all 0.5s cubic-bezier(0.82, 0.33, 0, 1);
+    -moz-transition: all 0.5s cubic-bezier(0.82, 0.33, 0, 1);
+    -ms-transition: all 0.5s cubic-bezier(0.82, 0.33, 0, 1);
+    -o-transition: all 0.5s cubic-bezier(0.82, 0.33, 0, 1);
+    transition: all 0.5s cubic-bezier(0.82, 0.33, 0, 1); }
     .container .notifications .notification .notification-img {
       width: 40px;
       height: 40px; }
     .container .notifications .notification.hide {
-      opacity: 0; }
+      opacity: 0;
+      bottom: -200px; }
   .container .notifications.hide {
     opacity: 0;
     bottom: -200px;

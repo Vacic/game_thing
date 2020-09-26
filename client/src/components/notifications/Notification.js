@@ -5,6 +5,7 @@ import { removeNotification } from '../../redux';
 const Notification = ({ notif: { msg, classType, img }, removeNotification }) => {
     const [isNotifHidden, toggleNotif] = useState(false);
     const removeNotifTimeout = useRef();
+
     useEffect(() => {
         const hideTimeout = setTimeout(() => {
             toggleNotif(true);
@@ -12,7 +13,6 @@ const Notification = ({ notif: { msg, classType, img }, removeNotification }) =>
         } ,1500);
         return () => {
             clearTimeout(hideTimeout);
-            clearTimeout(removeNotifTimeout.current)
         }
     }, [removeNotification]);
     
