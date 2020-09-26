@@ -7,7 +7,7 @@ const notificationState = {
         classType: ''
     },
 
-    notifications: [], // {img, msg, classType}
+    notifications: [], // { img, msg, classType}
 
     modul: {
 
@@ -44,9 +44,12 @@ const notificationReducer = (state = notificationState, action) => {
             notifications: [ ...state.notifications, action.newNotification ]
         }
 
-        case REMOVE_NOTIFICATION: return {
+        case REMOVE_NOTIFICATION: 
+        let notifications = [ ...state.notifications ];
+        notifications.shift();
+        return {
             ...state,
-            notifications: !state.notifications.length === 1  ? [ state.notifications.shift() ] : []
+            notifications: [ ...notifications ]
         }
 
         default: return state;

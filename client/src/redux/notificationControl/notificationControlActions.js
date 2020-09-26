@@ -14,6 +14,7 @@ export const setNotification = newNotification => ({
     newNotification
 });
 
-export const removeNotification = () => ({
-    type: REMOVE_NOTIFICATION
+export const removeNotification = id => ({
+    type: REMOVE_NOTIFICATION,
+    id
 })
