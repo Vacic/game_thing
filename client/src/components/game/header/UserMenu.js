@@ -42,7 +42,7 @@ const UserMenu = ({ isUserMenuHidden, toggleMenu, logout, isLoading, showMsg, hi
     return (
         <div className={isUserMenuHidden ? "user-menu" : "user-menu show"} ref={userMenu} >
             <ul className="user-menu-options">
-                <li><Link to='#!'>Profile</Link></li>
+                <li><Link to='/profile'>Profile</Link></li>
                 <div className="separator"></div>
                 {showMsg ? <Message /> : updateProgressLoading ? <Spinner /> : <li onClick={() => updateProgress()}>Force Save</li>}
                 <div className="separator"></div>

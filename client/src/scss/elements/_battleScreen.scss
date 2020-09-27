@@ -204,32 +204,16 @@
         }
     }
 
-    
-
     .action-buttons {
         display: flex;
         justify-content: space-between;
         width: 100%;
         padding: 20px 0px 0 0px;
 
-        .combat-btn {
-            padding: 9px;
-            font-size: 1rem;
-            font-weight: 700;
+        .btn {
+            font-size: 1.1rem;
             width: 30%;
-            border: none;
-            border-radius: 7px;
-            color: rgb(255, 255, 255);
-            outline: none;
-    
-            &:hover {
-                box-shadow: inset 0px 0px 100px 0px rgba($color: black, $alpha: 0.2);
-            }
-            
-            &:active {
-                box-shadow: inset 0px 0px 100px 0px rgba($color: black, $alpha: 0.5);
-            }
-        }  
+        }
     }
 }
 

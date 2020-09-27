@@ -3,6 +3,7 @@ import Cookies from 'universal-cookie';
 import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, SET_LOADING, ENEMY_TAKES_DAMAGE, PLAYER_TAKES_DAMAGE, SET_CURRENT_LOCATION, LOGIN, SET_LOADING_ENEMY, COOKIE_CHECKED } from './gameDataTypes';
 import { populatePlayer, updateInventory } from '../player/playerAction';
 import { setMessage, setNotification } from '../notificationControl/notificationControlActions';
+import store from '../store';
 const cookies = new Cookies();
 
 export const login = (email, password) => async dispatch => {

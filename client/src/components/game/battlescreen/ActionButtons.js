@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 const ActionButtons = ({ stopCombat, initCombat, currentLocation }) =>
     <div className="action-buttons">
-        <button className="combat-btn neutral" onClick={() => initCombat(currentLocation)}>Start Fight</button>
-        <button className="combat-btn danger" onClick={() => stopCombat()}>Run Away</button>
+        <button className="btn neutral" onClick={() => initCombat(currentLocation)}>Start Fight</button>
+        <button className="btn danger" onClick={() => stopCombat()}>Run Away</button>
     </div>
 
 const mapStateToProps = state => ({

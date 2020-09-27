@@ -30,6 +30,26 @@ $loading-animation-time: 1s;
     justify-content: center !important;
 }
 
+.btn {
+    padding: 9px;
+    font-size: 1rem;
+    font-weight: 700;
+    width: 200px;
+    border: none;
+    border-radius: 7px;
+    color: rgb(255, 255, 255);
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: inset 0px 0px 100px 0px rgba($color: black, $alpha: 0.2);
+    }
+    
+    &:active {
+        box-shadow: inset 0px 0px 100px 0px rgba($color: black, $alpha: 0.4);
+    }
+}
+
 // Media Query Mixins
 @mixin mediaXxsm {
     @media screen and (max-width: 400px) {
