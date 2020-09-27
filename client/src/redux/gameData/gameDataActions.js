@@ -30,7 +30,7 @@ export const login = (email, password) => async dispatch => {
         } else { 
             console.log(err.response.statusText);
             dispatch(setLoading(false));
-            //dispatch(setMessage({ msg: 'Internal Server Error', classType: 'danger' }));
+            dispatch(setMessage({ msg: 'Internal Server Error', classType: 'danger' }));
         }
     }
 }

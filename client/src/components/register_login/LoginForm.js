@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
-import Message from '../notifications/Message';
 import { login, hideMessage } from '../../redux';
+import Message from '../helperComponents/notifications/Message';
 
 function LoginForm({ hideMessage, showMsg, login }) {
     const [loginFormData, setFormData] = useState({

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
-import { register } from '../../helpers';
-import Message from '../notifications/Message';
+import { register } from '../../services';
 import { hideMessage, setMessage } from '../../redux';
+import Message from '../helperComponents/notifications/Message';
 
 const RegistrationForm = React.memo(({ setMessage, hideMessage, showMsg }) => {
     const [registerFormData, setFormData] = useState({
