@@ -37,8 +37,10 @@ export const checkToken = async history => {
 export const editProfile = async formData => {
     const data = { ...formData };
     const body = JSON.stringify(data);
+    console.log(body)
     try {
         const { data } = await axios.put('/users/update-user', body, { withCredentials: true } );
+        console.log(data)
         // const { data } = await axios.put('http://localhost:3001/users/update-user', body, { headers: { 'Content-Type': 'application/json', token: localStorage.getItem('token') } } );
         dispatch(updateUser(data));
         dispatch(setMessage({ msg: 'Successfully Updated Your Profile'}));
