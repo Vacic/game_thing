@@ -22,10 +22,8 @@ const Profile = ({ user, setMessage, showMsg, setModal, loggedIn }) => {
         e.preventDefault();
 
         if(username !== user.username & user.username !== '' || email !== user.email & user.email !== '' || password !== '' ) {
-            console.log(formData)
             const newFormData = { username, email, password }
             for(const property in newFormData) if(newFormData[property] === '' || newFormData[property] === user[property]) delete newFormData[property];
-            console.log(newFormData)
             if (newFormData.password) {
                 if(newFormData.password === confirmPassword) editProfile(newFormData);
                 else setMessage({ msg: 'Passwords Don\'t Match', classType: 'danger' });
