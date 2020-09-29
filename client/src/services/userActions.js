@@ -11,9 +11,9 @@ const dispatch = store.dispatch;
 export const checkToken = async history => {
     if(cookies.get('loggedIn')) {
         try {
-            const res = await axios.get('http://localhost:3001/auth/check-token', { headers: { token: localStorage.getItem('token')} });
-            res.data !== '' && localStorage.setItem('token', res.data)
-            // await axios.get('/auth/check-token', { withCredentials: true });
+            // const res = await axios.get('http://localhost:3001/auth/check-token', { headers: { token: localStorage.getItem('token')} });
+            // res.data !== '' && localStorage.setItem('token', res.data)
+            await axios.get('/auth/check-token', { withCredentials: true });
             return true;
         } catch (err) {
             if (err.response && err.response.status === 403) {
@@ -38,8 +38,8 @@ export const editProfile = async formData => {
     const data = { ...formData };
     const body = JSON.stringify(data);
     try {
-        // const updatedUser = await axios.put('/users/update-user', body, { withCredentials: true } );
-        const { data } = await axios.put('http://localhost:3001/users/update-user', body, { headers: { 'Content-Type': 'application/json', token: localStorage.getItem('token') } } );
+        const { data } = await axios.put('/users/update-user', body, { withCredentials: true } );
+        // const { data } = await axios.put('http://localhost:3001/users/update-user', body, { headers: { 'Content-Type': 'application/json', token: localStorage.getItem('token') } } );
         dispatch(updateUser(data));
         dispatch(setMessage({ msg: 'Successfully Updated Your Profile'}));
         return true;
@@ -57,8 +57,8 @@ export const register = async formData => {
     const data = { ...formData, ...localProgress };
     const body = JSON.stringify(data);
     try {
-        //await axios.post('/users/register', body, { headers: { 'Content-Type': 'application/json' } });
-        await axios.post('http://localhost:3001/users/register', body, { headers: { 'Content-Type': 'application/json' } });
+        await axios.post('/users/register', body, { headers: { 'Content-Type': 'application/json' } });
+        // await axios.post('http://localhost:3001/users/register', body, { headers: { 'Content-Type': 'application/json' } });
         dispatch(setMessage({ msg: 'Successfully Registered' }))
         return true
     } catch (err) {
@@ -108,8 +108,8 @@ export const resetProgress = async () => {
 
 export const deleteAccount = async () => {
     try {
-        await axios.delete('http://localhost:3001/users/remove-user', { headers: { token: localStorage.getItem('token')} });
-        // await axios.get('/auth/remove-user', { withCredentials: true });
+        // await axios.delete('http://localhost:3001/users/remove-user', { headers: { token: localStorage.getItem('token')} });
+        await axios.delete('/auth/remove-user', { withCredentials: true });
         cookies.remove('loggedIn');
         dispatch(setLoading(true));
         let number = '';

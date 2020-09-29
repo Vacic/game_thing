@@ -23,8 +23,8 @@ router.post('/login', joiValidate(userLoginSchema), async (req, res) => {
         jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '15 days' }, (err, token) => {
             if(err) throw err;
             res.cookie('token', `Bearer ${token}`, { maxAge: 1296000000, httpOnly: true, secure: true });
-            // res.status(200).end();
-            res.status(200).json({ token: `Bearer ${token}` });
+            res.status(200).end();
+            // res.status(200).json({ token: `Bearer ${token}` });
         });
     } catch (err) {
         console.log(err);
@@ -44,8 +44,8 @@ router.get('/check-token', checkToken, async (req, res) => {
             jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '15days' }, (err, token) => {
                 if(err) throw err;
                 res.cookie('token', `Bearer ${token}`, { maxAge: 1296000000, httpOnly: true, secure: true });
-                // res.status(200).end();
-                res.status(200).json(`Bearer ${token}`);
+                res.status(200).end();
+                // res.status(200).json(`Bearer ${token}`);
             });
         } else {
             res.status(200).end();

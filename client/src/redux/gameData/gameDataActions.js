@@ -10,9 +10,9 @@ export const login = (email, password) => async dispatch => {
     const config = { headers: { "Content-Type": "application/json" } };
     const body = JSON.stringify({ email, password });
     try {
-        const { data } = await axios.post('http://localhost:3001/auth/login', body, config);
-        localStorage.setItem('token', data.token );
-        // await axios.post('/auth/login', body, config);
+        // const { data } = await axios.post('http://localhost:3001/auth/login', body, config);
+        // localStorage.setItem('token', data.token );
+        await axios.post('/auth/login', body, config);
         await dispatch(populateUser());
         await dispatch(populateGame());
         cookies.set('loggedIn', 'yup', { sameSite: true });
@@ -77,8 +77,8 @@ export const logout = () => dispatch => {
 export const populateGame = () => async dispatch => {
     dispatch(setLoading(true));
     try {
-         const { data } = await axios.get(`http://localhost:3001/users/progress`, { headers: { token: localStorage.getItem('token')} });
-        // const { data } = await axios.get(`/users/progress`, { withCredentials: true });
+        // const { data } = await axios.get(`http://localhost:3001/users/progress`, { headers: { token: localStorage.getItem('token')} });
+        const { data } = await axios.get(`/users/progress`, { withCredentials: true });
         const { currentHp, currentLocation, inventory = {}, playerStats, equipment = {}, quickBarEquipment = ['', '', ''] } = data;
         dispatch(populatePlayer({ playerStats, inventory, equipment, quickBarEquipment }));
         dispatch(setCurrentPlayerHp(currentHp));

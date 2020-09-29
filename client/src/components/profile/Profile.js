@@ -1,20 +1,18 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { useHistory, Link } from 'react-router-dom';
+import React, { useState } from 'react'
+import { useHistory, Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Message from '../helperComponents/notifications/Message';
 import { deleteAccount, editProfile, resetProgress} from '../../services'
 import { setMessage, setModal } from '../../redux';
 import ConfirmationModal from '../helperComponents/ConfirmationModal';
 
-const Profile = ({ user, setMessage, showMsg, setModal, showModal }) => {
+const Profile = ({ user, setMessage, showMsg, setModal, loggedIn }) => {
     const [formData, updateFormData] = useState({
         username: user.username,
         email: user.email,
         password: '',
         confirmPassword: ''
     })
-
-    useEffect(() => () => clearInterval(timeout.current))
 
     const onChange = e => {
         updateFormData({ ...formData, [e.target.name]: e.target.value });
@@ -56,9 +54,8 @@ const Profile = ({ user, setMessage, showMsg, setModal, showModal }) => {
 
     const { username, email, password, confirmPassword } = formData;
     const history = useHistory();
-    const timeout = useRef();
 
-    return (
+    return loggedIn ? (
         <div className="profile-container">
             <div className="profile">
             <ConfirmationModal />
@@ -92,10 +89,11 @@ const Profile = ({ user, setMessage, showMsg, setModal, showModal }) => {
                 </form>
             </div>
         </div>
-    )
+    ) : <Redirect push to="/" />
 }
 
 const mapStateToProps = state => ({
+    loggedIn: state.gameData.loggedIn,
     user: state.player.user,
     showMsg: state.notifications.message.showMsg,
     showModal: state.notifications.modal.showModal

@@ -77,7 +77,6 @@ router.put('/update-user', [joiValidate(userUpdateSchema), checkToken], async (r
             userFields.password = await bcrypt.hash(password, salt);
         }
         const updatedUser = await User.findOneAndUpdate({'_id': id}, { $set: userFields }, { new: true }).select('-_id -password -__v').lean();
-        console.log(updatedUser)
         res.status(200).json(updatedUser);
     } catch (err) {
         console.log(err);
@@ -92,7 +91,7 @@ router.get('/progress', checkToken, async (req, res) => {
     const id = req.token.id;
     try {
         const userProgress = await UserProgress.findOne({ user: id }).lean();
-        res.json(userProgress);
+        res.status(200).json(userProgress);
     } catch (err) {
         console.log(err);
         res.status(500).send('Server Error');
@@ -107,7 +106,7 @@ router.put('/progress', checkToken, async (req, res) => {
     const id = req.token.id;
     try {
         const userProgress = await UserProgress.findOneAndUpdate({'user': id}, { $set: progress })
-        res.json(userProgress);
+        res.status(200).end();
     } catch (err) {
         console.log(err);
         res.status(500).send('Server Error');

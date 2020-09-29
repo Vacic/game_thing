@@ -6,10 +6,10 @@ const cookies = new Cookies();
 
 export const updateDbProgress = async history  => {
     const body = JSON.parse(localStorage.getItem('progress'));
-    // const config = { headers: { "Content-Type": "application/json" }, withCredentials: true };
+    const config = { headers: { "Content-Type": "application/json" }, withCredentials: true };
     try {
-        // await axios.put(`/users/progress`, body, config);
-        await axios.put(`http://localhost:3001/users/progress`, body, { headers: { token: localStorage.getItem('token')} });
+        await axios.put(`/users/progress`, body, config);
+        // await axios.put(`http://localhost:3001/users/progress`, body, { headers: { token: localStorage.getItem('token')} });
         console.log('Progress Updated');
         store.dispatch(setMessage({ msg: 'Saved!' }));
     } catch (err) {
