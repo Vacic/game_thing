@@ -9,10 +9,10 @@ const userLoginSchema = require('../validationSchemas/userLoginSchema');
 
 const User = require('../models/User');
 
-// @route  Post auth
+// @route  POST /auth
 // @desc   Login User
 // @access Public
-router.post('/', joiValidate(userLoginSchema), async (req, res) => {
+router.post('/login', joiValidate(userLoginSchema), async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await User.findOne({ email }).lean();
@@ -23,8 +23,8 @@ router.post('/', joiValidate(userLoginSchema), async (req, res) => {
         jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '15 days' }, (err, token) => {
             if(err) throw err;
             res.cookie('token', `Bearer ${token}`, { maxAge: 1296000000, httpOnly: true, secure: true });
-            res.status(200).end();
-            // res.status(200).json(`Bearer ${token}`);
+            // res.status(200).end();
+            res.status(200).json({ token: `Bearer ${token}` });
         });
     } catch (err) {
         console.log(err);
@@ -32,7 +32,10 @@ router.post('/', joiValidate(userLoginSchema), async (req, res) => {
     }
 });
 
-router.get('/checktoken', checkToken, async (req, res) => {
+// @route GET auth/check-token
+// @desc Checks the token and updates it if needed
+// @access Private
+router.get('/check-token', checkToken, async (req, res) => {
     const id = req.token.id;
     const exp = req.token.exp;
     const currentDate = Date.now()/1000;
@@ -41,8 +44,8 @@ router.get('/checktoken', checkToken, async (req, res) => {
             jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '15days' }, (err, token) => {
                 if(err) throw err;
                 res.cookie('token', `Bearer ${token}`, { maxAge: 1296000000, httpOnly: true, secure: true });
-                res.status(200).end();
-                // res.status(200).json(`Bearer ${token}`);
+                // res.status(200).end();
+                res.status(200).json(`Bearer ${token}`);
             });
         } else {
             res.status(200).end();

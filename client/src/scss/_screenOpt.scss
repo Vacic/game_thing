@@ -85,8 +85,8 @@
         }
     }
 
-    .registration-container, .login-container {
-        .registration-form, .login-form {
+    .registration-container, .login-container, .profile-container {
+        .registration-form, .login-form, .profile {
             width: 60%;
         }
     }
@@ -432,16 +432,6 @@
                 margin-top: 15px;
             }
         }
-        
-        .modal-container {
-            .confirmation-modal {
-                font-size: 1rem;
-
-                .modal-text {
-                    font-size: 1rem;
-                }
-            }
-        }
 
         .msg {
             font-size: 0.9rem;
@@ -453,42 +443,50 @@
         }
     }
 
-    .registration-container, .login-container {
-        .registration-form, .login-form {
+    .modal-container {
+        .confirmation-modal {
+            font-size: 1rem;
+
+            .modal-text {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .registration-container, .login-container, .profile-container {
+        .registration-form, .login-form, .profile {
             width: 80%;
 
             .msg {
-                padding: 6px 6px 8px 6px;
                 width: 100%;
                 font-size: 1.1rem;
-                color: rgb(247, 247, 247);
             }
 
             h2 {
                 font-size: 1.5rem;
                 text-align: center;
-                padding: 0.5rem 0 1rem 0;
             }
 
             form {
-                padding: 0 1.5rem 2rem 1.5rem;
-
-                div {
+                .form-spacing {
                     margin: 7px 0 18px 0;
     
-                    label {
+                    .label-control {
                         font-size: 1.1rem;
                     }
     
-                    input {
+                    .input-control {
                         padding: 8px;
                         font-size: 1.1rem;
                     }
                 }
+
+                .btn {                    
+                    font-size: 1.1rem;
+                }
     
-                button {
-                    padding: 13px;
-                    font-size: 1.3rem;
+                .profile-buttons {
+                    font-size: 1.1rem;
                     margin-top: 0.8rem;
                 }
             }
@@ -634,43 +632,6 @@
             }
         }
 
-        .modal-container {
-            .confirmation-modal {
-                height: 140px;
-                width: 260px;
-                font-size: 0.8rem;
-
-                &.hidden {
-                    margin-top: calc(140px/2);
-                }
-
-                span {
-                    display: none;
-                }
-
-                .modal-text {
-                    font-size: 0.9rem;
-                    padding: 26px 10px 0 10px
-                }
-
-                .btn-yes {
-                    margin: 22px 0px 0px 35px;
-                }
-
-                .btn-no {
-                    margin: 22px 35px 0px 0px;
-                }
-            }
-
-            .loading-modal {
-                width: 320px;
-
-                p {
-                    font-size: 1rem;
-                }
-            }
-        }
-
         .notifications {
             width: 290px;
             font-size: 0.85rem;
@@ -681,25 +642,68 @@
         }
     }
 
-    .registration-container, .login-container {
-        .registration-form, .login-form {
+    .modal-container {
+        .confirmation-modal {
+            width: 260px;
+            font-size: 0.8rem;
+
+            &.hidden {
+                margin-top: calc(140px/2);
+            }
+
+            span {
+                display: none;
+            }
+
+            .modal-text {
+                font-size: 0.9rem;
+                padding: 26px 10px 0 10px
+            }
+
+            .modal-buttons {
+                margin: 20px 0px 15px 0px;
+            }
+        }
+
+        .loading-modal {
+            width: 320px;
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .registration-container, .login-container, .profile-container {
+        .registration-form, .login-form, .profile {
             width: 90%;
+            padding: 1.2rem 1.5rem 1.2rem 1.5rem;
+
+            .msg {
+                font-size: 1rem;
+                margin-bottom: 0.7rem;
+            }
 
             form {
-                padding: 0 0.3rem 1.7rem 0.3rem;
-
-                div {    
-                    label {
+                .form-spacing {    
+                    .label-control {
                         font-size: 1rem;
                     }
     
-                    input {
+                    .input-control {
                         font-size: 1rem;
                     }
                 }
-    
-                button {
-                    font-size: 1.1rem;
+
+                .btn {
+                    font-size: 1rem;
+                }
+
+                .profile-buttons {
+                    .btn {
+                        font-size: 1rem;
+                        margin: 0.8rem 0.1rem 0 0.1rem;
+                    }
                 }
             }
         }

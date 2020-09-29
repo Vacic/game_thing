@@ -28,14 +28,8 @@ const RegistrationForm = React.memo(({ setMessage, hideMessage, showMsg }) => {
         if(password === confirmPassword) {
             toggleRegLoading(true)
             const isRegistered = await register({ username, email, password });
-            if(isRegistered === true) {
-                setMessage({ msg: 'Successfully Registered' });
-                setTimeout(() => history.push('/'), 2000);
-            }
-            else {
-                setMessage({ msg: isRegistered ?? 'Internal Server Error', classType: 'danger' });
-                toggleRegLoading(false);
-            }
+            if(isRegistered === true) setTimeout(() => history.push('/'), 2000);
+            else toggleRegLoading(false);
         } else {
             setMessage({ msg: 'Passwords Don\'t Match', classType: 'danger' });
             toggleRegLoading(false);
@@ -46,28 +40,31 @@ const RegistrationForm = React.memo(({ setMessage, hideMessage, showMsg }) => {
         <div className="registration-container">
             <div className ="registration-form">
                 {showMsg && <Message />}
-                <h2>Create an Account</h2>
                 <form onSubmit={e => submit(e)}>
-                    <div>
-                        <label htmlFor="username">Username</label>
-                        <input type="text" name="username" onChange={e => onChange(e)} />
+                    <h2 className="center">Create an Account</h2>
+                    <Link to="/"><i className="fas fa-2x fa-home" /></Link>
+                    <div className="form-spacing">
+                        <label className="label-control" htmlFor="username">Username</label>
+                        <input className="input-control" type="text" name="username" onChange={e => onChange(e)} />
                         <small>*Must contain at least 2 characters</small>
                     </div>
-                    <div>
-                        <label htmlFor="email">Email</label>
-                        <input type="email" name="email" onChange={e => onChange(e)} />
+                    <div className="form-spacing">
+                        <label className="label-control" htmlFor="email">Email</label>
+                        <input className="input-control" type="email" name="email" onChange={e => onChange(e)} />
                     </div>
-                    <div>
-                        <label htmlFor="password">Password</label>
-                        <input type="password" name="password" onChange={e => onChange(e)} />
+                    <div className="form-spacing">
+                        <label className="label-control" htmlFor="password">Password</label>
+                        <input className="input-control" type="password" name="password" onChange={e => onChange(e)} />
                         <small>*Must contain at least one letter, number and a special character</small>
                     </div>
-                    <div>
-                        <label htmlFor="confirm-password">Confirm Password</label>
-                        <input type="password" name="confirmPassword" onChange={e => onChange(e)} />
+                    <div className="form-spacing">
+                        <label className="label-control" htmlFor="confirm-password">Confirm Password</label>
+                        <input className="input-control" type="password" name="confirmPassword" onChange={e => onChange(e)} />
                     </div>
                     <p><Link to="/login">Already have an account?</Link></p>
-                    <button type="submit" disabled={regLoading ? true : false}>Create Account</button>
+                    <div className="button">
+                        <button type="submit" className="btn neutral center" disabled={regLoading ? true : false}>Create Account</button>
+                    </div>
                 </form>
             </div>
         </div>

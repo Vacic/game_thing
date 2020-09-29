@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import InventoryItem from './InventoryItem';
 
-const Inventory = ({ inventory, handleUseItem, equipItem, equipToQuickSlot, removeItem, removeAllItems, showModal }) => {
+const Inventory = ({ inventory, handleUseItem, equipItem, equipToQuickSlot, removeItem, removeAllItems }) => {
     const invItemNames = Object.keys(inventory);
     return (
         <div className="inventory">
@@ -16,8 +16,7 @@ const Inventory = ({ inventory, handleUseItem, equipItem, equipToQuickSlot, remo
                     equipItem={equipItem} 
                     equipToQuickSlot={equipToQuickSlot} 
                     removeItem={removeItem} 
-                    removeAllItems={removeAllItems} 
-                    showModal={showModal}
+                    removeAllItems={removeAllItems}
                 />)}
             </div>
         </div>

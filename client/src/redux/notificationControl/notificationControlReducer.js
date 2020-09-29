@@ -1,4 +1,4 @@
-import { SET_MESSAGE, HIDE_MESSAGE, SET_NOTIFICATION, REMOVE_NOTIFICATION } from "./notificationControlTypes";
+import { SET_MESSAGE, HIDE_MESSAGE, SET_NOTIFICATION, REMOVE_NOTIFICATION, SET_MODAL, TOGGLE_MODAL } from "./notificationControlTypes";
 
 const notificationState = {
     message: {
@@ -9,8 +9,13 @@ const notificationState = {
 
     notifications: [], // { img, msg, classType}
 
-    modul: {
-
+    modal: {
+        text: '',
+        showModal: false,
+        function: () => {},
+        itemToRemove: null,
+        history: null,
+        redirectDelay: 0
     }
 }
 
@@ -50,6 +55,27 @@ const notificationReducer = (state = notificationState, action) => {
         return {
             ...state,
             notifications: [ ...notifications ]
+        }
+
+        case SET_MODAL:
+        action.newModal.showModal = action.newModal.showModal ?? true;
+        action.newModal.text = action.newModal.text ?? '';
+        action.newModal.func = action.newModal.func ?? null;
+        action.newModal.itemToRemove = action.newModal.itemToRemove ?? null;
+        action.newModal.history = action.newModal.history ?? null;
+        action.newModal.redirectTo = action.newModal.redirectTo ?? null;
+        action.newModal.redirectDelay = action.newModal.redirectDelay ?? null;
+        return {
+            ...state,
+            modal: action.newModal
+        }
+
+        case TOGGLE_MODAL: return {
+            ...state,
+            modal: {
+                ...state.modal,
+                showModal: !state.modal.showModal
+            }
         }
 
         default: return state;

@@ -16,6 +16,7 @@
   justify-content: center !important; }
 
 .btn {
+  font: inherit;
   padding: 9px;
   font-size: 1rem;
   font-weight: 700;
@@ -24,11 +25,28 @@
   border-radius: 7px;
   color: white;
   outline: none;
+  text-align: center;
   cursor: pointer; }
   .btn:hover {
     box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.2); }
   .btn:active {
     box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.4); }
+
+.input-control {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 7px;
+  outline: none; }
+  .input-control:focus {
+    box-shadow: 2px 2px 2px 2px rgba(9, 108, 221, 0.3), 1px 1px 1px 1px rgba(9, 108, 221, 0.3); }
+
+.label-control {
+  margin-left: 10px;
+  width: 100%;
+  font-size: 1.2rem; }
 
 @-webkit-keyframes attBar {
   0% {
@@ -129,7 +147,6 @@
         .header .header-links .login-form .login-btn:active {
           box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.4); }
       .header .header-links .login-form .msg {
-        display: none;
         text-align: center;
         padding: 5px 0 10px 0;
         width: 100%;
@@ -159,17 +176,17 @@
         list-style-type: none;
         text-align: center;
         font-size: 0.9rem; }
+        .header .user-nav .user-menu .user-menu-options a {
+          text-decoration: none;
+          color: inherit; }
         .header .user-nav .user-menu .user-menu-options li {
           padding: 7px 15px 7px 15px;
           cursor: pointer; }
-          .header .user-nav .user-menu .user-menu-options li a {
-            text-decoration: none;
-            color: inherit; }
-          .header .user-nav .user-menu .user-menu-options li:first-child {
+          .header .user-nav .user-menu .user-menu-options li:nth-child(1) {
             border-top-right-radius: 10px;
             border-top-left-radius: 10px;
             padding-top: 9px; }
-          .header .user-nav .user-menu .user-menu-options li:last-child {
+          .header .user-nav .user-menu .user-menu-options li:nth-child(5) {
             border-bottom-right-radius: 10px;
             border-bottom-left-radius: 10px;
             padding-bottom: 9px; }
@@ -438,7 +455,7 @@
       -o-transition: all 1s cubic-bezier(0, 0, 0.29, 0.8);
       transition: all 1s cubic-bezier(0, 0, 0.29, 0.8); }
 
-.container .modal-container {
+.modal-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -456,9 +473,9 @@
   -ms-transition: all 0.2s linear;
   -o-transition: all 0.2s linear;
   transition: all 0.2s linear; }
-  .container .modal-container .confirmation-modal {
+  .modal-container .confirmation-modal {
     width: 400px;
-    height: 179px;
+    height: auto;
     background-color: rgba(241, 241, 241, 0.88);
     box-shadow: 1px 1px 4px 1px rgba(10, 10, 10, 0.7), 1px 1px 3px 1px rgba(10, 10, 10, 0.5);
     color: #303030;
@@ -471,54 +488,49 @@
     -ms-transition: all 0.2s linear;
     -o-transition: all 0.2s linear;
     transition: all 0.2s linear; }
-    .container .modal-container .confirmation-modal.hide {
+    .modal-container .confirmation-modal.hide {
       opacity: 0;
       transform: scale(0); }
-    .container .modal-container .confirmation-modal span {
+    .modal-container .confirmation-modal span {
       float: right;
       padding: 0 9px 0 0;
       color: black;
       font-weight: 1000;
       font-size: 1.5rem;
       opacity: 1; }
-      .container .modal-container .confirmation-modal span:hover {
+      .modal-container .confirmation-modal span:hover {
         cursor: pointer; }
-    .container .modal-container .confirmation-modal .modal-text {
+    .modal-container .confirmation-modal .modal-text {
       font-size: 1.1rem;
       text-align: center;
       padding: 42px 40px 0 40px;
       opacity: 1; }
-    .container .modal-container .confirmation-modal .btn-yes, .container .modal-container .confirmation-modal .btn-no {
-      padding: 10px;
-      text-align: center;
-      width: 30%;
-      float: left;
-      background-color: #2680ca;
-      color: white;
-      border-radius: 10px;
-      margin: 30px 20px 0px 20px;
-      opacity: 1; }
-      .container .modal-container .confirmation-modal .btn-yes:hover, .container .modal-container .confirmation-modal .btn-no:hover {
-        cursor: pointer; }
-    .container .modal-container .confirmation-modal .btn-no {
-      float: right;
-      background-color: #ff5050; }
-  .container .modal-container .loading-modal {
+    .modal-container .confirmation-modal .modal-buttons {
+      display: flex;
+      justify-content: space-around;
+      margin: 30px 20px 20px 20px; }
+      .modal-container .confirmation-modal .modal-buttons .btn {
+        width: 30%;
+        color: white;
+        opacity: 1; }
+        .modal-container .confirmation-modal .modal-buttons .btn:hover {
+          cursor: pointer; }
+  .modal-container .loading-modal {
     width: 400px;
     background-color: rgba(241, 241, 241, 0.88);
     box-shadow: 1px 1px 4px 1px rgba(10, 10, 10, 0.7), 1px 1px 3px 1px rgba(10, 10, 10, 0.5);
     color: #303030;
     border-radius: 10px; }
-    .container .modal-container .loading-modal .spinner {
+    .modal-container .loading-modal .spinner {
       padding: 4em; }
-    .container .modal-container .loading-modal p {
+    .modal-container .loading-modal p {
       font-size: 1.2rem;
       font-weight: 600;
       text-align: center;
       padding: 25px;
       margin-top: -60px; }
 
-.container .hide-modal {
+.hide-modal {
   visibility: hidden;
   opacity: 0; }
 
@@ -536,9 +548,10 @@
     border-radius: 10px;
     text-align: center;
     width: 30%; }
+    .battle-screen .player .enemy-card > .name, .battle-screen .enemy .enemy-card > .name {
+      text-transform: capitalize; }
     .battle-screen .player .player-card .name, .battle-screen .player .enemy-card .name, .battle-screen .enemy .player-card .name, .battle-screen .enemy .enemy-card .name {
       font-size: 1.6rem;
-      text-transform: capitalize;
       white-space: nowrap;
       overflow: hidden; }
     .battle-screen .player .player-card .hp-bar .current, .battle-screen .player .player-card .hp-bar .max, .battle-screen .player .enemy-card .hp-bar .current, .battle-screen .player .enemy-card .hp-bar .max, .battle-screen .enemy .player-card .hp-bar .current, .battle-screen .enemy .player-card .hp-bar .max, .battle-screen .enemy .enemy-card .hp-bar .current, .battle-screen .enemy .enemy-card .hp-bar .max {
@@ -681,65 +694,55 @@
   height: 100vh;
   background: rgba(190, 190, 190, 0.7); }
   .registration-container .registration-form, .registration-container .login-form, .login-container .registration-form, .login-container .login-form {
+    padding: 1.8rem 2.5rem 1.8rem 2.5rem;
+    min-width: 248px;
     width: 40%;
+    height: fit-content;
     margin: auto;
     border-radius: 10px;
     background-color: #e6e6e6;
-    padding: 1rem 20px 0 20px;
+    box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.2), 0px 0px 12px 6px rgba(0, 0, 0, 0.2);
     font-weight: 500;
     color: #3c3c3c; }
     .registration-container .registration-form .msg, .registration-container .login-form .msg, .login-container .registration-form .msg, .login-container .login-form .msg {
-      display: none;
       text-align: center;
       padding: 10px 10px 12px 10px;
       width: 100%;
       font-size: 1.2rem;
-      color: #f7f7f7; }
+      color: #f7f7f7;
+      margin-bottom: 1rem; }
     .registration-container .registration-form .show, .registration-container .login-form .show, .login-container .registration-form .show, .login-container .login-form .show {
       display: block; }
     .registration-container .registration-form h2, .registration-container .login-form h2, .login-container .registration-form h2, .login-container .login-form h2 {
-      width: 100%;
-      font-size: 1.8rem;
-      text-align: center;
-      padding: 1rem 0 2rem 0; }
+      margin-bottom: 1rem; }
+    .registration-container .registration-form a, .registration-container .login-form a, .login-container .registration-form a, .login-container .login-form a {
+      text-decoration: none;
+      color: #269ab8;
+      font-weight: 600; }
+      .registration-container .registration-form a:active, .registration-container .login-form a:active, .login-container .registration-form a:active, .login-container .login-form a:active {
+        color: #155363; }
+      .registration-container .registration-form a i, .registration-container .login-form a i, .login-container .registration-form a i, .login-container .login-form a i {
+        position: absolute;
+        font-size: 2rem;
+        top: 0;
+        right: 0; }
     .registration-container .registration-form form, .registration-container .login-form form, .login-container .registration-form form, .login-container .login-form form {
-      padding: 0 2.5rem 3rem 2.5rem; }
-      .registration-container .registration-form form div, .registration-container .login-form form div, .login-container .registration-form form div, .login-container .login-form form div {
+      height: fit-content;
+      position: relative; }
+      .registration-container .registration-form form .form-spacing, .registration-container .login-form form .form-spacing, .login-container .registration-form form .form-spacing, .login-container .login-form form .form-spacing {
         margin: 10px 0 20px 0; }
-        .registration-container .registration-form form div label, .registration-container .login-form form div label, .login-container .registration-form form div label, .login-container .login-form form div label {
-          margin-left: 10px;
-          width: 100%;
-          font-size: 1.2rem; }
-        .registration-container .registration-form form div input, .registration-container .login-form form div input, .login-container .registration-form form div input, .login-container .login-form form div input {
-          width: 100%;
-          padding: 10px;
-          margin-top: 10px;
-          font-size: 1.2rem;
-          border: none;
-          border-radius: 7px;
-          outline: none; }
-          .registration-container .registration-form form div input:focus, .registration-container .login-form form div input:focus, .login-container .registration-form form div input:focus, .login-container .login-form form div input:focus {
-            box-shadow: 2px 2px 2px 2px rgba(9, 108, 221, 0.3), 1px 1px 1px 1px rgba(9, 108, 221, 0.3); }
-        .registration-container .registration-form form div small, .registration-container .login-form form div small, .login-container .registration-form form div small, .login-container .login-form form div small {
+        .registration-container .registration-form form .form-spacing small, .registration-container .login-form form .form-spacing small, .login-container .registration-form form .form-spacing small, .login-container .login-form form .form-spacing small {
           color: #686868; }
-      .registration-container .registration-form form p, .registration-container .login-form form p, .login-container .registration-form form p, .login-container .login-form form p {
-        padding-left: 3px; }
-      .registration-container .registration-form form button, .registration-container .login-form form button, .login-container .registration-form form button, .login-container .login-form form button {
-        padding: 15px;
-        font-size: 1.5rem;
-        font-weight: 700;
+      .registration-container .registration-form form [class="btn"], .registration-container .login-form form [class="btn"], .login-container .registration-form form [class="btn"], .login-container .login-form form [class="btn"] {
+        text-align: center; }
+      .registration-container .registration-form form .button, .registration-container .login-form form .button, .login-container .registration-form form .button, .login-container .login-form form .button {
+        margin: 2rem 0 0.8rem 0;
         width: 100%;
-        margin-top: 1rem;
-        border: none;
-        border-radius: 10px;
-        color: white;
-        background-color: #007bce;
-        outline: none;
-        cursor: pointer; }
-        .registration-container .registration-form form button:active, .registration-container .login-form form button:active, .login-container .registration-form form button:active, .login-container .login-form form button:active {
-          box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.2); }
-        .registration-container .registration-form form button:disabled, .registration-container .login-form form button:disabled, .login-container .registration-form form button:disabled, .login-container .login-form form button:disabled {
-          box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.2); }
+        text-align: center; }
+      .registration-container .registration-form form .btn, .registration-container .login-form form .btn, .login-container .registration-form form .btn, .login-container .login-form form .btn {
+        font-size: 1.2rem; }
+        .registration-container .registration-form form .btn:disabled, .registration-container .login-form form .btn:disabled, .login-container .registration-form form .btn:disabled, .login-container .login-form form .btn:disabled {
+          box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.4); }
 
 .profile-container {
   display: flex;
@@ -747,13 +750,56 @@
   height: 100vh;
   background: rgba(190, 190, 190, 0.7); }
   .profile-container .profile {
+    padding: 1.8rem 2.5rem 1.8rem 2.5rem;
+    min-width: 248px;
     width: 40%;
+    height: 90%;
     margin: auto;
     border-radius: 10px;
     background-color: #e6e6e6;
-    padding: 1rem 20px 0 20px;
+    box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.2), 0px 0px 12px 6px rgba(0, 0, 0, 0.2);
     font-weight: 500;
     color: #3c3c3c; }
+    .profile-container .profile .msg {
+      text-align: center;
+      padding: 10px 10px 12px 10px;
+      width: 100%;
+      font-size: 1.2rem;
+      color: #f7f7f7;
+      margin-bottom: 1rem; }
+    .profile-container .profile .show {
+      display: block; }
+    .profile-container .profile h2 {
+      margin-bottom: 1rem; }
+    .profile-container .profile a {
+      text-decoration: none;
+      color: #269ab8; }
+      .profile-container .profile a:active {
+        color: #155363; }
+      .profile-container .profile a i {
+        position: absolute;
+        top: 0;
+        right: 0; }
+    .profile-container .profile form {
+      height: 100%;
+      position: relative; }
+      .profile-container .profile form .form-spacing {
+        margin: 10px 0 20px 0; }
+        .profile-container .profile form .form-spacing small {
+          color: #686868; }
+      .profile-container .profile form .btn {
+        font-size: 1.2rem;
+        margin: 1.7rem 1rem 0 1rem; }
+        .profile-container .profile form .btn:disabled {
+          box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.4); }
+    .profile-container .profile .profile-buttons {
+      display: flex;
+      position: absolute;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      width: 100%;
+      bottom: 0;
+      left: 0; }
 
 * {
   box-sizing: border-box;
@@ -878,7 +924,7 @@ body {
             height: 33px; }
     .container .action-buttons .btn {
       width: 39%; }
-  .registration-container .registration-form, .registration-container .login-form, .login-container .registration-form, .login-container .login-form {
+  .registration-container .registration-form, .registration-container .login-form, .registration-container .profile, .login-container .registration-form, .login-container .login-form, .login-container .profile, .profile-container .registration-form, .profile-container .login-form, .profile-container .profile {
     width: 60%; } }
 
 @media screen and (max-width: 768px) {
@@ -1094,39 +1140,35 @@ body {
           font-size: 0.8rem; }
       .container .inv-equip .equipment {
         margin-top: 15px; }
-    .container .modal-container .confirmation-modal {
-      font-size: 1rem; }
-      .container .modal-container .confirmation-modal .modal-text {
-        font-size: 1rem; }
     .container .msg {
       font-size: 0.9rem; }
       .container .msg img {
         width: 30px;
         height: 30px; }
-  .registration-container .registration-form, .registration-container .login-form, .login-container .registration-form, .login-container .login-form {
+  .modal-container .confirmation-modal {
+    font-size: 1rem; }
+    .modal-container .confirmation-modal .modal-text {
+      font-size: 1rem; }
+  .registration-container .registration-form, .registration-container .login-form, .registration-container .profile, .login-container .registration-form, .login-container .login-form, .login-container .profile, .profile-container .registration-form, .profile-container .login-form, .profile-container .profile {
     width: 80%; }
-    .registration-container .registration-form .msg, .registration-container .login-form .msg, .login-container .registration-form .msg, .login-container .login-form .msg {
-      padding: 6px 6px 8px 6px;
+    .registration-container .registration-form .msg, .registration-container .login-form .msg, .registration-container .profile .msg, .login-container .registration-form .msg, .login-container .login-form .msg, .login-container .profile .msg, .profile-container .registration-form .msg, .profile-container .login-form .msg, .profile-container .profile .msg {
       width: 100%;
-      font-size: 1.1rem;
-      color: #f7f7f7; }
-    .registration-container .registration-form h2, .registration-container .login-form h2, .login-container .registration-form h2, .login-container .login-form h2 {
+      font-size: 1.1rem; }
+    .registration-container .registration-form h2, .registration-container .login-form h2, .registration-container .profile h2, .login-container .registration-form h2, .login-container .login-form h2, .login-container .profile h2, .profile-container .registration-form h2, .profile-container .login-form h2, .profile-container .profile h2 {
       font-size: 1.5rem;
-      text-align: center;
-      padding: 0.5rem 0 1rem 0; }
-    .registration-container .registration-form form, .registration-container .login-form form, .login-container .registration-form form, .login-container .login-form form {
-      padding: 0 1.5rem 2rem 1.5rem; }
-      .registration-container .registration-form form div, .registration-container .login-form form div, .login-container .registration-form form div, .login-container .login-form form div {
-        margin: 7px 0 18px 0; }
-        .registration-container .registration-form form div label, .registration-container .login-form form div label, .login-container .registration-form form div label, .login-container .login-form form div label {
-          font-size: 1.1rem; }
-        .registration-container .registration-form form div input, .registration-container .login-form form div input, .login-container .registration-form form div input, .login-container .login-form form div input {
-          padding: 8px;
-          font-size: 1.1rem; }
-      .registration-container .registration-form form button, .registration-container .login-form form button, .login-container .registration-form form button, .login-container .login-form form button {
-        padding: 13px;
-        font-size: 1.3rem;
-        margin-top: 0.8rem; } }
+      text-align: center; }
+    .registration-container .registration-form form .form-spacing, .registration-container .login-form form .form-spacing, .registration-container .profile form .form-spacing, .login-container .registration-form form .form-spacing, .login-container .login-form form .form-spacing, .login-container .profile form .form-spacing, .profile-container .registration-form form .form-spacing, .profile-container .login-form form .form-spacing, .profile-container .profile form .form-spacing {
+      margin: 7px 0 18px 0; }
+      .registration-container .registration-form form .form-spacing .label-control, .registration-container .login-form form .form-spacing .label-control, .registration-container .profile form .form-spacing .label-control, .login-container .registration-form form .form-spacing .label-control, .login-container .login-form form .form-spacing .label-control, .login-container .profile form .form-spacing .label-control, .profile-container .registration-form form .form-spacing .label-control, .profile-container .login-form form .form-spacing .label-control, .profile-container .profile form .form-spacing .label-control {
+        font-size: 1.1rem; }
+      .registration-container .registration-form form .form-spacing .input-control, .registration-container .login-form form .form-spacing .input-control, .registration-container .profile form .form-spacing .input-control, .login-container .registration-form form .form-spacing .input-control, .login-container .login-form form .form-spacing .input-control, .login-container .profile form .form-spacing .input-control, .profile-container .registration-form form .form-spacing .input-control, .profile-container .login-form form .form-spacing .input-control, .profile-container .profile form .form-spacing .input-control {
+        padding: 8px;
+        font-size: 1.1rem; }
+    .registration-container .registration-form form .btn, .registration-container .login-form form .btn, .registration-container .profile form .btn, .login-container .registration-form form .btn, .login-container .login-form form .btn, .login-container .profile form .btn, .profile-container .registration-form form .btn, .profile-container .login-form form .btn, .profile-container .profile form .btn {
+      font-size: 1.1rem; }
+    .registration-container .registration-form form .profile-buttons, .registration-container .login-form form .profile-buttons, .registration-container .profile form .profile-buttons, .login-container .registration-form form .profile-buttons, .login-container .login-form form .profile-buttons, .login-container .profile form .profile-buttons, .profile-container .registration-form form .profile-buttons, .profile-container .login-form form .profile-buttons, .profile-container .profile form .profile-buttons {
+      font-size: 1.1rem;
+      margin-top: 0.8rem; } }
 
 @media screen and (max-width: 500px) {
   .header .header-links .login-form {
@@ -1195,40 +1237,42 @@ body {
         top: -201px; }
       .container .inv-equip .inventory .inv-list .inv-item .item-count {
         font-size: 0.8rem; }
-    .container .modal-container .confirmation-modal {
-      height: 140px;
-      width: 260px;
-      font-size: 0.8rem; }
-      .container .modal-container .confirmation-modal.hidden {
-        margin-top: calc(140px/2); }
-      .container .modal-container .confirmation-modal span {
-        display: none; }
-      .container .modal-container .confirmation-modal .modal-text {
-        font-size: 0.9rem;
-        padding: 26px 10px 0 10px; }
-      .container .modal-container .confirmation-modal .btn-yes {
-        margin: 22px 0px 0px 35px; }
-      .container .modal-container .confirmation-modal .btn-no {
-        margin: 22px 35px 0px 0px; }
-    .container .modal-container .loading-modal {
-      width: 320px; }
-      .container .modal-container .loading-modal p {
-        font-size: 1rem; }
     .container .notifications {
       width: 290px;
       font-size: 0.85rem; }
       .container .notifications .notification {
         padding: 12px 12px 12px 15px; }
-  .registration-container .registration-form, .registration-container .login-form, .login-container .registration-form, .login-container .login-form {
-    width: 90%; }
-    .registration-container .registration-form form, .registration-container .login-form form, .login-container .registration-form form, .login-container .login-form form {
-      padding: 0 0.3rem 1.7rem 0.3rem; }
-      .registration-container .registration-form form div label, .registration-container .login-form form div label, .login-container .registration-form form div label, .login-container .login-form form div label {
-        font-size: 1rem; }
-      .registration-container .registration-form form div input, .registration-container .login-form form div input, .login-container .registration-form form div input, .login-container .login-form form div input {
-        font-size: 1rem; }
-      .registration-container .registration-form form button, .registration-container .login-form form button, .login-container .registration-form form button, .login-container .login-form form button {
-        font-size: 1.1rem; } }
+  .modal-container .confirmation-modal {
+    width: 260px;
+    font-size: 0.8rem; }
+    .modal-container .confirmation-modal.hidden {
+      margin-top: calc(140px/2); }
+    .modal-container .confirmation-modal span {
+      display: none; }
+    .modal-container .confirmation-modal .modal-text {
+      font-size: 0.9rem;
+      padding: 26px 10px 0 10px; }
+    .modal-container .confirmation-modal .modal-buttons {
+      margin: 20px 0px 15px 0px; }
+  .modal-container .loading-modal {
+    width: 320px; }
+    .modal-container .loading-modal p {
+      font-size: 1rem; }
+  .registration-container .registration-form, .registration-container .login-form, .registration-container .profile, .login-container .registration-form, .login-container .login-form, .login-container .profile, .profile-container .registration-form, .profile-container .login-form, .profile-container .profile {
+    width: 90%;
+    padding: 1.2rem 1.5rem 1.2rem 1.5rem; }
+    .registration-container .registration-form .msg, .registration-container .login-form .msg, .registration-container .profile .msg, .login-container .registration-form .msg, .login-container .login-form .msg, .login-container .profile .msg, .profile-container .registration-form .msg, .profile-container .login-form .msg, .profile-container .profile .msg {
+      font-size: 1rem;
+      margin-bottom: 0.7rem; }
+    .registration-container .registration-form form .form-spacing .label-control, .registration-container .login-form form .form-spacing .label-control, .registration-container .profile form .form-spacing .label-control, .login-container .registration-form form .form-spacing .label-control, .login-container .login-form form .form-spacing .label-control, .login-container .profile form .form-spacing .label-control, .profile-container .registration-form form .form-spacing .label-control, .profile-container .login-form form .form-spacing .label-control, .profile-container .profile form .form-spacing .label-control {
+      font-size: 1rem; }
+    .registration-container .registration-form form .form-spacing .input-control, .registration-container .login-form form .form-spacing .input-control, .registration-container .profile form .form-spacing .input-control, .login-container .registration-form form .form-spacing .input-control, .login-container .login-form form .form-spacing .input-control, .login-container .profile form .form-spacing .input-control, .profile-container .registration-form form .form-spacing .input-control, .profile-container .login-form form .form-spacing .input-control, .profile-container .profile form .form-spacing .input-control {
+      font-size: 1rem; }
+    .registration-container .registration-form form .btn, .registration-container .login-form form .btn, .registration-container .profile form .btn, .login-container .registration-form form .btn, .login-container .login-form form .btn, .login-container .profile form .btn, .profile-container .registration-form form .btn, .profile-container .login-form form .btn, .profile-container .profile form .btn {
+      font-size: 1rem; }
+    .registration-container .registration-form form .profile-buttons .btn, .registration-container .login-form form .profile-buttons .btn, .registration-container .profile form .profile-buttons .btn, .login-container .registration-form form .profile-buttons .btn, .login-container .login-form form .profile-buttons .btn, .login-container .profile form .profile-buttons .btn, .profile-container .registration-form form .profile-buttons .btn, .profile-container .login-form form .profile-buttons .btn, .profile-container .profile form .profile-buttons .btn {
+      font-size: 1rem;
+      margin: 0.8rem 0.1rem 0 0.1rem; } }
 
 @media screen and (max-width: 400px) {
   .header {

@@ -5,7 +5,7 @@ import Equipment from './equipment/Equipment';
 import { updateInventory, setCurrentPlayerHp, updatePlayerStats, updatePlayerEquipment, updatePlayerQuickBarEquipment, reduceSingleItem, setNotification } from '../../../redux';
 
 const InvAndEquip = React.memo((props) => {
-    const { handleUseItem, playerHpBar, showModal, resetPlayerAttack } = props // From Game Container
+    const { handleUseItem, playerHpBar, resetPlayerAttack } = props // From Game Container
     const { inventory, playerStats, playerEquip, currentPlayerHp, quickBarEquipment, currentEnemy } = props // State
     const { updatePlayerStats, updatePlayerEquipment, updateInventory, setCurrentPlayerHp, updatePlayerQuickBarEquipment, reduceSingleItem, setNotification } = props // Dispatch
 
@@ -141,7 +141,7 @@ const InvAndEquip = React.memo((props) => {
     return (
         <div className="inv-equip">
             <Equipment unequipItem={unequipItem} />
-            <Inventory handleUseItem={handleUseItem} equipItem={equipItem} equipToQuickSlot={equipToQuickSlot} removeItem={removeItem} removeAllItems={removeAllItems} showModal={showModal} />
+            <Inventory handleUseItem={handleUseItem} equipItem={equipItem} equipToQuickSlot={equipToQuickSlot} removeItem={removeItem} removeAllItems={removeAllItems} />
         </div>
     )
 });

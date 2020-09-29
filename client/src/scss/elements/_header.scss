@@ -96,7 +96,6 @@
             }
 
             .msg {
-                display: none;
                 text-align: center;
                 padding: 5px 0 10px 0;
                 width: 100%;
@@ -138,23 +137,23 @@
                 list-style-type: none;
                 text-align: center;
                 font-size: 0.9rem;
+
+                a {
+                    text-decoration: none;
+                    color: inherit;
+                }
                 
                 li {
                     padding: 7px 15px 7px 15px;
                     cursor: pointer;
 
-                    a {
-                        text-decoration: none;
-                        color: inherit;
-                    }
-                    
-                    &:first-child {
+                    &:nth-child(1) {
                         border-top-right-radius: $border-radius;
                         border-top-left-radius: $border-radius;
                         padding-top: 9px;
                     }
 
-                    &:last-child {
+                    &:nth-child(5) {
                         border-bottom-right-radius: $border-radius;
                         border-bottom-left-radius: $border-radius;
                         padding-bottom: 9px;

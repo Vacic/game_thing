@@ -29,7 +29,7 @@ const Header = ({ loggedIn, username }) => {
 
 const mapStateToProps = state => ({
     loggedIn: state.gameData.loggedIn,
-    username: state.player.name
+    username: state.player.user.username
 });
 
 export default connect(mapStateToProps)(Header);

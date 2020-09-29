@@ -7,53 +7,40 @@ import InvAndEquip from './inventory_equipment/InvAndEquip';
 import ConfirmationModal from '../helperComponents/ConfirmationModal';
 import LoadingModal from '../helperComponents/LoadingModal';
 import Notifications from '../helperComponents/notifications/Notifications';
-import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading, enemyTakesDamage, playerTakesDamage, updateInventory, updatePlayerQuickBarEquipment, setMessage, setLoadingEnemy, cookieChecked, setLogin, populateGame, hideMessage, setNotification } from '../../redux';
+import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading, enemyTakesDamage, playerTakesDamage, updateInventory, updatePlayerQuickBarEquipment, setMessage, setLoadingEnemy, cookieChecked, setLogin, populateGame, hideMessage, setNotification, populateUser } from '../../redux';
 import { setLocalStorage, updateDbProgress, checkToken } from '../../services';
 
 
 
 class GameContainer extends PureComponent {
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~GAME LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~
-        constructor(props) {
-            super(props)
-        
-            this.state = {
-                modalText: '',
-                modalFunc: () => null,
-                itemToRemove: {},
-                isModalHidden: true
-            }
-        }
         componentDidMount = async () => {
             if(!this.props.isCookieChecked) {
                 localStorage.removeItem('progress');
                 const cookie = await checkToken(this.props.history);
                 if(cookie === true) {
                     this.props.setLogin(true);
+                    await this.props.populateUser();
                     await this.props.populateGame();
                     this.playerHpBar.style.width = `${Math.floor((this.props.currentPlayerHp/this.props.playerStats.hp)*100)}%`;
                 }
                 this.props.cookieChecked();
             }
+            if(this.props.loggedIn) this.updateProgressInterval = setInterval(() => updateDbProgress(this.props.history), 15000);
             setInterval(() => setLocalStorage(), 1000);
         }
 
         componentDidUpdate = (prevProps) => {
             if(this.props.loggedIn !== prevProps.loggedIn) {
                 this.resetActions();
-                this.props.setCurrentEnemyHp(0);
-                this.props.setCurrentEnemyStats({ name: 'Select Location', hp:0, dmg:0, attSpd:0, def:0, eva:0 });
                 this.enemyHpBar.style.width = '100%';
                 this.playerHpBar.style.width = `${Math.floor((this.props.currentPlayerHp/this.props.playerStats.hp)*100)}%`;
-                if(this.props.loggedIn) this.updateProgressInterval = setInterval(() => updateDbProgress(this.props.history), 15000);
-                else {
-                    clearInterval(this.updateProgressInterval);
-                }
             }
         }
 
         componentWillUnmount = () => {
             hideMessage();
+            clearInterval(this.updateProgressInterval);
             this.resetActions();
         }
         
@@ -121,14 +108,6 @@ class GameContainer extends PureComponent {
         calcDef = (dmg, def) => {
             if ( def > 40 && dmg < def) return Math.ceil(dmg / 3);
             else  return (dmg - Math.ceil(def / 3));
-        }
-
-        showModal = (text, func, item) => {
-            this.setState({ isModalHidden: false, modalText: text, modalFunc: func, itemToRemove: item });
-        }
-
-        hideModal = () => {
-            this.setState({ isModalHidden: true });
         }
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~PLAYER LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         startPlayerAttack = (dmg, attSpd, enemyDef, enemyEva) => {
@@ -271,13 +250,12 @@ class GameContainer extends PureComponent {
                 <InvAndEquip 
                     handleUseItem={this.handleUseItem} 
                     playerHpBar={this.playerHpBar}
-                    showModal={this.showModal}
                     resetPlayerAttack={this.resetPlayerAttack}
                 />
 
                 <Notifications />
 
-                <ConfirmationModal text={this.state.modalText} func={this.state.modalFunc} isHidden={this.state.isModalHidden} hideModal={this.hideModal} itemToRemove={this.state.itemToRemove} />
+                <ConfirmationModal />
                 {!this.props.isCookieChecked && <LoadingModal />}
             </div>
         )
@@ -322,7 +300,8 @@ const mapDispatchToProps = dispatch => {
 
         cookieChecked: () => dispatch(cookieChecked()),
         setLogin: (isLoggedIn) => dispatch(setLogin(isLoggedIn)),
-        populateGame: () => dispatch(populateGame())
+        populateGame: () => dispatch(populateGame()),
+        populateUser: () => dispatch(populateUser())
     }
 }
 

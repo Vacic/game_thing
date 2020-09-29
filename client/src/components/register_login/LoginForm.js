@@ -28,18 +28,21 @@ function LoginForm({ hideMessage, showMsg, login }) {
         <div className="login-container">
             <div className ="login-form">
                 {showMsg && <Message />}
-                <h2>Log In</h2>
                 <form onSubmit={e => submit(e)}>
-                    <div>
-                        <label htmlFor="email">Email</label>
-                        <input type="email" name="email" onChange={e => onChange(e)} />
+                    <Link to="/"><i className="fas fa-2x fa-home" /></Link>
+                    <i className="fas fa-home" />
+                    <div className="form-spacing">
+                        <label className="label-control" htmlFor="email">Email</label>
+                        <input className="input-control" type="email" name="email" onChange={e => onChange(e)} />
                     </div>
-                    <div>
-                        <label htmlFor="password">Password</label>
-                        <input type="password" name="password" onChange={e => onChange(e)} />
+                    <div className="form-spacing">
+                        <label className="label-control" htmlFor="password">Password</label>
+                        <input className="input-control" type="password" name="password" onChange={e => onChange(e)} />
                     </div>
                     <p><Link to="/register">Don't have an account?</Link></p>
-                    <button type="submit">Login</button>
+                    <div className="button">
+                        <button className="btn neutral center" type="submit" >Login</button>
+                    </div>
                 </form>
             </div>
         </div>

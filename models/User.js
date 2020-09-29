@@ -13,13 +13,6 @@ const userSchema  = new mongoose.Schema({
         type: String,
         required: true
     },
-    login_token: {
-        token: String,
-        created: {
-            type: Date,
-            default: Date.now
-        }
-    },
     dateCreated: {
         type: Date,
         default: Date.now

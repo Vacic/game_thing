@@ -1,9 +1,8 @@
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import { SET_CURRENT_PLAYER_HP, SET_CURRENT_ENEMY_HP, SET_CURRENT_ENEMY_STATS, SET_LOADING, ENEMY_TAKES_DAMAGE, PLAYER_TAKES_DAMAGE, SET_CURRENT_LOCATION, LOGIN, SET_LOADING_ENEMY, COOKIE_CHECKED } from './gameDataTypes';
-import { populatePlayer, updateInventory } from '../player/playerAction';
+import { populatePlayer, populateUser, updateUser } from '../player/playerAction';
 import { setMessage, setNotification } from '../notificationControl/notificationControlActions';
-import store from '../store';
 const cookies = new Cookies();
 
 export const login = (email, password) => async dispatch => {
@@ -11,17 +10,16 @@ export const login = (email, password) => async dispatch => {
     const config = { headers: { "Content-Type": "application/json" } };
     const body = JSON.stringify({ email, password });
     try {
-        // const res = await axios.post('http://localhost:3001/auth', body, config);
-        // localStorage.setItem('token', res.data );
-        await axios.post('/auth', body, config);
-        const populated = await dispatch(populateGame());
-        if(populated === true) {
-            cookies.set('loggedIn', 'yup', { sameSite: true });
-            setLogin(true);
-            dispatch(setMessage({ msg: 'Logged In Successfully' }));
-            dispatch(setNotification({ msg: `Logged In Successfully`, classType: 'success' }));
-            return true;
-        }
+        const { data } = await axios.post('http://localhost:3001/auth/login', body, config);
+        localStorage.setItem('token', data.token );
+        // await axios.post('/auth/login', body, config);
+        await dispatch(populateUser());
+        await dispatch(populateGame());
+        cookies.set('loggedIn', 'yup', { sameSite: true });
+        setLogin(true);
+        dispatch(setMessage({ msg: 'Logged In Successfully' }));
+        dispatch(setNotification({ msg: `Logged In Successfully`, classType: 'success' }));
+        return true;
     } catch (err) {
         cookies.remove('loggedIn');
         dispatch(setNotification({ msg: `Login Failed`, classType: 'danger' }));
@@ -40,23 +38,35 @@ export const logout = () => dispatch => {
     cookies.remove('loggedIn');
     dispatch(setLoading(true));
     let number = '';
-    for(let i=0; i<8; i++) {
-        number += Math.round(Math.random()*10);
-    }
+    for(let i=0; i<8; i++) number += Math.round(Math.random()*10);
     localStorage.removeItem('progress');
     const username = `Guest_${number}`;
 
     dispatch(populatePlayer({
-        weapon: 'Fists',
-        hp: 80,
-        dmg: 5, //5
-        attSpd: 1, //1
+        playerStats: {
+            weapon: 'Fists',
+            hp: 80,
+            dmg: 5, //5
+            attSpd: 1, //1
+            def: 0,
+            eva: 1
+        }, 
+        equipment: {}, 
+        quickBarEquipment: ['', '', ''],
+        inventory: {}
+    }));
+    dispatch(setCurrentEnemyStats({
+        name: 'Select Location',
+        hp: 0,
+        dmg: 0,
+        attSpd: 0,
         def: 0,
-        eva: 1
-    }, username, {}, []));
+        eva: 0
+    }));
+    dispatch(setCurrentEnemyHp(0));
     dispatch(setCurrentPlayerHp(80));
     dispatch(setCurrentLocation('farm'));
-    dispatch(updateInventory({}));
+    dispatch(updateUser({ username }))
     dispatch(setLogin(false));
     dispatch(setLoading(false));
     dispatch(setLoadingEnemy(false));
@@ -67,18 +77,17 @@ export const logout = () => dispatch => {
 export const populateGame = () => async dispatch => {
     dispatch(setLoading(true));
     try {
-        // const { data } = await axios.get(`http://localhost:3001/users/progress`, { headers: { token: localStorage.getItem('token')} });
-        const { data } = await axios.get(`/users/progress`, { withCredentials: true });
-        const { currentHp, currentLocation, inventory = {}, playerStats, equipment = {}, quickBarEquipment = ['', '', ''], user: { username } } = data;
-        dispatch(populatePlayer(playerStats, username, equipment, quickBarEquipment));
+         const { data } = await axios.get(`http://localhost:3001/users/progress`, { headers: { token: localStorage.getItem('token')} });
+        // const { data } = await axios.get(`/users/progress`, { withCredentials: true });
+        const { currentHp, currentLocation, inventory = {}, playerStats, equipment = {}, quickBarEquipment = ['', '', ''] } = data;
+        dispatch(populatePlayer({ playerStats, inventory, equipment, quickBarEquipment }));
         dispatch(setCurrentPlayerHp(currentHp));
         dispatch(setCurrentLocation(currentLocation));
-        dispatch(updateInventory(inventory));
         dispatch(setLogin(true));
         dispatch(setLoading(false));
         dispatch(setNotification({ msg: `Save File Loaded`, classType: 'success' }));
-        return true;
     } catch (err) {
+        cookies.remove('loggedIn');
         dispatch(setNotification({ msg: `Save File Failed to Load`, classType: 'danger' }));
         if (err.response && err.response.data && err.response.data.error) {
             dispatch(setLoading(false));

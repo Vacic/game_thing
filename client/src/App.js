@@ -19,9 +19,9 @@ const App = () =>
 						<GameContainer />
 					</React.Fragment>
 				)} />
-				<Route exact path="/register" component={RegistrationForm} />
-				<Route exact path="/login" component={LoginForm} />
-				<Route exact patch="/profile" component={Profile} />
+				<Route exact path="/register" component={ RegistrationForm } />
+				<Route exact path="/login" component={ LoginForm } />
+				<Route exact path="/profile" component={ Profile } />
 			</Switch>
 		</Router>
 	</Provider>

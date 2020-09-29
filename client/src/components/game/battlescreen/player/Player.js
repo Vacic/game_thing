@@ -5,7 +5,7 @@ import Stats from '../stats/Stats';
 import AttackSpeed from '../stats/AttackSpeed';
 
 const Player = (props) => {
-    const playerName = props.player.name;
+    const playerName = props.player.user.username;
     const { weapon, hp, dmg, attSpd, def, eva } = props.player.stats;
     const { playerDiv, playerAttProgressDiv, playerHpBar, playerAttStatus } = props;  // DOM element refs
     const { currentPlayerHp, handleUseItem } = props;

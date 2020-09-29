@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { removeNotification } from '../../../redux';
 
-const Notification = ({ notif: { msg, classType, img }, removeNotification }) => {
+const Notification = ({ notification: { msg, classType, img }, removeNotification }) => {
     const [isNotifHidden, toggleNotif] = useState(true);
     
     useEffect(() => {
-        setTimeout(() => toggleNotif(false), 1);
+        setTimeout(() => toggleNotif(false), 10);
         const toggleTimeout = setTimeout(() => toggleNotif(true), 2000);
-        setTimeout(() => removeNotification(), 3000); // toggleNotif Timeout + Animation Time
+        setTimeout(() => removeNotification(), 2400); // toggleNotif Timeout + Animation Time (which can be shorter if you bother to time it to when the notif visually disappears from the page)
         return () => clearTimeout(toggleTimeout);
     }, [removeNotification]);
     

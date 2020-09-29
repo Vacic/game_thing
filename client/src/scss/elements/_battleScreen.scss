@@ -13,11 +13,14 @@
         border-radius: $border-radius;
         text-align: center;
         width: 30%;
+
+        .enemy-card > .name {
+            text-transform: capitalize;
+        }
         
         .player-card, .enemy-card {
             .name {
                 font-size: 1.6rem;
-                text-transform: capitalize;
                 white-space: nowrap;
                 overflow: hidden;
             }

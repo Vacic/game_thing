@@ -5,12 +5,79 @@
     background: rgba(190, 190, 190, 0.7);
 
     .profile {
+        padding: 1.8rem 2.5rem 1.8rem 2.5rem;
+        min-width: 248px;
         width: 40%;
+        height: 90%;
         margin: auto;
         border-radius: $border-radius;
         background-color: rgb(230, 230, 230);
-        padding: 1rem 20px 0 20px;
+        box-shadow: 0px 0px 6px 3px rgba($color: black, $alpha: 0.2), 0px 0px 12px 6px rgba($color: black, $alpha: 0.2);
         font-weight: 500;
         color: rgb(60, 60, 60);
+
+        .msg {
+            text-align: center;
+            padding: 10px 10px 12px 10px;
+            width: 100%;
+            font-size: 1.2rem;
+            color: rgb(247, 247, 247);
+            margin-bottom: 1rem;
+        }
+
+        .show {
+            display: block;
+        }
+
+        h2 {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: $primary-color;
+
+            &:active {
+                color: $primary-color-darker;
+            }
+
+            i {
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+        }
+
+        form {
+            height: 100%;
+            position: relative;
+
+            .form-spacing {
+                margin: 10px 0 20px 0;
+
+                small {
+                    color: rgb(104, 104, 104);
+                }
+            }
+
+            .btn {
+                font-size: 1.2rem;
+                margin: 1.7rem 1rem 0 1rem;
+
+                &:disabled {
+                    box-shadow: inset 0px 0px 100px 0px rgba($color: black, $alpha: 0.4);
+                }
+            }
+        }
+
+        .profile-buttons {
+            display: flex;
+            position: absolute;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
     }
 }

@@ -1,6 +1,12 @@
-import { UPDATE_PLAYER_STATS, UPDATE_PLAYER_EQUIPMENT, UPDATE_PLAYER_QUICKBAR_EQUIPMENT, UPDATE_PLAYER_NAME, UPDATE_INVENTORY, REDUCE_SINGLE_ITEM } from "./playerTypes";
+import { UPDATE_PLAYER_STATS, UPDATE_PLAYER_EQUIPMENT, UPDATE_PLAYER_QUICKBAR_EQUIPMENT, UPDATE_USER, UPDATE_INVENTORY, REDUCE_SINGLE_ITEM } from "./playerTypes";
 
 const playerState = {
+    user: {
+        username: '',
+        email: '',
+        dateCreated: ''
+    },
+
     stats: {
         weapon: 'Fists',
         hp: 80,
@@ -9,8 +15,6 @@ const playerState = {
         def: 0,
         eva: 1
     },
-
-    name: '',
 
     inventory: {},
 
@@ -26,9 +30,9 @@ const playerReducer = (state = playerState, action) => {
             stats: action.newStats
         }
 
-        case UPDATE_PLAYER_NAME: return {
+        case UPDATE_USER: return {
             ...state,
-            name: action.name
+            user: action.user
         }
 
         case UPDATE_PLAYER_EQUIPMENT: return {

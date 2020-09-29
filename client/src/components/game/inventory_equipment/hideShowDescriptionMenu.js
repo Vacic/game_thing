@@ -33,14 +33,14 @@ const hideShowDescriptionMenu = WrappedComponent => {
 
         render() {
             return <WrappedComponent 
-                        hideMenuState={this.state.hideMenu} 
-                        hideDescriptionState={this.state.hideDescription} 
-                        showDescription={this.showDescription} 
-                        hideDescription={this.hideDescription}
-                        hideMenu={this.hideMenu}
-                        toggleMenu={this.toggleMenu}
-                        itemDiv={this.itemDiv}
-                        {...this.props} 
+                        hideMenuState={ this.state.hideMenu } 
+                        hideDescriptionState={ this.state.hideDescription } 
+                        showDescription={ this.showDescription } 
+                        hideDescription={ this.hideDescription }
+                        hideMenu={  this.hideMenu }
+                        toggleMenu={ this.toggleMenu }
+                        itemDiv={ this.itemDiv }
+                        { ...this.props } 
                     />
         }
     }
