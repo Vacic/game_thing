@@ -16,7 +16,7 @@ export const populateUser = () => async dispatch => {
     setLoading(true);
     try {
         // const { data } = await axios.get('http://localhost:3001/users/user', { headers: { token: localStorage.getItem('token')} });
-        const { data } = await axios.post('/users/user', { withCredentials: true });
+        const { data } = await axios.get('/users/user', { withCredentials: true });
         dispatch(updateUser(data.user));
     } catch (err) {
         cookies.remove('loggedIn');
