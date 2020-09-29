@@ -53,7 +53,7 @@ const Profile = ({ user, setMessage, showMsg, setModal, loggedIn }) => {
     const { username, email, password, confirmPassword } = formData;
     const history = useHistory();
 
-    return !loggedIn ? (
+    return loggedIn ? (
         <div className="profile-container">
             <div className="profile">
             <ConfirmationModal />
