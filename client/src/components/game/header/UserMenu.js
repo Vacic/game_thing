@@ -27,8 +27,8 @@ const UserMenu = ({ isUserMenuHidden, toggleMenu, logout, isLoading, showMsg, hi
 
     const updateProgress = async () => {
         toggleUpdateProgressLoading(true);
-        await updateDbProgress(history);
         await setLocalStorage();
+        await updateDbProgress(history);
         toggleUpdateProgressLoading(false);
     }
 
