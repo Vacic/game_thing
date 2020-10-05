@@ -29,8 +29,8 @@ function LoginForm({ hideMessage, showMsg, login }) {
             <div className ="login-form">
                 {showMsg && <Message />}
                 <form onSubmit={e => submit(e)}>
+                    <h2 className="center">Login</h2>
                     <Link to="/"><i className="fas fa-2x fa-home" /></Link>
-                    <i className="fas fa-home" />
                     <div className="form-spacing">
                         <label className="label-control" htmlFor="email">Email</label>
                         <input className="input-control" type="email" name="email" onChange={e => onChange(e)} />

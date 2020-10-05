@@ -110,7 +110,7 @@ export const resetProgress = async () => {
 export const deleteAccount = async () => {
     try {
         // await axios.delete('http://localhost:3001/users/remove-user', { headers: { token: localStorage.getItem('token')} });
-        await axios.delete('/auth/remove-user', { withCredentials: true });
+        await axios.delete('/users/remove-user', { withCredentials: true });
         cookies.remove('loggedIn');
         dispatch(setLoading(true));
         let number = '';

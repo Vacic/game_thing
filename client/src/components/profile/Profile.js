@@ -87,7 +87,7 @@ const Profile = ({ user, setMessage, showMsg, setModal, loggedIn }) => {
                 </form>
             </div>
         </div>
-    ) : <Redirect push to="/" />
+    ) : <Redirect push to="/login" />
 }
 
 const mapStateToProps = state => ({

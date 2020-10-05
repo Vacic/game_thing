@@ -15,6 +15,7 @@ import { setLocalStorage, updateDbProgress, checkToken } from '../../services';
 class GameContainer extends PureComponent {
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~GAME LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~
         componentDidMount = async () => {
+            this.playerHpBar.style.width = `${Math.floor((this.props.currentPlayerHp/this.props.playerStats.hp)*100)}%`;
             if(!this.props.isCookieChecked) {
                 localStorage.removeItem('progress');
                 const cookie = await checkToken(this.props.history);
@@ -41,7 +42,7 @@ class GameContainer extends PureComponent {
         componentWillUnmount = () => {
             hideMessage();
             clearInterval(this.updateProgressInterval);
-            this.resetActions();
+            this.stopCombat();
         }
         
         initCombat = (location) => {

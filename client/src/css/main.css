@@ -688,12 +688,12 @@
   padding: 0 15px 15px 15px;
   justify-content: space-between; }
 
-.registration-container, .login-container {
+.registration-container, .login-container, .profile-container {
   display: flex;
   width: 100%;
-  height: 100vh;
-  background: rgba(190, 190, 190, 0.7); }
-  .registration-container .registration-form, .registration-container .login-form, .login-container .registration-form, .login-container .login-form {
+  min-height: 100vh;
+  background-color: rgba(190, 190, 190, 0.7); }
+  .registration-container .registration-form, .registration-container .login-form, .registration-container .profile, .login-container .registration-form, .login-container .login-form, .login-container .profile, .profile-container .registration-form, .profile-container .login-form, .profile-container .profile {
     padding: 1.8rem 2.5rem 1.8rem 2.5rem;
     min-width: 248px;
     width: 40%;
@@ -704,101 +704,76 @@
     box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.2), 0px 0px 12px 6px rgba(0, 0, 0, 0.2);
     font-weight: 500;
     color: #3c3c3c; }
-    .registration-container .registration-form .msg, .registration-container .login-form .msg, .login-container .registration-form .msg, .login-container .login-form .msg {
+    .registration-container .registration-form .msg, .registration-container .login-form .msg, .registration-container .profile .msg, .login-container .registration-form .msg, .login-container .login-form .msg, .login-container .profile .msg, .profile-container .registration-form .msg, .profile-container .login-form .msg, .profile-container .profile .msg {
       text-align: center;
       padding: 10px 10px 12px 10px;
       width: 100%;
       font-size: 1.2rem;
       color: #f7f7f7;
       margin-bottom: 1rem; }
-    .registration-container .registration-form .show, .registration-container .login-form .show, .login-container .registration-form .show, .login-container .login-form .show {
+    .registration-container .registration-form .show, .registration-container .login-form .show, .registration-container .profile .show, .login-container .registration-form .show, .login-container .login-form .show, .login-container .profile .show, .profile-container .registration-form .show, .profile-container .login-form .show, .profile-container .profile .show {
       display: block; }
-    .registration-container .registration-form h2, .registration-container .login-form h2, .login-container .registration-form h2, .login-container .login-form h2 {
+    .registration-container .registration-form h2, .registration-container .login-form h2, .registration-container .profile h2, .login-container .registration-form h2, .login-container .login-form h2, .login-container .profile h2, .profile-container .registration-form h2, .profile-container .login-form h2, .profile-container .profile h2 {
       margin-bottom: 1rem; }
-    .registration-container .registration-form a, .registration-container .login-form a, .login-container .registration-form a, .login-container .login-form a {
+    .registration-container .registration-form a, .registration-container .login-form a, .registration-container .profile a, .login-container .registration-form a, .login-container .login-form a, .login-container .profile a, .profile-container .registration-form a, .profile-container .login-form a, .profile-container .profile a {
       text-decoration: none;
       color: #269ab8;
       font-weight: 600; }
-      .registration-container .registration-form a:active, .registration-container .login-form a:active, .login-container .registration-form a:active, .login-container .login-form a:active {
+      .registration-container .registration-form a:active, .registration-container .login-form a:active, .registration-container .profile a:active, .login-container .registration-form a:active, .login-container .login-form a:active, .login-container .profile a:active, .profile-container .registration-form a:active, .profile-container .login-form a:active, .profile-container .profile a:active {
         color: #155363; }
-      .registration-container .registration-form a i, .registration-container .login-form a i, .login-container .registration-form a i, .login-container .login-form a i {
+      .registration-container .registration-form a i, .registration-container .login-form a i, .registration-container .profile a i, .login-container .registration-form a i, .login-container .login-form a i, .login-container .profile a i, .profile-container .registration-form a i, .profile-container .login-form a i, .profile-container .profile a i {
         position: absolute;
         font-size: 2rem;
         top: 0;
         right: 0; }
-    .registration-container .registration-form form, .registration-container .login-form form, .login-container .registration-form form, .login-container .login-form form {
+    .registration-container .registration-form form, .registration-container .login-form form, .registration-container .profile form, .login-container .registration-form form, .login-container .login-form form, .login-container .profile form, .profile-container .registration-form form, .profile-container .login-form form, .profile-container .profile form {
       height: fit-content;
       position: relative; }
-      .registration-container .registration-form form .form-spacing, .registration-container .login-form form .form-spacing, .login-container .registration-form form .form-spacing, .login-container .login-form form .form-spacing {
+      .registration-container .registration-form form .form-spacing, .registration-container .login-form form .form-spacing, .registration-container .profile form .form-spacing, .login-container .registration-form form .form-spacing, .login-container .login-form form .form-spacing, .login-container .profile form .form-spacing, .profile-container .registration-form form .form-spacing, .profile-container .login-form form .form-spacing, .profile-container .profile form .form-spacing {
         margin: 10px 0 20px 0; }
-        .registration-container .registration-form form .form-spacing small, .registration-container .login-form form .form-spacing small, .login-container .registration-form form .form-spacing small, .login-container .login-form form .form-spacing small {
+        .registration-container .registration-form form .form-spacing small, .registration-container .login-form form .form-spacing small, .registration-container .profile form .form-spacing small, .login-container .registration-form form .form-spacing small, .login-container .login-form form .form-spacing small, .login-container .profile form .form-spacing small, .profile-container .registration-form form .form-spacing small, .profile-container .login-form form .form-spacing small, .profile-container .profile form .form-spacing small {
           color: #686868; }
-      .registration-container .registration-form form [class="btn"], .registration-container .login-form form [class="btn"], .login-container .registration-form form [class="btn"], .login-container .login-form form [class="btn"] {
+      .registration-container .registration-form form [class="btn"], .registration-container .login-form form [class="btn"], .registration-container .profile form [class="btn"], .login-container .registration-form form [class="btn"], .login-container .login-form form [class="btn"], .login-container .profile form [class="btn"], .profile-container .registration-form form [class="btn"], .profile-container .login-form form [class="btn"], .profile-container .profile form [class="btn"] {
         text-align: center; }
-      .registration-container .registration-form form .button, .registration-container .login-form form .button, .login-container .registration-form form .button, .login-container .login-form form .button {
+      .registration-container .registration-form form .button, .registration-container .login-form form .button, .registration-container .profile form .button, .login-container .registration-form form .button, .login-container .login-form form .button, .login-container .profile form .button, .profile-container .registration-form form .button, .profile-container .login-form form .button, .profile-container .profile form .button {
         margin: 2rem 0 0.8rem 0;
         width: 100%;
         text-align: center; }
-      .registration-container .registration-form form .btn, .registration-container .login-form form .btn, .login-container .registration-form form .btn, .login-container .login-form form .btn {
+      .registration-container .registration-form form .btn, .registration-container .login-form form .btn, .registration-container .profile form .btn, .login-container .registration-form form .btn, .login-container .login-form form .btn, .login-container .profile form .btn, .profile-container .registration-form form .btn, .profile-container .login-form form .btn, .profile-container .profile form .btn {
         font-size: 1.2rem; }
-        .registration-container .registration-form form .btn:disabled, .registration-container .login-form form .btn:disabled, .login-container .registration-form form .btn:disabled, .login-container .login-form form .btn:disabled {
+        .registration-container .registration-form form .btn:disabled, .registration-container .login-form form .btn:disabled, .registration-container .profile form .btn:disabled, .login-container .registration-form form .btn:disabled, .login-container .login-form form .btn:disabled, .login-container .profile form .btn:disabled, .profile-container .registration-form form .btn:disabled, .profile-container .login-form form .btn:disabled, .profile-container .profile form .btn:disabled {
           box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.4); }
 
-.profile-container {
+.profile-container .profile a {
+  text-decoration: none;
+  color: #269ab8; }
+  .profile-container .profile a:active {
+    color: #155363; }
+  .profile-container .profile a i {
+    position: absolute;
+    top: 0;
+    right: 0; }
+
+.profile-container .profile form {
+  height: 100%;
+  position: relative; }
+  .profile-container .profile form .form-spacing {
+    margin: 10px 0 20px 0; }
+    .profile-container .profile form .form-spacing small {
+      color: #686868; }
+  .profile-container .profile form .btn {
+    font-size: 1.2rem;
+    margin: 1.7rem 1rem 0 1rem; }
+    .profile-container .profile form .btn:disabled {
+      box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.4); }
+
+.profile-container .profile .profile-buttons {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   width: 100%;
-  height: 100vh;
-  background: rgba(190, 190, 190, 0.7); }
-  .profile-container .profile {
-    padding: 1.8rem 2.5rem 1.8rem 2.5rem;
-    min-width: 248px;
-    width: 40%;
-    height: fit-content;
-    margin: auto;
-    border-radius: 10px;
-    background-color: #e6e6e6;
-    box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.2), 0px 0px 12px 6px rgba(0, 0, 0, 0.2);
-    font-weight: 500;
-    color: #3c3c3c; }
-    .profile-container .profile .msg {
-      text-align: center;
-      padding: 10px 10px 12px 10px;
-      width: 100%;
-      font-size: 1.2rem;
-      color: #f7f7f7;
-      margin-bottom: 1rem; }
-    .profile-container .profile .show {
-      display: block; }
-    .profile-container .profile h2 {
-      margin-bottom: 1rem; }
-    .profile-container .profile a {
-      text-decoration: none;
-      color: #269ab8; }
-      .profile-container .profile a:active {
-        color: #155363; }
-      .profile-container .profile a i {
-        position: absolute;
-        top: 0;
-        right: 0; }
-    .profile-container .profile form {
-      height: 100%;
-      position: relative; }
-      .profile-container .profile form .form-spacing {
-        margin: 10px 0 20px 0; }
-        .profile-container .profile form .form-spacing small {
-          color: #686868; }
-      .profile-container .profile form .btn {
-        font-size: 1.2rem;
-        margin: 1.7rem 1rem 0 1rem; }
-        .profile-container .profile form .btn:disabled {
-          box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.4); }
-    .profile-container .profile .profile-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      width: 100%;
-      bottom: 0;
-      left: 0; }
+  bottom: 0;
+  left: 0; }
 
 * {
   box-sizing: border-box;
@@ -1149,7 +1124,8 @@ body {
     .modal-container .confirmation-modal .modal-text {
       font-size: 1rem; }
   .registration-container .registration-form, .registration-container .login-form, .registration-container .profile, .login-container .registration-form, .login-container .login-form, .login-container .profile, .profile-container .registration-form, .profile-container .login-form, .profile-container .profile {
-    width: 80%; }
+    width: 80%;
+    margin: 1.2rem auto 1.2rem auto; }
     .registration-container .registration-form .msg, .registration-container .login-form .msg, .registration-container .profile .msg, .login-container .registration-form .msg, .login-container .login-form .msg, .login-container .profile .msg, .profile-container .registration-form .msg, .profile-container .login-form .msg, .profile-container .profile .msg {
       width: 100%;
       font-size: 1.1rem; }
