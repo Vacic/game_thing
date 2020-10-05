@@ -33,9 +33,9 @@ const UserMenu = ({ isUserMenuHidden, toggleMenu, logout, isLoading, showMsg, hi
     }
 
     const userLogout = async () => {
-        await updateDbProgress(history);
         await setLocalStorage();
-        logout()
+        await updateDbProgress(history);
+        logout();
     }
 
     const userMenu = useRef();
