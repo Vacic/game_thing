@@ -32,12 +32,6 @@ const UserMenu = ({ isUserMenuHidden, toggleMenu, logout, isLoading, showMsg, hi
         toggleUpdateProgressLoading(false);
     }
 
-    const userLogout = async () => {
-        await setLocalStorage();
-        await updateDbProgress(history);
-        logout();
-    }
-
     const userMenu = useRef();
     return (
         <div className={isUserMenuHidden ? "user-menu" : "user-menu show"} ref={userMenu} >
@@ -46,7 +40,7 @@ const UserMenu = ({ isUserMenuHidden, toggleMenu, logout, isLoading, showMsg, hi
                 <div className="separator"></div>
                 {showMsg ? <Message /> : updateProgressLoading ? <Spinner /> : <li onClick={() => updateProgress()}>Force Save</li>}
                 <div className="separator"></div>
-                {isLoading ? <Spinner /> : <li onClick={() => userLogout()}>Logout</li>}
+                {isLoading ? <Spinner /> : <li onClick={() => logout()}>Logout</li>}
             </ul>
         </div>
     )
