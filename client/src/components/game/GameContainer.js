@@ -110,7 +110,9 @@ class GameContainer extends PureComponent {
 
         calcDef = (dmg, def) => {
             if ( def > 40 && dmg < def) return Math.ceil(dmg / 3);
-            else return (dmg - Math.ceil(def / 3));
+            else return (Math.random() > 0.5) ? 
+                        (dmg - Math.ceil(def / 3)) : 
+                        (dmg - Math.floor(def / 3));
         }
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~PLAYER LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         startPlayerAttack = (dmg, attSpd, enemyDef, enemyEva) => {
@@ -161,10 +163,13 @@ class GameContainer extends PureComponent {
             }
         }
     
-        playerTakesDamage = async (enemyDmg, def, eva) => {
+        playerTakesDamage = (enemyDmg, def, eva) => {
             if (this.shouldAttHit(eva)) {
-                let newEnemyDmg = await this.calcDef(enemyDmg, def);
-                newEnemyDmg = await this.calcDmg(newEnemyDmg);
+                console.log(`max dmg: ${enemyDmg}`)
+                let newEnemyDmg = this.calcDef(enemyDmg, def);
+                console.log(`dmg after def: ${newEnemyDmg}`)
+                newEnemyDmg = this.calcDmg(newEnemyDmg);
+                console.log(`dmg done: ${newEnemyDmg}`)
 
                 this.playerAttStatus.innerHTML = `-${newEnemyDmg}`;
                 this.playerAttStatus.classList.remove('miss');

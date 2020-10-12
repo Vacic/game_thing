@@ -9,11 +9,11 @@ const playerState = {
 
     stats: {
         weapon: 'Fists',
-        hp: 80,
+        hp: 80, //80
         dmg: 5, //5
         attSpd: 1, //1
-        def: 0,
-        eva: 1
+        def: 0, //0
+        eva: 1 //1
     },
 
     inventory: {},
