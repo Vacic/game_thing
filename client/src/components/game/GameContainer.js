@@ -34,6 +34,7 @@ class GameContainer extends PureComponent {
         componentDidUpdate = (prevProps) => {
             if(this.props.loggedIn !== prevProps.loggedIn) {
                 this.resetActions();
+                clearInterval(this.updateProgressInterval);
                 this.enemyHpBar.style.width = '100%';
                 this.playerHpBar.style.width = `${Math.floor((this.props.currentPlayerHp/this.props.playerStats.hp)*100)}%`;
             }
