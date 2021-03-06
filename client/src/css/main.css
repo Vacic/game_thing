@@ -455,7 +455,8 @@
       -o-transition: all 1s cubic-bezier(0, 0, 0.29, 0.8);
       transition: all 1s cubic-bezier(0, 0, 0.29, 0.8); }
 
-.modal-container {
+.modal-container,
+.information-modal-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -473,7 +474,10 @@
   -ms-transition: all 0.2s linear;
   -o-transition: all 0.2s linear;
   transition: all 0.2s linear; }
-  .modal-container .confirmation-modal {
+  .modal-container .confirmation-modal,
+  .modal-container .information-modal,
+  .information-modal-container .confirmation-modal,
+  .information-modal-container .information-modal {
     width: 400px;
     height: auto;
     background-color: rgba(241, 241, 241, 0.88);
@@ -488,42 +492,97 @@
     -ms-transition: all 0.2s linear;
     -o-transition: all 0.2s linear;
     transition: all 0.2s linear; }
-    .modal-container .confirmation-modal.hide {
+    .modal-container .confirmation-modal.hide,
+    .modal-container .information-modal.hide,
+    .information-modal-container .confirmation-modal.hide,
+    .information-modal-container .information-modal.hide {
       opacity: 0;
       transform: scale(0); }
-    .modal-container .confirmation-modal span {
+    .modal-container .confirmation-modal span,
+    .modal-container .information-modal span,
+    .information-modal-container .confirmation-modal span,
+    .information-modal-container .information-modal span {
       float: right;
       padding: 0 9px 0 0;
       color: black;
       font-weight: 1000;
       font-size: 1.5rem;
       opacity: 1; }
-      .modal-container .confirmation-modal span:hover {
+      .modal-container .confirmation-modal span:hover,
+      .modal-container .information-modal span:hover,
+      .information-modal-container .confirmation-modal span:hover,
+      .information-modal-container .information-modal span:hover {
         cursor: pointer; }
-    .modal-container .confirmation-modal .modal-text {
+    .modal-container .confirmation-modal .modal-text,
+    .modal-container .information-modal .modal-text,
+    .information-modal-container .confirmation-modal .modal-text,
+    .information-modal-container .information-modal .modal-text {
       font-size: 1.1rem;
       text-align: center;
       padding: 42px 40px 0 40px;
       opacity: 1; }
-    .modal-container .confirmation-modal .modal-buttons {
+    .modal-container .confirmation-modal .modal-buttons,
+    .modal-container .information-modal .modal-buttons,
+    .information-modal-container .confirmation-modal .modal-buttons,
+    .information-modal-container .information-modal .modal-buttons {
       display: flex;
       justify-content: space-around;
       margin: 30px 20px 20px 20px; }
-      .modal-container .confirmation-modal .modal-buttons .btn {
+      .modal-container .confirmation-modal .modal-buttons .btn,
+      .modal-container .information-modal .modal-buttons .btn,
+      .information-modal-container .confirmation-modal .modal-buttons .btn,
+      .information-modal-container .information-modal .modal-buttons .btn {
         width: 30%;
         color: white;
         opacity: 1; }
-        .modal-container .confirmation-modal .modal-buttons .btn:hover {
+        .modal-container .confirmation-modal .modal-buttons .btn:hover,
+        .modal-container .information-modal .modal-buttons .btn:hover,
+        .information-modal-container .confirmation-modal .modal-buttons .btn:hover,
+        .information-modal-container .information-modal .modal-buttons .btn:hover {
           cursor: pointer; }
-  .modal-container .loading-modal {
+  .modal-container .information-modal,
+  .information-modal-container .information-modal {
+    font-size: 1rem;
+    max-height: 90vh;
+    max-width: 90vw;
+    padding: 1em; }
+    .modal-container .information-modal .modal-content,
+    .information-modal-container .information-modal .modal-content {
+      max-height: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      overflow-y: scroll; }
+      .modal-container .information-modal .modal-content .modal-item,
+      .information-modal-container .information-modal .modal-content .modal-item {
+        background-color: #2ca94b;
+        padding: 0.3em 2em 0.3em 2em;
+        display: flex;
+        width: 100%;
+        margin: 0.5em 0 0.5em 0;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        text-transform: capitalize;
+        border-radius: 5px; }
+        .modal-container .information-modal .modal-content .modal-item .item-icon,
+        .information-modal-container .information-modal .modal-content .modal-item .item-icon {
+          height: 2.5em;
+          width: 2.5em;
+          border-radius: 5px;
+          background-color: #2ca94b; }
+  .modal-container .loading-modal,
+  .information-modal-container .loading-modal {
     width: 400px;
     background-color: rgba(241, 241, 241, 0.88);
     box-shadow: 1px 1px 4px 1px rgba(10, 10, 10, 0.7), 1px 1px 3px 1px rgba(10, 10, 10, 0.5);
     color: #303030;
     border-radius: 10px; }
-    .modal-container .loading-modal .spinner {
+    .modal-container .loading-modal .spinner,
+    .information-modal-container .loading-modal .spinner {
       padding: 4em; }
-    .modal-container .loading-modal p {
+    .modal-container .loading-modal p,
+    .information-modal-container .loading-modal p {
       font-size: 1.2rem;
       font-weight: 600;
       text-align: center;
@@ -540,7 +599,8 @@
   justify-content: space-between;
   width: 100%;
   padding: 20px; }
-  .battle-screen .player, .battle-screen .enemy {
+  .battle-screen .player,
+  .battle-screen .enemy {
     padding: 10px;
     padding-top: 4px;
     border: 2px solid #269ab8;
@@ -548,115 +608,219 @@
     border-radius: 10px;
     text-align: center;
     width: 30%; }
-    .battle-screen .player .enemy-card > .name, .battle-screen .enemy .enemy-card > .name {
+    .battle-screen .player .enemy-card > .name,
+    .battle-screen .enemy .enemy-card > .name {
       text-transform: capitalize; }
-    .battle-screen .player .player-card .name, .battle-screen .player .enemy-card .name, .battle-screen .enemy .player-card .name, .battle-screen .enemy .enemy-card .name {
-      font-size: 1.6rem;
-      white-space: nowrap;
-      overflow: hidden; }
-    .battle-screen .player .player-card .hp-bar .current, .battle-screen .player .player-card .hp-bar .max, .battle-screen .player .enemy-card .hp-bar .current, .battle-screen .player .enemy-card .hp-bar .max, .battle-screen .enemy .player-card .hp-bar .current, .battle-screen .enemy .player-card .hp-bar .max, .battle-screen .enemy .enemy-card .hp-bar .current, .battle-screen .enemy .enemy-card .hp-bar .max {
-      height: 14px;
-      width: 100%;
+    .battle-screen .player .player-card,
+    .battle-screen .player .enemy-card,
+    .battle-screen .enemy .player-card,
+    .battle-screen .enemy .enemy-card {
       position: relative; }
-    .battle-screen .player .player-card .hp-bar .current, .battle-screen .player .enemy-card .hp-bar .current, .battle-screen .enemy .player-card .hp-bar .current, .battle-screen .enemy .enemy-card .hp-bar .current {
-      background-color: #47d45e;
-      top: 5px;
-      z-index: 2;
-      width: 100%; }
-    .battle-screen .player .player-card .hp-bar .max, .battle-screen .player .enemy-card .hp-bar .max, .battle-screen .enemy .player-card .hp-bar .max, .battle-screen .enemy .enemy-card .hp-bar .max {
-      background-color: #ec6767;
-      top: -9px;
-      z-index: 1; }
-    .battle-screen .player .player-card .hp-bar .hp, .battle-screen .player .enemy-card .hp-bar .hp, .battle-screen .enemy .player-card .hp-bar .hp, .battle-screen .enemy .enemy-card .hp-bar .hp {
-      position: relative;
-      top: -13px;
-      font-size: 1.1rem;
-      line-height: 1.2rem; }
-    .battle-screen .player .player-card .hp-bar .player-att-status, .battle-screen .player .enemy-card .hp-bar .player-att-status, .battle-screen .enemy .player-card .hp-bar .player-att-status, .battle-screen .enemy .enemy-card .hp-bar .player-att-status {
-      position: relative;
-      text-align: right;
-      top: 4px;
-      visibility: hidden;
-      font-size: 0.8rem; }
-    .battle-screen .player .player-card .hp-bar .enemy-att-status, .battle-screen .player .enemy-card .hp-bar .enemy-att-status, .battle-screen .enemy .player-card .hp-bar .enemy-att-status, .battle-screen .enemy .enemy-card .hp-bar .enemy-att-status {
-      position: relative;
-      text-align: left;
-      top: 4px;
-      visibility: hidden;
-      font-size: 0.8rem; }
-    .battle-screen .player .player-card .hp-bar .dmg, .battle-screen .player .enemy-card .hp-bar .dmg, .battle-screen .enemy .player-card .hp-bar .dmg, .battle-screen .enemy .enemy-card .hp-bar .dmg {
-      color: #e64444;
-      visibility: visible; }
-    .battle-screen .player .player-card .hp-bar .miss, .battle-screen .player .enemy-card .hp-bar .miss, .battle-screen .enemy .player-card .hp-bar .miss, .battle-screen .enemy .enemy-card .hp-bar .miss {
-      color: inherit;
-      visibility: visible; }
-    .battle-screen .player .player-card .player-img, .battle-screen .player .player-card .enemy-img, .battle-screen .player .enemy-card .player-img, .battle-screen .player .enemy-card .enemy-img, .battle-screen .enemy .player-card .player-img, .battle-screen .enemy .player-card .enemy-img, .battle-screen .enemy .enemy-card .player-img, .battle-screen .enemy .enemy-card .enemy-img {
-      width: 100%; }
-    .battle-screen .player .player-card .spinner, .battle-screen .player .enemy-card .spinner, .battle-screen .enemy .player-card .spinner, .battle-screen .enemy .enemy-card .spinner {
-      padding: 20px; }
-    .battle-screen .player .player-card .heal-quick-bar, .battle-screen .player .enemy-card .heal-quick-bar, .battle-screen .enemy .player-card .heal-quick-bar, .battle-screen .enemy .enemy-card .heal-quick-bar {
-      display: flex;
-      position: relative;
-      top: -74px;
-      right: 3px; }
-      .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container, .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container, .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container, .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container {
+      .battle-screen .player .player-card .information,
+      .battle-screen .player .enemy-card .information,
+      .battle-screen .enemy .player-card .information,
+      .battle-screen .enemy .enemy-card .information {
+        font-size: 1rem;
+        background-color: #0099ff;
+        font-family: "Times New Roman", Times, serif;
+        border-radius: 100%;
+        width: 1.4em;
+        height: 1.4em;
         position: absolute;
-        display: flex;
-        justify-content: flex-end;
+        font-weight: bold;
+        top: 0.37em;
+        right: 0;
+        line-height: 1.4em; }
+        .battle-screen .player .player-card .information:active,
+        .battle-screen .player .enemy-card .information:active,
+        .battle-screen .enemy .player-card .information:active,
+        .battle-screen .enemy .enemy-card .information:active {
+          box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.2); }
+        .battle-screen .player .player-card .information:hover,
+        .battle-screen .player .enemy-card .information:hover,
+        .battle-screen .enemy .player-card .information:hover,
+        .battle-screen .enemy .enemy-card .information:hover {
+          box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.2); }
+      .battle-screen .player .player-card .name,
+      .battle-screen .player .enemy-card .name,
+      .battle-screen .enemy .player-card .name,
+      .battle-screen .enemy .enemy-card .name {
+        font-size: 1.6rem;
+        white-space: nowrap;
+        overflow: hidden; }
+      .battle-screen .player .player-card .hp-bar .current,
+      .battle-screen .player .player-card .hp-bar .max,
+      .battle-screen .player .enemy-card .hp-bar .current,
+      .battle-screen .player .enemy-card .hp-bar .max,
+      .battle-screen .enemy .player-card .hp-bar .current,
+      .battle-screen .enemy .player-card .hp-bar .max,
+      .battle-screen .enemy .enemy-card .hp-bar .current,
+      .battle-screen .enemy .enemy-card .hp-bar .max {
+        height: 14px;
         width: 100%;
-        left: 2px; }
-        .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item {
-          position: relative;
+        position: relative; }
+      .battle-screen .player .player-card .hp-bar .current,
+      .battle-screen .player .enemy-card .hp-bar .current,
+      .battle-screen .enemy .player-card .hp-bar .current,
+      .battle-screen .enemy .enemy-card .hp-bar .current {
+        background-color: #47d45e;
+        top: 5px;
+        z-index: 2;
+        width: 100%; }
+      .battle-screen .player .player-card .hp-bar .max,
+      .battle-screen .player .enemy-card .hp-bar .max,
+      .battle-screen .enemy .player-card .hp-bar .max,
+      .battle-screen .enemy .enemy-card .hp-bar .max {
+        background-color: #ec6767;
+        top: -9px;
+        z-index: 1; }
+      .battle-screen .player .player-card .hp-bar .hp,
+      .battle-screen .player .enemy-card .hp-bar .hp,
+      .battle-screen .enemy .player-card .hp-bar .hp,
+      .battle-screen .enemy .enemy-card .hp-bar .hp {
+        position: relative;
+        top: -13px;
+        font-size: 1.1rem;
+        line-height: 1.2rem; }
+      .battle-screen .player .player-card .hp-bar .player-att-status,
+      .battle-screen .player .enemy-card .hp-bar .player-att-status,
+      .battle-screen .enemy .player-card .hp-bar .player-att-status,
+      .battle-screen .enemy .enemy-card .hp-bar .player-att-status {
+        position: relative;
+        text-align: right;
+        top: 4px;
+        visibility: hidden;
+        font-size: 0.8rem; }
+      .battle-screen .player .player-card .hp-bar .enemy-att-status,
+      .battle-screen .player .enemy-card .hp-bar .enemy-att-status,
+      .battle-screen .enemy .player-card .hp-bar .enemy-att-status,
+      .battle-screen .enemy .enemy-card .hp-bar .enemy-att-status {
+        position: relative;
+        text-align: left;
+        top: 4px;
+        visibility: hidden;
+        font-size: 0.8rem; }
+      .battle-screen .player .player-card .hp-bar .dmg,
+      .battle-screen .player .enemy-card .hp-bar .dmg,
+      .battle-screen .enemy .player-card .hp-bar .dmg,
+      .battle-screen .enemy .enemy-card .hp-bar .dmg {
+        color: #e64444;
+        visibility: visible; }
+      .battle-screen .player .player-card .hp-bar .miss,
+      .battle-screen .player .enemy-card .hp-bar .miss,
+      .battle-screen .enemy .player-card .hp-bar .miss,
+      .battle-screen .enemy .enemy-card .hp-bar .miss {
+        color: inherit;
+        visibility: visible; }
+      .battle-screen .player .player-card .player-img,
+      .battle-screen .player .player-card .enemy-img,
+      .battle-screen .player .enemy-card .player-img,
+      .battle-screen .player .enemy-card .enemy-img,
+      .battle-screen .enemy .player-card .player-img,
+      .battle-screen .enemy .player-card .enemy-img,
+      .battle-screen .enemy .enemy-card .player-img,
+      .battle-screen .enemy .enemy-card .enemy-img {
+        width: 100%; }
+      .battle-screen .player .player-card .spinner,
+      .battle-screen .player .enemy-card .spinner,
+      .battle-screen .enemy .player-card .spinner,
+      .battle-screen .enemy .enemy-card .spinner {
+        padding: 20px; }
+      .battle-screen .player .player-card .heal-quick-bar,
+      .battle-screen .player .enemy-card .heal-quick-bar,
+      .battle-screen .enemy .player-card .heal-quick-bar,
+      .battle-screen .enemy .enemy-card .heal-quick-bar {
+        display: flex;
+        position: relative;
+        top: -74px;
+        right: 3px; }
+        .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container,
+        .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container,
+        .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container,
+        .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container {
+          position: absolute;
           display: flex;
-          background-color: rgba(255, 255, 255, 0.3);
-          box-shadow: -1px -1px 1px 1px rgba(44, 169, 75, 0.4);
-          padding: 12px;
-          bottom: 2px;
-          margin: 0 2px 0 2px;
-          border-radius: 50%;
-          justify-content: center;
-          align-items: center; }
-          .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:active, .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:active, .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:active, .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:active {
-            box-shadow: inset 2px 2px 5px 2px rgba(0, 0, 0, 0.1); }
-          .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:hover, .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:hover, .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:hover, .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:hover {
-            cursor: pointer; }
-          .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num {
+          justify-content: flex-end;
+          width: 100%;
+          left: 2px; }
+          .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item,
+          .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item,
+          .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item,
+          .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item {
+            position: relative;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            background-color: rgba(23, 88, 39, 0.5);
+            background-color: rgba(255, 255, 255, 0.3);
+            box-shadow: -1px -1px 1px 1px rgba(44, 169, 75, 0.4);
+            padding: 12px;
+            bottom: 2px;
+            margin: 0 2px 0 2px;
             border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            font-size: 1rem;
-            bottom: -7px;
-            font-weight: 500; }
-          .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img {
-            width: 40px;
-            height: 40px; }
-            .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img, .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img, .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img, .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img {
-              width: 100%;
-              height: 100%; }
-    .battle-screen .player .attack-bar .weapon-name, .battle-screen .enemy .attack-bar .weapon-name {
+            justify-content: center;
+            align-items: center; }
+            .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:active,
+            .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:active,
+            .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:active,
+            .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:active {
+              box-shadow: inset 2px 2px 5px 2px rgba(0, 0, 0, 0.1); }
+            .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:hover,
+            .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:hover,
+            .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:hover,
+            .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item:hover {
+              cursor: pointer; }
+            .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num,
+            .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num,
+            .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num,
+            .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              position: absolute;
+              background-color: rgba(23, 88, 39, 0.5);
+              border-radius: 50%;
+              width: 25px;
+              height: 25px;
+              font-size: 1rem;
+              bottom: -7px;
+              font-weight: 500; }
+            .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img,
+            .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img,
+            .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img,
+            .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img {
+              width: 40px;
+              height: 40px; }
+              .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img,
+              .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img,
+              .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img,
+              .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img img {
+                width: 100%;
+                height: 100%; }
+    .battle-screen .player .attack-bar .weapon-name,
+    .battle-screen .enemy .attack-bar .weapon-name {
       position: relative;
       top: 4px; }
-    .battle-screen .player .attack-bar .no-weapon, .battle-screen .enemy .attack-bar .no-weapon {
+    .battle-screen .player .attack-bar .no-weapon,
+    .battle-screen .enemy .attack-bar .no-weapon {
       visibility: hidden; }
-    .battle-screen .player .attack-bar .att-empty, .battle-screen .player .attack-bar .att-progress, .battle-screen .enemy .attack-bar .att-empty, .battle-screen .enemy .attack-bar .att-progress {
+    .battle-screen .player .attack-bar .att-empty,
+    .battle-screen .player .attack-bar .att-progress,
+    .battle-screen .enemy .attack-bar .att-empty,
+    .battle-screen .enemy .attack-bar .att-progress {
       height: 14px;
       width: 100%;
       position: relative; }
-    .battle-screen .player .attack-bar .att-empty, .battle-screen .enemy .attack-bar .att-empty {
+    .battle-screen .player .attack-bar .att-empty,
+    .battle-screen .enemy .attack-bar .att-empty {
       background-color: #103c1a;
       top: 8px;
       z-index: 1; }
-    .battle-screen .player .attack-bar .att-progress, .battle-screen .enemy .attack-bar .att-progress {
+    .battle-screen .player .attack-bar .att-progress,
+    .battle-screen .enemy .attack-bar .att-progress {
       background-color: #3bb6d6;
       top: -6px;
       z-index: 2;
       width: 0%; }
-    .battle-screen .player .stats, .battle-screen .enemy .stats {
+    .battle-screen .player .stats,
+    .battle-screen .enemy .stats {
       padding: 8px;
       border-radius: 10px;
       text-align: left;
@@ -665,9 +829,11 @@
       border-top: 2px solid #2ca94b;
       border-left: 2px solid #2ca94b;
       box-shadow: 1px 1px 4px 1px rgba(255, 255, 255, 0.3), 2px 2px 2px 1px rgba(255, 255, 255, 0.1); }
-      .battle-screen .player .stats h3, .battle-screen .enemy .stats h3 {
+      .battle-screen .player .stats h3,
+      .battle-screen .enemy .stats h3 {
         text-align: center; }
-      .battle-screen .player .stats p span, .battle-screen .enemy .stats p span {
+      .battle-screen .player .stats p span,
+      .battle-screen .enemy .stats p span {
         float: right;
         font-size: 1.2rem; }
   .battle-screen .dead {
@@ -866,39 +1032,75 @@ body {
     padding: 0 20px 0 20px; }
   .container {
     width: 70%; }
-    .container .battle-screen .player .player-card .heal-quick-bar, .container .battle-screen .player .enemy-card .heal-quick-bar, .container .battle-screen .enemy .player-card .heal-quick-bar, .container .battle-screen .enemy .enemy-card .heal-quick-bar {
+    .container .battle-screen .player .player-card .heal-quick-bar,
+    .container .battle-screen .player .enemy-card .heal-quick-bar,
+    .container .battle-screen .enemy .player-card .heal-quick-bar,
+    .container .battle-screen .enemy .enemy-card .heal-quick-bar {
       top: -67px; }
-      .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item {
+      .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item,
+      .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item,
+      .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item,
+      .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item {
         padding: 10px; }
-        .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num {
+        .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num,
+        .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num,
+        .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num,
+        .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num {
           width: 25px;
           height: 25px;
           font-size: 0.9rem; }
-        .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img {
+        .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img,
+        .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img,
+        .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img,
+        .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img {
           width: 36px;
           height: 36px; } }
 
 @media screen and (max-width: 1200px) {
   .container {
     width: 80%; }
-    .container .battle-screen .player, .container .battle-screen .enemy {
+    .container .battle-screen .player,
+    .container .battle-screen .enemy {
       width: 39%; }
-      .container .battle-screen .player .player-card .name, .container .battle-screen .player .enemy-card .name, .container .battle-screen .enemy .player-card .name, .container .battle-screen .enemy .enemy-card .name {
+      .container .battle-screen .player .player-card .name,
+      .container .battle-screen .player .enemy-card .name,
+      .container .battle-screen .enemy .player-card .name,
+      .container .battle-screen .enemy .enemy-card .name {
         font-size: 1.5rem; }
-      .container .battle-screen .player .player-card .heal-quick-bar, .container .battle-screen .player .enemy-card .heal-quick-bar, .container .battle-screen .enemy .player-card .heal-quick-bar, .container .battle-screen .enemy .enemy-card .heal-quick-bar {
+      .container .battle-screen .player .player-card .heal-quick-bar,
+      .container .battle-screen .player .enemy-card .heal-quick-bar,
+      .container .battle-screen .enemy .player-card .heal-quick-bar,
+      .container .battle-screen .enemy .enemy-card .heal-quick-bar {
         top: -60px; }
-        .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item {
+        .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item,
+        .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item,
+        .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item,
+        .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item {
           padding: 8px; }
-          .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num {
+          .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num,
+          .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num,
+          .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num,
+          .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num {
             width: 22px;
             height: 22px;
             font-size: 0.9rem; }
-          .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img {
+          .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img,
+          .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img,
+          .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img,
+          .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img {
             width: 33px;
             height: 33px; }
     .container .action-buttons .btn {
       width: 39%; }
-  .registration-container .registration-form, .registration-container .login-form, .registration-container .profile, .login-container .registration-form, .login-container .login-form, .login-container .profile, .profile-container .registration-form, .profile-container .login-form, .profile-container .profile {
+  .registration-container .registration-form,
+  .registration-container .login-form,
+  .registration-container .profile,
+  .login-container .registration-form,
+  .login-container .login-form,
+  .login-container .profile,
+  .profile-container .registration-form,
+  .profile-container .login-form,
+  .profile-container .profile {
     width: 60%; } }
 
 @media screen and (max-width: 768px) {
@@ -1062,36 +1264,66 @@ body {
       .container .location-selection .first-card-opened {
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px; }
-    .container .battle-screen .player, .container .battle-screen .enemy {
+    .container .battle-screen .player,
+    .container .battle-screen .enemy {
       width: 45%; }
-      .container .battle-screen .player .player-card .name, .container .battle-screen .player .enemy-card .name, .container .battle-screen .enemy .player-card .name, .container .battle-screen .enemy .enemy-card .name {
+      .container .battle-screen .player .player-card .information,
+      .container .battle-screen .player .enemy-card .information,
+      .container .battle-screen .enemy .player-card .information,
+      .container .battle-screen .enemy .enemy-card .information {
+        font-size: 0.8rem;
+        top: 0.25em;
+        line-height: 1.5em; }
+      .container .battle-screen .player .player-card .name,
+      .container .battle-screen .player .enemy-card .name,
+      .container .battle-screen .enemy .player-card .name,
+      .container .battle-screen .enemy .enemy-card .name {
         font-size: 1.2rem;
         line-height: 1.6rem; }
-      .container .battle-screen .player .player-card .hp-bar .hp, .container .battle-screen .player .enemy-card .hp-bar .hp, .container .battle-screen .enemy .player-card .hp-bar .hp, .container .battle-screen .enemy .enemy-card .hp-bar .hp {
+      .container .battle-screen .player .player-card .hp-bar .hp,
+      .container .battle-screen .player .enemy-card .hp-bar .hp,
+      .container .battle-screen .enemy .player-card .hp-bar .hp,
+      .container .battle-screen .enemy .enemy-card .hp-bar .hp {
         font-size: 1rem;
         margin: -5px 0 -5px 0; }
-      .container .battle-screen .player .player-card .heal-quick-bar, .container .battle-screen .player .enemy-card .heal-quick-bar, .container .battle-screen .enemy .player-card .heal-quick-bar, .container .battle-screen .enemy .enemy-card .heal-quick-bar {
+      .container .battle-screen .player .player-card .heal-quick-bar,
+      .container .battle-screen .player .enemy-card .heal-quick-bar,
+      .container .battle-screen .enemy .player-card .heal-quick-bar,
+      .container .battle-screen .enemy .enemy-card .heal-quick-bar {
         top: -50px; }
-        .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item {
+        .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item,
+        .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item,
+        .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item,
+        .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item {
           padding: 8px;
           border-radius: 50%; }
-          .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num {
+          .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num,
+          .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num,
+          .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num,
+          .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-num {
             border-radius: 50%;
             width: 15px;
             height: 15px;
             font-size: 0.6rem;
             bottom: -5px;
             margin-right: 1px; }
-          .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img {
+          .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img,
+          .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img,
+          .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img,
+          .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container .heal-quick-bar-item .item-img {
             width: 25px;
             height: 25px; }
-      .container .battle-screen .player .attack-bar p, .container .battle-screen .enemy .attack-bar p {
+      .container .battle-screen .player .attack-bar p,
+      .container .battle-screen .enemy .attack-bar p {
         font-size: 0.9rem; }
-      .container .battle-screen .player .stats h3, .container .battle-screen .enemy .stats h3 {
+      .container .battle-screen .player .stats h3,
+      .container .battle-screen .enemy .stats h3 {
         font-size: 1rem; }
-      .container .battle-screen .player .stats p, .container .battle-screen .enemy .stats p {
+      .container .battle-screen .player .stats p,
+      .container .battle-screen .enemy .stats p {
         font-size: 0.9rem; }
-        .container .battle-screen .player .stats p span, .container .battle-screen .enemy .stats p span {
+        .container .battle-screen .player .stats p span,
+        .container .battle-screen .enemy .stats p span {
           font-size: 1rem; }
     .container .battle-screen .action-buttons .btn {
       width: 45%;
@@ -1101,16 +1333,21 @@ body {
       justify-content: center;
       flex-direction: column-reverse;
       font-size: 0.9rem; }
-      .container .inv-equip .equipment, .container .inv-equip .inventory {
+      .container .inv-equip .equipment,
+      .container .inv-equip .inventory {
         width: 100%; }
-        .container .inv-equip .equipment h3, .container .inv-equip .inventory h3 {
+        .container .inv-equip .equipment h3,
+        .container .inv-equip .inventory h3 {
           height: 50px;
           padding: 10px 20px 10px 20px; }
-        .container .inv-equip .equipment .inv-list .inv-item .item-description, .container .inv-equip .inventory .inv-list .inv-item .item-description {
+        .container .inv-equip .equipment .inv-list .inv-item .item-description,
+        .container .inv-equip .inventory .inv-list .inv-item .item-description {
           top: -117px; }
-        .container .inv-equip .equipment .inv-list .inv-item .item-menu, .container .inv-equip .inventory .inv-list .inv-item .item-menu {
+        .container .inv-equip .equipment .inv-list .inv-item .item-menu,
+        .container .inv-equip .inventory .inv-list .inv-item .item-menu {
           top: -202px; }
-        .container .inv-equip .equipment .inv-list .inv-item .item-count, .container .inv-equip .inventory .inv-list .inv-item .item-count {
+        .container .inv-equip .equipment .inv-list .inv-item .item-count,
+        .container .inv-equip .inventory .inv-list .inv-item .item-count {
           font-size: 0.8rem; }
       .container .inv-equip .equipment {
         margin-top: 15px; }
@@ -1123,25 +1360,91 @@ body {
     font-size: 1rem; }
     .modal-container .confirmation-modal .modal-text {
       font-size: 1rem; }
-  .registration-container .registration-form, .registration-container .login-form, .registration-container .profile, .login-container .registration-form, .login-container .login-form, .login-container .profile, .profile-container .registration-form, .profile-container .login-form, .profile-container .profile {
+  .information-modal-container .information-modal {
+    font-size: 0.9rem; }
+  .registration-container .registration-form,
+  .registration-container .login-form,
+  .registration-container .profile,
+  .login-container .registration-form,
+  .login-container .login-form,
+  .login-container .profile,
+  .profile-container .registration-form,
+  .profile-container .login-form,
+  .profile-container .profile {
     width: 80%;
     margin: 1.2rem auto 1.2rem auto; }
-    .registration-container .registration-form .msg, .registration-container .login-form .msg, .registration-container .profile .msg, .login-container .registration-form .msg, .login-container .login-form .msg, .login-container .profile .msg, .profile-container .registration-form .msg, .profile-container .login-form .msg, .profile-container .profile .msg {
+    .registration-container .registration-form .msg,
+    .registration-container .login-form .msg,
+    .registration-container .profile .msg,
+    .login-container .registration-form .msg,
+    .login-container .login-form .msg,
+    .login-container .profile .msg,
+    .profile-container .registration-form .msg,
+    .profile-container .login-form .msg,
+    .profile-container .profile .msg {
       width: 100%;
       font-size: 1.1rem; }
-    .registration-container .registration-form h2, .registration-container .login-form h2, .registration-container .profile h2, .login-container .registration-form h2, .login-container .login-form h2, .login-container .profile h2, .profile-container .registration-form h2, .profile-container .login-form h2, .profile-container .profile h2 {
+    .registration-container .registration-form h2,
+    .registration-container .login-form h2,
+    .registration-container .profile h2,
+    .login-container .registration-form h2,
+    .login-container .login-form h2,
+    .login-container .profile h2,
+    .profile-container .registration-form h2,
+    .profile-container .login-form h2,
+    .profile-container .profile h2 {
       font-size: 1.5rem;
       text-align: center; }
-    .registration-container .registration-form form .form-spacing, .registration-container .login-form form .form-spacing, .registration-container .profile form .form-spacing, .login-container .registration-form form .form-spacing, .login-container .login-form form .form-spacing, .login-container .profile form .form-spacing, .profile-container .registration-form form .form-spacing, .profile-container .login-form form .form-spacing, .profile-container .profile form .form-spacing {
+    .registration-container .registration-form form .form-spacing,
+    .registration-container .login-form form .form-spacing,
+    .registration-container .profile form .form-spacing,
+    .login-container .registration-form form .form-spacing,
+    .login-container .login-form form .form-spacing,
+    .login-container .profile form .form-spacing,
+    .profile-container .registration-form form .form-spacing,
+    .profile-container .login-form form .form-spacing,
+    .profile-container .profile form .form-spacing {
       margin: 7px 0 18px 0; }
-      .registration-container .registration-form form .form-spacing .label-control, .registration-container .login-form form .form-spacing .label-control, .registration-container .profile form .form-spacing .label-control, .login-container .registration-form form .form-spacing .label-control, .login-container .login-form form .form-spacing .label-control, .login-container .profile form .form-spacing .label-control, .profile-container .registration-form form .form-spacing .label-control, .profile-container .login-form form .form-spacing .label-control, .profile-container .profile form .form-spacing .label-control {
+      .registration-container .registration-form form .form-spacing .label-control,
+      .registration-container .login-form form .form-spacing .label-control,
+      .registration-container .profile form .form-spacing .label-control,
+      .login-container .registration-form form .form-spacing .label-control,
+      .login-container .login-form form .form-spacing .label-control,
+      .login-container .profile form .form-spacing .label-control,
+      .profile-container .registration-form form .form-spacing .label-control,
+      .profile-container .login-form form .form-spacing .label-control,
+      .profile-container .profile form .form-spacing .label-control {
         font-size: 1.1rem; }
-      .registration-container .registration-form form .form-spacing .input-control, .registration-container .login-form form .form-spacing .input-control, .registration-container .profile form .form-spacing .input-control, .login-container .registration-form form .form-spacing .input-control, .login-container .login-form form .form-spacing .input-control, .login-container .profile form .form-spacing .input-control, .profile-container .registration-form form .form-spacing .input-control, .profile-container .login-form form .form-spacing .input-control, .profile-container .profile form .form-spacing .input-control {
+      .registration-container .registration-form form .form-spacing .input-control,
+      .registration-container .login-form form .form-spacing .input-control,
+      .registration-container .profile form .form-spacing .input-control,
+      .login-container .registration-form form .form-spacing .input-control,
+      .login-container .login-form form .form-spacing .input-control,
+      .login-container .profile form .form-spacing .input-control,
+      .profile-container .registration-form form .form-spacing .input-control,
+      .profile-container .login-form form .form-spacing .input-control,
+      .profile-container .profile form .form-spacing .input-control {
         padding: 8px;
         font-size: 1.1rem; }
-    .registration-container .registration-form form .btn, .registration-container .login-form form .btn, .registration-container .profile form .btn, .login-container .registration-form form .btn, .login-container .login-form form .btn, .login-container .profile form .btn, .profile-container .registration-form form .btn, .profile-container .login-form form .btn, .profile-container .profile form .btn {
+    .registration-container .registration-form form .btn,
+    .registration-container .login-form form .btn,
+    .registration-container .profile form .btn,
+    .login-container .registration-form form .btn,
+    .login-container .login-form form .btn,
+    .login-container .profile form .btn,
+    .profile-container .registration-form form .btn,
+    .profile-container .login-form form .btn,
+    .profile-container .profile form .btn {
       font-size: 1.1rem; }
-    .registration-container .registration-form form .profile-buttons, .registration-container .login-form form .profile-buttons, .registration-container .profile form .profile-buttons, .login-container .registration-form form .profile-buttons, .login-container .login-form form .profile-buttons, .login-container .profile form .profile-buttons, .profile-container .registration-form form .profile-buttons, .profile-container .login-form form .profile-buttons, .profile-container .profile form .profile-buttons {
+    .registration-container .registration-form form .profile-buttons,
+    .registration-container .login-form form .profile-buttons,
+    .registration-container .profile form .profile-buttons,
+    .login-container .registration-form form .profile-buttons,
+    .login-container .login-form form .profile-buttons,
+    .login-container .profile form .profile-buttons,
+    .profile-container .registration-form form .profile-buttons,
+    .profile-container .login-form form .profile-buttons,
+    .profile-container .profile form .profile-buttons {
       font-size: 1.1rem;
       margin-top: 0.8rem; } }
 
@@ -1165,35 +1468,64 @@ body {
     width: 95%; }
     .container .battle-screen {
       padding: 8px; }
-      .container .battle-screen .player, .container .battle-screen .enemy {
+      .container .battle-screen .player,
+      .container .battle-screen .enemy {
         width: 48%; }
-        .container .battle-screen .player .player-card .name, .container .battle-screen .player .enemy-card .name, .container .battle-screen .enemy .player-card .name, .container .battle-screen .enemy .enemy-card .name {
+        .container .battle-screen .player .player-card .name,
+        .container .battle-screen .player .enemy-card .name,
+        .container .battle-screen .enemy .player-card .name,
+        .container .battle-screen .enemy .enemy-card .name {
           font-size: 1rem; }
-        .container .battle-screen .player .player-card .hp-bar .current, .container .battle-screen .player .player-card .hp-bar .max, .container .battle-screen .player .enemy-card .hp-bar .current, .container .battle-screen .player .enemy-card .hp-bar .max, .container .battle-screen .enemy .player-card .hp-bar .current, .container .battle-screen .enemy .player-card .hp-bar .max, .container .battle-screen .enemy .enemy-card .hp-bar .current, .container .battle-screen .enemy .enemy-card .hp-bar .max {
+        .container .battle-screen .player .player-card .hp-bar .current,
+        .container .battle-screen .player .player-card .hp-bar .max,
+        .container .battle-screen .player .enemy-card .hp-bar .current,
+        .container .battle-screen .player .enemy-card .hp-bar .max,
+        .container .battle-screen .enemy .player-card .hp-bar .current,
+        .container .battle-screen .enemy .player-card .hp-bar .max,
+        .container .battle-screen .enemy .enemy-card .hp-bar .current,
+        .container .battle-screen .enemy .enemy-card .hp-bar .max {
           height: 10px;
           top: 3px; }
-        .container .battle-screen .player .player-card .hp-bar .max, .container .battle-screen .player .enemy-card .hp-bar .max, .container .battle-screen .enemy .player-card .hp-bar .max, .container .battle-screen .enemy .enemy-card .hp-bar .max {
+        .container .battle-screen .player .player-card .hp-bar .max,
+        .container .battle-screen .player .enemy-card .hp-bar .max,
+        .container .battle-screen .enemy .player-card .hp-bar .max,
+        .container .battle-screen .enemy .enemy-card .hp-bar .max {
           top: -7px; }
-        .container .battle-screen .player .player-card .hp-bar .hp, .container .battle-screen .player .enemy-card .hp-bar .hp, .container .battle-screen .enemy .player-card .hp-bar .hp, .container .battle-screen .enemy .enemy-card .hp-bar .hp {
+        .container .battle-screen .player .player-card .hp-bar .hp,
+        .container .battle-screen .player .enemy-card .hp-bar .hp,
+        .container .battle-screen .enemy .player-card .hp-bar .hp,
+        .container .battle-screen .enemy .enemy-card .hp-bar .hp {
           font-size: 0.8rem;
           margin: -8px 0 -8px 0; }
-        .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container, .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container, .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container, .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container {
+        .container .battle-screen .player .player-card .heal-quick-bar .heal-quick-bar-container,
+        .container .battle-screen .player .enemy-card .heal-quick-bar .heal-quick-bar-container,
+        .container .battle-screen .enemy .player-card .heal-quick-bar .heal-quick-bar-container,
+        .container .battle-screen .enemy .enemy-card .heal-quick-bar .heal-quick-bar-container {
           padding: 0 5px 0 5px;
           left: 4px;
           justify-content: space-around; }
-        .container .battle-screen .player .attack-bar p, .container .battle-screen .enemy .attack-bar p {
+        .container .battle-screen .player .attack-bar p,
+        .container .battle-screen .enemy .attack-bar p {
           font-size: 0.8rem; }
-        .container .battle-screen .player .attack-bar .att-empty, .container .battle-screen .player .attack-bar .att-progress, .container .battle-screen .enemy .attack-bar .att-empty, .container .battle-screen .enemy .attack-bar .att-progress {
+        .container .battle-screen .player .attack-bar .att-empty,
+        .container .battle-screen .player .attack-bar .att-progress,
+        .container .battle-screen .enemy .attack-bar .att-empty,
+        .container .battle-screen .enemy .attack-bar .att-progress {
           height: 10px; }
-        .container .battle-screen .player .attack-bar .att-empty, .container .battle-screen .enemy .attack-bar .att-empty {
+        .container .battle-screen .player .attack-bar .att-empty,
+        .container .battle-screen .enemy .attack-bar .att-empty {
           top: 7px; }
-        .container .battle-screen .player .attack-bar .att-progress, .container .battle-screen .enemy .attack-bar .att-progress {
+        .container .battle-screen .player .attack-bar .att-progress,
+        .container .battle-screen .enemy .attack-bar .att-progress {
           top: -3px; }
-        .container .battle-screen .player .stats h3, .container .battle-screen .enemy .stats h3 {
+        .container .battle-screen .player .stats h3,
+        .container .battle-screen .enemy .stats h3 {
           font-size: 0.9rem; }
-        .container .battle-screen .player .stats p, .container .battle-screen .enemy .stats p {
+        .container .battle-screen .player .stats p,
+        .container .battle-screen .enemy .stats p {
           font-size: 0.85rem; }
-          .container .battle-screen .player .stats p span, .container .battle-screen .enemy .stats p span {
+          .container .battle-screen .player .stats p span,
+          .container .battle-screen .enemy .stats p span {
             font-size: 0.9rem; }
       .container .battle-screen .action-buttons {
         padding-top: 16px; }
@@ -1202,7 +1534,8 @@ body {
     .container .inv-equip {
       padding: 8px;
       font-size: 0.85rem; }
-      .container .inv-equip .equipment, .container .inv-equip .inventory {
+      .container .inv-equip .equipment,
+      .container .inv-equip .inventory {
         width: 100%; }
       .container .inv-equip .equipment {
         margin-bottom: 8px; }
@@ -1221,7 +1554,7 @@ body {
     width: 260px;
     font-size: 0.8rem; }
     .modal-container .confirmation-modal.hidden {
-      margin-top: calc(140px/2); }
+      margin-top: calc(140px / 2); }
     .modal-container .confirmation-modal span {
       display: none; }
     .modal-container .confirmation-modal .modal-text {
@@ -1233,19 +1566,67 @@ body {
     width: 320px; }
     .modal-container .loading-modal p {
       font-size: 1rem; }
-  .registration-container .registration-form, .registration-container .login-form, .registration-container .profile, .login-container .registration-form, .login-container .login-form, .login-container .profile, .profile-container .registration-form, .profile-container .login-form, .profile-container .profile {
+  .registration-container .registration-form,
+  .registration-container .login-form,
+  .registration-container .profile,
+  .login-container .registration-form,
+  .login-container .login-form,
+  .login-container .profile,
+  .profile-container .registration-form,
+  .profile-container .login-form,
+  .profile-container .profile {
     width: 90%;
     padding: 1.2rem 1.5rem 1.2rem 1.5rem; }
-    .registration-container .registration-form .msg, .registration-container .login-form .msg, .registration-container .profile .msg, .login-container .registration-form .msg, .login-container .login-form .msg, .login-container .profile .msg, .profile-container .registration-form .msg, .profile-container .login-form .msg, .profile-container .profile .msg {
+    .registration-container .registration-form .msg,
+    .registration-container .login-form .msg,
+    .registration-container .profile .msg,
+    .login-container .registration-form .msg,
+    .login-container .login-form .msg,
+    .login-container .profile .msg,
+    .profile-container .registration-form .msg,
+    .profile-container .login-form .msg,
+    .profile-container .profile .msg {
       font-size: 1rem;
       margin-bottom: 0.7rem; }
-    .registration-container .registration-form form .form-spacing .label-control, .registration-container .login-form form .form-spacing .label-control, .registration-container .profile form .form-spacing .label-control, .login-container .registration-form form .form-spacing .label-control, .login-container .login-form form .form-spacing .label-control, .login-container .profile form .form-spacing .label-control, .profile-container .registration-form form .form-spacing .label-control, .profile-container .login-form form .form-spacing .label-control, .profile-container .profile form .form-spacing .label-control {
+    .registration-container .registration-form form .form-spacing .label-control,
+    .registration-container .login-form form .form-spacing .label-control,
+    .registration-container .profile form .form-spacing .label-control,
+    .login-container .registration-form form .form-spacing .label-control,
+    .login-container .login-form form .form-spacing .label-control,
+    .login-container .profile form .form-spacing .label-control,
+    .profile-container .registration-form form .form-spacing .label-control,
+    .profile-container .login-form form .form-spacing .label-control,
+    .profile-container .profile form .form-spacing .label-control {
       font-size: 1rem; }
-    .registration-container .registration-form form .form-spacing .input-control, .registration-container .login-form form .form-spacing .input-control, .registration-container .profile form .form-spacing .input-control, .login-container .registration-form form .form-spacing .input-control, .login-container .login-form form .form-spacing .input-control, .login-container .profile form .form-spacing .input-control, .profile-container .registration-form form .form-spacing .input-control, .profile-container .login-form form .form-spacing .input-control, .profile-container .profile form .form-spacing .input-control {
+    .registration-container .registration-form form .form-spacing .input-control,
+    .registration-container .login-form form .form-spacing .input-control,
+    .registration-container .profile form .form-spacing .input-control,
+    .login-container .registration-form form .form-spacing .input-control,
+    .login-container .login-form form .form-spacing .input-control,
+    .login-container .profile form .form-spacing .input-control,
+    .profile-container .registration-form form .form-spacing .input-control,
+    .profile-container .login-form form .form-spacing .input-control,
+    .profile-container .profile form .form-spacing .input-control {
       font-size: 1rem; }
-    .registration-container .registration-form form .btn, .registration-container .login-form form .btn, .registration-container .profile form .btn, .login-container .registration-form form .btn, .login-container .login-form form .btn, .login-container .profile form .btn, .profile-container .registration-form form .btn, .profile-container .login-form form .btn, .profile-container .profile form .btn {
+    .registration-container .registration-form form .btn,
+    .registration-container .login-form form .btn,
+    .registration-container .profile form .btn,
+    .login-container .registration-form form .btn,
+    .login-container .login-form form .btn,
+    .login-container .profile form .btn,
+    .profile-container .registration-form form .btn,
+    .profile-container .login-form form .btn,
+    .profile-container .profile form .btn {
       font-size: 1rem; }
-    .registration-container .registration-form form .profile-buttons .btn, .registration-container .login-form form .profile-buttons .btn, .registration-container .profile form .profile-buttons .btn, .login-container .registration-form form .profile-buttons .btn, .login-container .login-form form .profile-buttons .btn, .login-container .profile form .profile-buttons .btn, .profile-container .registration-form form .profile-buttons .btn, .profile-container .login-form form .profile-buttons .btn, .profile-container .profile form .profile-buttons .btn {
+    .registration-container .registration-form form .profile-buttons .btn,
+    .registration-container .login-form form .profile-buttons .btn,
+    .registration-container .profile form .profile-buttons .btn,
+    .login-container .registration-form form .profile-buttons .btn,
+    .login-container .login-form form .profile-buttons .btn,
+    .login-container .profile form .profile-buttons .btn,
+    .profile-container .registration-form form .profile-buttons .btn,
+    .profile-container .login-form form .profile-buttons .btn,
+    .profile-container .profile form .profile-buttons .btn {
       font-size: 1rem;
       margin: 0.8rem 0.1rem 0 0.1rem; } }
 

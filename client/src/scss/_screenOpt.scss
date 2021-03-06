@@ -1,738 +1,772 @@
 @include mediaXl {
-    .container {
-        width: 60%;
-    }
+  .container {
+    width: 60%;
+  }
 }
 
 @include mediaLg {
-    .header {
-        padding: 0 20px 0 20px;
-    }
-    .container {
-        width: 70%;
-        
-        .battle-screen {
-            .player, .enemy {
-                .player-card, .enemy-card {
-                    .heal-quick-bar {
-                        top: -67px;
+  .header {
+    padding: 0 20px 0 20px;
+  }
+  .container {
+    width: 70%;
 
-                        .heal-quick-bar-container {
-                            .heal-quick-bar-item {
-                                padding: 10px;
+    .battle-screen {
+      .player,
+      .enemy {
+        .player-card,
+        .enemy-card {
+          .heal-quick-bar {
+            top: -67px;
 
-                                .item-num {
-                                    width: 25px;
-                                    height: 25px;
-                                    font-size: 0.9rem;
-                                }
+            .heal-quick-bar-container {
+              .heal-quick-bar-item {
+                padding: 10px;
 
-                                .item-img {
-                                    width: 36px;
-                                    height: 36px;
-                                }
-                            }
-                        }
-                    }
+                .item-num {
+                  width: 25px;
+                  height: 25px;
+                  font-size: 0.9rem;
                 }
+
+                .item-img {
+                  width: 36px;
+                  height: 36px;
+                }
+              }
             }
+          }
         }
+      }
     }
+  }
 }
 
 @include mediaMd {
-    .container {
-        width: 80%;
-        
-        .battle-screen {
-            .player, .enemy {
-                width: 39%;
+  .container {
+    width: 80%;
 
-                .player-card, .enemy-card {
+    .battle-screen {
+      .player,
+      .enemy {
+        width: 39%;
 
-                    .name {
-                        font-size: 1.5rem
-                    }
+        .player-card,
+        .enemy-card {
+          .name {
+            font-size: 1.5rem;
+          }
 
-                    .heal-quick-bar {
-                        top: -60px;
+          .heal-quick-bar {
+            top: -60px;
 
-                        .heal-quick-bar-container {
-                            .heal-quick-bar-item {
-                                padding: 8px;
+            .heal-quick-bar-container {
+              .heal-quick-bar-item {
+                padding: 8px;
 
-                                .item-num {
-                                    width: 22px;
-                                    height: 22px;
-                                    font-size: 0.9rem;
-                                }
-
-                                .item-img {
-                                    width: 33px;
-                                    height: 33px;
-                                }
-                            }
-                        }
-                    }
+                .item-num {
+                  width: 22px;
+                  height: 22px;
+                  font-size: 0.9rem;
                 }
+
+                .item-img {
+                  width: 33px;
+                  height: 33px;
+                }
+              }
             }
+          }
         }
-
-        .action-buttons {
-            .btn {
-                width: 39%;
-            }  
-        }
+      }
     }
 
-    .registration-container, .login-container, .profile-container {
-        .registration-form, .login-form, .profile {
-            width: 60%;
-        }
+    .action-buttons {
+      .btn {
+        width: 39%;
+      }
     }
+  }
+
+  .registration-container,
+  .login-container,
+  .profile-container {
+    .registration-form,
+    .login-form,
+    .profile {
+      width: 60%;
+    }
+  }
 }
 
 @include mediaSm {
-    .header {
-        padding: 0 5px 0 5px;
-    
-        .header-text {
-            font-size: 0.8rem;
-        }
+  .header {
+    padding: 0 5px 0 5px;
 
-        .header-button {
-            clip-path: polygon(25% 0, 100% 0, 75% 100%, 0 100%);
-            width: 100px;
-            font-size: 0.9rem;
-        }
-    
-        .header-links {
-            .login-form {
-                right: 10px;
-                width: 250px;
-                background-color: $primary-color-darker;
-    
-                input {
-                    font-size: 0.9rem;
-    
-                    &::placeholder {
-                        font-size: 0.8rem;
-                    }
-                }
-    
-                .login-btn {
-                    padding: 7px;
-                    font-size: 0.9rem;
-                    margin-top: 0.7rem;
-                }
-    
-                .msg {
-                    font-size: 0.9rem;
-                    margin-top: 0.7rem;
-                    padding: 4px 0 8px 0;
-                }
-
-                .spinner-img {
-                    width: 30px;
-                    margin-top: 0.4rem;
-                }
-            }
-        }
-
-        .user-nav {
-            .user-menu {
-                width: 95px;
-                right: 13px;
-
-                .user-menu-options {
-                    list-style-type: none;
-                    font-size: 0.8rem;
-                    
-                    li {
-                        padding: 7px;
-                        text-align: center;
-                        cursor: pointer;
-                    }
-    
-                    .separator {
-                        width: 100%;
-                        height: 2px;
-                        margin: 5px 0 5px 0;
-                        background: $secondary-color-lighter;
-                    }
-
-                    .msg {
-                        padding: 7px;
-                    }
-
-                    .spinner-img {
-                        width: 22px;
-                    }
-                }
-            }
-        }
+    .header-text {
+      font-size: 0.8rem;
     }
-    
-    .container {
-        width: 85%;
 
-        .location-selection {
-            display: grid;
-            grid-template-columns: 1fr;
-            padding: 0 8px 8px 8px;
-    
-            .location-card {
-                display: flex;
-                align-items: center;
-                box-shadow: none;
-                height: 0;
-                margin: 0;
-                padding: 0;
-                border: 0;
+    .header-button {
+      clip-path: polygon(25% 0, 100% 0, 75% 100%, 0 100%);
+      width: 100px;
+      font-size: 0.9rem;
+    }
 
-                &:hover {
-                    transform: none;
-                    box-shadow: none;
-                }
-    
-                &:active {
-                    transform: translate( 2px, -2px);
-                    box-shadow: -2px 2px 5px rgba($color: $primary-color, $alpha: 0.7), -1px 1px 5px rgba($color: $primary-color, $alpha: 0.7);
-                }
-    
-                .location-name {
-                    position: relative;
-                    right: 20px;
-                    font-size: 0rem;
-                    opacity: 0;
-                    -webkit-transition: all 0.3s ease-in-out;
-                    -moz-transition: all 0.3s ease-in-out;
-                    -ms-transition: all 0.3s ease-in-out;
-                    -o-transition: all 0.3s ease-in-out;
-                    transition: all 0.3s ease-in-out;
-                }
-    
-                .location-img {
-                    position: relative;
-                    top: 20px;
-                    left: 20px;
-                    height: 0px;
-                    width: 0px;
-                    opacity: 0;
-                    -webkit-transition: all 0.3s ease-in-out;
-                    -moz-transition: all 0.3s ease-in-out;
-                    -ms-transition: all 0.3s ease-in-out;
-                    -o-transition: all 0.3s ease-in-out;
-                    transition: all 0.3s ease-in-out;
-                }
-            }
-    
-            .mobile-dropdown-btn {
-                position: relative;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-                margin: 0px;
-                height: 32px;
-                font-size: 0.8rem;
-                border-right: 2px solid $secondary-color-lighter;
-                border-top: 1px solid $secondary-color-lighter;
-                border-radius: $border-radius;
-                border-top-left-radius: 0;
-                border-top-right-radius: 0;
-                background-color: $primary-color-darker;
-                -webkit-transition: all 0.3s ease-out;
-                -moz-transition: all 0.3s ease-out;
-                -ms-transition: all 0.3s ease-out;
-                -o-transition: all 0.3s ease-out;
-                transition: all 0.3s ease-out;
-    
-                &:active {
-                    box-shadow: -2px 2px 5px rgba($color: $primary-color, $alpha: 0.7), -1px 1px 5px rgba($color: $primary-color, $alpha: 0.7);
-                    font-size: 0.95rem;
-                }
+    .header-links {
+      .login-form {
+        right: 10px;
+        width: 250px;
+        background-color: $primary-color-darker;
 
-                &:hover {
-                    transform: none;
-                    box-shadow: none;
-                }
-    
-                span {
-                    -webkit-transition: all 0.5s ease-in-out;
-                    -moz-transition: all 0.5s ease-in-out;
-                    -ms-transition: all 0.5s ease-in-out;
-                    -o-transition: all 0.5s ease-in-out;
-                    transition: all 0.5s ease-in-out;
-                }
-            }
-    
-            .btn-opened {
-                border-radius: $border-radius;
-                margin-top: 8px;
-                
-                span {
-                    transform: rotate(180deg);
-                }
-            }
-    
-            .show {
-                height: 50px;
-                margin: 8px 0px 0px 0px;
-                padding: 12px;
-                border-top: 2px solid $secondary-color-lighter;
-                border-right: 2px solid $secondary-color-lighter;
-    
-                .location-name {
-                    opacity: 1;
-                    font-size: 1.2rem;
-                }
-    
-                .location-img {
-                    top: 0;
-                    left: 0;
-                    opacity: 1;
-                    height: 40px;
-                    width: 40px;
-                }
-            }
-            
-            .first {
-                top: 0;
-                left: 0;
-                height: 50px;
-                margin: 8px 0px 0px 0px;
-                padding: 12px;
-                justify-content: center;
-                border-top: 2px solid $secondary-color-lighter;
-                border-right: 2px solid $secondary-color-lighter;
-                grid-row-start: 1;
-                border-bottom-left-radius: 0;
-                border-bottom-right-radius: 0;
-                z-index: 1;
-    
-                .location-name {
-                    display: block;
-                }
-    
-                .location-img {
-                    display: block;
-                }
-            }
-    
-            .first-card-opened {
-                border-bottom-left-radius: $border-radius;
-                border-bottom-right-radius: $border-radius;
-            }
+        input {
+          font-size: 0.9rem;
+
+          &::placeholder {
+            font-size: 0.8rem;
+          }
         }
 
-        .battle-screen {
-            .player, .enemy {
-                width: 45%;
-
-                .player-card, .enemy-card {
-                    .name {
-                        font-size: 1.2rem;
-                        line-height: 1.6rem;
-                    }
-
-                    .hp-bar {
-                        .hp {
-                            font-size: 1rem;
-                            margin: -5px 0 -5px 0;
-                        }
-                    }
-
-                    .heal-quick-bar {
-                        top: -50px;
-    
-                        .heal-quick-bar-container {
-                            .heal-quick-bar-item {
-                                padding: 8px;
-                                border-radius: 50%;
-    
-                                .item-num {
-                                    border-radius: 50%;
-                                    width: 15px;
-                                    height: 15px;
-                                    font-size: 0.6rem;
-                                    bottom: -5px;
-                                    margin-right: 1px;
-                                }
-    
-                                .item-img {
-                                    width: 25px;
-                                    height: 25px;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .attack-bar {
-                    p {
-                        font-size: 0.9rem;
-                    }
-                }
-
-                .stats {
-                    h3 {
-                        font-size: 1rem;
-                    }
-
-                    p {
-                        font-size: 0.9rem;
-
-                        span {
-                            font-size: 1rem
-                        }
-                    }
-                }
-            }
-
-            .action-buttons {
-                .btn {
-                    width: 45%;
-                    font-size: 0.9em;
-                }  
-            }
-        }
-
-        .inv-equip {
-            flex-wrap: wrap;
-            justify-content: center;
-            flex-direction: column-reverse;
-            font-size: 0.9rem;
-
-            
-            .equipment, .inventory {
-                width: 100%;
-                
-                h3 {
-                    height: 50px;
-                    padding: 10px 20px 10px 20px;
-                }
-
-                .inv-list .inv-item {
-                    .item-description {
-                        top: -117px;
-                    }
-
-                    .item-menu {
-                        top: -202px;
-                    }
-
-                    .item-count {
-                        font-size: 0.8rem;
-                    }
-                }
-            }
-
-            .equipment {
-                margin-top: 15px;
-            }
+        .login-btn {
+          padding: 7px;
+          font-size: 0.9rem;
+          margin-top: 0.7rem;
         }
 
         .msg {
+          font-size: 0.9rem;
+          margin-top: 0.7rem;
+          padding: 4px 0 8px 0;
+        }
+
+        .spinner-img {
+          width: 30px;
+          margin-top: 0.4rem;
+        }
+      }
+    }
+
+    .user-nav {
+      .user-menu {
+        width: 95px;
+        right: 13px;
+
+        .user-menu-options {
+          list-style-type: none;
+          font-size: 0.8rem;
+
+          li {
+            padding: 7px;
+            text-align: center;
+            cursor: pointer;
+          }
+
+          .separator {
+            width: 100%;
+            height: 2px;
+            margin: 5px 0 5px 0;
+            background: $secondary-color-lighter;
+          }
+
+          .msg {
+            padding: 7px;
+          }
+
+          .spinner-img {
+            width: 22px;
+          }
+        }
+      }
+    }
+  }
+
+  .container {
+    width: 85%;
+
+    .location-selection {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding: 0 8px 8px 8px;
+
+      .location-card {
+        display: flex;
+        align-items: center;
+        box-shadow: none;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+
+        &:hover {
+          transform: none;
+          box-shadow: none;
+        }
+
+        &:active {
+          transform: translate(2px, -2px);
+          box-shadow: -2px 2px 5px rgba($color: $primary-color, $alpha: 0.7),
+            -1px 1px 5px rgba($color: $primary-color, $alpha: 0.7);
+        }
+
+        .location-name {
+          position: relative;
+          right: 20px;
+          font-size: 0rem;
+          opacity: 0;
+          -webkit-transition: all 0.3s ease-in-out;
+          -moz-transition: all 0.3s ease-in-out;
+          -ms-transition: all 0.3s ease-in-out;
+          -o-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
+        }
+
+        .location-img {
+          position: relative;
+          top: 20px;
+          left: 20px;
+          height: 0px;
+          width: 0px;
+          opacity: 0;
+          -webkit-transition: all 0.3s ease-in-out;
+          -moz-transition: all 0.3s ease-in-out;
+          -ms-transition: all 0.3s ease-in-out;
+          -o-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
+        }
+      }
+
+      .mobile-dropdown-btn {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0px;
+        height: 32px;
+        font-size: 0.8rem;
+        border-right: 2px solid $secondary-color-lighter;
+        border-top: 1px solid $secondary-color-lighter;
+        border-radius: $border-radius;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        background-color: $primary-color-darker;
+        -webkit-transition: all 0.3s ease-out;
+        -moz-transition: all 0.3s ease-out;
+        -ms-transition: all 0.3s ease-out;
+        -o-transition: all 0.3s ease-out;
+        transition: all 0.3s ease-out;
+
+        &:active {
+          box-shadow: -2px 2px 5px rgba($color: $primary-color, $alpha: 0.7),
+            -1px 1px 5px rgba($color: $primary-color, $alpha: 0.7);
+          font-size: 0.95rem;
+        }
+
+        &:hover {
+          transform: none;
+          box-shadow: none;
+        }
+
+        span {
+          -webkit-transition: all 0.5s ease-in-out;
+          -moz-transition: all 0.5s ease-in-out;
+          -ms-transition: all 0.5s ease-in-out;
+          -o-transition: all 0.5s ease-in-out;
+          transition: all 0.5s ease-in-out;
+        }
+      }
+
+      .btn-opened {
+        border-radius: $border-radius;
+        margin-top: 8px;
+
+        span {
+          transform: rotate(180deg);
+        }
+      }
+
+      .show {
+        height: 50px;
+        margin: 8px 0px 0px 0px;
+        padding: 12px;
+        border-top: 2px solid $secondary-color-lighter;
+        border-right: 2px solid $secondary-color-lighter;
+
+        .location-name {
+          opacity: 1;
+          font-size: 1.2rem;
+        }
+
+        .location-img {
+          top: 0;
+          left: 0;
+          opacity: 1;
+          height: 40px;
+          width: 40px;
+        }
+      }
+
+      .first {
+        top: 0;
+        left: 0;
+        height: 50px;
+        margin: 8px 0px 0px 0px;
+        padding: 12px;
+        justify-content: center;
+        border-top: 2px solid $secondary-color-lighter;
+        border-right: 2px solid $secondary-color-lighter;
+        grid-row-start: 1;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        z-index: 1;
+
+        .location-name {
+          display: block;
+        }
+
+        .location-img {
+          display: block;
+        }
+      }
+
+      .first-card-opened {
+        border-bottom-left-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+      }
+    }
+
+    .battle-screen {
+      .player,
+      .enemy {
+        width: 45%;
+
+        .player-card,
+        .enemy-card {
+          .information {
+            font-size: 0.8rem;
+            top: 0.25em;
+            line-height: 1.5em;
+          }
+
+          .name {
+            font-size: 1.2rem;
+            line-height: 1.6rem;
+          }
+
+          .hp-bar {
+            .hp {
+              font-size: 1rem;
+              margin: -5px 0 -5px 0;
+            }
+          }
+
+          .heal-quick-bar {
+            top: -50px;
+
+            .heal-quick-bar-container {
+              .heal-quick-bar-item {
+                padding: 8px;
+                border-radius: 50%;
+
+                .item-num {
+                  border-radius: 50%;
+                  width: 15px;
+                  height: 15px;
+                  font-size: 0.6rem;
+                  bottom: -5px;
+                  margin-right: 1px;
+                }
+
+                .item-img {
+                  width: 25px;
+                  height: 25px;
+                }
+              }
+            }
+          }
+        }
+
+        .attack-bar {
+          p {
+            font-size: 0.9rem;
+          }
+        }
+
+        .stats {
+          h3 {
+            font-size: 1rem;
+          }
+
+          p {
             font-size: 0.9rem;
 
-            img {
-                width: 30px;
-                height: 30px;
+            span {
+              font-size: 1rem;
             }
+          }
         }
+      }
+
+      .action-buttons {
+        .btn {
+          width: 45%;
+          font-size: 0.9em;
+        }
+      }
     }
 
-    .modal-container {
-        .confirmation-modal {
-            font-size: 1rem;
+    .inv-equip {
+      flex-wrap: wrap;
+      justify-content: center;
+      flex-direction: column-reverse;
+      font-size: 0.9rem;
 
-            .modal-text {
-                font-size: 1rem;
-            }
+      .equipment,
+      .inventory {
+        width: 100%;
+
+        h3 {
+          height: 50px;
+          padding: 10px 20px 10px 20px;
         }
+
+        .inv-list .inv-item {
+          .item-description {
+            top: -117px;
+          }
+
+          .item-menu {
+            top: -202px;
+          }
+
+          .item-count {
+            font-size: 0.8rem;
+          }
+        }
+      }
+
+      .equipment {
+        margin-top: 15px;
+      }
     }
 
-    .registration-container, .login-container, .profile-container {
-        .registration-form, .login-form, .profile {
-            width: 80%;
-            margin: 1.2rem auto 1.2rem auto;
+    .msg {
+      font-size: 0.9rem;
 
-            .msg {
-                width: 100%;
-                font-size: 1.1rem;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-                text-align: center;
-            }
-
-            form {
-                .form-spacing {
-                    margin: 7px 0 18px 0;
-    
-                    .label-control {
-                        font-size: 1.1rem;
-                    }
-    
-                    .input-control {
-                        padding: 8px;
-                        font-size: 1.1rem;
-                    }
-                }
-
-                .btn {                    
-                    font-size: 1.1rem;
-                }
-    
-                .profile-buttons {
-                    font-size: 1.1rem;
-                    margin-top: 0.8rem;
-                }
-            }
-        }
+      img {
+        width: 30px;
+        height: 30px;
+      }
     }
+  }
+
+  .modal-container {
+    .confirmation-modal {
+      font-size: 1rem;
+
+      .modal-text {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .information-modal-container {
+    .information-modal {
+      font-size: 0.9rem;
+    }
+  }
+
+  .registration-container,
+  .login-container,
+  .profile-container {
+    .registration-form,
+    .login-form,
+    .profile {
+      width: 80%;
+      margin: 1.2rem auto 1.2rem auto;
+
+      .msg {
+        width: 100%;
+        font-size: 1.1rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      form {
+        .form-spacing {
+          margin: 7px 0 18px 0;
+
+          .label-control {
+            font-size: 1.1rem;
+          }
+
+          .input-control {
+            padding: 8px;
+            font-size: 1.1rem;
+          }
+        }
+
+        .btn {
+          font-size: 1.1rem;
+        }
+
+        .profile-buttons {
+          font-size: 1.1rem;
+          margin-top: 0.8rem;
+        }
+      }
+    }
+  }
 }
 
 @include mediaXsm {
-    .header {    
-        .header-links {
-            .login-form {
-                right: 10px;
-                width: 200px;
-                background-color: $primary-color-darker;
-    
-                input {
-                    font-size: 0.8rem;
-    
-                    &::placeholder {
-                        font-size: 0.8rem;
-                    }
-                }
-    
-                .login-btn {
-                    padding: 7px;
-                    font-size: 0.8rem;
-                    margin-top: 0.7rem;
-                }
-    
-                .msg {
-                    font-size: 0.8rem;
-                    margin-top: 0.7rem;
-                }
-            }
-        }
-    }
+  .header {
+    .header-links {
+      .login-form {
+        right: 10px;
+        width: 200px;
+        background-color: $primary-color-darker;
 
-    .container {
-        width: 95%;
+        input {
+          font-size: 0.8rem;
 
-        .battle-screen {
-            padding: 8px;
-
-            .player, .enemy {
-                width: 48%;
-                .player-card, .enemy-card {
-
-                    .name {
-                        font-size: 1rem;
-                    }
-                    .hp-bar {
-
-                        .current, .max {
-                            height: $bar-height-smaller;
-                            top: 3px;
-                        }
-            
-                        .max {
-                            top: -7px;
-                        }
-                        
-                        .hp {
-                            font-size: 0.8rem;
-                            margin: -8px 0 -8px 0;
-                        }
-                    }
-
-                    .heal-quick-bar {
-                        .heal-quick-bar-container {
-                            padding: 0 5px 0 5px;
-                            left: 4px;
-                            justify-content: space-around;
-                        }
-                    }
-                }
-
-                .attack-bar {
-                    p {
-                        font-size: 0.8rem
-                    }
-
-                    .att-empty, .att-progress {
-                        height: $bar-height-smaller;
-                    }
-        
-                    .att-empty {
-                        top: 7px;
-                    }
-        
-                    .att-progress {
-                        top: -3px;
-                    }
-                }
-                .stats {
-                    h3 {
-                        font-size: 0.9rem;
-                    }
-
-                    p {
-                        font-size: 0.85rem;
-
-                        span {
-                            font-size: 0.9rem;
-                        }
-                    }
-                }    
-            }
-
-            .action-buttons {
-                padding-top: 16px;
-                .btn {
-                    width: 48%;
-                }  
-            }
-        }
-
-        .inv-equip {
-            padding: 8px;
-            font-size: 0.85rem;
-
-            .equipment, .inventory {
-                width: 100%;
-            }
-
-            .equipment {
-                margin-bottom: 8px;
-            }
-
-            .inventory {
-                .inv-list .inv-item {
-                    .item-description {
-                        top: -115px;
-                    }
-
-                    .item-menu {
-                        top: -201px;
-                    }
-
-                    .item-count {
-                        font-size: 0.8rem;
-                    }
-                }
-            }
-        }
-
-        .notifications {
-            width: 290px;
-            font-size: 0.85rem;
-
-            .notification {
-                padding: 12px 12px 12px 15px;
-            }
-        }
-    }
-
-    .modal-container {
-        .confirmation-modal {
-            width: 260px;
+          &::placeholder {
             font-size: 0.8rem;
+          }
+        }
 
-            &.hidden {
-                margin-top: calc(140px/2);
+        .login-btn {
+          padding: 7px;
+          font-size: 0.8rem;
+          margin-top: 0.7rem;
+        }
+
+        .msg {
+          font-size: 0.8rem;
+          margin-top: 0.7rem;
+        }
+      }
+    }
+  }
+
+  .container {
+    width: 95%;
+
+    .battle-screen {
+      padding: 8px;
+
+      .player,
+      .enemy {
+        width: 48%;
+        .player-card,
+        .enemy-card {
+          .name {
+            font-size: 1rem;
+          }
+          .hp-bar {
+            .current,
+            .max {
+              height: $bar-height-smaller;
+              top: 3px;
             }
+
+            .max {
+              top: -7px;
+            }
+
+            .hp {
+              font-size: 0.8rem;
+              margin: -8px 0 -8px 0;
+            }
+          }
+
+          .heal-quick-bar {
+            .heal-quick-bar-container {
+              padding: 0 5px 0 5px;
+              left: 4px;
+              justify-content: space-around;
+            }
+          }
+        }
+
+        .attack-bar {
+          p {
+            font-size: 0.8rem;
+          }
+
+          .att-empty,
+          .att-progress {
+            height: $bar-height-smaller;
+          }
+
+          .att-empty {
+            top: 7px;
+          }
+
+          .att-progress {
+            top: -3px;
+          }
+        }
+        .stats {
+          h3 {
+            font-size: 0.9rem;
+          }
+
+          p {
+            font-size: 0.85rem;
 
             span {
-                display: none;
+              font-size: 0.9rem;
             }
-
-            .modal-text {
-                font-size: 0.9rem;
-                padding: 26px 10px 0 10px
-            }
-
-            .modal-buttons {
-                margin: 20px 0px 15px 0px;
-            }
+          }
         }
+      }
 
-        .loading-modal {
-            width: 320px;
-
-            p {
-                font-size: 1rem;
-            }
+      .action-buttons {
+        padding-top: 16px;
+        .btn {
+          width: 48%;
         }
+      }
     }
 
-    .registration-container, .login-container, .profile-container {
-        .registration-form, .login-form, .profile {
-            width: 90%;
-            padding: 1.2rem 1.5rem 1.2rem 1.5rem;
+    .inv-equip {
+      padding: 8px;
+      font-size: 0.85rem;
 
-            .msg {
-                font-size: 1rem;
-                margin-bottom: 0.7rem;
-            }
+      .equipment,
+      .inventory {
+        width: 100%;
+      }
 
-            form {
-                .form-spacing {    
-                    .label-control {
-                        font-size: 1rem;
-                    }
-    
-                    .input-control {
-                        font-size: 1rem;
-                    }
-                }
+      .equipment {
+        margin-bottom: 8px;
+      }
 
-                .btn {
-                    font-size: 1rem;
-                }
+      .inventory {
+        .inv-list .inv-item {
+          .item-description {
+            top: -115px;
+          }
 
-                .profile-buttons {
-                    .btn {
-                        font-size: 1rem;
-                        margin: 0.8rem 0.1rem 0 0.1rem;
-                    }
-                }
-            }
+          .item-menu {
+            top: -201px;
+          }
+
+          .item-count {
+            font-size: 0.8rem;
+          }
         }
+      }
     }
+
+    .notifications {
+      width: 290px;
+      font-size: 0.85rem;
+
+      .notification {
+        padding: 12px 12px 12px 15px;
+      }
+    }
+  }
+
+  .modal-container {
+    .confirmation-modal {
+      width: 260px;
+      font-size: 0.8rem;
+
+      &.hidden {
+        margin-top: calc(140px / 2);
+      }
+
+      span {
+        display: none;
+      }
+
+      .modal-text {
+        font-size: 0.9rem;
+        padding: 26px 10px 0 10px;
+      }
+
+      .modal-buttons {
+        margin: 20px 0px 15px 0px;
+      }
+    }
+
+    .loading-modal {
+      width: 320px;
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .registration-container,
+  .login-container,
+  .profile-container {
+    .registration-form,
+    .login-form,
+    .profile {
+      width: 90%;
+      padding: 1.2rem 1.5rem 1.2rem 1.5rem;
+
+      .msg {
+        font-size: 1rem;
+        margin-bottom: 0.7rem;
+      }
+
+      form {
+        .form-spacing {
+          .label-control {
+            font-size: 1rem;
+          }
+
+          .input-control {
+            font-size: 1rem;
+          }
+        }
+
+        .btn {
+          font-size: 1rem;
+        }
+
+        .profile-buttons {
+          .btn {
+            font-size: 1rem;
+            margin: 0.8rem 0.1rem 0 0.1rem;
+          }
+        }
+      }
+    }
+  }
 }
 
 @include mediaXxsm {
-    .header {
-        justify-content: flex-end;
-        .header-text {
-            display: none;
-        }
+  .header {
+    justify-content: flex-end;
+    .header-text {
+      display: none;
     }
-    .container {
-        .battle-screen {
-            .player {
-                .player-card {
-                    .heal-quick-bar {
-                        .heal-quick-bar-container {
-                            bottom: -40px;
+  }
+  .container {
+    .battle-screen {
+      .player {
+        .player-card {
+          .heal-quick-bar {
+            .heal-quick-bar-container {
+              bottom: -40px;
 
-                            .heal-quick-bar-item {
-                                padding: 4px;
-                            }
-                        }
-                    }
-                }
+              .heal-quick-bar-item {
+                padding: 4px;
+              }
             }
+          }
         }
+      }
     }
+  }
 }

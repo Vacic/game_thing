@@ -1,227 +1,258 @@
 .battle-screen {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+
+  .player,
+  .enemy {
+    padding: 10px;
+    padding-top: 4px;
+    border: 2px solid $primary-color;
+    background-color: darken($primary-color, 20);
+    border-radius: $border-radius;
+    text-align: center;
+    width: 30%;
+
+    .enemy-card > .name {
+      text-transform: capitalize;
+    }
+
+    .player-card,
+    .enemy-card {
+      position: relative;
+
+      .information {
+        font-size: 1rem;
+        background-color: rgb(0, 153, 255);
+        font-family: "Times New Roman", Times, serif;
+        border-radius: 100%;
+        width: 1.4em;
+        height: 1.4em;
+        position: absolute;
+        font-weight: bold;
+        top: 0.37em;
+        right: 0;
+        line-height: 1.4em;
+
+        &:active {
+          box-shadow: inset 0px 0px 100px 0px rgba($color: black, $alpha: 0.2);
+        }
+
+        &:hover {
+          box-shadow: inset 0px 0px 100px 0px rgba($color: black, $alpha: 0.2);
+        }
+      }
+
+      .name {
+        font-size: 1.6rem;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .hp-bar {
+        .current,
+        .max {
+          height: $bar-height;
+          width: 100%;
+          position: relative;
+        }
+
+        .current {
+          background-color: rgb(71, 212, 94);
+          top: 5px;
+          z-index: 2;
+          width: 100%;
+        }
+
+        .max {
+          background-color: rgb(236, 103, 103);
+          top: -9px;
+          z-index: 1;
+        }
+
+        .hp {
+          position: relative;
+          top: -13px;
+          font-size: 1.1rem;
+          line-height: 1.2rem;
+        }
+
+        .player-att-status {
+          position: relative;
+          text-align: right;
+          top: 4px;
+          visibility: hidden;
+          font-size: 0.8rem;
+        }
+
+        .enemy-att-status {
+          position: relative;
+          text-align: left;
+          top: 4px;
+          visibility: hidden;
+          font-size: 0.8rem;
+        }
+
+        .dmg {
+          color: rgb(230, 68, 68);
+          visibility: visible;
+        }
+
+        .miss {
+          color: inherit;
+          visibility: visible;
+        }
+      }
+
+      .player-img,
+      .enemy-img {
+        width: 100%;
+      }
+
+      .spinner {
+        padding: 20px;
+      }
+
+      .heal-quick-bar {
+        display: flex;
+        position: relative;
+        top: -74px;
+        right: 3px;
+
+        .heal-quick-bar-container {
+          position: absolute;
+          display: flex;
+          justify-content: flex-end;
+          width: 100%;
+          left: 2px;
+
+          .heal-quick-bar-item {
+            position: relative;
+            display: flex;
+            background-color: rgba($color: white, $alpha: 0.3);
+            box-shadow: -1px -1px 1px 1px rgba($color: $secondary-color-lighter, $alpha:
+                  0.4);
+            padding: 12px;
+            bottom: 2px;
+            margin: 0 2px 0 2px;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+
+            &:active {
+              box-shadow: inset 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
+            }
+
+            &:hover {
+              cursor: pointer;
+            }
+
+            .item-num {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              position: absolute;
+              background-color: rgba($color: $secondary-color, $alpha: 0.5);
+              border-radius: 50%;
+              width: 25px;
+              height: 25px;
+              font-size: 1rem;
+              bottom: -7px;
+              font-weight: 500;
+            }
+
+            .item-img {
+              width: 40px;
+              height: 40px;
+
+              img {
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .attack-bar {
+      .weapon-name {
+        position: relative;
+        top: 4px;
+      }
+
+      .no-weapon {
+        visibility: hidden;
+      }
+
+      .att-empty,
+      .att-progress {
+        height: $bar-height;
+        width: 100%;
+        position: relative;
+      }
+
+      .att-empty {
+        background-color: darken($secondary-color, 7);
+        top: 8px;
+        z-index: 1;
+      }
+
+      .att-progress {
+        background-color: lighten($primary-color, 10);
+        top: -6px;
+        z-index: 2;
+        width: 0%;
+      }
+    }
+
+    .stats {
+      padding: 8px;
+      border-radius: $border-radius;
+      text-align: left;
+      line-height: 1.5rem;
+      margin-top: 10px;
+      border-top: 2px solid $secondary-color-lighter;
+      border-left: 2px solid $secondary-color-lighter;
+      box-shadow: 1px 1px 4px 1px rgba($color: white, $alpha: 0.3),
+        2px 2px 2px 1px rgba($color: white, $alpha: 0.1);
+
+      h3 {
+        text-align: center;
+      }
+
+      p span {
+        float: right;
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .dead {
+    color: rgb(230, 68, 68);
+
+    .item-num {
+      color: #f7f7f7;
+    }
+  }
+
+  .action-buttons {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
-    padding: 20px;
-    
-    .player, .enemy {
-        padding: 10px;
-        padding-top: 4px;
-        border: 2px solid $primary-color;
-        background-color: darken($primary-color, 20);
-        border-radius: $border-radius;
-        text-align: center;
-        width: 30%;
+    padding: 20px 0px 0 0px;
 
-        .enemy-card > .name {
-            text-transform: capitalize;
-        }
-        
-        .player-card, .enemy-card {
-            .name {
-                font-size: 1.6rem;
-                white-space: nowrap;
-                overflow: hidden;
-            }
-            
-            .hp-bar {
-                .current, .max {
-                    height: $bar-height;
-                    width: 100%;
-                    position: relative;
-                }
-                
-                .current {
-                    background-color: rgb(71, 212, 94);
-                    top: 5px;
-                    z-index: 2;
-                    width: 100%
-                }
-                
-                .max {
-                    background-color: rgb(236, 103, 103);
-                    top: -9px;
-                    z-index: 1;
-                }
-                
-                .hp {
-                    position: relative;
-                    top: -13px;
-                    font-size: 1.1rem;
-                    line-height: 1.2rem;
-                }
-                
-                .player-att-status {
-                    position: relative;
-                    text-align: right;
-                    top: 4px;
-                    visibility: hidden;
-                    font-size: 0.8rem;
-                }
-                
-                .enemy-att-status {
-                    position: relative;
-                    text-align: left;
-                    top: 4px;
-                    visibility: hidden;
-                    font-size: 0.8rem;
-                }
-                
-                .dmg {
-                    color: rgb(230, 68, 68);
-                    visibility: visible;
-                }
-                
-                .miss {
-                    color: inherit;
-                    visibility: visible;
-                }
-            }
-            
-            .player-img, .enemy-img {
-                width: 100%;
-            }
-
-            .spinner {
-                padding: 20px;
-            }
-
-            .heal-quick-bar {
-                display: flex;
-                position: relative;
-                top: -74px;
-                right: 3px;
-
-                .heal-quick-bar-container {
-                    position: absolute;
-                    display: flex;
-                    justify-content: flex-end;
-                    width: 100%;
-                    left: 2px;
-                    
-                    .heal-quick-bar-item {
-                        position: relative;
-                        display: flex;
-                        background-color: rgba($color: white, $alpha: 0.3);
-                        box-shadow: -1px -1px 1px 1px rgba($color: $secondary-color-lighter, $alpha: 0.4);
-                        padding: 12px;
-                        bottom: 2px;
-                        margin: 0 2px 0 2px;
-                        border-radius: 50%;
-                        justify-content: center;
-                        align-items: center;
-
-                        &:active {
-                            box-shadow: inset 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
-                        }
-
-                        &:hover {
-                            cursor: pointer;
-                        }
-
-                        .item-num {
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            position: absolute;
-                            background-color: rgba($color: $secondary-color, $alpha: 0.5);
-                            border-radius: 50%;
-                            width: 25px;
-                            height: 25px;
-                            font-size: 1rem;
-                            bottom: -7px;
-                            font-weight: 500;
-                        }
-
-                        .item-img {
-                            width: 40px;
-                            height: 40px;
-
-                            img {
-                                width: 100%;
-                                height: 100%;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        .attack-bar {
-            .weapon-name {
-                position: relative;
-                top: 4px;
-            }
-            
-            .no-weapon {
-                visibility: hidden;
-            }
-            
-            .att-empty, .att-progress {
-                height: $bar-height;
-                width: 100%;
-                position: relative;
-            }
-            
-            .att-empty {
-                background-color: darken($secondary-color, 7);
-                top: 8px;
-                z-index: 1;
-            }
-            
-            .att-progress {
-                background-color: lighten($primary-color, 10);
-                top: -6px;
-                z-index: 2;
-                width: 0%;
-            }
-        }
-        
-        .stats {
-            padding: 8px;
-            border-radius: $border-radius;
-            text-align: left;
-            line-height: 1.5rem;
-            margin-top: 10px;
-            border-top: 2px solid $secondary-color-lighter;
-            border-left: 2px solid $secondary-color-lighter;
-            box-shadow: 1px 1px 4px 1px rgba($color: white, $alpha: 0.3), 2px 2px 2px 1px rgba($color: white, $alpha: 0.1);
-            
-            h3 {
-                text-align: center;
-            }
-            
-            p span {
-                float: right;
-                font-size: 1.2rem;
-            }
-        }
+    .btn {
+      font-size: 1.1rem;
+      width: 30%;
     }
-    
-    .dead {
-        color: rgb(230, 68, 68);
-
-        .item-num {
-            color: #f7f7f7;
-        }
-    }
-
-    .action-buttons {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        padding: 20px 0px 0 0px;
-
-        .btn {
-            font-size: 1.1rem;
-            width: 30%;
-        }
-    }
+  }
 }
 
 .inv-equip {
-    display: flex;
-    padding: 0 15px 15px 15px;
-    justify-content: space-between;
+  display: flex;
+  padding: 0 15px 15px 15px;
+  justify-content: space-between;
 }

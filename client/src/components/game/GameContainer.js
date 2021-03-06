@@ -9,6 +9,7 @@ import LoadingModal from '../helperComponents/LoadingModal';
 import Notifications from '../helperComponents/notifications/Notifications';
 import { setCurrentPlayerHp, setCurrentEnemyHp, setCurrentEnemyStats, setLoading, enemyTakesDamage, playerTakesDamage, updateInventory, updatePlayerQuickBarEquipment, setMessage, setLoadingEnemy, cookieChecked, setLogin, populateGame, hideMessage, setNotification, populateUser } from '../../redux';
 import { setLocalStorage, updateDbProgress, checkToken } from '../../services';
+import InformationModal from '../helperComponents/InformationModal';
 
 
 
@@ -264,6 +265,7 @@ class GameContainer extends PureComponent {
                 <Notifications />
 
                 <ConfirmationModal />
+                <InformationModal enemyName={this.props.currentEnemy.name} location={this.props.currentLocation}/>
                 {!this.props.isCookieChecked && <LoadingModal />}
             </div>
         )
