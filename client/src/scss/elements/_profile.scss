@@ -1,49 +1,49 @@
 .profile-container {
-    .profile {
-        a {
-            text-decoration: none;
-            color: $primary-color;
+  .profile {
+    a {
+      text-decoration: none;
+      color: $primary-color;
 
-            &:active {
-                color: $primary-color-darker;
-            }
+      &:active {
+        color: $primary-color-darker;
+      }
 
-            i {
-                position: absolute;
-                top: 0;
-                right: 0;
-            }
-        }
-
-        form {
-            height: 100%;
-            position: relative;
-
-            .form-spacing {
-                margin: 10px 0 20px 0;
-
-                small {
-                    color: rgb(104, 104, 104);
-                }
-            }
-
-            .btn {
-                font-size: 1.2rem;
-                margin: 1.7rem 1rem 0 1rem;
-
-                &:disabled {
-                    box-shadow: inset 0px 0px 100px 0px rgba($color: black, $alpha: 0.4);
-                }
-            }
-        }
-
-        .profile-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            width: 100%;
-            bottom: 0;
-            left: 0;
-        }
+      i {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
     }
+
+    form {
+      height: 100%;
+      position: relative;
+
+      .form-spacing {
+        margin: 10px 0 20px 0;
+
+        small {
+          color: rgb(104, 104, 104);
+        }
+      }
+
+      .btn {
+        font-size: 1.2rem;
+        margin: 1.7rem 1rem 0 1rem;
+
+        &:disabled {
+          box-shadow: inset 0px 0px 100px 0px rgba($color: black, $alpha: 0.4);
+        }
+      }
+    }
+
+    .profile-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+    }
+  }
 }
