@@ -63,7 +63,6 @@ router.post(
 // @desc GET current user info
 // @access Private
 router.get("/user", checkToken, async (req, res) => {
-  console.log(req);
   const id = req.token.id;
   try {
     const user = await User.findOne({ _id: id })
