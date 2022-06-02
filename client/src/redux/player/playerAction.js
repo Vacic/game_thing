@@ -27,7 +27,10 @@ export const populatePlayer =
 export const populateUser = () => async (dispatch) => {
   setLoading(true);
   try {
-    // const { data } = await axios.get('http://localhost:3001/users/user', { headers: { token: localStorage.getItem('token')} });
+    // FOR LOCAL DEV TOKEN
+    // const { data } = await axios.get("http://localhost:3001/users/user", {
+    //   headers: { token: localStorage.getItem("token") },
+    // });
     const { data } = await axios.get("/users/user", { withCredentials: true });
     dispatch(updateUser(data.user));
   } catch (err) {

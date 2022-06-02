@@ -23,8 +23,11 @@ const dispatch = store.dispatch;
 export const checkToken = async (history) => {
   if (cookies.get("loggedIn")) {
     try {
-      // const res = await axios.get('http://localhost:3001/auth/check-token', { headers: { token: localStorage.getItem('token')} });
-      // res.data !== '' && localStorage.setItem('token', res.data)
+      // FOR LOCAL DEV TOKEN
+      // const res = await axios.get("http://localhost:3001/auth/check-token", {
+      //   headers: { token: localStorage.getItem("token") },
+      // });
+      // res.data !== "" && localStorage.setItem("token", res.data);
       await axios.get("/auth/check-token", { withCredentials: true });
       return true;
     } catch (err) {
@@ -51,10 +54,20 @@ export const editProfile = async (formData) => {
   const body = JSON.stringify(data);
   const config = { headers: { "Content-Type": "application/json" } };
   try {
+    // FOR LOCAL DEV TOKEN
+    // const { data } = await axios.put(
+    //   "http://localhost:3001/users/update-user",
+    //   body,
+    //   {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       token: localStorage.getItem("token"),
+    //     },
+    //   }
+    // );
     const { data } = await axios.put("/users/update-user", body, config, {
       withCredentials: true,
     });
-    // const { data } = await axios.put('http://localhost:3001/users/update-user', body, { headers: { 'Content-Type': 'application/json', token: localStorage.getItem('token') } } );
     dispatch(updateUser(data));
     dispatch(setMessage({ msg: "Successfully Updated Your Profile" }));
     return true;
@@ -79,10 +92,13 @@ export const register = async (formData) => {
   const data = { ...formData, ...localProgress };
   const body = JSON.stringify(data);
   try {
+    // FOR LOCAL DEV TOKEN
+    // await axios.post("http://localhost:3001/users/register", body, {
+    //   headers: { "Content-Type": "application/json" },
+    // });
     await axios.post("/users/register", body, {
       headers: { "Content-Type": "application/json" },
     });
-    // await axios.post('http://localhost:3001/users/register', body, { headers: { 'Content-Type': 'application/json' } });
     dispatch(setMessage({ msg: "Successfully Registered" }));
     return true;
   } catch (err) {
@@ -141,7 +157,10 @@ export const resetProgress = async () => {
 
 export const deleteAccount = async () => {
   try {
-    // await axios.delete('http://localhost:3001/users/remove-user', { headers: { token: localStorage.getItem('token')} });
+    // FOR LOCAL DEV TOKEN
+    // await axios.delete("http://localhost:3001/users/remove-user", {
+    //   headers: { token: localStorage.getItem("token") },
+    // });
     await axios.delete("/users/remove-user", { withCredentials: true });
     cookies.remove("loggedIn");
     dispatch(setLoading(true));

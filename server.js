@@ -15,7 +15,8 @@ app.use(
     credentials: true,
     origin: [
       "https://game-thing.herokuapp.com/",
-      "https://game-thing-dev.herokuapp.com/" /*, 'http://localhost:3000'*/,
+      "https://game-thing-dev.herokuapp.com/",
+      // "http://localhost:3000", // FOR LOCAL DEV TOKEN
     ],
   })
 );

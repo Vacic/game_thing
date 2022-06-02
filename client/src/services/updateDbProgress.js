@@ -11,8 +11,11 @@ export const updateDbProgress = async (history) => {
     withCredentials: true,
   };
   try {
+    // FOR LOCAL DEV TOKEN
+    // await axios.put(`http://localhost:3001/users/progress`, body, {
+    //   headers: { token: localStorage.getItem("token") },
+    // });
     await axios.put(`/users/progress`, body, config);
-    // await axios.put(`http://localhost:3001/users/progress`, body, { headers: { token: localStorage.getItem('token')} });
     console.log("Progress Updated");
     store.dispatch(setMessage({ msg: "Saved!" }));
   } catch (err) {
