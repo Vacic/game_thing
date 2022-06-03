@@ -2,7 +2,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import store from "./redux/store";
-import "./css/main.css";
+import "./css/main.min.css";
 import GameContainer from "./components/game/GameContainer";
 import RegistrationForm from "./components/register_login/RegistrationForm";
 import Header from "./components/game/header/Header";
